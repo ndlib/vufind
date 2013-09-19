@@ -9,19 +9,20 @@
 # December 20, 2012 - added command line input; redirected STDERR to a STDIN
 
 # configure
-use constant CMD        => 'C:\vufind-2.1\import-marc.bat';
-use constant DB         => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\etc\libraries.db';
-use constant PROPERTIES => 'C:\vufind-2.1\import\marc.properties';
+# changed command parameter as per vufind-2.1 and rather than changing import properties, changes are dine in marc_local_properties.Changed the template.txt file as per marc_local.properties. (vufind-2.1)
+use constant CMD        => "\"C:\\Program Files\\Java\\jdk1.7.0_25\\bin\\java\" -Xms512m -Xmx512m -Duser.timezone=UTC -Dsolr.core.name=biblio -Dsolr.path=REMOTE -Dsolr.solr.home=C:\\vufind-2.1\\solr -Dsolrmarc.path=C:\\vufind-2.1\\import -jar C:\\vufind-2.1\\import\\SolrMarc.jar C:\\vufind-2.1\\import\\import.properties ##MARC## 2> ##LOG##";
+use constant DB         => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
+use constant PROPERTIES => 'C:\vufind-2.1\import\marc_local.properties';
 use constant SOLR       => 'http://localhost:8080/solr/biblio';
-use constant TEMPLATE   => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\etc\template.txt';
-use constant UPDATED    => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\marc-updated\\';
-use constant LOGS       => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\logs\\';
+use constant TEMPLATE   => 'C:\vufind-2.1\local\import\template.txt';
+use constant UPDATED    => 'C:\vufind-2.1\crra\marc-updated\\';
+use constant LOGS       => 'C:\vufind-2.1\crra\crra-scripts\logs\\';
 use constant TYPE       => 'marc';
 
 # require
 use strict;
 use WebService::Solr;
-require 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\lib\subroutines.pl';
+require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );
@@ -46,15 +47,16 @@ foreach my $key ( sort keys %$libraries ) {
 	close OUT;
 	
 	# build the indexing command
+	# changed file name to .mrc as vufind-2.1 only accepts mrc format.(vufind-2.1)
 	print "Indexing $key...\n";
 	my $marc = UPDATED . "$key.mrc";
 	my $cmd  = CMD;
-	#$cmd =~ s/##MARC##/$marc/e;
-	#$cmd =~ s/##LOG##/LOGS . $key . "-indexing.log"/e;
+	$cmd =~ s/##MARC##/$marc/e;
+	$cmd =~ s/##LOG##/LOGS . $key . "-indexing.log"/e;
 	
 	# do the work
 	print "$cmd\n";
-	system $cmd $marc;
+	system $cmd;
 		
 }
 
