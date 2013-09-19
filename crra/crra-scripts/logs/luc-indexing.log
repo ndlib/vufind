@@ -1,0 +1,2080 @@
+Jan 24, 2013 11:16:27 AM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jan 24, 2013 11:16:27 AM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jan 24, 2013 11:16:27 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jan 24, 2013 11:16:27 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jan 24, 2013 11:16:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jan 24, 2013 11:16:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jan 24, 2013 11:16:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/luc.marc
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: lucmarc_154992
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: lucmarc_155070
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: lucmarc_155106
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: lucmarc_155854
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: lucmarc_156073
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: lucmarc_157036
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: lucmarc_158881
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: lucmarc_159125
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: lucmarc_159138
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: lucmarc_172885
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: lucmarc_174323
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: lucmarc_182632
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: lucmarc_182854
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: lucmarc_185145
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: lucmarc_185441
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: lucmarc_187490
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: lucmarc_195850
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: lucmarc_219822
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: lucmarc_248086
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: lucmarc_252005
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: lucmarc_270832
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: lucmarc_295384
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: lucmarc_411237
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: lucmarc_522753
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: lucmarc_524836
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: lucmarc_528820
+Jan 24, 2013 11:16:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: lucmarc_534619
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: lucmarc_534980
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: lucmarc_535189
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: lucmarc_535266
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: lucmarc_535282
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: lucmarc_535283
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: lucmarc_535287
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: lucmarc_535363
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: lucmarc_536249
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: lucmarc_537083
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: lucmarc_542675
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: lucmarc_543199
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: lucmarc_555783
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: lucmarc_557352
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: lucmarc_562393
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: lucmarc_567569
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: lucmarc_567894
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: lucmarc_568253
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: lucmarc_569734
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: lucmarc_570869
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: lucmarc_571398
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: lucmarc_580771
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: lucmarc_580776
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: lucmarc_581949
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: lucmarc_581953
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: lucmarc_582305
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: lucmarc_584228
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: lucmarc_586675
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: lucmarc_586751
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: lucmarc_587474
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: lucmarc_587536
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: lucmarc_587661
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: lucmarc_588058
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: lucmarc_591100
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: lucmarc_591601
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: lucmarc_595960
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: lucmarc_596347
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: lucmarc_596389
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: lucmarc_596527
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: lucmarc_599630
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: lucmarc_601090
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: lucmarc_611097
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: lucmarc_611198
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: lucmarc_615214
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: lucmarc_615263
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: lucmarc_616814
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: lucmarc_617135
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: lucmarc_617137
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: lucmarc_619105
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: lucmarc_619214
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: lucmarc_625367
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: lucmarc_628818
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: lucmarc_628824
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: lucmarc_629027
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: lucmarc_629124
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: lucmarc_632402
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: lucmarc_632628
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: lucmarc_634737
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: lucmarc_635067
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: lucmarc_637249
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: lucmarc_638955
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: lucmarc_640028
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: lucmarc_640619
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: lucmarc_641950
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: lucmarc_642113
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: lucmarc_642116
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: lucmarc_643838
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: lucmarc_645884
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: lucmarc_646278
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: lucmarc_646604
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: lucmarc_648388
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: lucmarc_649326
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: lucmarc_654834
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: lucmarc_656347
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: lucmarc_656596
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: lucmarc_656947
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: lucmarc_657723
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: lucmarc_658131
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: lucmarc_658788
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: lucmarc_660615
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: lucmarc_661376
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: lucmarc_665974
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: lucmarc_665976
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: lucmarc_666037
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: lucmarc_689622
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: lucmarc_690851
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: lucmarc_694138
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: lucmarc_694140
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: lucmarc_694524
+Jan 24, 2013 11:16:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: lucmarc_695465
+Jan 24, 2013 11:16:30 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: lucmarc_1111088
+Jan 24, 2013 11:16:30 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: lucmarc_1172672
+Jan 24, 2013 11:16:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: lucmarc_1175140
+Jan 24, 2013 11:16:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: lucmarc_1433983
+Jan 24, 2013 11:16:33 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: lucmarc_1433985
+Jan 24, 2013 11:16:33 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: lucmarc_1673546
+Jan 24, 2013 11:16:33 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 123 read from file: lucmarc_1673851
+Jan 24, 2013 11:16:33 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 124 read from file: lucmarc_1714090
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 125 read from file: lucmarc_1714126
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 126 read from file: lucmarc_154941
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 127 read from file: lucmarc_155293
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 128 read from file: lucmarc_157062
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 129 read from file: lucmarc_166710
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 130 read from file: lucmarc_175582
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 131 read from file: lucmarc_176612
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 132 read from file: lucmarc_182324
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 133 read from file: lucmarc_182648
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 134 read from file: lucmarc_187548
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 135 read from file: lucmarc_190479
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 136 read from file: lucmarc_196672
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 137 read from file: lucmarc_198352
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 138 read from file: lucmarc_203797
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 139 read from file: lucmarc_204307
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 140 read from file: lucmarc_208050
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 141 read from file: lucmarc_213196
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 142 read from file: lucmarc_225246
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 143 read from file: lucmarc_233313
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 144 read from file: lucmarc_234049
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 145 read from file: lucmarc_247296
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 146 read from file: lucmarc_253396
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 147 read from file: lucmarc_260070
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 148 read from file: lucmarc_277866
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 149 read from file: lucmarc_302581
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 150 read from file: lucmarc_522755
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 151 read from file: lucmarc_523415
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 152 read from file: lucmarc_533990
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 153 read from file: lucmarc_535242
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 154 read from file: lucmarc_535258
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 155 read from file: lucmarc_535338
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 156 read from file: lucmarc_535341
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 157 read from file: lucmarc_535382
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 158 read from file: lucmarc_535392
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 159 read from file: lucmarc_537235
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 160 read from file: lucmarc_539742
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 161 read from file: lucmarc_542484
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 162 read from file: lucmarc_557153
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 163 read from file: lucmarc_558203
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 164 read from file: lucmarc_561795
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 165 read from file: lucmarc_570739
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 166 read from file: lucmarc_572618
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 167 read from file: lucmarc_573523
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 168 read from file: lucmarc_575264
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 169 read from file: lucmarc_579451
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 170 read from file: lucmarc_581521
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 171 read from file: lucmarc_581523
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 172 read from file: lucmarc_584010
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 173 read from file: lucmarc_587665
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 174 read from file: lucmarc_588751
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 175 read from file: lucmarc_589223
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 176 read from file: lucmarc_596388
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 177 read from file: lucmarc_600259
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 178 read from file: lucmarc_602945
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 179 read from file: lucmarc_611096
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 180 read from file: lucmarc_614302
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 181 read from file: lucmarc_617323
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 182 read from file: lucmarc_618495
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 183 read from file: lucmarc_628296
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 184 read from file: lucmarc_635070
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 185 read from file: lucmarc_638438
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 186 read from file: lucmarc_638956
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 187 read from file: lucmarc_639153
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 188 read from file: lucmarc_639524
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 189 read from file: lucmarc_640023
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 190 read from file: lucmarc_641755
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 191 read from file: lucmarc_641963
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 192 read from file: lucmarc_643674
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 193 read from file: lucmarc_644684
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 194 read from file: lucmarc_644836
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 195 read from file: lucmarc_644888
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 196 read from file: lucmarc_645882
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 197 read from file: lucmarc_646574
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 198 read from file: lucmarc_648391
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 199 read from file: lucmarc_648416
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 200 read from file: lucmarc_651921
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 201 read from file: lucmarc_652185
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 202 read from file: lucmarc_652571
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 203 read from file: lucmarc_652856
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 204 read from file: lucmarc_654972
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 205 read from file: lucmarc_655251
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 206 read from file: lucmarc_655289
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 207 read from file: lucmarc_655439
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 208 read from file: lucmarc_655698
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 209 read from file: lucmarc_655734
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 210 read from file: lucmarc_656342
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 211 read from file: lucmarc_656474
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 212 read from file: lucmarc_656479
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 213 read from file: lucmarc_656582
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 214 read from file: lucmarc_656602
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 215 read from file: lucmarc_656934
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 216 read from file: lucmarc_657324
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 217 read from file: lucmarc_657535
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 218 read from file: lucmarc_657537
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 219 read from file: lucmarc_657720
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 220 read from file: lucmarc_657724
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 221 read from file: lucmarc_657731
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 222 read from file: lucmarc_657761
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 223 read from file: lucmarc_658010
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 224 read from file: lucmarc_660251
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 225 read from file: lucmarc_661000
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 226 read from file: lucmarc_661379
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 227 read from file: lucmarc_661381
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 228 read from file: lucmarc_666055
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 229 read from file: lucmarc_666876
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 230 read from file: lucmarc_689628
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 231 read from file: lucmarc_694136
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 232 read from file: lucmarc_694269
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 233 read from file: lucmarc_694279
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 234 read from file: lucmarc_695466
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 235 read from file: lucmarc_708586
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 236 read from file: lucmarc_709869
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 237 read from file: lucmarc_723527
+Jan 24, 2013 11:16:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 238 read from file: lucmarc_766827
+Jan 24, 2013 11:16:36 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 239 read from file: lucmarc_1111076
+Jan 24, 2013 11:16:36 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 240 read from file: lucmarc_1144021
+Jan 24, 2013 11:16:38 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 241 read from file: lucmarc_1147166
+Jan 24, 2013 11:16:38 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 242 read from file: lucmarc_1172671
+Jan 24, 2013 11:16:40 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 243 read from file: lucmarc_1175141
+Jan 24, 2013 11:16:40 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 244 read from file: lucmarc_1425133
+Jan 24, 2013 11:16:42 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 245 read from file: lucmarc_1666026
+Jan 24, 2013 11:16:42 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 246 read from file: lucmarc_1666028
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 247 read from file: lucmarc_1666328
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 248 read from file: lucmarc_1673443
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 249 read from file: lucmarc_1714970
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 250 read from file: lucmarc_1714971
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 251 read from file: lucmarc_1714972
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 252 read from file: lucmarc_155360
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 253 read from file: lucmarc_157480
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 254 read from file: lucmarc_183623
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 255 read from file: lucmarc_183672
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 256 read from file: lucmarc_183729
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 257 read from file: lucmarc_183735
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 258 read from file: lucmarc_188216
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 259 read from file: lucmarc_192207
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 260 read from file: lucmarc_194424
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 261 read from file: lucmarc_195155
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 262 read from file: lucmarc_195303
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 263 read from file: lucmarc_195607
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 264 read from file: lucmarc_198335
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 265 read from file: lucmarc_199306
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 266 read from file: lucmarc_205257
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 267 read from file: lucmarc_216067
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 268 read from file: lucmarc_220474
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 269 read from file: lucmarc_238576
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 270 read from file: lucmarc_241387
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 271 read from file: lucmarc_320441
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 272 read from file: lucmarc_371819
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 273 read from file: lucmarc_515837
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 274 read from file: lucmarc_517891
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 275 read from file: lucmarc_522167
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 276 read from file: lucmarc_522756
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 277 read from file: lucmarc_534362
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 278 read from file: lucmarc_534612
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 279 read from file: lucmarc_535256
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 280 read from file: lucmarc_535313
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 281 read from file: lucmarc_536067
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 282 read from file: lucmarc_538001
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 283 read from file: lucmarc_538550
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 284 read from file: lucmarc_560321
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 285 read from file: lucmarc_562381
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 286 read from file: lucmarc_564086
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 287 read from file: lucmarc_565018
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 288 read from file: lucmarc_568071
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 289 read from file: lucmarc_568072
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 290 read from file: lucmarc_570126
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 291 read from file: lucmarc_573082
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 292 read from file: lucmarc_574579
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 293 read from file: lucmarc_580599
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 294 read from file: lucmarc_582496
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 295 read from file: lucmarc_582848
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 296 read from file: lucmarc_585643
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 297 read from file: lucmarc_586762
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 298 read from file: lucmarc_587089
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 299 read from file: lucmarc_587413
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 300 read from file: lucmarc_587484
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 301 read from file: lucmarc_587866
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 302 read from file: lucmarc_587867
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 303 read from file: lucmarc_590730
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 304 read from file: lucmarc_591850
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 305 read from file: lucmarc_596230
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 306 read from file: lucmarc_600250
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 307 read from file: lucmarc_600589
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 308 read from file: lucmarc_603519
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 309 read from file: lucmarc_603646
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 310 read from file: lucmarc_606154
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 311 read from file: lucmarc_613859
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 312 read from file: lucmarc_614074
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 313 read from file: lucmarc_615046
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 314 read from file: lucmarc_616015
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 315 read from file: lucmarc_616812
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 316 read from file: lucmarc_620400
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 317 read from file: lucmarc_627769
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 318 read from file: lucmarc_628906
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 319 read from file: lucmarc_629850
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 320 read from file: lucmarc_631835
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 321 read from file: lucmarc_632232
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 322 read from file: lucmarc_632271
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 323 read from file: lucmarc_632792
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 324 read from file: lucmarc_633638
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 325 read from file: lucmarc_634581
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 326 read from file: lucmarc_638455
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 327 read from file: lucmarc_638522
+Jan 24, 2013 11:16:43 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 328 read from file: lucmarc_638808
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 329 read from file: lucmarc_639096
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 330 read from file: lucmarc_640192
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 331 read from file: lucmarc_640874
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 332 read from file: lucmarc_641508
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 333 read from file: lucmarc_641622
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 334 read from file: lucmarc_641671
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 335 read from file: lucmarc_641939
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 336 read from file: lucmarc_641944
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 337 read from file: lucmarc_641952
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 338 read from file: lucmarc_642103
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 339 read from file: lucmarc_642107
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 340 read from file: lucmarc_642114
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 341 read from file: lucmarc_642189
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 342 read from file: lucmarc_643321
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 343 read from file: lucmarc_643853
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 344 read from file: lucmarc_645133
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 345 read from file: lucmarc_648389
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 346 read from file: lucmarc_651956
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 347 read from file: lucmarc_652460
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 348 read from file: lucmarc_654122
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 349 read from file: lucmarc_654514
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 350 read from file: lucmarc_654515
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 351 read from file: lucmarc_654833
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 352 read from file: lucmarc_654973
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 353 read from file: lucmarc_655438
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 354 read from file: lucmarc_655440
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 355 read from file: lucmarc_656468
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 356 read from file: lucmarc_656606
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 357 read from file: lucmarc_657139
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 358 read from file: lucmarc_657726
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 359 read from file: lucmarc_658775
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 360 read from file: lucmarc_661407
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 361 read from file: lucmarc_667415
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 362 read from file: lucmarc_667959
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 363 read from file: lucmarc_667963
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 364 read from file: lucmarc_668319
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 365 read from file: lucmarc_668320
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 366 read from file: lucmarc_694135
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 367 read from file: lucmarc_694261
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 368 read from file: lucmarc_697374
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 369 read from file: lucmarc_698878
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 370 read from file: lucmarc_708582
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 371 read from file: lucmarc_711436
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 372 read from file: lucmarc_711453
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 373 read from file: lucmarc_721472
+Jan 24, 2013 11:16:44 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 374 read from file: lucmarc_836923
+Jan 24, 2013 11:16:45 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 375 read from file: lucmarc_1157899
+Jan 24, 2013 11:16:46 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 376 read from file: lucmarc_1427406
+Jan 24, 2013 11:16:46 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 377 read from file: lucmarc_1433986
+Jan 24, 2013 11:16:49 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 378 read from file: lucmarc_1629003
+Jan 24, 2013 11:16:49 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 379 read from file: lucmarc_1638176
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 380 read from file: lucmarc_1666029
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 381 read from file: lucmarc_1672040
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 382 read from file: lucmarc_1673836
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 383 read from file: lucmarc_1688256
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 384 read from file: lucmarc_1714974
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 385 read from file: lucmarc_154890
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 386 read from file: lucmarc_154936
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 387 read from file: lucmarc_154963
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 388 read from file: lucmarc_155280
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 389 read from file: lucmarc_166508
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 390 read from file: lucmarc_178814
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 391 read from file: lucmarc_182421
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 392 read from file: lucmarc_182637
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 393 read from file: lucmarc_182651
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 394 read from file: lucmarc_183259
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 395 read from file: lucmarc_184528
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 396 read from file: lucmarc_184793
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 397 read from file: lucmarc_187647
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 398 read from file: lucmarc_191442
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 399 read from file: lucmarc_192465
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 400 read from file: lucmarc_193380
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 401 read from file: lucmarc_193491
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 402 read from file: lucmarc_195191
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 403 read from file: lucmarc_195635
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 404 read from file: lucmarc_198807
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 405 read from file: lucmarc_198809
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 406 read from file: lucmarc_202483
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 407 read from file: lucmarc_210223
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 408 read from file: lucmarc_242158
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 409 read from file: lucmarc_307370
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 410 read from file: lucmarc_308316
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 411 read from file: lucmarc_314935
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 412 read from file: lucmarc_322373
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 413 read from file: lucmarc_523288
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 414 read from file: lucmarc_530727
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 415 read from file: lucmarc_534128
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 416 read from file: lucmarc_534136
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 417 read from file: lucmarc_535200
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 418 read from file: lucmarc_535241
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 419 read from file: lucmarc_535362
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 420 read from file: lucmarc_541384
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 421 read from file: lucmarc_555702
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 422 read from file: lucmarc_557146
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 423 read from file: lucmarc_557572
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 424 read from file: lucmarc_558065
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 425 read from file: lucmarc_559667
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 426 read from file: lucmarc_562637
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 427 read from file: lucmarc_563852
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 428 read from file: lucmarc_567547
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 429 read from file: lucmarc_568069
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 430 read from file: lucmarc_568514
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 431 read from file: lucmarc_572913
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 432 read from file: lucmarc_584228
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 433 read from file: lucmarc_587664
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 434 read from file: lucmarc_589224
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 435 read from file: lucmarc_590370
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 436 read from file: lucmarc_590643
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 437 read from file: lucmarc_590681
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 438 read from file: lucmarc_590727
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 439 read from file: lucmarc_590734
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 440 read from file: lucmarc_590760
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 441 read from file: lucmarc_590830
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 442 read from file: lucmarc_592022
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 443 read from file: lucmarc_594002
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 444 read from file: lucmarc_596529
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 445 read from file: lucmarc_605222
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 446 read from file: lucmarc_613820
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 447 read from file: lucmarc_614121
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 448 read from file: lucmarc_616999
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 449 read from file: lucmarc_621401
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 450 read from file: lucmarc_627771
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 451 read from file: lucmarc_629128
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 452 read from file: lucmarc_631834
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 453 read from file: lucmarc_632643
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 454 read from file: lucmarc_639086
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 455 read from file: lucmarc_639149
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 456 read from file: lucmarc_639257
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 457 read from file: lucmarc_639527
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 458 read from file: lucmarc_639695
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 459 read from file: lucmarc_640625
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 460 read from file: lucmarc_641684
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 461 read from file: lucmarc_641827
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 462 read from file: lucmarc_642323
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 463 read from file: lucmarc_642368
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 464 read from file: lucmarc_643362
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 465 read from file: lucmarc_643852
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 466 read from file: lucmarc_644615
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 467 read from file: lucmarc_645888
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 468 read from file: lucmarc_646569
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 469 read from file: lucmarc_646753
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 470 read from file: lucmarc_648380
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 471 read from file: lucmarc_649112
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 472 read from file: lucmarc_649113
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 473 read from file: lucmarc_653874
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 474 read from file: lucmarc_654041
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 475 read from file: lucmarc_654835
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 476 read from file: lucmarc_655137
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 477 read from file: lucmarc_655240
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 478 read from file: lucmarc_655396
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 479 read from file: lucmarc_655531
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 480 read from file: lucmarc_655532
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 481 read from file: lucmarc_655696
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 482 read from file: lucmarc_655729
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 483 read from file: lucmarc_655733
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 484 read from file: lucmarc_656462
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 485 read from file: lucmarc_656926
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 486 read from file: lucmarc_656933
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 487 read from file: lucmarc_656938
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 488 read from file: lucmarc_657741
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 489 read from file: lucmarc_658134
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 490 read from file: lucmarc_658138
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 491 read from file: lucmarc_660231
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 492 read from file: lucmarc_661352
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 493 read from file: lucmarc_665938
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 494 read from file: lucmarc_666447
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 495 read from file: lucmarc_667413
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 496 read from file: lucmarc_689868
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 497 read from file: lucmarc_689890
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 498 read from file: lucmarc_694526
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 499 read from file: lucmarc_695162
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 500 read from file: lucmarc_709587
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 501 read from file: lucmarc_728826
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 502 read from file: lucmarc_731062
+Jan 24, 2013 11:16:51 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 503 read from file: lucmarc_1034278
+Jan 24, 2013 11:16:54 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 504 read from file: lucmarc_1111067
+Jan 24, 2013 11:17:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 505 read from file: lucmarc_1171403
+Jan 24, 2013 11:17:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 506 read from file: lucmarc_1174436
+Jan 24, 2013 11:17:08 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 507 read from file: lucmarc_1433984
+Jan 24, 2013 11:17:08 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 508 read from file: lucmarc_1688255
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 509 read from file: lucmarc_1714960
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 510 read from file: lucmarc_1729106
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 511 read from file: lucmarc_155028
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 512 read from file: lucmarc_155162
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 513 read from file: lucmarc_155202
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 514 read from file: lucmarc_155297
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 515 read from file: lucmarc_157025
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 516 read from file: lucmarc_157171
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 517 read from file: lucmarc_168109
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 518 read from file: lucmarc_173592
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 519 read from file: lucmarc_177395
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 520 read from file: lucmarc_181935
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 521 read from file: lucmarc_182235
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 522 read from file: lucmarc_182647
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 523 read from file: lucmarc_183089
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 524 read from file: lucmarc_183677
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 525 read from file: lucmarc_184143
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 526 read from file: lucmarc_188005
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 527 read from file: lucmarc_191441
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 528 read from file: lucmarc_191694
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 529 read from file: lucmarc_193011
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 530 read from file: lucmarc_195511
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 531 read from file: lucmarc_195548
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 532 read from file: lucmarc_195563
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 533 read from file: lucmarc_195594
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 534 read from file: lucmarc_195865
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 535 read from file: lucmarc_198350
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 536 read from file: lucmarc_224483
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 537 read from file: lucmarc_228041
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 538 read from file: lucmarc_241276
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 539 read from file: lucmarc_241848
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 540 read from file: lucmarc_268420
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 541 read from file: lucmarc_288821
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 542 read from file: lucmarc_522205
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 543 read from file: lucmarc_522293
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 544 read from file: lucmarc_523771
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 545 read from file: lucmarc_534196
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 546 read from file: lucmarc_534334
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 547 read from file: lucmarc_534618
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 548 read from file: lucmarc_534981
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 549 read from file: lucmarc_535179
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 550 read from file: lucmarc_535302
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 551 read from file: lucmarc_535334
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 552 read from file: lucmarc_536818
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 553 read from file: lucmarc_538635
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 554 read from file: lucmarc_538785
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 555 read from file: lucmarc_546493
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 556 read from file: lucmarc_556790
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 557 read from file: lucmarc_557154
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 558 read from file: lucmarc_557294
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 559 read from file: lucmarc_558083
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 560 read from file: lucmarc_558206
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 561 read from file: lucmarc_560225
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 562 read from file: lucmarc_560320
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 563 read from file: lucmarc_564080
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 564 read from file: lucmarc_564082
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 565 read from file: lucmarc_564087
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 566 read from file: lucmarc_569736
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 567 read from file: lucmarc_571712
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 568 read from file: lucmarc_571892
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 569 read from file: lucmarc_572759
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 570 read from file: lucmarc_573140
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 571 read from file: lucmarc_576630
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 572 read from file: lucmarc_581950
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 573 read from file: lucmarc_582306
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 574 read from file: lucmarc_582689
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 575 read from file: lucmarc_586761
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 576 read from file: lucmarc_588214
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 577 read from file: lucmarc_589035
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 578 read from file: lucmarc_590728
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 579 read from file: lucmarc_591172
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 580 read from file: lucmarc_591846
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 581 read from file: lucmarc_600064
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 582 read from file: lucmarc_600418
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 583 read from file: lucmarc_600962
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 584 read from file: lucmarc_603838
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 585 read from file: lucmarc_605933
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 586 read from file: lucmarc_611058
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 587 read from file: lucmarc_619208
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 588 read from file: lucmarc_621403
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 589 read from file: lucmarc_627367
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 590 read from file: lucmarc_631440
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 591 read from file: lucmarc_631806
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 592 read from file: lucmarc_634531
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 593 read from file: lucmarc_635063
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 594 read from file: lucmarc_636852
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 595 read from file: lucmarc_637319
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 596 read from file: lucmarc_638519
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 597 read from file: lucmarc_638886
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 598 read from file: lucmarc_638960
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 599 read from file: lucmarc_641957
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 600 read from file: lucmarc_642002
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 601 read from file: lucmarc_642154
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 602 read from file: lucmarc_646566
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 603 read from file: lucmarc_646572
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 604 read from file: lucmarc_648418
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 605 read from file: lucmarc_649337
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 606 read from file: lucmarc_652166
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 607 read from file: lucmarc_652457
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 608 read from file: lucmarc_652458
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 609 read from file: lucmarc_654029
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 610 read from file: lucmarc_654031
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 611 read from file: lucmarc_654715
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 612 read from file: lucmarc_655437
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 613 read from file: lucmarc_655534
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 614 read from file: lucmarc_655731
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 615 read from file: lucmarc_656261
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 616 read from file: lucmarc_656460
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 617 read from file: lucmarc_656470
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 618 read from file: lucmarc_656579
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 619 read from file: lucmarc_656594
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 620 read from file: lucmarc_656956
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 621 read from file: lucmarc_657332
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 622 read from file: lucmarc_657536
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 623 read from file: lucmarc_658129
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 624 read from file: lucmarc_658136
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 625 read from file: lucmarc_660879
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 626 read from file: lucmarc_661318
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 627 read from file: lucmarc_661358
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 628 read from file: lucmarc_661367
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 629 read from file: lucmarc_661372
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 630 read from file: lucmarc_666281
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 631 read from file: lucmarc_667419
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 632 read from file: lucmarc_689939
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 633 read from file: lucmarc_691278
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 634 read from file: lucmarc_694132
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 635 read from file: lucmarc_695467
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 636 read from file: lucmarc_695469
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 637 read from file: lucmarc_708055
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 638 read from file: lucmarc_712855
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 639 read from file: lucmarc_714460
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 640 read from file: lucmarc_1034273
+Jan 24, 2013 11:17:10 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 641 read from file: lucmarc_1034274
+Jan 24, 2013 11:17:11 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 642 read from file: lucmarc_1147173
+Jan 24, 2013 11:17:11 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 643 read from file: lucmarc_1177708
+Jan 24, 2013 11:17:11 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 644 read from file: lucmarc_1427407
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 645 read from file: lucmarc_1428399
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 646 read from file: lucmarc_1672055
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 647 read from file: lucmarc_1688241
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 648 read from file: lucmarc_1714973
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 649 read from file: lucmarc_1714977
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 650 read from file: lucmarc_154991
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 651 read from file: lucmarc_155160
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 652 read from file: lucmarc_155842
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 653 read from file: lucmarc_156287
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 654 read from file: lucmarc_158974
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 655 read from file: lucmarc_166061
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 656 read from file: lucmarc_166843
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 657 read from file: lucmarc_184752
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 658 read from file: lucmarc_184791
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 659 read from file: lucmarc_185264
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 660 read from file: lucmarc_192108
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 661 read from file: lucmarc_192608
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 662 read from file: lucmarc_194697
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 663 read from file: lucmarc_194988
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 664 read from file: lucmarc_195123
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 665 read from file: lucmarc_195623
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 666 read from file: lucmarc_195625
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 667 read from file: lucmarc_202070
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 668 read from file: lucmarc_223785
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 669 read from file: lucmarc_225085
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 670 read from file: lucmarc_229421
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 671 read from file: lucmarc_443028
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 672 read from file: lucmarc_516082
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 673 read from file: lucmarc_521772
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 674 read from file: lucmarc_522757
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 675 read from file: lucmarc_523476
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 676 read from file: lucmarc_523524
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 677 read from file: lucmarc_528205
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 678 read from file: lucmarc_530321
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 679 read from file: lucmarc_534611
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 680 read from file: lucmarc_535358
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 681 read from file: lucmarc_535390
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 682 read from file: lucmarc_557348
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 683 read from file: lucmarc_558066
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 684 read from file: lucmarc_558786
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 685 read from file: lucmarc_562791
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 686 read from file: lucmarc_562791
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 687 read from file: lucmarc_564081
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 688 read from file: lucmarc_581517
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 689 read from file: lucmarc_582298
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 690 read from file: lucmarc_585975
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 691 read from file: lucmarc_586417
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 692 read from file: lucmarc_586758
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 693 read from file: lucmarc_587666
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 694 read from file: lucmarc_587766
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 695 read from file: lucmarc_588343
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 696 read from file: lucmarc_589391
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 697 read from file: lucmarc_590490
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 698 read from file: lucmarc_590733
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 699 read from file: lucmarc_592020
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 700 read from file: lucmarc_600963
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 701 read from file: lucmarc_604089
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 702 read from file: lucmarc_604165
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 703 read from file: lucmarc_605930
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 704 read from file: lucmarc_611182
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 705 read from file: lucmarc_616016
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 706 read from file: lucmarc_620106
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 707 read from file: lucmarc_626672
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 708 read from file: lucmarc_627767
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 709 read from file: lucmarc_629122
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 710 read from file: lucmarc_631649
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 711 read from file: lucmarc_632212
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 712 read from file: lucmarc_632308
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 713 read from file: lucmarc_632630
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 714 read from file: lucmarc_633636
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 715 read from file: lucmarc_634578
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 716 read from file: lucmarc_634718
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 717 read from file: lucmarc_638579
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 718 read from file: lucmarc_639042
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 719 read from file: lucmarc_639094
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 720 read from file: lucmarc_639521
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 721 read from file: lucmarc_639692
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 722 read from file: lucmarc_641426
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 723 read from file: lucmarc_641646
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 724 read from file: lucmarc_641817
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 725 read from file: lucmarc_641901
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 726 read from file: lucmarc_641955
+Jan 24, 2013 11:17:12 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 727 read from file: lucmarc_643968
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 728 read from file: lucmarc_645108
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 729 read from file: lucmarc_646559
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 730 read from file: lucmarc_646674
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 731 read from file: lucmarc_646907
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 732 read from file: lucmarc_648469
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 733 read from file: lucmarc_648799
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 734 read from file: lucmarc_652160
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 735 read from file: lucmarc_652456
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 736 read from file: lucmarc_654313
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 737 read from file: lucmarc_654513
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 738 read from file: lucmarc_654712
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 739 read from file: lucmarc_654836
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 740 read from file: lucmarc_655134
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 741 read from file: lucmarc_655283
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 742 read from file: lucmarc_656452
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 743 read from file: lucmarc_656457
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 744 read from file: lucmarc_657534
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 745 read from file: lucmarc_657762
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 746 read from file: lucmarc_658015
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 747 read from file: lucmarc_660218
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 748 read from file: lucmarc_660606
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 749 read from file: lucmarc_665977
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 750 read from file: lucmarc_668230
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 751 read from file: lucmarc_689598
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 752 read from file: lucmarc_689650
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 753 read from file: lucmarc_690871
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 754 read from file: lucmarc_691956
+Jan 24, 2013 11:17:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 755 read from file: lucmarc_1141107
+Jan 24, 2013 11:17:14 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 756 read from file: lucmarc_1144023
+Jan 24, 2013 11:17:14 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 757 read from file: lucmarc_1150728
+Jan 24, 2013 11:17:22 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 758 read from file: lucmarc_1174435
+Jan 24, 2013 11:17:24 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 759 read from file: lucmarc_1174646
+Jan 24, 2013 11:17:26 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 760 read from file: lucmarc_1175496
+Jan 24, 2013 11:17:27 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 761 read from file: lucmarc_1631900
+Jan 24, 2013 11:17:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 762 read from file: lucmarc_1714088
+Jan 24, 2013 11:17:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 763 read from file: lucmarc_1714089
+Jan 24, 2013 11:17:30 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 764 read from file: lucmarc_1714948
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 765 read from file: lucmarc_1714975
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 766 read from file: lucmarc_171894
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 767 read from file: lucmarc_174643
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 768 read from file: lucmarc_177185
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 769 read from file: lucmarc_183228
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 770 read from file: lucmarc_183644
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 771 read from file: lucmarc_183806
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 772 read from file: lucmarc_192123
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 773 read from file: lucmarc_192715
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 774 read from file: lucmarc_194431
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 775 read from file: lucmarc_195750
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 776 read from file: lucmarc_195881
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 777 read from file: lucmarc_197604
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 778 read from file: lucmarc_198775
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 779 read from file: lucmarc_199667
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 780 read from file: lucmarc_213606
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 781 read from file: lucmarc_236428
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 782 read from file: lucmarc_242086
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 783 read from file: lucmarc_296378
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 784 read from file: lucmarc_359121
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 785 read from file: lucmarc_514514
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 786 read from file: lucmarc_521906
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 787 read from file: lucmarc_522005
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 788 read from file: lucmarc_522011
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 789 read from file: lucmarc_522208
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 790 read from file: lucmarc_522756
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 791 read from file: lucmarc_524953
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 792 read from file: lucmarc_529337
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 793 read from file: lucmarc_529914
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 794 read from file: lucmarc_530296
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 795 read from file: lucmarc_530318
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 796 read from file: lucmarc_531338
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 797 read from file: lucmarc_534005
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 798 read from file: lucmarc_534307
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 799 read from file: lucmarc_534776
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 800 read from file: lucmarc_535102
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 801 read from file: lucmarc_535254
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 802 read from file: lucmarc_535348
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 803 read from file: lucmarc_535349
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 804 read from file: lucmarc_535385
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 805 read from file: lucmarc_536030
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 806 read from file: lucmarc_539989
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 807 read from file: lucmarc_540039
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 808 read from file: lucmarc_558112
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 809 read from file: lucmarc_561920
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 810 read from file: lucmarc_562383
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 811 read from file: lucmarc_564083
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 812 read from file: lucmarc_564795
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 813 read from file: lucmarc_569532
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 814 read from file: lucmarc_569735
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 815 read from file: lucmarc_570749
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 816 read from file: lucmarc_571392
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 817 read from file: lucmarc_572890
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 818 read from file: lucmarc_572903
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 819 read from file: lucmarc_574901
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 820 read from file: lucmarc_579608
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 821 read from file: lucmarc_579948
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 822 read from file: lucmarc_580248
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 823 read from file: lucmarc_582207
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 824 read from file: lucmarc_582810
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 825 read from file: lucmarc_583424
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 826 read from file: lucmarc_584003
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 827 read from file: lucmarc_586951
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 828 read from file: lucmarc_587276
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 829 read from file: lucmarc_587869
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 830 read from file: lucmarc_588216
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 831 read from file: lucmarc_588441
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 832 read from file: lucmarc_590187
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 833 read from file: lucmarc_590188
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 834 read from file: lucmarc_590301
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 835 read from file: lucmarc_590725
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 836 read from file: lucmarc_591097
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 837 read from file: lucmarc_595132
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 838 read from file: lucmarc_596226
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 839 read from file: lucmarc_600834
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 840 read from file: lucmarc_603536
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 841 read from file: lucmarc_603650
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 842 read from file: lucmarc_610350
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 843 read from file: lucmarc_611655
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 844 read from file: lucmarc_615722
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 845 read from file: lucmarc_617000
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 846 read from file: lucmarc_629018
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 847 read from file: lucmarc_632213
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 848 read from file: lucmarc_632234
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 849 read from file: lucmarc_632243
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 850 read from file: lucmarc_632406
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 851 read from file: lucmarc_632680
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 852 read from file: lucmarc_634420
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 853 read from file: lucmarc_635100
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 854 read from file: lucmarc_637377
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 855 read from file: lucmarc_638454
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 856 read from file: lucmarc_638586
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 857 read from file: lucmarc_639044
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 858 read from file: lucmarc_639518
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 859 read from file: lucmarc_640944
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 860 read from file: lucmarc_641965
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 861 read from file: lucmarc_642547
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 862 read from file: lucmarc_644694
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 863 read from file: lucmarc_646908
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 864 read from file: lucmarc_648320
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 865 read from file: lucmarc_648417
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 866 read from file: lucmarc_648622
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 867 read from file: lucmarc_650776
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 868 read from file: lucmarc_654832
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 869 read from file: lucmarc_655133
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 870 read from file: lucmarc_655138
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 871 read from file: lucmarc_655530
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 872 read from file: lucmarc_655695
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 873 read from file: lucmarc_656448
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 874 read from file: lucmarc_656454
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 875 read from file: lucmarc_657325
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 876 read from file: lucmarc_657538
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 877 read from file: lucmarc_657769
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 878 read from file: lucmarc_658016
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 879 read from file: lucmarc_658791
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 880 read from file: lucmarc_659284
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 881 read from file: lucmarc_659927
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 882 read from file: lucmarc_661274
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 883 read from file: lucmarc_661323
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 884 read from file: lucmarc_661683
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 885 read from file: lucmarc_690875
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 886 read from file: lucmarc_691950
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 887 read from file: lucmarc_708580
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 888 read from file: lucmarc_708581
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 889 read from file: lucmarc_708588
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 890 read from file: lucmarc_709592
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 891 read from file: lucmarc_709907
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 892 read from file: lucmarc_731274
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 893 read from file: lucmarc_1034267
+Jan 24, 2013 11:17:32 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 894 read from file: lucmarc_1147169
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 895 read from file: lucmarc_1172673
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 896 read from file: lucmarc_1672036
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 897 read from file: lucmarc_1688250
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 898 read from file: lucmarc_154857
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 899 read from file: lucmarc_155151
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 900 read from file: lucmarc_155257
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 901 read from file: lucmarc_155258
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 902 read from file: lucmarc_156067
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 903 read from file: lucmarc_165371
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 904 read from file: lucmarc_166388
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 905 read from file: lucmarc_182159
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 906 read from file: lucmarc_182277
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 907 read from file: lucmarc_183043
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 908 read from file: lucmarc_183304
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 909 read from file: lucmarc_185004
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 910 read from file: lucmarc_185611
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 911 read from file: lucmarc_187643
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 912 read from file: lucmarc_190988
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 913 read from file: lucmarc_192027
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 914 read from file: lucmarc_195111
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 915 read from file: lucmarc_195624
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 916 read from file: lucmarc_195770
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 917 read from file: lucmarc_197565
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 918 read from file: lucmarc_200407
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 919 read from file: lucmarc_206727
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 920 read from file: lucmarc_215306
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 921 read from file: lucmarc_223714
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 922 read from file: lucmarc_245876
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 923 read from file: lucmarc_258543
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 924 read from file: lucmarc_260338
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 925 read from file: lucmarc_354961
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 926 read from file: lucmarc_514360
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 927 read from file: lucmarc_522758
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 928 read from file: lucmarc_525085
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 929 read from file: lucmarc_530317
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 930 read from file: lucmarc_533991
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 931 read from file: lucmarc_534363
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 932 read from file: lucmarc_535103
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 933 read from file: lucmarc_535179
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 934 read from file: lucmarc_535332
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 935 read from file: lucmarc_536042
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 936 read from file: lucmarc_538213
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 937 read from file: lucmarc_539084
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 938 read from file: lucmarc_541344
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 939 read from file: lucmarc_568262
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 940 read from file: lucmarc_569542
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 941 read from file: lucmarc_572269
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 942 read from file: lucmarc_573761
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 943 read from file: lucmarc_574579
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 944 read from file: lucmarc_581549
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 945 read from file: lucmarc_581580
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 946 read from file: lucmarc_583700
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 947 read from file: lucmarc_586674
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 948 read from file: lucmarc_586684
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 949 read from file: lucmarc_587411
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 950 read from file: lucmarc_587412
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 951 read from file: lucmarc_587467
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 952 read from file: lucmarc_587538
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 953 read from file: lucmarc_587659
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 954 read from file: lucmarc_587864
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 955 read from file: lucmarc_588752
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 956 read from file: lucmarc_589635
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 957 read from file: lucmarc_589807
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 958 read from file: lucmarc_589888
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 959 read from file: lucmarc_590184
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 960 read from file: lucmarc_590729
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 961 read from file: lucmarc_596227
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 962 read from file: lucmarc_596352
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 963 read from file: lucmarc_611111
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 964 read from file: lucmarc_612835
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 965 read from file: lucmarc_615214
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 966 read from file: lucmarc_617740
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 967 read from file: lucmarc_619100
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 968 read from file: lucmarc_628822
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 969 read from file: lucmarc_628901
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 970 read from file: lucmarc_629976
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 971 read from file: lucmarc_631876
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 972 read from file: lucmarc_632215
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 973 read from file: lucmarc_633976
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 974 read from file: lucmarc_634621
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 975 read from file: lucmarc_634623
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 976 read from file: lucmarc_634680
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 977 read from file: lucmarc_636853
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 978 read from file: lucmarc_638803
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 979 read from file: lucmarc_639052
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 980 read from file: lucmarc_639095
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 981 read from file: lucmarc_639123
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 982 read from file: lucmarc_640030
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 983 read from file: lucmarc_640143
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 984 read from file: lucmarc_640494
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 985 read from file: lucmarc_641412
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 986 read from file: lucmarc_641625
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 987 read from file: lucmarc_641676
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 988 read from file: lucmarc_642071
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 989 read from file: lucmarc_646558
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 990 read from file: lucmarc_646575
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 991 read from file: lucmarc_646909
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 992 read from file: lucmarc_647401
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 993 read from file: lucmarc_648917
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 994 read from file: lucmarc_649123
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 995 read from file: lucmarc_654831
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 996 read from file: lucmarc_655241
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 997 read from file: lucmarc_655536
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 998 read from file: lucmarc_656522
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 999 read from file: lucmarc_656581
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1000 read from file: lucmarc_656583
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1001 read from file: lucmarc_658787
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1002 read from file: lucmarc_660032
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1003 read from file: lucmarc_661370
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1004 read from file: lucmarc_661571
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1005 read from file: lucmarc_665973
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1006 read from file: lucmarc_690856
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1007 read from file: lucmarc_690857
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1008 read from file: lucmarc_691032
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1009 read from file: lucmarc_694133
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1010 read from file: lucmarc_694628
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1011 read from file: lucmarc_695489
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1012 read from file: lucmarc_697641
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1013 read from file: lucmarc_698877
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1014 read from file: lucmarc_711215
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1015 read from file: lucmarc_774280
+Jan 24, 2013 11:17:34 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1016 read from file: lucmarc_836907
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1017 read from file: lucmarc_1145320
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1018 read from file: lucmarc_1429304
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1019 read from file: lucmarc_1673566
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1020 read from file: lucmarc_1673831
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1021 read from file: lucmarc_1688257
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 1021 of 1021 documents to index
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jan 24, 2013 11:17:35 AM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jan 24, 2013 11:17:36 AM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jan 24, 2013 11:17:36 AM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jan 24, 2013 11:17:36 AM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jan 24, 2013 11:17:36 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jan 24, 2013 11:17:36 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jan 24, 2013 11:17:36 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">308</int></lst>
+Jan 24, 2013 11:17:36 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Jan 24, 2013 11:17:36 AM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook

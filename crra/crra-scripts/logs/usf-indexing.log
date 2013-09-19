@@ -1,0 +1,1502 @@
+Feb 18, 2013 10:08:13 AM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Feb 18, 2013 10:08:13 AM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Feb 18, 2013 10:08:13 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Feb 18, 2013 10:08:13 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Feb 18, 2013 10:08:13 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Feb 18, 2013 10:08:13 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Feb 18, 2013 10:08:13 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Feb 18, 2013 10:08:14 AM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/usf.marc
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: usfmarc_12994855
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: usfmarc_13613965
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: usfmarc_15048022
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: usfmarc_14390144
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: usfmarc_15710271
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: usfmarc_18454236
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: usfmarc_8275599
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: usfmarc_8572125
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: usfmarc_5085778
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: usfmarc_5204114
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: usfmarc_3571038
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: usfmarc_1956504
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: usfmarc_543081
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: usfmarc_25851428
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: usfmarc_28694243
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: usfmarc_2711708
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: usfmarc_4754919
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: usfmarc_4754950
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: usfmarc_13897876
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: usfmarc_17378373
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: usfmarc_3417805
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: usfmarc_3197534
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: usfmarc_17503019
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: usfmarc_5186138
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: usfmarc_5199722
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: usfmarc_11178709
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: usfmarc_37330102
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: usfmarc_17416137
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: usfmarc_39384557
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: usfmarc_42583376
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: usfmarc_41007089
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: usfmarc_42261089
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: usfmarc_50194823
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: usfmarc_3118976
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: usfmarc_10943311
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: usfmarc_10045289
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: usfmarc_10188592
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: usfmarc_10325656
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: usfmarc_10355329
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: usfmarc_10364195
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: usfmarc_10514784
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: usfmarc_10513728
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: usfmarc_10523851
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: usfmarc_10582386
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: usfmarc_10526150
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: usfmarc_11752607
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: usfmarc_11831577
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: usfmarc_11839887
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: usfmarc_11968577
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: usfmarc_12002265
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: usfmarc_12088397
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: usfmarc_12096209
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: usfmarc_11241176
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: usfmarc_11201991
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: usfmarc_11202006
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: usfmarc_11300050
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: usfmarc_11310189
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: usfmarc_11366020
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: usfmarc_11366062
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: usfmarc_11329286
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: usfmarc_11329310
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: usfmarc_11431620
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: usfmarc_11490096
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: usfmarc_11490243
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: usfmarc_11491389
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: usfmarc_11499327
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: usfmarc_11476539
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: usfmarc_11476557
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: usfmarc_11476568
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: usfmarc_11476593
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: usfmarc_11481509
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: usfmarc_11481579
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: usfmarc_11480089
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: usfmarc_11561210
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: usfmarc_11572330
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: usfmarc_11508352
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: usfmarc_11508409
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: usfmarc_11541873
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: usfmarc_11615878
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: usfmarc_11620381
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: usfmarc_11627292
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: usfmarc_11636645
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: usfmarc_11584197
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: usfmarc_11600610
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: usfmarc_11598065
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: usfmarc_11650594
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: usfmarc_11656112
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: usfmarc_12801523
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: usfmarc_12801912
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: usfmarc_12762142
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: usfmarc_12825952
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: usfmarc_12835701
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: usfmarc_12835791
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: usfmarc_12929390
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: usfmarc_12896135
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: usfmarc_12922247
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: usfmarc_12922381
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: usfmarc_12922503
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: usfmarc_13061502
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: usfmarc_13029730
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: usfmarc_13091708
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: usfmarc_13090157
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: usfmarc_13090255
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: usfmarc_13090497
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: usfmarc_13106474
+Feb 18, 2013 10:08:15 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: usfmarc_13106509
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: usfmarc_13106398
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: usfmarc_13106432
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: usfmarc_13115906
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: usfmarc_12414114
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: usfmarc_12369461
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: usfmarc_12369369
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: usfmarc_12538130
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: usfmarc_12490650
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: usfmarc_12579437
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: usfmarc_12662121
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: usfmarc_12749250
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: usfmarc_13919498
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: usfmarc_13981806
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: usfmarc_13981817
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: usfmarc_13981878
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: usfmarc_13981908
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 123 read from file: usfmarc_13955828
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 124 read from file: usfmarc_14049883
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 125 read from file: usfmarc_14049879
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 126 read from file: usfmarc_14051389
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 127 read from file: usfmarc_13165927
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 128 read from file: usfmarc_13182937
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 129 read from file: usfmarc_13314735
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 130 read from file: usfmarc_13344559
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 131 read from file: usfmarc_13462126
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 132 read from file: usfmarc_13507926
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 133 read from file: usfmarc_13507981
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 134 read from file: usfmarc_13657267
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 135 read from file: usfmarc_13682192
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 136 read from file: usfmarc_13741859
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 137 read from file: usfmarc_14867406
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 138 read from file: usfmarc_15000504
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 139 read from file: usfmarc_14195610
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 140 read from file: usfmarc_14284286
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 141 read from file: usfmarc_14389066
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 142 read from file: usfmarc_14397901
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 143 read from file: usfmarc_16120372
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 144 read from file: usfmarc_16120245
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 145 read from file: usfmarc_16172709
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 146 read from file: usfmarc_15243459
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 147 read from file: usfmarc_15362403
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 148 read from file: usfmarc_15362311
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 149 read from file: usfmarc_15312768
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 150 read from file: usfmarc_15484551
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 151 read from file: usfmarc_15500073
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 152 read from file: usfmarc_15500032
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 153 read from file: usfmarc_15466541
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 154 read from file: usfmarc_15469543
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 155 read from file: usfmarc_15536361
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 156 read from file: usfmarc_15800851
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 157 read from file: usfmarc_16513943
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 158 read from file: usfmarc_16729128
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 159 read from file: usfmarc_16691004
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 160 read from file: usfmarc_16691047
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 161 read from file: usfmarc_16690929
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 162 read from file: usfmarc_16691139
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 163 read from file: usfmarc_16782859
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 164 read from file: usfmarc_16782871
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 165 read from file: usfmarc_16819203
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 166 read from file: usfmarc_17648693
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 167 read from file: usfmarc_17748787
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 168 read from file: usfmarc_19281310
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 169 read from file: usfmarc_18454135
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 170 read from file: usfmarc_18895201
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 171 read from file: usfmarc_19495089
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 172 read from file: usfmarc_19535216
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 173 read from file: usfmarc_19870801
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 174 read from file: usfmarc_20963553
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 175 read from file: usfmarc_20976509
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 176 read from file: usfmarc_20029111
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 177 read from file: usfmarc_20029034
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 178 read from file: usfmarc_20144080
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 179 read from file: usfmarc_21541651
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 180 read from file: usfmarc_8048878
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 181 read from file: usfmarc_8094710
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 182 read from file: usfmarc_8117432
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 183 read from file: usfmarc_8144118
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 184 read from file: usfmarc_8266382
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 185 read from file: usfmarc_8266664
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 186 read from file: usfmarc_8274043
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 187 read from file: usfmarc_8313886
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 188 read from file: usfmarc_8391035
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 189 read from file: usfmarc_8391036
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 190 read from file: usfmarc_8560927
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 191 read from file: usfmarc_8594082
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 192 read from file: usfmarc_8594103
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 193 read from file: usfmarc_8617652
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 194 read from file: usfmarc_8699782
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 195 read from file: usfmarc_8711065
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 196 read from file: usfmarc_7107559
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 197 read from file: usfmarc_7194714
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 198 read from file: usfmarc_7296938
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 199 read from file: usfmarc_7374399
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 200 read from file: usfmarc_7395395
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 201 read from file: usfmarc_7438275
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 202 read from file: usfmarc_7438422
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 203 read from file: usfmarc_7621839
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 204 read from file: usfmarc_7670931
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 205 read from file: usfmarc_7869736
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 206 read from file: usfmarc_7869815
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 207 read from file: usfmarc_6009344
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 208 read from file: usfmarc_6034136
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 209 read from file: usfmarc_6055232
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 210 read from file: usfmarc_6269643
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 211 read from file: usfmarc_6616173
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 212 read from file: usfmarc_6697379
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 213 read from file: usfmarc_6697435
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 214 read from file: usfmarc_6718281
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 215 read from file: usfmarc_6718315
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 216 read from file: usfmarc_6722866
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 217 read from file: usfmarc_6731969
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 218 read from file: usfmarc_6744313
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 219 read from file: usfmarc_6744340
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 220 read from file: usfmarc_6748756
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 221 read from file: usfmarc_6753324
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 222 read from file: usfmarc_6753406
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 223 read from file: usfmarc_6834098
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 224 read from file: usfmarc_6910728
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 225 read from file: usfmarc_6989121
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 226 read from file: usfmarc_5024664
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 227 read from file: usfmarc_5026027
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 228 read from file: usfmarc_5066925
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 229 read from file: usfmarc_5117483
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 230 read from file: usfmarc_5128382
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 231 read from file: usfmarc_5175633
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 232 read from file: usfmarc_5184700
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 233 read from file: usfmarc_5244219
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 234 read from file: usfmarc_5246789
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 235 read from file: usfmarc_5325691
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 236 read from file: usfmarc_5330342
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 237 read from file: usfmarc_5339753
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 238 read from file: usfmarc_5357101
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 239 read from file: usfmarc_5359871
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 240 read from file: usfmarc_5364306
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 241 read from file: usfmarc_5369027
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 242 read from file: usfmarc_5421739
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 243 read from file: usfmarc_5591295
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 244 read from file: usfmarc_5658844
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 245 read from file: usfmarc_5671706
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 246 read from file: usfmarc_5671718
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 247 read from file: usfmarc_5713945
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 248 read from file: usfmarc_5713962
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 249 read from file: usfmarc_5720349
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 250 read from file: usfmarc_5748761
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 251 read from file: usfmarc_5807227
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 252 read from file: usfmarc_5842344
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 253 read from file: usfmarc_5872704
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 254 read from file: usfmarc_5908747
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 255 read from file: usfmarc_5949534
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 256 read from file: usfmarc_5970041
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 257 read from file: usfmarc_4116209
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 258 read from file: usfmarc_4318935
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 259 read from file: usfmarc_4378027
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 260 read from file: usfmarc_4386147
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 261 read from file: usfmarc_4396542
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 262 read from file: usfmarc_4418309
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 263 read from file: usfmarc_4418564
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 264 read from file: usfmarc_4421884
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 265 read from file: usfmarc_4425323
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 266 read from file: usfmarc_4472142
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 267 read from file: usfmarc_4481351
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 268 read from file: usfmarc_5404680
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 269 read from file: usfmarc_4711840
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 270 read from file: usfmarc_4744432
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 271 read from file: usfmarc_4795077
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 272 read from file: usfmarc_4813325
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 273 read from file: usfmarc_4840947
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 274 read from file: usfmarc_4876466
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 275 read from file: usfmarc_3094298
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 276 read from file: usfmarc_3268860
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 277 read from file: usfmarc_3316391
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 278 read from file: usfmarc_3337293
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 279 read from file: usfmarc_3862038
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 280 read from file: usfmarc_3872688
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 281 read from file: usfmarc_2022263
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 282 read from file: usfmarc_2025200
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 283 read from file: usfmarc_2071228
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 284 read from file: usfmarc_2083957
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 285 read from file: usfmarc_2306283
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 286 read from file: usfmarc_2362535
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 287 read from file: usfmarc_2433162
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 288 read from file: usfmarc_2470476
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 289 read from file: usfmarc_2482257
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 290 read from file: usfmarc_2526894
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 291 read from file: usfmarc_2665668
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 292 read from file: usfmarc_2678257
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 293 read from file: usfmarc_2707832
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 294 read from file: usfmarc_2763802
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 295 read from file: usfmarc_1143500
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 296 read from file: usfmarc_1380644
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 297 read from file: usfmarc_1472764
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 298 read from file: usfmarc_1482665
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 299 read from file: usfmarc_1641089
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 300 read from file: usfmarc_1650739
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 301 read from file: usfmarc_1654570
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 302 read from file: usfmarc_1941157
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 303 read from file: usfmarc_1953317
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 304 read from file: usfmarc_1962287
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 305 read from file: usfmarc_388047
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 306 read from file: usfmarc_613216
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 307 read from file: usfmarc_656671
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 308 read from file: usfmarc_720159
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 309 read from file: usfmarc_962265
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 310 read from file: usfmarc_9124147
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 311 read from file: usfmarc_9309610
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 312 read from file: usfmarc_9332283
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 313 read from file: usfmarc_9352631
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 314 read from file: usfmarc_9365432
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 315 read from file: usfmarc_9597905
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 316 read from file: usfmarc_9877263
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 317 read from file: usfmarc_9890322
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 318 read from file: usfmarc_9917292
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 319 read from file: usfmarc_9930688
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 320 read from file: usfmarc_9958376
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 321 read from file: usfmarc_611375
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 322 read from file: usfmarc_25851300
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 323 read from file: usfmarc_23013365
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 324 read from file: usfmarc_25994367
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 325 read from file: usfmarc_5203391
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 326 read from file: usfmarc_26245411
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 327 read from file: usfmarc_26282371
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 328 read from file: usfmarc_5974131
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 329 read from file: usfmarc_26450709
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 330 read from file: usfmarc_22922246
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 331 read from file: usfmarc_20034609
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 332 read from file: usfmarc_1873032
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 333 read from file: usfmarc_26862331
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 334 read from file: usfmarc_12815752
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 335 read from file: usfmarc_24809567
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 336 read from file: usfmarc_26908418
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 337 read from file: usfmarc_26913404
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 338 read from file: usfmarc_2107917
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 339 read from file: usfmarc_15932995
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 340 read from file: usfmarc_30620805
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 341 read from file: usfmarc_22560231
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 342 read from file: usfmarc_23624528
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 343 read from file: usfmarc_27132276
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 344 read from file: usfmarc_27136955
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 345 read from file: usfmarc_14200984
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 346 read from file: usfmarc_27159833
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 347 read from file: usfmarc_27159933
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 348 read from file: usfmarc_27744406
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 349 read from file: usfmarc_27744554
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 350 read from file: usfmarc_4935165
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 351 read from file: usfmarc_27829703
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 352 read from file: usfmarc_27829745
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 353 read from file: usfmarc_13693162
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 354 read from file: usfmarc_28301176
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 355 read from file: usfmarc_28301202
+Feb 18, 2013 10:08:16 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 356 read from file: usfmarc_28301227
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 357 read from file: usfmarc_8180646
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 358 read from file: usfmarc_28307737
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 359 read from file: usfmarc_8660022
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 360 read from file: usfmarc_28798909
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 361 read from file: usfmarc_30019011
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 362 read from file: usfmarc_30102760
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 363 read from file: usfmarc_30333503
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 364 read from file: usfmarc_30339493
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 365 read from file: usfmarc_30339778
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 366 read from file: usfmarc_7868841
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 367 read from file: usfmarc_7880416
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 368 read from file: usfmarc_13738590
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 369 read from file: usfmarc_6805019
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 370 read from file: usfmarc_30617311
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 371 read from file: usfmarc_5208656
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 372 read from file: usfmarc_16170968
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 373 read from file: usfmarc_16167209
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 374 read from file: usfmarc_8625662
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 375 read from file: usfmarc_8625684
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 376 read from file: usfmarc_9833322
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 377 read from file: usfmarc_14767928
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 378 read from file: usfmarc_3853491
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 379 read from file: usfmarc_30832143
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 380 read from file: usfmarc_4719973
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 381 read from file: usfmarc_6456697
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 382 read from file: usfmarc_7790377
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 383 read from file: usfmarc_2270166
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 384 read from file: usfmarc_31925665
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 385 read from file: usfmarc_32041856
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 386 read from file: usfmarc_26294631
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 387 read from file: usfmarc_16156546
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 388 read from file: usfmarc_11936958
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 389 read from file: usfmarc_32575665
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 390 read from file: usfmarc_10393294
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 391 read from file: usfmarc_10394083
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 392 read from file: usfmarc_33049638
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 393 read from file: usfmarc_16167001
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 394 read from file: usfmarc_32884376
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 395 read from file: usfmarc_33026719
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 396 read from file: usfmarc_15516619
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 397 read from file: usfmarc_33055864
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 398 read from file: usfmarc_4379008
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 399 read from file: usfmarc_925779
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 400 read from file: usfmarc_25997400
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 401 read from file: usfmarc_16767249
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 402 read from file: usfmarc_30087679
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 403 read from file: usfmarc_31091576
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 404 read from file: usfmarc_36038807
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 405 read from file: usfmarc_10393356
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 406 read from file: usfmarc_35959999
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 407 read from file: usfmarc_34918836
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 408 read from file: usfmarc_35169968
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 409 read from file: usfmarc_20010932
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 410 read from file: usfmarc_27724317
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 411 read from file: usfmarc_35226318
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 412 read from file: usfmarc_35226367
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 413 read from file: usfmarc_35231662
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 414 read from file: usfmarc_32670814
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 415 read from file: usfmarc_35234056
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 416 read from file: usfmarc_35234161
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 417 read from file: usfmarc_35239726
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 418 read from file: usfmarc_18495731
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 419 read from file: usfmarc_35240875
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 420 read from file: usfmarc_35240944
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 421 read from file: usfmarc_5701893
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 422 read from file: usfmarc_24130392
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 423 read from file: usfmarc_35787303
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 424 read from file: usfmarc_4681613
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 425 read from file: usfmarc_35960585
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 426 read from file: usfmarc_1002237
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 427 read from file: usfmarc_5327527
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 428 read from file: usfmarc_8575670
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 429 read from file: usfmarc_36221108
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 430 read from file: usfmarc_36345985
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 431 read from file: usfmarc_36346101
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 432 read from file: usfmarc_27253217
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 433 read from file: usfmarc_36348792
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 434 read from file: usfmarc_30827514
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 435 read from file: usfmarc_2871813
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 436 read from file: usfmarc_3346296
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 437 read from file: usfmarc_2357717
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 438 read from file: usfmarc_11436603
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 439 read from file: usfmarc_7972712
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 440 read from file: usfmarc_4974767
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 441 read from file: usfmarc_1577206
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 442 read from file: usfmarc_3050334
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 443 read from file: usfmarc_29236692
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 444 read from file: usfmarc_24190587
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 445 read from file: usfmarc_24585561
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 446 read from file: usfmarc_36368351
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 447 read from file: usfmarc_17282355
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 448 read from file: usfmarc_5373531
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 449 read from file: usfmarc_17576638
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 450 read from file: usfmarc_36369220
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 451 read from file: usfmarc_25383649
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 452 read from file: usfmarc_14276921
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 453 read from file: usfmarc_9209231
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 454 read from file: usfmarc_6060039
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 455 read from file: usfmarc_26677688
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 456 read from file: usfmarc_2210994
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 457 read from file: usfmarc_36375618
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 458 read from file: usfmarc_3796221
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 459 read from file: usfmarc_20053667
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 460 read from file: usfmarc_5352331
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 461 read from file: usfmarc_11422318
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 462 read from file: usfmarc_19089151
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 463 read from file: usfmarc_23638298
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 464 read from file: usfmarc_27827565
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 465 read from file: usfmarc_36563197
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 466 read from file: usfmarc_36932929
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 467 read from file: usfmarc_36933103
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 468 read from file: usfmarc_36947333
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 469 read from file: usfmarc_36947376
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 470 read from file: usfmarc_373857
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 471 read from file: usfmarc_17352534
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 472 read from file: usfmarc_37210410
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 473 read from file: usfmarc_37210475
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 474 read from file: usfmarc_37211739
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 475 read from file: usfmarc_37211787
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 476 read from file: usfmarc_37211847
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 477 read from file: usfmarc_37212179
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 478 read from file: usfmarc_618733
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 479 read from file: usfmarc_37279799
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 480 read from file: usfmarc_37281030
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 481 read from file: usfmarc_8007500
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 482 read from file: usfmarc_17360732
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 483 read from file: usfmarc_15564309
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 484 read from file: usfmarc_11639169
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 485 read from file: usfmarc_37297346
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 486 read from file: usfmarc_37320240
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 487 read from file: usfmarc_37343795
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 488 read from file: usfmarc_19640581
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 489 read from file: usfmarc_34288489
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 490 read from file: usfmarc_13488730
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 491 read from file: usfmarc_15432814
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 492 read from file: usfmarc_1139752
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 493 read from file: usfmarc_11508350
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 494 read from file: usfmarc_21740777
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 495 read from file: usfmarc_22284086
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 496 read from file: usfmarc_19005678
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 497 read from file: usfmarc_18236340
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 498 read from file: usfmarc_37472207
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 499 read from file: usfmarc_19850933
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 500 read from file: usfmarc_31176399
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 501 read from file: usfmarc_37473262
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 502 read from file: usfmarc_12635886
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 503 read from file: usfmarc_13594327
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 504 read from file: usfmarc_1906578
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 505 read from file: usfmarc_15434693
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 506 read from file: usfmarc_19912286
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 507 read from file: usfmarc_7360160
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 508 read from file: usfmarc_11499302
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 509 read from file: usfmarc_15505823
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 510 read from file: usfmarc_23637936
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 511 read from file: usfmarc_38060678
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 512 read from file: usfmarc_10511844
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 513 read from file: usfmarc_38063627
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 514 read from file: usfmarc_15433186
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 515 read from file: usfmarc_6125473
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 516 read from file: usfmarc_11978077
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 517 read from file: usfmarc_11583076
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 518 read from file: usfmarc_15537041
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 519 read from file: usfmarc_38064279
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 520 read from file: usfmarc_38064392
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 521 read from file: usfmarc_15541694
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 522 read from file: usfmarc_7857800
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 523 read from file: usfmarc_13103329
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 524 read from file: usfmarc_22390073
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 525 read from file: usfmarc_11720555
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 526 read from file: usfmarc_38066457
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 527 read from file: usfmarc_18801817
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 528 read from file: usfmarc_13876445
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 529 read from file: usfmarc_1456016
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 530 read from file: usfmarc_15471639
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 531 read from file: usfmarc_8230818
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 532 read from file: usfmarc_11476514
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 533 read from file: usfmarc_3913305
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 534 read from file: usfmarc_15339176
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 535 read from file: usfmarc_15526538
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 536 read from file: usfmarc_38072143
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 537 read from file: usfmarc_38072217
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 538 read from file: usfmarc_12574877
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 539 read from file: usfmarc_38072422
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 540 read from file: usfmarc_38072477
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 541 read from file: usfmarc_38072715
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 542 read from file: usfmarc_11596757
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 543 read from file: usfmarc_6612913
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 544 read from file: usfmarc_14277983
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 545 read from file: usfmarc_11598021
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 546 read from file: usfmarc_5344105
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 547 read from file: usfmarc_38179226
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 548 read from file: usfmarc_38179240
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 549 read from file: usfmarc_11426928
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 550 read from file: usfmarc_35708526
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 551 read from file: usfmarc_8085388
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 552 read from file: usfmarc_5242905
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 553 read from file: usfmarc_3560353
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 554 read from file: usfmarc_15516850
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 555 read from file: usfmarc_15500502
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 556 read from file: usfmarc_2418676
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 557 read from file: usfmarc_39513733
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 558 read from file: usfmarc_22159509
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 559 read from file: usfmarc_7619829
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 560 read from file: usfmarc_31871771
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 561 read from file: usfmarc_39558476
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 562 read from file: usfmarc_39625020
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 563 read from file: usfmarc_38224262
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 564 read from file: usfmarc_39657239
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 565 read from file: usfmarc_28910352
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 566 read from file: usfmarc_39693769
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 567 read from file: usfmarc_15481877
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 568 read from file: usfmarc_16941804
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 569 read from file: usfmarc_39697028
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 570 read from file: usfmarc_32411065
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 571 read from file: usfmarc_31123395
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 572 read from file: usfmarc_21399005
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 573 read from file: usfmarc_20579119
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 574 read from file: usfmarc_26862294
+Feb 18, 2013 10:08:17 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 575 read from file: usfmarc_39717494
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 576 read from file: usfmarc_6712106
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 577 read from file: usfmarc_38292136
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 578 read from file: usfmarc_36890094
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 579 read from file: usfmarc_39721107
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 580 read from file: usfmarc_39762574
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 581 read from file: usfmarc_39762705
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 582 read from file: usfmarc_15484970
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 583 read from file: usfmarc_29622484
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 584 read from file: usfmarc_24611931
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 585 read from file: usfmarc_39776280
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 586 read from file: usfmarc_31283697
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 587 read from file: usfmarc_7517300
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 588 read from file: usfmarc_39781924
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 589 read from file: usfmarc_19934535
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 590 read from file: usfmarc_15643456
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 591 read from file: usfmarc_32984935
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 592 read from file: usfmarc_34770313
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 593 read from file: usfmarc_20547611
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 594 read from file: usfmarc_34445553
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 595 read from file: usfmarc_25993581
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 596 read from file: usfmarc_29574264
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 597 read from file: usfmarc_34219333
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 598 read from file: usfmarc_39935697
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 599 read from file: usfmarc_22778685
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 600 read from file: usfmarc_31913633
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 601 read from file: usfmarc_4898552
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 602 read from file: usfmarc_3090588
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 603 read from file: usfmarc_40189438
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 604 read from file: usfmarc_20159853
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 605 read from file: usfmarc_40214889
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 606 read from file: usfmarc_15483698
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 607 read from file: usfmarc_4680850
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 608 read from file: usfmarc_7862907
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 609 read from file: usfmarc_4986900
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 610 read from file: usfmarc_30639555
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 611 read from file: usfmarc_40252473
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 612 read from file: usfmarc_15972209
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 613 read from file: usfmarc_40343784
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 614 read from file: usfmarc_31736640
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 615 read from file: usfmarc_40345647
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 616 read from file: usfmarc_11611577
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 617 read from file: usfmarc_15536701
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 618 read from file: usfmarc_5720422
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 619 read from file: usfmarc_19911349
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 620 read from file: usfmarc_8171626
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 621 read from file: usfmarc_14278913
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 622 read from file: usfmarc_14574264
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 623 read from file: usfmarc_15005189
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 624 read from file: usfmarc_41324542
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 625 read from file: usfmarc_41395320
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 626 read from file: usfmarc_2455248
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 627 read from file: usfmarc_41882352
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 628 read from file: usfmarc_21661422
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 629 read from file: usfmarc_42584674
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 630 read from file: usfmarc_6412954
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 631 read from file: usfmarc_43841274
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 632 read from file: usfmarc_43848913
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 633 read from file: usfmarc_31274651
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 634 read from file: usfmarc_43121062
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 635 read from file: usfmarc_14153266
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 636 read from file: usfmarc_45038051
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 637 read from file: usfmarc_45164066
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 638 read from file: usfmarc_45303869
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 639 read from file: usfmarc_16103228
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 640 read from file: usfmarc_11431529
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 641 read from file: usfmarc_28389875
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 642 read from file: usfmarc_40742932
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 643 read from file: usfmarc_15287285
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 644 read from file: usfmarc_45945553
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 645 read from file: usfmarc_45946335
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 646 read from file: usfmarc_45948903
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 647 read from file: usfmarc_40721179
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 648 read from file: usfmarc_36869358
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 649 read from file: usfmarc_46348462
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 650 read from file: usfmarc_46369577
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 651 read from file: usfmarc_46399477
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 652 read from file: usfmarc_20450912
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 653 read from file: usfmarc_43725635
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 654 read from file: usfmarc_26862468
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 655 read from file: usfmarc_6500422
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 656 read from file: usfmarc_22632720
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 657 read from file: usfmarc_15930526
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 658 read from file: usfmarc_17511035
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 659 read from file: usfmarc_1268678
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 660 read from file: usfmarc_32494814
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 661 read from file: usfmarc_51794326
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 662 read from file: usfmarc_51795761
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 663 read from file: usfmarc_23625699
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 664 read from file: usfmarc_32446042
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 665 read from file: usfmarc_39255786
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 666 read from file: usfmarc_51844211
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 667 read from file: usfmarc_34201280
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 668 read from file: usfmarc_5947953
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 669 read from file: usfmarc_1486483
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 670 read from file: usfmarc_41633020
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 671 read from file: usfmarc_48353790
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 672 read from file: usfmarc_10222015
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 673 read from file: usfmarc_5763882
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 674 read from file: usfmarc_11988853
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 675 read from file: usfmarc_52926962
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 676 read from file: usfmarc_20029737
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 677 read from file: usfmarc_23636816
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 678 read from file: usfmarc_52961234
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 679 read from file: usfmarc_23618303
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 680 read from file: usfmarc_55975246
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 681 read from file: usfmarc_54195009
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 682 read from file: usfmarc_49959652
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 683 read from file: usfmarc_33929384
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 684 read from file: usfmarc_17751715
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 685 read from file: usfmarc_6435453
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 686 read from file: usfmarc_49005737
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 687 read from file: usfmarc_50720632
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 688 read from file: usfmarc_58721346
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 689 read from file: usfmarc_11324309
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 690 read from file: usfmarc_27786784
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 691 read from file: usfmarc_46727680
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 692 read from file: usfmarc_37848881
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 693 read from file: usfmarc_14942982
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 694 read from file: usfmarc_16105052
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 695 read from file: usfmarc_29275852
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 696 read from file: usfmarc_32968389
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 697 read from file: usfmarc_30089544
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 698 read from file: usfmarc_28649711
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 699 read from file: usfmarc_64777622
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 700 read from file: usfmarc_47029415
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 701 read from file: usfmarc_57463558
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 702 read from file: usfmarc_65044711
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 703 read from file: usfmarc_15603760
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 704 read from file: usfmarc_54533513
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 705 read from file: usfmarc_228683613
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 706 read from file: usfmarc_19837826
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 707 read from file: usfmarc_5727802
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 708 read from file: usfmarc_81458811
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 709 read from file: usfmarc_258168203
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 710 read from file: usfmarc_66179114
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 711 read from file: usfmarc_42587610
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 712 read from file: usfmarc_312297203
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 713 read from file: usfmarc_38635901
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 714 read from file: usfmarc_17792399
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 715 read from file: usfmarc_81175524
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 716 read from file: usfmarc_14052678
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 717 read from file: usfmarc_5339816
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 718 read from file: usfmarc_15491804
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 719 read from file: usfmarc_27409829
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 720 read from file: usfmarc_4178184
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 721 read from file: usfmarc_62873472
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 722 read from file: usfmarc_562226484
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 723 read from file: usfmarc_261374043
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 724 read from file: usfmarc_57461129
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 725 read from file: usfmarc_62616008
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 726 read from file: usfmarc_77977651
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 727 read from file: usfmarc_47874157
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 728 read from file: usfmarc_52543515
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 729 read from file: usfmarc_46341162
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 730 read from file: usfmarc_4985309
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 731 read from file: usfmarc_18154569
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 731 of 731 documents to index
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Feb 18, 2013 10:08:18 AM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Feb 18, 2013 10:08:19 AM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Feb 18, 2013 10:08:19 AM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Feb 18, 2013 10:08:19 AM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Feb 18, 2013 10:08:19 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Feb 18, 2013 10:08:19 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Feb 18, 2013 10:08:19 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">109</int></lst>
+Feb 18, 2013 10:08:19 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Feb 18, 2013 10:08:19 AM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook
+Feb 18, 2013 10:08:19 AM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Finished Shutdown hook

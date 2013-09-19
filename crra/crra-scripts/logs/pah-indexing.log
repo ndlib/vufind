@@ -1,0 +1,38 @@
+Jan 16, 2013 1:02:14 PM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jan 16, 2013 1:02:14 PM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jan 16, 2013 1:02:14 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jan 16, 2013 1:02:14 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jan 16, 2013 1:02:14 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jan 16, 2013 1:02:14 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jan 16, 2013 1:02:14 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jan 16, 2013 1:02:15 PM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/pah.marc
+Jan 16, 2013 1:02:15 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 0 of 0 documents to index
+Jan 16, 2013 1:02:15 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jan 16, 2013 1:02:15 PM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jan 16, 2013 1:02:16 PM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jan 16, 2013 1:02:16 PM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jan 16, 2013 1:02:16 PM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jan 16, 2013 1:03:21 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jan 16, 2013 1:03:21 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jan 16, 2013 1:03:21 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">65798</int></lst>
+Jan 16, 2013 1:03:21 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Jan 16, 2013 1:03:21 PM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook

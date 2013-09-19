@@ -1,0 +1,1208 @@
+Jul 1, 2013 9:32:18 AM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jul 1, 2013 9:32:18 AM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jul 1, 2013 9:32:18 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jul 1, 2013 9:32:18 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jul 1, 2013 9:32:18 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jul 1, 2013 9:32:18 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jul 1, 2013 9:32:18 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/bar.marc
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: barmarc_ocm00000616
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: barmarc_ocm00154742
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: barmarc_ocm00179663
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: barmarc_ocm00182750
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: barmarc_ocm00185820
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: barmarc_ocm00188638
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: barmarc_ocm00332405
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: barmarc_ocm00332446
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: barmarc_ocm00382231
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: barmarc_ocm00386938
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: barmarc_ocm00497992
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: barmarc_ocm00583818
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: barmarc_ocm00647314
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: barmarc_ocm00656192
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: barmarc_ocm00675109
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: barmarc_ocm00774280
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: barmarc_ocm00881404
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: barmarc_ocm00890648
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: barmarc_ocm00914173
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: barmarc_ocm00977678
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: barmarc_ocm01022353
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: barmarc_ocm01034709
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: barmarc_ocm01060086
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: barmarc_ocm01071919
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: barmarc_ocm01244972
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: barmarc_ocm01248792
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: barmarc_ocm01249098
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: barmarc_ocm01258277
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: barmarc_ocm01533593
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: barmarc_ocm01599685
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: barmarc_ocm01658870
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: barmarc_ocm01678219
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: barmarc_ocm01694091
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: barmarc_ocm01801574
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: barmarc_ocm01815635
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: barmarc_ocm01959253
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: barmarc_ocm02428423
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: barmarc_ocm02533673
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: barmarc_ocm02845728
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: barmarc_ocm03235430
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: barmarc_ocm03299586
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: barmarc_ocm03393166
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: barmarc_ocm03701907
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: barmarc_ocm03872795
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: barmarc_ocm03931218
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: barmarc_ocm04094941
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: barmarc_ocm04287923
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: barmarc_ocm04296083
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: barmarc_ocm04836164
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: barmarc_ocm05368959
+Jul 1, 2013 9:32:19 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: barmarc_ocm05522808
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: barmarc_ocm05853031
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: barmarc_ocm06004025
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: barmarc_ocm06068066
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: barmarc_ocm06230028
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: barmarc_ocm06580871
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: barmarc_ocm06923647
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: barmarc_ocm07082853
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: barmarc_ocm07452463
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: barmarc_ocm07860683
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: barmarc_ocm07944391
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: barmarc_ocm08344522
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: barmarc_ocm08376503
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: barmarc_ocm09140122
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: barmarc_ocm10061295
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: barmarc_ocm10723747
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: barmarc_ocm11040688
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: barmarc_ocm13835455
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: barmarc_ocm16132058
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: barmarc_ocm16960209
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: barmarc_ocm16966390
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: barmarc_ocm21140592
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: barmarc_ocm22446016
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: barmarc_ocm23458429
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: barmarc_ocm00060975
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: barmarc_ocm00388063
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: barmarc_ocm22625375
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: barmarc_ocm23384974
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: barmarc_ocm03902662
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: barmarc_ocm02589806
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: barmarc_ocm24640797
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: barmarc_ocm23900594
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: barmarc_ocm28832036
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: barmarc_ocm05730729
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: barmarc_ocm01151227
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: barmarc_ocm00188547
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: barmarc_ocm02586974
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: barmarc_ocm09078826
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: barmarc_ocm02413687
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: barmarc_ocm01803043
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: barmarc_ocm22989655
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: barmarc_ocm26928052
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: barmarc_ocm30564905
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: barmarc_ocm27434893
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: barmarc_ocm06340820
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: barmarc_ocm03865707
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: barmarc_ocm31736934
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: barmarc_ocm13535113
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: barmarc_ocm08397673
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: barmarc_ocm27860488
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: barmarc_ocm31033176
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: barmarc_ocm12209710
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: barmarc_ocm15741221
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: barmarc_ocm24231922
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: barmarc_ocm08141462
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: barmarc_ocm35445694
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: barmarc_ocm35175127
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: barmarc_ocm00675992
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: barmarc_ocm12260327
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: barmarc_ocm03350769
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: barmarc_ocm00355744
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: barmarc_ocm37921429
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: barmarc_ocm10512478
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: barmarc_ocm03900440
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: barmarc_ocm02915508
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: barmarc_ocm41278413
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: barmarc_ocm40732889
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: barmarc_ocm41096236
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: barmarc_ocm43287834
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: barmarc_ocm41223965
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: barmarc_ocm18301463
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: barmarc_ocm03833642
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 123 read from file: barmarc_ocm05044078
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 124 read from file: barmarc_ocm08122594
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 125 read from file: barmarc_ocm15533815
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 126 read from file: barmarc_ocm01657657
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 127 read from file: barmarc_ocm01851399
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 128 read from file: barmarc_ocm44537760
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 129 read from file: barmarc_ocm06900508
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 130 read from file: barmarc_ocm44544758
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 131 read from file: barmarc_ocm45308812
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 132 read from file: barmarc_ocm46468482
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 133 read from file: barmarc_ocm45945471
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 134 read from file: barmarc_ocm08240023
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 135 read from file: barmarc_ocm48948944
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 136 read from file: barmarc_ocm15300086
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 137 read from file: barmarc_ocm01774222
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 138 read from file: barmarc_ocm08148979
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 139 read from file: barmarc_ocm02944670
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 140 read from file: barmarc_ocm45818419
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 141 read from file: barmarc_ocm32691499
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 142 read from file: barmarc_ocm55896841
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 143 read from file: barmarc_ocm04305295
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 144 read from file: barmarc_ocm04827740
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 145 read from file: barmarc_ocm10085205
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 146 read from file: barmarc_ocm04332906
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 147 read from file: barmarc_ocm06317341
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 148 read from file: barmarc_ocm07591789
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 149 read from file: barmarc_ocm02824804
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 150 read from file: barmarc_ocm01098477
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 151 read from file: barmarc_ocm20772313
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 152 read from file: barmarc_ocm00972417
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 153 read from file: barmarc_ocm00270313
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 154 read from file: barmarc_ocm00299952
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 155 read from file: barmarc_ocm43349196
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 156 read from file: barmarc_ocm03937782
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 157 read from file: barmarc_ocm03583511
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 158 read from file: barmarc_ocm17335670
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 159 read from file: barmarc_ocm07049974
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 160 read from file: barmarc_ocm39357028
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 161 read from file: barmarc_ocm61112131
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 162 read from file: barmarc_ocm00872252
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 163 read from file: barmarc_ocm51543567
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 164 read from file: barmarc_ocm03818664
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 165 read from file: barmarc_ocm11031047
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 166 read from file: barmarc_ocm47917368
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 167 read from file: barmarc_ocm40517505
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 168 read from file: barmarc_ocm00064308
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 169 read from file: barmarc_ocm08083602
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 170 read from file: barmarc_ocm47927603
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 171 read from file: barmarc_ocm06228955
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 172 read from file: barmarc_ocm57641289
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 173 read from file: barmarc_ocm69375240
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 174 read from file: barmarc_ocm52078146
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 175 read from file: barmarc_ocm03666545
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 176 read from file: barmarc_ocm64824280
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 177 read from file: barmarc_ocm06273159
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 178 read from file: barmarc_ocm28292666
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 179 read from file: barmarc_ocm14631972
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 180 read from file: barmarc_ocm01666140
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 181 read from file: barmarc_ocm00395341
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 182 read from file: barmarc_ocm03161782
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 183 read from file: barmarc_ocm13578967
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 184 read from file: barmarc_ocm11008633
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 185 read from file: barmarc_ocm00837036
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 186 read from file: barmarc_ocm06524781
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 187 read from file: barmarc_ocm00411960
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 188 read from file: barmarc_ocm14282904
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 189 read from file: barmarc_ocm03247695
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 190 read from file: barmarc_ocm06528769
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 191 read from file: barmarc_ocm03958706
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 192 read from file: barmarc_ocm02311784
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 193 read from file: barmarc_ocm01723322
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 194 read from file: barmarc_ocm25029416
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 195 read from file: barmarc_ocm01803693
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 196 read from file: barmarc_ocm11565782
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 197 read from file: barmarc_ocm23269320
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 198 read from file: barmarc_ocm06559432
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 199 read from file: barmarc_ocm02927341
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 200 read from file: barmarc_ocm13281568
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 201 read from file: barmarc_ocm04483431
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 202 read from file: barmarc_ocm02357643
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 203 read from file: barmarc_ocm01535294
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 204 read from file: barmarc_ocm10448283
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 205 read from file: barmarc_ocm04628334
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 206 read from file: barmarc_ocm07430867
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 207 read from file: barmarc_ocm23853662
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 208 read from file: barmarc_ocm04511960
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 209 read from file: barmarc_ocm04786973
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 210 read from file: barmarc_ocm03944087
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 211 read from file: barmarc_ocm02430073
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 212 read from file: barmarc_ocm03365509
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 213 read from file: barmarc_ocm04338347
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 214 read from file: barmarc_ocm08657517
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 215 read from file: barmarc_ocm06928741
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 216 read from file: barmarc_ocm29054433
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 217 read from file: barmarc_ocm02330049
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 218 read from file: barmarc_ocm02562299
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 219 read from file: barmarc_ocm01953006
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 220 read from file: barmarc_ocm01202499
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 221 read from file: barmarc_ocm17090652
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 222 read from file: barmarc_ocm16620218
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 223 read from file: barmarc_ocm43634393
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 224 read from file: barmarc_ocm18828239
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 225 read from file: barmarc_ocm03096025
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 226 read from file: barmarc_ocm13952181
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 227 read from file: barmarc_ocm01066668
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 228 read from file: barmarc_ocm00812682
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 229 read from file: barmarc_ocm57219171
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 230 read from file: barmarc_ocm64688697
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 231 read from file: barmarc_ocm10236594
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 232 read from file: barmarc_ocm76064926
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 233 read from file: barmarc_ocn191730702
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 234 read from file: barmarc_ocm35048160
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 235 read from file: barmarc_ocm02221778
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 236 read from file: barmarc_ocm14959862
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 237 read from file: barmarc_ocm65050113
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 238 read from file: barmarc_ocm03045347
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 239 read from file: barmarc_ocm48782389
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 240 read from file: barmarc_ocn156808965
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 241 read from file: barmarc_ocm62724846
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 242 read from file: barmarc_ocm09667127
+Jul 1, 2013 9:32:20 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 243 read from file: barmarc_ocm21834289
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 244 read from file: barmarc_ocm00785179
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 245 read from file: barmarc_ocm04270075
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 246 read from file: barmarc_ocm50154072
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 247 read from file: barmarc_ocm53117683
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 248 read from file: barmarc_ocn249489618
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 249 read from file: barmarc_ocm23111326
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 250 read from file: barmarc_ocm42712793
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 251 read from file: barmarc_ocm12988410
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 252 read from file: barmarc_ocm02280746
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 253 read from file: barmarc_ocm24707125
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 254 read from file: barmarc_ocm14218751
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 255 read from file: barmarc_ocm03548724
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 256 read from file: barmarc_ocm30094368
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 257 read from file: barmarc_ocm16767785
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 258 read from file: barmarc_ocm01343541
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 259 read from file: barmarc_ocm62185550
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 260 read from file: barmarc_ocm07657452
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 261 read from file: barmarc_ocn181940013
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 262 read from file: barmarc_ocm09056969
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 263 read from file: barmarc_ocn804890990
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 264 read from file: barmarc_ocm18790881
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 265 read from file: barmarc_ocm06221887
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 266 read from file: barmarc_ocm09981580
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 267 read from file: barmarc_ocm01613979
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 268 read from file: barmarc_ocm47351443
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 269 read from file: barmarc_ocm13917652
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 270 read from file: barmarc_ocm12448258
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 271 read from file: barmarc_ocn299700968
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 272 read from file: barmarc_ocm20133444
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 273 read from file: barmarc_ocm34178648
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 274 read from file: barmarc_ocn250725015
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 275 read from file: barmarc_ocm07792359
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 276 read from file: barmarc_ocm46362574
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 277 read from file: barmarc_ocm31949941
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 278 read from file: barmarc_ocn318594929
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 279 read from file: barmarc_ocm21114986
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 280 read from file: barmarc_ocm24050137
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 281 read from file: barmarc_ocm02084618
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 282 read from file: barmarc_ocm05732470
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 283 read from file: barmarc_ocm05912536
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 284 read from file: barmarc_ocm39869961
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 285 read from file: barmarc_ocm20468906
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 286 read from file: barmarc_ocm02696695
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 287 read from file: barmarc_ocm06568324
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 288 read from file: barmarc_ocm28775090
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 289 read from file: barmarc_ocm01682318
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 290 read from file: barmarc_ocm03363126
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 291 read from file: barmarc_ocm03253458
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 292 read from file: barmarc_ocn794244709
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 293 read from file: barmarc_ocm08293045
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 294 read from file: barmarc_ocm13487486
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 295 read from file: barmarc_ocm10805853
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 296 read from file: barmarc_ocm24569844
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 297 read from file: barmarc_ocm03773727
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 298 read from file: barmarc_ocm02712754
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 299 read from file: barmarc_ocn655269636
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 300 read from file: barmarc_ocm55207436
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 301 read from file: barmarc_ocm01018957
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 302 read from file: barmarc_ocn795827348
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 303 read from file: barmarc_ocm01999451
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 304 read from file: barmarc_ocm00630062
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 305 read from file: barmarc_ocn804890812
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 306 read from file: barmarc_ocn642232111
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 307 read from file: barmarc_ocm10369459
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 308 read from file: barmarc_ocm05391711
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 309 read from file: barmarc_ocm08158816
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 310 read from file: barmarc_ocn648999067
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 311 read from file: barmarc_ocn650530289
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 312 read from file: barmarc_ocm07257139
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 313 read from file: barmarc_ocm07412042
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 314 read from file: barmarc_ocn828200049
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 315 read from file: barmarc_ocm53129638
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 316 read from file: barmarc_ocm76064926
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 317 read from file: barmarc_ocn493312528
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 318 read from file: barmarc_ocm20071194
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 319 read from file: barmarc_ocn612973883
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 320 read from file: barmarc_ocm02544964
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 321 read from file: barmarc_ocn502045748
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 322 read from file: barmarc_ocm06874883
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 323 read from file: barmarc_ocm04671858
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 324 read from file: barmarc_ocm02997074
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 325 read from file: barmarc_ocm49008570
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 326 read from file: barmarc_ocm02666682
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 327 read from file: barmarc_ocm00880486
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 328 read from file: barmarc_ocn779107046
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 329 read from file: barmarc_ocn298259251
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 330 read from file: barmarc_ocn705140634
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 331 read from file: barmarc_ocm01880752
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 332 read from file: barmarc_ocm01514873
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 333 read from file: barmarc_ocm38490935
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 334 read from file: barmarc_ocm65430168
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 335 read from file: barmarc_ocm39211155
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 336 read from file: barmarc_ocm16689653
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 337 read from file: barmarc_ocm44683877
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 338 read from file: barmarc_ocm28013531
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 339 read from file: barmarc_ocm19492887
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 340 read from file: barmarc_ocn712378382
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 341 read from file: barmarc_ocm30955280
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 342 read from file: barmarc_ocm42907494
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 343 read from file: barmarc_ocm01526003
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 344 read from file: barmarc_ocm15389867
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 345 read from file: barmarc_ocn718702812
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 346 read from file: barmarc_ocm12074658
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 347 read from file: barmarc_ocm16843262
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 348 read from file: barmarc_ocm49303426
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 349 read from file: barmarc_ocm23707593
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 350 read from file: barmarc_ocn173467756
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 351 read from file: barmarc_ocm29695968
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 352 read from file: barmarc_ocm27495606
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 353 read from file: barmarc_ocm21098019
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 354 read from file: barmarc_ocm22345865
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 355 read from file: barmarc_ocm01030048
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 356 read from file: barmarc_ocn642904783
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 357 read from file: barmarc_ocm64446268
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 358 read from file: barmarc_ocn745912482
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 359 read from file: barmarc_ocm06192461
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 360 read from file: barmarc_ocn214332883
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 361 read from file: barmarc_ocn756797991
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 362 read from file: barmarc_ocn758409182
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 363 read from file: barmarc_ocm00951787
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 364 read from file: barmarc_ocm03934842
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 365 read from file: barmarc_ocm56599512
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 366 read from file: barmarc_ocn775120393
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 367 read from file: barmarc_ocm19706417
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 368 read from file: barmarc_ocm39854807
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 369 read from file: barmarc_ocn785786314
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 370 read from file: barmarc_ocn793495926
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 371 read from file: barmarc_ocn793498265
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 372 read from file: barmarc_ocn793495944
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 373 read from file: barmarc_ocn793537813
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 374 read from file: barmarc_ocn793671162
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 375 read from file: barmarc_ocn793851796
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 376 read from file: barmarc_ocm11538322
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 377 read from file: barmarc_ocm51965935
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 378 read from file: barmarc_ocn794317051
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 379 read from file: barmarc_ocn630166967
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 380 read from file: barmarc_ocm19687371
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 381 read from file: barmarc_ocn794632249
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 382 read from file: barmarc_ocn794631441
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 383 read from file: barmarc_ocm11667098
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 384 read from file: barmarc_ocm23845349
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 385 read from file: barmarc_ocm07340587
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 386 read from file: barmarc_ocm40651844
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 387 read from file: barmarc_ocm04953158
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 388 read from file: barmarc_ocm28299692
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 389 read from file: barmarc_ocm06997689
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 390 read from file: barmarc_ocm06376845
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 391 read from file: barmarc_ocm14100004
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 392 read from file: barmarc_ocm03175699
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 393 read from file: barmarc_ocm04589964
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 394 read from file: barmarc_ocm79821468
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 395 read from file: barmarc_ocm17476443
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 396 read from file: barmarc_ocm00159419
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 397 read from file: barmarc_ocn191049840
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 398 read from file: barmarc_ocm01088916
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 399 read from file: barmarc_ocm25227673
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 400 read from file: barmarc_ocm56267875
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 401 read from file: barmarc_ocm09767880
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 402 read from file: barmarc_ocm19508263
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 403 read from file: barmarc_ocm22668450
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 404 read from file: barmarc_ocm00912838
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 405 read from file: barmarc_ocm10395973
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 406 read from file: barmarc_ocm01220428
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 407 read from file: barmarc_ocm35719612
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 408 read from file: barmarc_ocm16147277
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 409 read from file: barmarc_ocm27784413
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 410 read from file: barmarc_ocm38334389
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 411 read from file: barmarc_ocm12971579
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 412 read from file: barmarc_ocm37314415
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 413 read from file: barmarc_ocm08498328
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 414 read from file: barmarc_ocm01216374
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 415 read from file: barmarc_ocm86014806
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 416 read from file: barmarc_ocm01841934
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 417 read from file: barmarc_ocm07752734
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 418 read from file: barmarc_ocm10556015
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 419 read from file: barmarc_ocm08200002
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 420 read from file: barmarc_ocm78483220
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 421 read from file: barmarc_ocm00434008
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 422 read from file: barmarc_ocm17228377
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 423 read from file: barmarc_ocm06654719
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 424 read from file: barmarc_ocm60451966
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 425 read from file: barmarc_ocn795537457
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 426 read from file: barmarc_ocn795598891
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 427 read from file: barmarc_ocn795600685
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 428 read from file: barmarc_ocn795708464
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 429 read from file: barmarc_ocn795715710
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 430 read from file: barmarc_ocn795743707
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 431 read from file: barmarc_ocn795781539
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 432 read from file: barmarc_ocm16639386
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 433 read from file: barmarc_ocn676748532
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 434 read from file: barmarc_ocm46986262
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 435 read from file: barmarc_ocn795860276
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 436 read from file: barmarc_ocn795868528
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 437 read from file: barmarc_ocn795928016
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 438 read from file: barmarc_ocn795932046
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 439 read from file: barmarc_ocn796020642
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 440 read from file: barmarc_ocn796030829
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 441 read from file: barmarc_ocm32472404
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 442 read from file: barmarc_ocm58427826
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 443 read from file: barmarc_ocn427905428
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 444 read from file: barmarc_ocn801411509
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 445 read from file: barmarc_ocn801494218
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 446 read from file: barmarc_ocn801537407
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 447 read from file: barmarc_ocn801545088
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 448 read from file: barmarc_ocn801545434
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 449 read from file: barmarc_ocn803990453
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 450 read from file: barmarc_ocn803992184
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 451 read from file: barmarc_ocn804032125
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 452 read from file: barmarc_ocn804229068
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 453 read from file: barmarc_ocn804242159
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 454 read from file: barmarc_ocn804032143
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 455 read from file: barmarc_ocn804289326
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 456 read from file: barmarc_ocn804864031
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 457 read from file: barmarc_ocn804863151
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 458 read from file: barmarc_ocn804863192
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 459 read from file: barmarc_ocn805144916
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 460 read from file: barmarc_ocn805211376
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 461 read from file: barmarc_ocn805230025
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 462 read from file: barmarc_ocn317883238
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 463 read from file: barmarc_ocm02514751
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 464 read from file: barmarc_ocm01100929
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 465 read from file: barmarc_ocn806162832
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 466 read from file: barmarc_ocn806355502
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 467 read from file: barmarc_ocm76893151
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 468 read from file: barmarc_ocn702616342
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 469 read from file: barmarc_ocm04734485
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 470 read from file: barmarc_ocm29012994
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 471 read from file: barmarc_ocn808144134
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 472 read from file: barmarc_ocm42451805
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 473 read from file: barmarc_ocn221389784
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 474 read from file: barmarc_ocm45550423
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 475 read from file: barmarc_ocm46773559
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 476 read from file: barmarc_ocm00345881
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 477 read from file: barmarc_ocm01449429
+Jul 1, 2013 9:32:21 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 478 read from file: barmarc_ocn808627922
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 479 read from file: barmarc_ocm06758283
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 480 read from file: barmarc_ocn808631693
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 481 read from file: barmarc_ocn808633736
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 482 read from file: barmarc_ocm36385288
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 483 read from file: barmarc_ocm32255274
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 484 read from file: barmarc_ocn808643486
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 485 read from file: barmarc_ocm58530632
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 486 read from file: barmarc_ocm55028977
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 487 read from file: barmarc_ocm14373263
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 488 read from file: barmarc_ocm29503365
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 489 read from file: barmarc_ocn431708735
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 490 read from file: barmarc_ocn431708822
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 491 read from file: barmarc_ocn431708785
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 492 read from file: barmarc_ocn810528178
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 493 read from file: barmarc_ocn811788063
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 494 read from file: barmarc_ocn811863479
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 495 read from file: barmarc_ocn811865757
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 496 read from file: barmarc_ocn812485502
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 497 read from file: barmarc_ocn812549041
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 498 read from file: barmarc_ocn812670761
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 499 read from file: barmarc_ocn812652224
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 500 read from file: barmarc_ocm17476406
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 501 read from file: barmarc_ocm00845738
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 502 read from file: barmarc_ocn815679927
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 503 read from file: barmarc_ocm49557798
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 504 read from file: barmarc_ocm50713047
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 505 read from file: barmarc_ocn821223889
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 506 read from file: barmarc_ocn824513988
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 507 read from file: barmarc_ocn824513512
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 508 read from file: barmarc_ocn825839216
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 509 read from file: barmarc_ocn826037606
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 510 read from file: barmarc_ocn827729598
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 511 read from file: barmarc_ocn828205711
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 512 read from file: barmarc_ocm05955066
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 513 read from file: barmarc_ocm13998015
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 514 read from file: barmarc_ocn828744516
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 515 read from file: barmarc_ocn828770278
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 516 read from file: barmarc_ocn840700330
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 517 read from file: barmarc_ocn842663252
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 518 read from file: barmarc_ocn828937444
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 519 read from file: barmarc_ocm10321994
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 520 read from file: barmarc_ocm11873969
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 521 read from file: barmarc_ocm17465076
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 522 read from file: barmarc_ocn221554378
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 523 read from file: barmarc_ocn842678421
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 524 read from file: barmarc_ocm81088531
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 525 read from file: barmarc_ocm06207672
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 526 read from file: barmarc_ocm31612010
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 527 read from file: barmarc_ocn636007521
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 528 read from file: barmarc_ocm11663493
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 529 read from file: barmarc_ocm11441032
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 530 read from file: barmarc_ocm00948483
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 531 read from file: barmarc_ocm25157324
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 532 read from file: barmarc_ocm22563283
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 533 read from file: barmarc_ocn830007511
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 534 read from file: barmarc_ocn830007519
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 535 read from file: barmarc_ocn830051817
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 536 read from file: barmarc_ocn830051858
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 537 read from file: barmarc_ocn830052177
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 538 read from file: barmarc_ocn830326390
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 539 read from file: barmarc_ocn830493981
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 540 read from file: barmarc_ocn830468751
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 541 read from file: barmarc_ocn830473040
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 542 read from file: barmarc_ocn664736379
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 543 read from file: barmarc_ocn830731622
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 544 read from file: barmarc_ocm04465032
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 545 read from file: barmarc_ocm03952441
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 546 read from file: barmarc_ocm02569278
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 547 read from file: barmarc_ocm00686703
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 548 read from file: barmarc_ocm09824554
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 549 read from file: barmarc_ocm05795455
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 550 read from file: barmarc_ocm01595752
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 551 read from file: barmarc_ocm00296362
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 552 read from file: barmarc_ocm17364169
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 553 read from file: barmarc_ocn830866836
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 554 read from file: barmarc_ocn830884088
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 555 read from file: barmarc_ocm35719800
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 556 read from file: barmarc_ocm10482366
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 557 read from file: barmarc_ocm09193083
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 558 read from file: barmarc_ocm05939881
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 559 read from file: barmarc_ocn840849932
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 560 read from file: barmarc_ocn840847776
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 561 read from file: barmarc_ocn847778929
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 562 read from file: barmarc_ocm03194178
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 563 read from file: barmarc_ocn841419715
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 564 read from file: barmarc_ocn767525351
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 565 read from file: barmarc_ocm01873057
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 566 read from file: barmarc_ocm84639627
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 567 read from file: barmarc_ocn212379862
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 568 read from file: barmarc_ocn842301938
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 569 read from file: barmarc_ocn842298399
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 570 read from file: barmarc_ocn842856270
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 571 read from file: barmarc_ocn833658577
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 572 read from file: barmarc_ocn797004142
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 573 read from file: barmarc_ocm13482540
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 574 read from file: barmarc_ocn715889550
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 575 read from file: barmarc_ocn847664152
+Jul 1, 2013 9:33:07 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 576 read from file: barmarc_ocn849520724
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 577 read from file: barmarc_ocn680002224
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 578 read from file: barmarc_ocn849673896
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 579 read from file: barmarc_ocm22725670
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 580 read from file: barmarc_ocn849904404
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 581 read from file: barmarc_ocn849920995
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 582 read from file: barmarc_ocn849920995
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 583 read from file: barmarc_ocn849952410
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 584 read from file: barmarc_ocn850939765
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 585 read from file: barmarc_ocn850968468
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 586 read from file: barmarc_ocn850972707
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 586 of 586 documents to index
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jul 1, 2013 9:33:13 AM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jul 1, 2013 9:33:14 AM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jul 1, 2013 9:33:14 AM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jul 1, 2013 9:33:14 AM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jul 1, 2013 9:33:15 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jul 1, 2013 9:33:15 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jul 1, 2013 9:33:15 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">1388</int></lst>
+Jul 1, 2013 9:33:15 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>

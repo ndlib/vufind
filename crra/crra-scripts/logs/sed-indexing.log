@@ -1,0 +1,612 @@
+Jan 16, 2013 1:06:39 PM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jan 16, 2013 1:06:39 PM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jan 16, 2013 1:06:39 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jan 16, 2013 1:06:39 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jan 16, 2013 1:06:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jan 16, 2013 1:06:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jan 16, 2013 1:06:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/sed.marc
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: sedmarc_ocm14616435 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: sedmarc_ocm08419866 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: sedmarc_ocm26998395 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: sedmarc_ocm43412151 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: sedmarc_b10027609 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: sedmarc_ocm25630256 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: sedmarc_ocm26160521 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: sedmarc_ocm29231123
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: sedmarc_            
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: sedmarc_            
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: sedmarc_ocm28552799 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: sedmarc_ocm21985775 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: sedmarc_ocm27678766 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: sedmarc_ocm15501951 
+Jan 16, 2013 1:06:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: sedmarc_ocm40251741 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: sedmarc_ocm03771918 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: sedmarc_ocm17952134 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: sedmarc_ocm00250927 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: sedmarc_ocm00388193 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: sedmarc_ocm42781113 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: sedmarc_ocm22248925 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: sedmarc_ocm12352874 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: sedmarc_ocn695455317
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: sedmarc_ocm38747969 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: sedmarc_ocm22456382 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: sedmarc_ocm52857238 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: sedmarc_ocm52857249 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: sedmarc_ocm52857254 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: sedmarc_ocm52857255 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: sedmarc_ocm50294921 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: sedmarc_ocm52354294 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: sedmarc_ocm52354295 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: sedmarc_ocm52354296 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: sedmarc_ocm52354400 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: sedmarc_ocm52354297 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: sedmarc_ocm52354298 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: sedmarc_ocm52354299 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: sedmarc_ocm52354300 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: sedmarc_ocm52354301 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: sedmarc_ocm52354302 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: sedmarc_ocm52354303 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: sedmarc_ocm52354304 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: sedmarc_ocm52354401 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: sedmarc_ocm52354402 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: sedmarc_ocm52354403 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: sedmarc_ocm52354275 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: sedmarc_ocm52354276 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: sedmarc_ocm52354277 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: sedmarc_ocm52354278 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: sedmarc_ocm52354279 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: sedmarc_ocm52354280 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: sedmarc_ocm52354281 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: sedmarc_ocm52354282 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: sedmarc_ocm52354283 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: sedmarc_ocm52354284 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: sedmarc_ocm52354285 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: sedmarc_ocm52354286 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: sedmarc_ocm52354287 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: sedmarc_ocm52354288 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: sedmarc_ocm52354289 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: sedmarc_ocm52354290 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: sedmarc_ocm52354291 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: sedmarc_ocm52354292 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: sedmarc_ocm52354293 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: sedmarc_ocm53876274 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: sedmarc_ocm52354404 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: sedmarc_ocm52354405 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: sedmarc_ocm52857230 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: sedmarc_ocm52857231 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: sedmarc_ocm52857232 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: sedmarc_ocm52857233 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: sedmarc_ocm52857234 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: sedmarc_ocm53874932 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: sedmarc_ocm53874933 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: sedmarc_ocm53874934 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: sedmarc_ocm53874935 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: sedmarc_ocm53876275 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: sedmarc_ocm53876276 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: sedmarc_ocm53876277 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: sedmarc_ocm53876279 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: sedmarc_ocm53876280 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: sedmarc_ocm53876281 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: sedmarc_ocm53876282 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: sedmarc_ocm53876283 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: sedmarc_ocm53876284 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: sedmarc_ocm53876285 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: sedmarc_ocm53876287 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: sedmarc_ocm53876288 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: sedmarc_ocm53876289 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: sedmarc_ocm53876290 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: sedmarc_ocm53876291 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: sedmarc_ocm53876292 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: sedmarc_ocm53876293 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: sedmarc_ocm53876294 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: sedmarc_ocm53876295 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: sedmarc_ocm53876296 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: sedmarc_ocm53876297 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: sedmarc_ocm53876298 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: sedmarc_ocm53876299 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: sedmarc_ocm53876300 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: sedmarc_ocm53876301 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: sedmarc_ocm53876302 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: sedmarc_ocm53876304 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: sedmarc_ocm53876305 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: sedmarc_ocm53876306 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: sedmarc_ocm53876307 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: sedmarc_ocm53876308 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: sedmarc_ocm53876309 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: sedmarc_ocm53876310 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: sedmarc_ocm53876311 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: sedmarc_ocm53876312 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: sedmarc_ocm53876313 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: sedmarc_ocm53876314 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: sedmarc_ocm53876315 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: sedmarc_ocm53876316 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: sedmarc_ocm53876317 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: sedmarc_ocm53876318 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: sedmarc_ocm53876319 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: sedmarc_ocm53876320 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: sedmarc_ocm53876321 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: sedmarc_ocm53876322 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: sedmarc_ocm53876323 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 123 read from file: sedmarc_ocm53876325 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 124 read from file: sedmarc_ocm53876326 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 125 read from file: sedmarc_ocm53876327 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 126 read from file: sedmarc_ocm53876328 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 127 read from file: sedmarc_ocm53876330 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 128 read from file: sedmarc_ocm53876331 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 129 read from file: sedmarc_ocm53876332 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 130 read from file: sedmarc_ocm53876333 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 131 read from file: sedmarc_ocm53876334 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 132 read from file: sedmarc_ocm53876335 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 133 read from file: sedmarc_ocm53876336 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 134 read from file: sedmarc_ocm53876337 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 135 read from file: sedmarc_ocm53876338 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 136 read from file: sedmarc_ocm53876339 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 137 read from file: sedmarc_ocm53876340 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 138 read from file: sedmarc_ocm53876341 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 139 read from file: sedmarc_ocm53876342 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 140 read from file: sedmarc_ocm53876343 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 141 read from file: sedmarc_ocm53876344 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 142 read from file: sedmarc_ocm53876345 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 143 read from file: sedmarc_ocm53876346 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 144 read from file: sedmarc_ocm53876348 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 145 read from file: sedmarc_ocm53876350 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 146 read from file: sedmarc_ocm53876351 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 147 read from file: sedmarc_ocm53876353 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 148 read from file: sedmarc_ocm53876354 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 149 read from file: sedmarc_ocm53876355 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 150 read from file: sedmarc_ocm53876356 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 151 read from file: sedmarc_ocm53876357 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 152 read from file: sedmarc_ocm53876360 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 153 read from file: sedmarc_ocm53876361 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 154 read from file: sedmarc_ocm53876362 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 155 read from file: sedmarc_ocm53876363 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 156 read from file: sedmarc_ocm53876364 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 157 read from file: sedmarc_ocm53876365 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 158 read from file: sedmarc_ocm53876366 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 159 read from file: sedmarc_ocm53876367 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 160 read from file: sedmarc_ocm53876368 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 161 read from file: sedmarc_ocm53876369 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 162 read from file: sedmarc_ocm53876370 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 163 read from file: sedmarc_ocm53876371 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 164 read from file: sedmarc_ocm53876372 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 165 read from file: sedmarc_ocm53876373 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 166 read from file: sedmarc_ocm53876374 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 167 read from file: sedmarc_ocm53876375 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 168 read from file: sedmarc_ocm53876376 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 169 read from file: sedmarc_ocm53876377 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 170 read from file: sedmarc_ocm53876379 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 171 read from file: sedmarc_ocm53876380 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 172 read from file: sedmarc_ocm53876381 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 173 read from file: sedmarc_ocm53876382 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 174 read from file: sedmarc_ocm53876383 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 175 read from file: sedmarc_ocm53876384 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 176 read from file: sedmarc_ocm53876386 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 177 read from file: sedmarc_ocm53876387 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 178 read from file: sedmarc_ocm53876388 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 179 read from file: sedmarc_ocm53876389 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 180 read from file: sedmarc_ocm53876390 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 181 read from file: sedmarc_ocm53876391 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 182 read from file: sedmarc_ocm53876392 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 183 read from file: sedmarc_ocm53876393 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 184 read from file: sedmarc_ocm53876394 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 185 read from file: sedmarc_ocm53876395 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 186 read from file: sedmarc_ocm53876396 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 187 read from file: sedmarc_ocm53876397 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 188 read from file: sedmarc_ocm53876398 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 189 read from file: sedmarc_ocm53876399 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 190 read from file: sedmarc_ocm53876400 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 191 read from file: sedmarc_ocm53876401 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 192 read from file: sedmarc_ocm53876402 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 193 read from file: sedmarc_ocm53876403 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 194 read from file: sedmarc_ocm53876404 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 195 read from file: sedmarc_ocm53876405 
+Jan 16, 2013 1:06:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 196 read from file: sedmarc_ocm53876406 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 197 read from file: sedmarc_ocm53876407 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 198 read from file: sedmarc_ocm53876408 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 199 read from file: sedmarc_ocm53876409 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 200 read from file: sedmarc_ocm53876410 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 201 read from file: sedmarc_ocm53876411 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 202 read from file: sedmarc_ocm53876413 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 203 read from file: sedmarc_ocm53876414 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 204 read from file: sedmarc_ocm53876415 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 205 read from file: sedmarc_ocm53876416 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 206 read from file: sedmarc_ocm53876417 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 207 read from file: sedmarc_ocm53876418 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 208 read from file: sedmarc_ocm53874936 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 209 read from file: sedmarc_ocm54118248 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 210 read from file: sedmarc_ocm54118250 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 211 read from file: sedmarc_ocm54118251 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 212 read from file: sedmarc_ocm54118252 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 213 read from file: sedmarc_ocm54118253 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 214 read from file: sedmarc_ocm54118254 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 215 read from file: sedmarc_ocm52612514 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 216 read from file: sedmarc_ocm23712017 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 217 read from file: sedmarc_ocm29408278 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 218 read from file: sedmarc_ocm26242804 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 219 read from file: sedmarc_ocm00232831 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 220 read from file: sedmarc_   78105770 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 221 read from file: sedmarc_   75038299 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 222 read from file: sedmarc_ocm16092260 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 223 read from file: sedmarc_ocm06074821 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 224 read from file: sedmarc_   80053737 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 225 read from file: sedmarc_ocm15435146 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 226 read from file: sedmarc_ocm03168961 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 227 read from file: sedmarc_ocm11408185 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 228 read from file: sedmarc_ocm11408145 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 229 read from file: sedmarc_ocm12605982 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 230 read from file: sedmarc_ocm12609477 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 231 read from file: sedmarc_ocm10186965 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 232 read from file: sedmarc_ocm06535689 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 233 read from file: sedmarc_ocm13102690 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 234 read from file: sedmarc_ocm00193782 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 235 read from file: sedmarc_ocm11231355 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 236 read from file: sedmarc_ocm19929939 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 237 read from file: sedmarc_ocm05777832 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 238 read from file: sedmarc_ocm11006650 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 239 read from file: sedmarc_ocm09814355 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 240 read from file: sedmarc_ocm04046164 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 241 read from file: sedmarc_ocm06319241 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 242 read from file: sedmarc_ocm10757227 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 243 read from file: sedmarc_ocm04704745 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 244 read from file: sedmarc_sp 92000637 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 245 read from file: sedmarc_ocm06144124 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 246 read from file: sedmarc_ocm57316734 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 247 read from file: sedmarc_ocm52418351 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 248 read from file: sedmarc_ocm48953289 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 249 read from file: sedmarc_ocm24611121 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 250 read from file: sedmarc_ocm71305003 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 251 read from file: sedmarc_ocm56922499 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 252 read from file: sedmarc_ocn173155223
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 253 read from file: sedmarc_ocn183657525
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 254 read from file: sedmarc_ocm84903413 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 255 read from file: sedmarc_b11723580  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 256 read from file: sedmarc_b11723592
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 257 read from file: sedmarc_b11723609 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 258 read from file: sedmarc_b11723610  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 259 read from file: sedmarc_b11723622
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 260 read from file: sedmarc_b11723774 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 261 read from file: sedmarc_b11723786 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 262 read from file: sedmarc_b11723798  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 263 read from file: sedmarc_b11723804  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 264 read from file: sedmarc_b11723816  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 265 read from file: sedmarc_b11723828
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 266 read from file: sedmarc_b1172383x
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 267 read from file: sedmarc_b11740097 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 268 read from file: sedmarc_ocn297114511
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 269 read from file: sedmarc_b11756391
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 270 read from file: sedmarc_b11756408 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 271 read from file: sedmarc_b12263710 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 272 read from file: sedmarc_b12263722  
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 273 read from file: sedmarc_ocm78428130 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 274 read from file: sedmarc_ocn231585629
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 275 read from file: sedmarc_ocm60454873 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 276 read from file: sedmarc_ocm60454878 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 277 read from file: sedmarc_b12959169 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 278 read from file: sedmarc_ocn422757095
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 279 read from file: sedmarc_ocn318420838
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 280 read from file: sedmarc_b13002430
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 281 read from file: sedmarc_ocn651642809
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 282 read from file: sedmarc_ocn694110318
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 283 read from file: sedmarc_ocn694182676
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 284 read from file: sedmarc_ocn707751701
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 285 read from file: sedmarc_ocm52215350 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 286 read from file: sedmarc_ocm03503744 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 287 read from file: sedmarc_ocm27463645 
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 287 of 287 documents to index
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jan 16, 2013 1:06:42 PM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jan 16, 2013 1:06:43 PM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jan 16, 2013 1:06:43 PM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jan 16, 2013 1:06:43 PM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jan 16, 2013 1:07:52 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jan 16, 2013 1:07:52 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jan 16, 2013 1:07:52 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">68927</int></lst>
+Jan 16, 2013 1:07:52 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Jan 16, 2013 1:07:52 PM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook

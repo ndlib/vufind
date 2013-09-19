@@ -1,0 +1,66 @@
+Mar 19, 2013 3:31:29 PM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Mar 19, 2013 3:31:29 PM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Mar 19, 2013 3:31:30 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Mar 19, 2013 3:31:30 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Mar 19, 2013 3:31:30 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Mar 19, 2013 3:31:30 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Mar 19, 2013 3:31:30 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Mar 19, 2013 3:31:30 PM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/sju.marc
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: sjumarc_ocm05237439
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: sjumarc_ocm02825162
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: sjumarc_ocm319955196
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: sjumarc_ocm16784699
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: sjumarc_ocm00670345
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: sjumarc_ocm79954632
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: sjumarc_ocm610200418
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: sjumarc_ocm38912713
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: sjumarc_ocm50280458
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: sjumarc_ocm08536068
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: sjumarc_ocm20405690
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: sjumarc_ocm44313252
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: sjumarc_ocm27828309
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: sjumarc_ocm37740829
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 14 of 14 documents to index
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Mar 19, 2013 3:31:31 PM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Mar 19, 2013 3:31:34 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Mar 19, 2013 3:31:34 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Mar 19, 2013 3:31:34 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">2392</int></lst>
+Mar 19, 2013 3:31:34 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Mar 19, 2013 3:31:34 PM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook

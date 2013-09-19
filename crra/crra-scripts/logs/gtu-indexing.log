@@ -1,0 +1,1604 @@
+Jan 16, 2013 12:40:39 PM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jan 16, 2013 12:40:39 PM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jan 16, 2013 12:40:39 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jan 16, 2013 12:40:39 PM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jan 16, 2013 12:40:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jan 16, 2013 12:40:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jan 16, 2013 12:40:39 PM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/gtu.marc
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: gtumarc_4971503
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: gtumarc_11837495
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: gtumarc_3801730
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: gtumarc_13554258
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: gtumarc_685308
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: gtumarc_5712088
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: gtumarc_8757116
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: gtumarc_3649178
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: gtumarc_4812390
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: gtumarc_1824800
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: gtumarc_2562644
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: gtumarc_42694176
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: gtumarc_3434355
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: gtumarc_7890476
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: gtumarc_38969635
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: gtumarc_2945409
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: gtumarc_23417786
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: gtumarc_49935514
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: gtumarc_44133581
+Jan 16, 2013 12:40:40 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: gtumarc_23675111
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: gtumarc_49914795
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: gtumarc_77319964
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: gtumarc_2944149
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: gtumarc_7801625
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: gtumarc_20027691
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: gtumarc_11586256
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: gtumarc_11658935
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: gtumarc_228079020
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: gtumarc_47935925
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: gtumarc_222589119
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: gtumarc_7906732
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: gtumarc_41186184
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: gtumarc_77334210
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: gtumarc_21664309
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: gtumarc_20330811
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: gtumarc_10090591
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: gtumarc_18584459
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: gtumarc_27765711
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: gtumarc_2952370
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: gtumarc_9182574
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: gtumarc_9098523
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: gtumarc_42893115
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: gtumarc_436095949
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: gtumarc_297461764
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: gtumarc_39965586
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: gtumarc_3420933
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: gtumarc_56581914
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: gtumarc_81582865
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: gtumarc_461032615
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: gtumarc_45335355
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: gtumarc_464158121
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: gtumarc_222758499
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: gtumarc_36800297
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: gtumarc_39261441
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: gtumarc_50127903
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: gtumarc_45268164
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: gtumarc_4712815
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: gtumarc_23625226
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: gtumarc_38365580
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: gtumarc_13823921
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: gtumarc_77320043
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: gtumarc_8695287
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: gtumarc_16933778
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: gtumarc_20122628
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: gtumarc_23626556
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: gtumarc_40668757
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: gtumarc_34503916
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: gtumarc_23627781
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: gtumarc_179300443
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: gtumarc_19911444
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: gtumarc_42606930
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: gtumarc_41031516
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: gtumarc_42331873
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: gtumarc_37591494
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: gtumarc_13286127
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: gtumarc_502281396
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: gtumarc_502282111
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: gtumarc_502280529
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: gtumarc_502282561
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: gtumarc_64059194
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: gtumarc_48455576
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: gtumarc_43449260
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: gtumarc_23627848
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: gtumarc_64059365
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: gtumarc_43409367
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: gtumarc_39287080
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: gtumarc_84435299
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: gtumarc_41367514
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: gtumarc_76895743
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: gtumarc_17891270
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: gtumarc_61743982
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: gtumarc_64189763
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: gtumarc_23908900
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: gtumarc_43295778
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: gtumarc_29438179
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: gtumarc_84424068
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: gtumarc_40668748
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: gtumarc_84175655
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: gtumarc_17431174
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: gtumarc_83941609
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: gtumarc_10224107
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: gtumarc_3494858
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: gtumarc_77320010
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: gtumarc_7518803
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: gtumarc_61281649
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: gtumarc_22264596
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: gtumarc_45335407
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: gtumarc_80088795
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: gtumarc_13557384
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: gtumarc_38453096
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: gtumarc_46439688
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: gtumarc_4574321
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: gtumarc_14098303
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: gtumarc_3931439
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: gtumarc_80990950
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: gtumarc_28955856
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: gtumarc_27701408
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: gtumarc_24558946
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: gtumarc_20079016
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: gtumarc_79398557
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: gtumarc_25961257
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: gtumarc_13583034
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 123 read from file: gtumarc_221962417
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 124 read from file: gtumarc_11184340
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 125 read from file: gtumarc_265027569
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 126 read from file: gtumarc_83799339
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 127 read from file: gtumarc_8525021
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 128 read from file: gtumarc_20406192
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 129 read from file: gtumarc_26637495
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 130 read from file: gtumarc_83370284
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 131 read from file: gtumarc_35641201
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 132 read from file: gtumarc_558609013
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 133 read from file: gtumarc_558587938
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 134 read from file: gtumarc_558603619
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 135 read from file: gtumarc_79906837
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 136 read from file: gtumarc_77630191
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 137 read from file: gtumarc_40595805
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 138 read from file: gtumarc_34498349
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 139 read from file: gtumarc_40069035
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 140 read from file: gtumarc_56605114
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 141 read from file: gtumarc_61719514
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 142 read from file: gtumarc_23889463
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 143 read from file: gtumarc_72664187
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 144 read from file: gtumarc_13648116
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 145 read from file: gtumarc_23626682
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 146 read from file: gtumarc_17799303
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 147 read from file: gtumarc_50003453
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 148 read from file: gtumarc_270116540
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 149 read from file: gtumarc_70804757
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 150 read from file: gtumarc_81169829
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 151 read from file: gtumarc_81458817
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 152 read from file: gtumarc_61880176
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 153 read from file: gtumarc_56104756
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 154 read from file: gtumarc_19572849
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 155 read from file: gtumarc_55029131
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 156 read from file: gtumarc_55687946
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 157 read from file: gtumarc_15910616
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 158 read from file: gtumarc_315603430
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 159 read from file: gtumarc_39014409
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 160 read from file: gtumarc_15037885
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 161 read from file: gtumarc_15539797
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 162 read from file: gtumarc_11006416
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 163 read from file: gtumarc_23034342
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 164 read from file: gtumarc_14449374
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 165 read from file: gtumarc_17964867
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 166 read from file: gtumarc_316362068
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 167 read from file: gtumarc_55048447
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 168 read from file: gtumarc_80560961
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 169 read from file: gtumarc_84986926
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 170 read from file: gtumarc_38664856
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 171 read from file: gtumarc_31628076
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 172 read from file: gtumarc_32156363
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 173 read from file: gtumarc_222571128
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 174 read from file: gtumarc_6715733
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 175 read from file: gtumarc_13441980
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 176 read from file: gtumarc_9563257
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 177 read from file: gtumarc_280313
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 178 read from file: gtumarc_25641203
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 179 read from file: gtumarc_14080328
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 180 read from file: gtumarc_1412256
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 181 read from file: gtumarc_50598909
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 182 read from file: gtumarc_52124311
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 183 read from file: gtumarc_1915599
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 184 read from file: gtumarc_42043130
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 185 read from file: gtumarc_55772482
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 186 read from file: gtumarc_10517217
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 187 read from file: gtumarc_61516654
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 188 read from file: gtumarc_39491019
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 189 read from file: gtumarc_813443
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 190 read from file: gtumarc_23084458
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 191 read from file: gtumarc_1462750
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 192 read from file: gtumarc_9599705
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 193 read from file: gtumarc_10016845
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 194 read from file: gtumarc_61603066
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 195 read from file: gtumarc_48786806
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 196 read from file: gtumarc_54643364
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 197 read from file: gtumarc_299086217
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 198 read from file: gtumarc_23548734
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 199 read from file: gtumarc_44113484
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 200 read from file: gtumarc_23495975
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 201 read from file: gtumarc_55030732
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 202 read from file: gtumarc_45132808
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 203 read from file: gtumarc_52242109
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 204 read from file: gtumarc_315447662
+Jan 16, 2013 12:40:41 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 205 read from file: gtumarc_41120340
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 206 read from file: gtumarc_8021352
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 207 read from file: gtumarc_84608501
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 208 read from file: gtumarc_44157670
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 209 read from file: gtumarc_53902492
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 210 read from file: gtumarc_6866067
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 211 read from file: gtumarc_39845549
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 212 read from file: gtumarc_23548814
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 213 read from file: gtumarc_23525449
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 214 read from file: gtumarc_23617162
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 215 read from file: gtumarc_611567003
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 216 read from file: gtumarc_13980063
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 217 read from file: gtumarc_558811697
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 218 read from file: gtumarc_7286310
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 219 read from file: gtumarc_560102038
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 220 read from file: gtumarc_611582086
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 221 read from file: gtumarc_3999720
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 222 read from file: gtumarc_611584496
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 223 read from file: gtumarc_49921803
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 224 read from file: gtumarc_20683972
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 225 read from file: gtumarc_173466370
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 226 read from file: gtumarc_300642302
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 227 read from file: gtumarc_12190048
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 228 read from file: gtumarc_13942102
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 229 read from file: gtumarc_34306308
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 230 read from file: gtumarc_50607185
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 231 read from file: gtumarc_3426320
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 232 read from file: gtumarc_8161236
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 233 read from file: gtumarc_7725515
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 234 read from file: gtumarc_42702672
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 235 read from file: gtumarc_4964652
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 236 read from file: gtumarc_12111787
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 237 read from file: gtumarc_3578931
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 238 read from file: gtumarc_36855870
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 239 read from file: gtumarc_39933070
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 240 read from file: gtumarc_222283229
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 241 read from file: gtumarc_10625771
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 242 read from file: gtumarc_49764941
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 243 read from file: gtumarc_630651004
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 244 read from file: gtumarc_29614145
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 245 read from file: gtumarc_57233623
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 246 read from file: gtumarc_9685927
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 247 read from file: gtumarc_40001773
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 248 read from file: gtumarc_62091145
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 249 read from file: gtumarc_630651120
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 250 read from file: gtumarc_630678515
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 251 read from file: gtumarc_7469688
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 252 read from file: gtumarc_630656157
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 253 read from file: gtumarc_630656174
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 254 read from file: gtumarc_83368473
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 255 read from file: gtumarc_173466372
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 256 read from file: gtumarc_13730841
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 257 read from file: gtumarc_383417
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 258 read from file: gtumarc_3950628
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 259 read from file: gtumarc_15641263
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 260 read from file: gtumarc_15732635
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 261 read from file: gtumarc_4530725
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 262 read from file: gtumarc_56339460
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 263 read from file: gtumarc_636100399
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 264 read from file: gtumarc_636102888
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 265 read from file: gtumarc_636095251
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 266 read from file: gtumarc_9102575
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 267 read from file: gtumarc_636095271
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 268 read from file: gtumarc_173239845
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 269 read from file: gtumarc_636095298
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 270 read from file: gtumarc_79836129
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 271 read from file: gtumarc_636095338
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 272 read from file: gtumarc_636095348
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 273 read from file: gtumarc_13392437
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 274 read from file: gtumarc_41087673
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 275 read from file: gtumarc_5633110
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 276 read from file: gtumarc_13895411
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 277 read from file: gtumarc_463352715
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 278 read from file: gtumarc_4110895
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 279 read from file: gtumarc_81506725
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 280 read from file: gtumarc_42702810
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 281 read from file: gtumarc_22600852
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 282 read from file: gtumarc_34338558
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 283 read from file: gtumarc_78481493
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 284 read from file: gtumarc_37273466
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 285 read from file: gtumarc_18333375
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 286 read from file: gtumarc_6722425
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 287 read from file: gtumarc_21965422
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 288 read from file: gtumarc_317764119
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 289 read from file: gtumarc_18946630
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 290 read from file: gtumarc_41129688
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 291 read from file: gtumarc_641702181
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 292 read from file: gtumarc_641713408
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 293 read from file: gtumarc_219298246
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 294 read from file: gtumarc_13934797
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 295 read from file: gtumarc_641702268
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 296 read from file: gtumarc_1238280
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 297 read from file: gtumarc_14007395
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 298 read from file: gtumarc_3484104
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 299 read from file: gtumarc_15351455
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 300 read from file: gtumarc_420462505
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 301 read from file: gtumarc_6668190
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 302 read from file: gtumarc_6754954
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 303 read from file: gtumarc_53860862
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 304 read from file: gtumarc_22714275
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 305 read from file: gtumarc_3462017
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 306 read from file: gtumarc_14007663
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 307 read from file: gtumarc_34660273
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 308 read from file: gtumarc_45537295
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 309 read from file: gtumarc_3765871
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 310 read from file: gtumarc_14009160
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 311 read from file: gtumarc_2104757
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 312 read from file: gtumarc_47658333
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 313 read from file: gtumarc_50741038
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 314 read from file: gtumarc_5163674
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 315 read from file: gtumarc_8706090
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 316 read from file: gtumarc_1398713
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 317 read from file: gtumarc_44461025
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 318 read from file: gtumarc_18863333
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 319 read from file: gtumarc_36855912
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 320 read from file: gtumarc_3900229
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 321 read from file: gtumarc_16575428
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 322 read from file: gtumarc_35301000
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 323 read from file: gtumarc_43659244
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 324 read from file: gtumarc_45170443
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 325 read from file: gtumarc_48062126
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 326 read from file: gtumarc_34732364
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 327 read from file: gtumarc_35094559
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 328 read from file: gtumarc_123272267
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 329 read from file: gtumarc_9903783
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 330 read from file: gtumarc_237201559
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 331 read from file: gtumarc_13404539
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 332 read from file: gtumarc_44186064
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 333 read from file: gtumarc_3054763
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 334 read from file: gtumarc_7492074
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 335 read from file: gtumarc_2942060
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 336 read from file: gtumarc_23476702
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 337 read from file: gtumarc_2056485
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 338 read from file: gtumarc_19541085
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 339 read from file: gtumarc_6715656
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 340 read from file: gtumarc_46971668
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 341 read from file: gtumarc_12960215
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 342 read from file: gtumarc_32566811
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 343 read from file: gtumarc_15377034
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 344 read from file: gtumarc_228887259
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 345 read from file: gtumarc_8011104
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 346 read from file: gtumarc_3425632
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 347 read from file: gtumarc_561934413
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 348 read from file: gtumarc_12359479
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 349 read from file: gtumarc_11374393
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 350 read from file: gtumarc_663573351
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 351 read from file: gtumarc_613682835
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 352 read from file: gtumarc_13977787
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 353 read from file: gtumarc_663646265
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 354 read from file: gtumarc_40766042
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 355 read from file: gtumarc_657431
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 356 read from file: gtumarc_30955874
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 357 read from file: gtumarc_663882314
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 358 read from file: gtumarc_663883379
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 359 read from file: gtumarc_44388237
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 360 read from file: gtumarc_34374782
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 361 read from file: gtumarc_31438588
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 362 read from file: gtumarc_13554234
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 363 read from file: gtumarc_663891243
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 364 read from file: gtumarc_35140226
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 365 read from file: gtumarc_663901240
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 366 read from file: gtumarc_378351695
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 367 read from file: gtumarc_663902981
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 368 read from file: gtumarc_663904001
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 369 read from file: gtumarc_663904127
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 370 read from file: gtumarc_22369326
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 371 read from file: gtumarc_11729418
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 372 read from file: gtumarc_8116134
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 373 read from file: gtumarc_664033744
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 374 read from file: gtumarc_8108178
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 375 read from file: gtumarc_18852557
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 376 read from file: gtumarc_2865051
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 377 read from file: gtumarc_664119449
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 378 read from file: gtumarc_224247066
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 379 read from file: gtumarc_17938610
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 380 read from file: gtumarc_664124083
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 381 read from file: gtumarc_664126666
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 382 read from file: gtumarc_38974765
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 383 read from file: gtumarc_42275709
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 384 read from file: gtumarc_664134056
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 385 read from file: gtumarc_669815790
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 386 read from file: gtumarc_14100062
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 387 read from file: gtumarc_1044895
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 388 read from file: gtumarc_669834325
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 389 read from file: gtumarc_669833082
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 390 read from file: gtumarc_9516230
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 391 read from file: gtumarc_669836947
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 392 read from file: gtumarc_17464770
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 393 read from file: gtumarc_33927042
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 394 read from file: gtumarc_669838151
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 395 read from file: gtumarc_4530192
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 396 read from file: gtumarc_315763
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 397 read from file: gtumarc_670063243
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 398 read from file: gtumarc_9342332
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 399 read from file: gtumarc_13579531
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 400 read from file: gtumarc_670079661
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 401 read from file: gtumarc_7792372
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 402 read from file: gtumarc_36855910
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 403 read from file: gtumarc_670092166
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 404 read from file: gtumarc_670101237
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 405 read from file: gtumarc_670100707
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 406 read from file: gtumarc_55042707
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 407 read from file: gtumarc_670104050
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 408 read from file: gtumarc_41217447
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 409 read from file: gtumarc_23070289
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 410 read from file: gtumarc_670115884
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 411 read from file: gtumarc_19488940
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 412 read from file: gtumarc_670218052
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 413 read from file: gtumarc_13504707
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 414 read from file: gtumarc_15641672
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 415 read from file: gtumarc_16575405
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 416 read from file: gtumarc_670227239
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 417 read from file: gtumarc_670233478
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 418 read from file: gtumarc_670236744
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 419 read from file: gtumarc_9232631
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 420 read from file: gtumarc_43693482
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 421 read from file: gtumarc_50007073
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 422 read from file: gtumarc_316028727
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 423 read from file: gtumarc_35300313
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 424 read from file: gtumarc_43469726
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 425 read from file: gtumarc_673530063
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 426 read from file: gtumarc_4534648
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 427 read from file: gtumarc_673624940
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 428 read from file: gtumarc_673625088
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 429 read from file: gtumarc_45183463
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 430 read from file: gtumarc_10433012
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 431 read from file: gtumarc_673796884
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 432 read from file: gtumarc_24172523
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 433 read from file: gtumarc_14991993
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 434 read from file: gtumarc_9453167
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 435 read from file: gtumarc_7226538
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 436 read from file: gtumarc_45198601
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 437 read from file: gtumarc_11627725
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 438 read from file: gtumarc_2212094
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 439 read from file: gtumarc_678536321
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 440 read from file: gtumarc_678575622
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 441 read from file: gtumarc_17303062
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 442 read from file: gtumarc_319495375
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 443 read from file: gtumarc_678587076
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 444 read from file: gtumarc_1889675
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 445 read from file: gtumarc_30956361
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 446 read from file: gtumarc_7009494
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 447 read from file: gtumarc_11880224
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 448 read from file: gtumarc_42359171
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 449 read from file: gtumarc_5256379
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 450 read from file: gtumarc_679575859
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 451 read from file: gtumarc_35601062
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 452 read from file: gtumarc_679598226
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 453 read from file: gtumarc_679602310
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 454 read from file: gtumarc_45953914
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 455 read from file: gtumarc_33283637
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 456 read from file: gtumarc_14017107
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 457 read from file: gtumarc_b38598449
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 458 read from file: gtumarc_b38598450
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 459 read from file: gtumarc_b38598474
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 460 read from file: gtumarc_b38598486
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 461 read from file: gtumarc_b38598498
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 462 read from file: gtumarc_b3859853x
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 463 read from file: gtumarc_b38598656
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 464 read from file: gtumarc_b3859867x
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 465 read from file: gtumarc_b38599120
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 466 read from file: gtumarc_b38599132
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 467 read from file: gtumarc_b38599144
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 468 read from file: gtumarc_b38599156
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 469 read from file: gtumarc_b38599168
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 470 read from file: gtumarc_b3859917x
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 471 read from file: gtumarc_b38599284
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 472 read from file: gtumarc_b38599326
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 473 read from file: gtumarc_b38599399
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 474 read from file: gtumarc_b3860159x
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 475 read from file: gtumarc_b38601837
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 476 read from file: gtumarc_b38601849
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 477 read from file: gtumarc_b38601850
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 478 read from file: gtumarc_b38601886
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 479 read from file: gtumarc_b38603512
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 480 read from file: gtumarc_b38603536
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 481 read from file: gtumarc_b38611673
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 482 read from file: gtumarc_b38611685
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 483 read from file: gtumarc_b38611697
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 484 read from file: gtumarc_b38611703
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 485 read from file: gtumarc_b38611715
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 486 read from file: gtumarc_b38611727
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 487 read from file: gtumarc_b38611740
+Jan 16, 2013 12:40:42 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 488 read from file: gtumarc_b38611776
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 489 read from file: gtumarc_b38611818
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 490 read from file: gtumarc_b38611831
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 491 read from file: gtumarc_b38611867
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 492 read from file: gtumarc_b38611879
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 493 read from file: gtumarc_b38611892
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 494 read from file: gtumarc_b38611909
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 495 read from file: gtumarc_b38611910
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 496 read from file: gtumarc_b38611958
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 497 read from file: gtumarc_b38698572
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 498 read from file: gtumarc_b38698602
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 499 read from file: gtumarc_b38698626
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 500 read from file: gtumarc_b38698638
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 501 read from file: gtumarc_b3869864x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 502 read from file: gtumarc_b38698663
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 503 read from file: gtumarc_b38698687
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 504 read from file: gtumarc_b38698985
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 505 read from file: gtumarc_b38698997
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 506 read from file: gtumarc_b38699096
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 507 read from file: gtumarc_b38699151
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 508 read from file: gtumarc_b38699424
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+SEVERE: Unable to index record gtumarc_b38699436 (record count 509) -- ERROR: multiple values encountered for non multiValued field title_full: first='Mongitore, Antonino, 1663-1743' second='Memorie istoriche della fondazione del venerabil Monastero di S. Maria di Tutte le Grazie nella città di Palermo, detto di S. Vito, del terz'ordine di S. Francesco. : Con le vite de' suoi fondatori, e d'alcune religiose morte in esso con fama di Santità. / Scritte da D. Antonino Mongitore sacerdote Palermitano.  Dedicate alla grandezza del Signor D. Pietro Moncada, Principe di Monforte, Conte di Samperi, Barone di Tortorici, &c'
+org.apache.solr.common.SolrException: ERROR: multiple values encountered for non multiValued field title_full: first='Mongitore, Antonino, 1663-1743' second='Memorie istoriche della fondazione del venerabil Monastero di S. Maria di Tutte le Grazie nella città di Palermo, detto di S. Vito, del terz'ordine di S. Francesco. : Con le vite de' suoi fondatori, e d'alcune religiose morte in esso con fama di Santità. / Scritte da D. Antonino Mongitore sacerdote Palermitano.  Dedicate alla grandezza del Signor D. Pietro Moncada, Principe di Monforte, Conte di Samperi, Barone di Tortorici, &c'
+	at org.apache.solr.update.DocumentBuilder.addSingleField(DocumentBuilder.java:80)
+	at org.apache.solr.update.DocumentBuilder.addField(DocumentBuilder.java:101)
+	at org.apache.solr.update.DocumentBuilder.addField(DocumentBuilder.java:131)
+	at org.apache.solr.update.DocumentBuilder.addField(DocumentBuilder.java:114)
+	at org.solrmarc.solr.embedded.SolrServerEmbeddedImpl.add(SolrServerEmbeddedImpl.java:95)
+	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:46)
+	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:439)
+	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:383)
+	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:304)
+	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:572)
+	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:832)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.simontuffs.onejar.Boot.run(Boot.java:334)
+	at com.simontuffs.onejar.Boot.main(Boot.java:170)
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+SEVERE: ******** Halting indexing! ********
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 510 read from file: gtumarc_b38699461
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 511 read from file: gtumarc_b38699497
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 512 read from file: gtumarc_b38699540
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 513 read from file: gtumarc_b39247508
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 514 read from file: gtumarc_b39247557
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 515 read from file: gtumarc_b3924815x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 516 read from file: gtumarc_b39248239
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 517 read from file: gtumarc_b39254343
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 518 read from file: gtumarc_b39254392
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 519 read from file: gtumarc_b3925446x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 520 read from file: gtumarc_b39254483
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 521 read from file: gtumarc_b39254537
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 522 read from file: gtumarc_b39273477
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 523 read from file: gtumarc_b39273490
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 524 read from file: gtumarc_b39273520
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 525 read from file: gtumarc_b39275012
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 526 read from file: gtumarc_b39279017
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 527 read from file: gtumarc_b39279030
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 528 read from file: gtumarc_b39279054
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 529 read from file: gtumarc_b39279066 
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 530 read from file: gtumarc_b39279133
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 531 read from file: gtumarc_b39279145
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 532 read from file: gtumarc_b39279510
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 533 read from file: gtumarc_b39285388
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 534 read from file: gtumarc_b39285522
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 535 read from file: gtumarc_b39285558
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 536 read from file: gtumarc_b3928556x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 537 read from file: gtumarc_b39285704
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 538 read from file: gtumarc_b39285728
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 539 read from file: gtumarc_b39285911
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 540 read from file: gtumarc_b39285972
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 541 read from file: gtumarc_b39287051
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 542 read from file: gtumarc_b39287130
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 543 read from file: gtumarc_b39287348
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 544 read from file: gtumarc_b39287658
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 545 read from file: gtumarc_b39287725
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 546 read from file: gtumarc_b39288985
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 547 read from file: gtumarc_b39289023
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 548 read from file: gtumarc_b39289102
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 549 read from file: gtumarc_b39289138
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 550 read from file: gtumarc_b39289187
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 551 read from file: gtumarc_b39289266
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 552 read from file: gtumarc_b39290918
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 553 read from file: gtumarc_b39291030
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 554 read from file: gtumarc_b39291121
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 555 read from file: gtumarc_b39291492
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 556 read from file: gtumarc_b39291509
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 557 read from file: gtumarc_b39311314
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 558 read from file: gtumarc_b39311442
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 559 read from file: gtumarc_b39311673
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 560 read from file: gtumarc_b39314339
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 561 read from file: gtumarc_b39388542
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 562 read from file: gtumarc_b39388554
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 563 read from file: gtumarc_b39388773
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 564 read from file: gtumarc_b39390810
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 565 read from file: gtumarc_b39392594
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 566 read from file: gtumarc_b39392624
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 567 read from file: gtumarc_b39394591
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 568 read from file: gtumarc_b39394657
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 569 read from file: gtumarc_b39394670
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 570 read from file: gtumarc_b39395261
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 571 read from file: gtumarc_b39395297
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 572 read from file: gtumarc_b39395340
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 573 read from file: gtumarc_b39395443
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 574 read from file: gtumarc_b39413652
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 575 read from file: gtumarc_b39413664
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 576 read from file: gtumarc_b39413688
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 577 read from file: gtumarc_b39421806
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 578 read from file: gtumarc_b39421843
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 579 read from file: gtumarc_b39421855
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 580 read from file: gtumarc_b39421879
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 581 read from file: gtumarc_b39421892
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 582 read from file: gtumarc_b39421909
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 583 read from file: gtumarc_b39421910
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 584 read from file: gtumarc_b39421934
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 585 read from file: gtumarc_b39422021
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 586 read from file: gtumarc_b39422045
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 587 read from file: gtumarc_b3942439x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 588 read from file: gtumarc_b39424431
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 589 read from file: gtumarc_b39424467
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 590 read from file: gtumarc_b39424613
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 591 read from file: gtumarc_b39425307
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 592 read from file: gtumarc_b39425356
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 593 read from file: gtumarc_b39426336
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 594 read from file: gtumarc_b39451458
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 595 read from file: gtumarc_b3945146x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 596 read from file: gtumarc_b39451483
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 597 read from file: gtumarc_b39451495
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 598 read from file: gtumarc_b39451549
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 599 read from file: gtumarc_b3945163x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 600 read from file: gtumarc_b39460460
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 601 read from file: gtumarc_b39464933
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 602 read from file: gtumarc_b39464957
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 603 read from file: gtumarc_b39484567
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 604 read from file: gtumarc_b39485109
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 605 read from file: gtumarc_b39700471
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 606 read from file: gtumarc_b39700537
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 607 read from file: gtumarc_b39700549
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 608 read from file: gtumarc_b39700574
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 609 read from file: gtumarc_b39700616
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 610 read from file: gtumarc_b39700690
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 611 read from file: gtumarc_b39700720
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 612 read from file: gtumarc_b39700860
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 613 read from file: gtumarc_b39700872
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 614 read from file: gtumarc_b39700896
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 615 read from file: gtumarc_b39700926
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 616 read from file: gtumarc_b39701542
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 617 read from file: gtumarc_b39701633
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 618 read from file: gtumarc_b39701682
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 619 read from file: gtumarc_b39701700
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 620 read from file: gtumarc_b39701827
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 621 read from file: gtumarc_b39701852
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 622 read from file: gtumarc_b39701888
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 623 read from file: gtumarc_b39701955
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 624 read from file: gtumarc_b39703630
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 625 read from file: gtumarc_b39703897
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 626 read from file: gtumarc_b39703903
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 627 read from file: gtumarc_b39773437
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 628 read from file: gtumarc_b39773620
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 629 read from file: gtumarc_b39773711
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 630 read from file: gtumarc_b39773735
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 631 read from file: gtumarc_b39773747
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 632 read from file: gtumarc_b3978406x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 633 read from file: gtumarc_b39784071
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 634 read from file: gtumarc_b39784149
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 635 read from file: gtumarc_b39784459
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 636 read from file: gtumarc_b39784629
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 637 read from file: gtumarc_b39784642
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 638 read from file: gtumarc_b39784691
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 639 read from file: gtumarc_b39784770
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 640 read from file: gtumarc_b39784861
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 641 read from file: gtumarc_b39786912
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 642 read from file: gtumarc_b39787084
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 643 read from file: gtumarc_b39787102
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 644 read from file: gtumarc_b39787369
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 645 read from file: gtumarc_b3978745x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 646 read from file: gtumarc_b39787527
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 647 read from file: gtumarc_b39788702
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 648 read from file: gtumarc_b39788751
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 649 read from file: gtumarc_b39789330
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 650 read from file: gtumarc_b3979698x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 651 read from file: gtumarc_b39797296
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 652 read from file: gtumarc_b3979748x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 653 read from file: gtumarc_b39797648
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 654 read from file: gtumarc_b39797673
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 655 read from file: gtumarc_b39831231
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 656 read from file: gtumarc_b39831279
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 657 read from file: gtumarc_b39831322
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 658 read from file: gtumarc_b39831346
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 659 read from file: gtumarc_b39831413
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 660 read from file: gtumarc_b39831437
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 661 read from file: gtumarc_b39831486
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 662 read from file: gtumarc_b39831826
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 663 read from file: gtumarc_b39831917
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 664 read from file: gtumarc_b39848085
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 665 read from file: gtumarc_b39848188
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 666 read from file: gtumarc_b39848255
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 667 read from file: gtumarc_b39848413
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 668 read from file: gtumarc_b39848887
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 669 read from file: gtumarc_b39853810
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 670 read from file: gtumarc_b39854024
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 671 read from file: gtumarc_b39854085
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 672 read from file: gtumarc_b39854152
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 673 read from file: gtumarc_b39854267
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 674 read from file: gtumarc_b39871290
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 675 read from file: gtumarc_b39871320
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 676 read from file: gtumarc_b39888083
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 677 read from file: gtumarc_b39888101
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 678 read from file: gtumarc_b39888125
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 679 read from file: gtumarc_b39888253
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 680 read from file: gtumarc_b39888319
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 681 read from file: gtumarc_b39888496
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 682 read from file: gtumarc_b39888708
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 683 read from file: gtumarc_b39888745
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 684 read from file: gtumarc_b39888939
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 685 read from file: gtumarc_b39889002
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 686 read from file: gtumarc_b39889063
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 687 read from file: gtumarc_b39889099
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 688 read from file: gtumarc_b39889117
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 689 read from file: gtumarc_b39927945
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 690 read from file: gtumarc_b39927970
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 691 read from file: gtumarc_b39928044
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 692 read from file: gtumarc_b3992824x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 693 read from file: gtumarc_b39928263
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 694 read from file: gtumarc_b39928688
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 695 read from file: gtumarc_b39928731
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 696 read from file: gtumarc_b39929851
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 697 read from file: gtumarc_b39930014
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 698 read from file: gtumarc_b39930038
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 699 read from file: gtumarc_b39930063
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 700 read from file: gtumarc_b39951637
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 701 read from file: gtumarc_b39951741
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 702 read from file: gtumarc_b39964528
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 703 read from file: gtumarc_b39964620
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 704 read from file: gtumarc_b4002345x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 705 read from file: gtumarc_b40023989
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 706 read from file: gtumarc_b40024088
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 707 read from file: gtumarc_b40024118
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 708 read from file: gtumarc_b40024155
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 709 read from file: gtumarc_b40024519
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 710 read from file: gtumarc_b40024532
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 711 read from file: gtumarc_b40024878
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 712 read from file: gtumarc_b40024933
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 713 read from file: gtumarc_b40026607
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 714 read from file: gtumarc_b40028951
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 715 read from file: gtumarc_b40029013
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 716 read from file: gtumarc_b40029025
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 717 read from file: gtumarc_b40029372
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 718 read from file: gtumarc_b40029578
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 719 read from file: gtumarc_b4002961x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 720 read from file: gtumarc_b40029712
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 721 read from file: gtumarc_b40031767
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 722 read from file: gtumarc_b4004564x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 723 read from file: gtumarc_b40045778
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 724 read from file: gtumarc_b40046138
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 725 read from file: gtumarc_b40064517
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 726 read from file: gtumarc_b4006475x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 727 read from file: gtumarc_b40065340
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 728 read from file: gtumarc_b40066010
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 729 read from file: gtumarc_b40066083
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 730 read from file: gtumarc_b40066770
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 731 read from file: gtumarc_b40066873
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 732 read from file: gtumarc_b40066897
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 733 read from file: gtumarc_b40067026
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 734 read from file: gtumarc_b40067075
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 735 read from file: gtumarc_b40067427
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 736 read from file: gtumarc_b40121410
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 737 read from file: gtumarc_b40121434
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 738 read from file: gtumarc_b40133151
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 739 read from file: gtumarc_b40133163
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 740 read from file: gtumarc_b4013345x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 741 read from file: gtumarc_b4014530x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 742 read from file: gtumarc_b40145360
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 743 read from file: gtumarc_b40145505
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 744 read from file: gtumarc_b40146017
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 745 read from file: gtumarc_b40146054
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 746 read from file: gtumarc_b40146066
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 747 read from file: gtumarc_b40146650
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 748 read from file: gtumarc_b40146996
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 749 read from file: gtumarc_b40147204
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 750 read from file: gtumarc_b40147745
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 751 read from file: gtumarc_b40147770
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 752 read from file: gtumarc_b40147812
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 753 read from file: gtumarc_b40147836
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 754 read from file: gtumarc_b40147927
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 755 read from file: gtumarc_b40150513
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 756 read from file: gtumarc_b40150987
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 757 read from file: gtumarc_b40151244
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 758 read from file: gtumarc_b40151256
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 759 read from file: gtumarc_b40174074
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 760 read from file: gtumarc_b40174086
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 761 read from file: gtumarc_b40326834
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 762 read from file: gtumarc_b40326871
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 763 read from file: gtumarc_b40326883
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 764 read from file: gtumarc_b40326986
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 765 read from file: gtumarc_b40327036
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 766 read from file: gtumarc_b4032719x
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 767 read from file: gtumarc_b40327553
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 768 read from file: gtumarc_b40398031
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 769 read from file: gtumarc_b40398109
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 770 read from file: gtumarc_b40398997
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 771 read from file: gtumarc_b40442998
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 772 read from file: gtumarc_b40489589
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 771 of 772 documents to index
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jan 16, 2013 12:40:43 PM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jan 16, 2013 12:40:44 PM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jan 16, 2013 12:40:44 PM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jan 16, 2013 12:40:44 PM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jan 16, 2013 12:41:49 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jan 16, 2013 12:41:49 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jan 16, 2013 12:41:49 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">65209</int></lst>
+Jan 16, 2013 12:41:49 PM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Jan 16, 2013 12:41:49 PM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook
+Jan 16, 2013 12:41:49 PM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Finished Shutdown hook

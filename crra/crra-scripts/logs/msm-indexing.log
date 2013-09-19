@@ -1,0 +1,282 @@
+Jun 13, 2013 11:14:27 AM org.solrmarc.marc.MarcImporter main
+INFO: Starting SolrMarc indexing.
+Jun 13, 2013 11:14:27 AM org.solrmarc.tools.Utils getPropertyFileInputStream
+INFO: Opening file: /shared/cportal_prod/data/vufind/import/import.properties
+Jun 13, 2013 11:14:27 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:  Updating to Solr index at /shared/cportal_prod/data/vufind/solr
+Jun 13, 2013 11:14:27 AM org.solrmarc.marc.MarcImporter getSolrServerProxy
+INFO:      Using Solr core biblio
+Jun 13, 2013 11:14:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the multicore schema file at : /shared/cportal_prod/data/vufind/solr/solr.xml
+Jun 13, 2013 11:14:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the biblio core
+Jun 13, 2013 11:14:27 AM org.solrmarc.solr.SolrCoreLoader loadEmbeddedCore
+INFO: Using the data directory of: /shared/cportal_prod/data/vufind/solr/biblio
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcHandler loadReader
+INFO: Attempting to open data file: /shared/cportal_prod/data/crra/marc-updated/msm.marc
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 1 read from file: msmmarc_PamphletsVol2Pt1
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 2 read from file: msmmarc_PamphletsVol2Pt2
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 3 read from file: msmmarc_PamphletsVol2Pt3
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 4 read from file: msmmarc_PamphletsVol2Pt4
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 5 read from file: msmmarc_PamphletsVol2Pt5
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 6 read from file: msmmarc_PamphletsVol2Pt6
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 7 read from file: msmmarc_PamphletsVol2Pt7
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 8 read from file: msmmarc_ShanahanVol1
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 9 read from file: msmmarc_ShanahanVol2
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 10 read from file: msmmarc_PamphletsVol3Pt
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 11 read from file: msmmarc_PamphletsVol3Pt2
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 12 read from file: msmmarc_PamphletsVol3Pt3
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 13 read from file: msmmarc_PamphletsVol3Pt4
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 14 read from file: msmmarc_PamphletsVol3Pt5
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 15 read from file: msmmarc_PamphletsVol3Pt5a
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 16 read from file: msmmarc_PamphletsVol3Pt6
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 17 read from file: msmmarc_PamphletsVol3Pt7
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 18 read from file: msmmarc_PamphletsVol3Pt8
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 19 read from file: msmmarc_PamphletsVol3Pt9
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 20 read from file: msmmarc_PamphletsVol3Pt10
+Jun 13, 2013 11:14:28 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 21 read from file: msmmarc_PamphletsVol3Contents
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 22 read from file: msmmarc_PamphletsVol4Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 23 read from file: msmmarc_PamphletsVol4Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 24 read from file: msmmarc_PamphletsVol4Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 25 read from file: msmmarc_PamphletsVol4Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 26 read from file: msmmarc_PamphletsVol4Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 27 read from file: msmmarc_PamphletsVol4Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 28 read from file: msmmarc_PamphletsVol4Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 29 read from file: msmmarc_PamphletsVol4Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 30 read from file: msmmarc_PamphletsVol4Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 31 read from file: msmmarc_PamphletsVol4Pt10
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 32 read from file: msmmarc_PamphletsVol4Pt11
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 33 read from file: msmmarc_PamphletsVol4Contents
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 34 read from file: msmmarc_PamphletsVol7Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 35 read from file: msmmarc_PamphletsVol7Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 36 read from file: msmmarc_PamphletsVol7Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 37 read from file: msmmarc_PamphletsVol7Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 38 read from file: msmmarc_PamphletsVol7Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 39 read from file: msmmarc_PamphletsVol7Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 40 read from file: msmmarc_PamphletsVol7Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 41 read from file: msmmarc_PamphletsVol7Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 42 read from file: msmmarc_PamphletsVol7Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 43 read from file: msmmarc_PamphletsVol7Pt12
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 44 read from file: msmmarc_PamphletsVol7Pt13
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 45 read from file: msmmarc_PamphletsVol7Pt14
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 46 read from file: msmmarc_PamphletsVol7Pt15
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 47 read from file: msmmarc_PamphletsVol7Pt16
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 48 read from file: msmmarc_PamphletsVol7Pt18
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 49 read from file: msmmarc_PamphletsVol7Pt17
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 50 read from file: msmmarc_PamphletsVol8Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 51 read from file: msmmarc_PamphletsVol8Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 52 read from file: msmmarc_PamphletsVol8Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 53 read from file: msmmarc_PamphletsVol8Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 54 read from file: msmmarc_PamphletsVol8Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 55 read from file: msmmarc_PamphletsVol8Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 56 read from file: msmmarc_PamphletsVol8Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 57 read from file: msmmarc_PamphletsVol8Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 58 read from file: msmmarc_PamphletsVol8Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 59 read from file: msmmarc_PamphletsVol8Pt10
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 60 read from file: msmmarc_PamphletsVol8Pt11
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 61 read from file: msmmarc_PamphletsVol8Pt12
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 62 read from file: msmmarc_PamphletsVol8Pt13
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 63 read from file: msmmarc_PamphletsVol8Pt14
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 64 read from file: msmmarc_PamphletsVol8Pt15
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 65 read from file: msmmarc_PamphletsVol8Pt16
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 66 read from file: msmmarc_PamphletsVol9Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 67 read from file: msmmarc_PamphletsVol9Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 68 read from file: msmmarc_PamphletsVol9Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 69 read from file: msmmarc_PamphletsVol9Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 70 read from file: msmmarc_PamphletsVol9Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 71 read from file: msmmarc_PamphletsVol10Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 72 read from file: msmmarc_PamphletsVol10Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 73 read from file: msmmarc_PamphletsVol10Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 74 read from file: msmmarc_PamphletsVol10Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 75 read from file: msmmarc_PamphletsVol10Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 76 read from file: msmmarc_PamphletsVol10Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 77 read from file: msmmarc_PamphletsVol10Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 78 read from file: msmmarc_PamphletsVol11Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 79 read from file: msmmarc_PamphletsVol11Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 80 read from file: msmmarc_PamphletsVol11Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 81 read from file: msmmarc_PamphletsVol11Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 82 read from file: msmmarc_PamphletsVol11Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 83 read from file: msmmarc_PamphletsVol11Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 84 read from file: msmmarc_PamphletsVol11Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 85 read from file: msmmarc_PamphletsVol11Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 86 read from file: msmmarc_PamphletsNotBound1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 87 read from file: msmmarc_PamphletsNotBound2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 88 read from file: msmmarc_PamphletsNotBound3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 89 read from file: msmmarc_PamphletsVol12Pt10
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 90 read from file: msmmarc_PamphletsVol12Pt11
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 91 read from file: msmmarc_PamphletsVol12Pt12
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 92 read from file: msmmarc_PamphletsVol12Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 93 read from file: msmmarc_PamphletsVol12Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 94 read from file: msmmarc_PamphletsVol12Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 95 read from file: msmmarc_PamphletsVol12Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 96 read from file: msmmarc_PamphletsVol12Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 97 read from file: msmmarc_PamphletsVol12Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 98 read from file: msmmarc_PamphletsVol12Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 99 read from file: msmmarc_PamphletsVol12Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 100 read from file: msmmarc_PamphletsVol12Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 101 read from file: msmmarc_PamphletsVol13Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 102 read from file: msmmarc_PamphletsVol13Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 103 read from file: msmmarc_PamphletsVol13Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 104 read from file: msmmarc_PamphletsVol13Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 105 read from file: msmmarc_PamphletsVol13Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 106 read from file: msmmarc_PamphletsVol13Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 107 read from file: msmmarc_PamphletsVol13Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 108 read from file: msmmarc_PamphletsVol13Pt10
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 109 read from file: msmmarc_PamphletsVol13Pt11
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 110 read from file: msmmarc_PamphletsVol13Pt12
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 111 read from file: msmmarc_PamphletsVol14Pt1
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 112 read from file: msmmarc_PamphletsVol14Pt2
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 113 read from file: msmmarc_PamphletsVol14Pt3
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 114 read from file: msmmarc_PamphletsVol14Pt4
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 115 read from file: msmmarc_PamphletsVol14Pt5
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 116 read from file: msmmarc_PamphletsVol14Pt6
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 117 read from file: msmmarc_PamphletsVol14Pt7
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 118 read from file: msmmarc_PamphletsVol14Pt8
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 119 read from file: msmmarc_PamphletsVol14Pt9
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 120 read from file: msmmarc_PamphletsVol14Pt10
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 121 read from file: msmmarc_PamphletsVol14Pt11
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter importRecords
+INFO: Added record 122 read from file: msmmarc_PamphletsVol14Pt12
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Adding 122 of 122 documents to index
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter handleAll
+INFO:  Deleting 0 documents from index
+Jun 13, 2013 11:14:29 AM org.solrmarc.marc.MarcImporter finish
+INFO: Calling commit (with optimize set to false)
+Jun 13, 2013 11:14:30 AM org.solrmarc.marc.MarcImporter finish
+INFO: Done with the commit, closing Solr
+Jun 13, 2013 11:14:30 AM org.solrmarc.marc.MarcImporter finish
+INFO: Setting Solr closed flag
+Jun 13, 2013 11:14:30 AM org.solrmarc.marc.MarcImporter signalServer
+INFO: Connecting to solr server at URL: http://localhost:8081/solr/biblio/update
+Jun 13, 2013 11:14:30 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <?xml version="1.0" encoding="UTF-8"?>
+Jun 13, 2013 11:14:30 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <response>
+Jun 13, 2013 11:14:30 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: <lst name="responseHeader"><int name="status">0</int><int name="QTime">49</int></lst>
+Jun 13, 2013 11:14:30 AM org.solrmarc.tools.SolrUpdate signalServer
+INFO: </response>
+Jun 13, 2013 11:14:30 AM org.solrmarc.marc.MarcImporter$MyShutdownThread run
+INFO: Starting Shutdown hook
