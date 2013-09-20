@@ -43,6 +43,7 @@ foreach my $key ( sort keys %$libraries ) {
 	if ( ! $response->is_success ) { die $response->status_line }
 		
 	# save it
+	# changed file name to .mrc as vufind-2.1 only accepts mrc format.(vufind-2.1)	
 	open OUTPUT, " > " . NEW . "$key.mrc" or die "Can't open ", NEW . "$key.mrc: $!\n";
 	print OUTPUT $response->content;
 	#print OUTPUT encode( 'UTF-8', $response->content );

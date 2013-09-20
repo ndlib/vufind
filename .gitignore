@@ -6,3 +6,9 @@ ChangeLog
 TAGS
 *~
 vendor/.git
+/solr/biblio/index
+/solr/biblio/spellchecker
+/solr/biblio/spellShingle
+/solr/biblio/tlog
+/crra/marc-incoming/ctu.mrc
+/crra/marc-updated/ctu.mrc
