@@ -45,7 +45,7 @@ Library: <a href='http://www.catholicresearch.net/data/directory.html#<?=$this->
 Call number: <?=$callNumber ?><br/>
 <? endif; ?>
 <? if (!empty($urls) || $openUrl): ?>
-  <h3><?=$this->transEsc("Internet")?></h3>
+  <h3><?//=$this->transEsc("Internet")?></h3>  
   <? if (!empty($urls)): ?>
     <? foreach ($urls as $current): ?>
       <a href="<?=$this->escapeHtml($this->proxyUrl($current['url']))?>"><?=$this->escapeHtml($current['desc'])?></a><br/>

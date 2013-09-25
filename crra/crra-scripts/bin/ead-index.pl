@@ -20,10 +20,10 @@
 
 # configure
 use constant VERBOSE     => 1;
-use constant DB          => '/shared/cportal_prod/data/crra/crra-scripts/etc/libraries.db';
+use constant DB          => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
 use constant FORMAT      => 'Archival material';
-use constant EAD         => '/shared/cportal_prod/data/html/data/ead/xml/';
-use constant SOLR        => 'http://localhost:8081/solr/biblio';
+use constant EAD         => 'C:\vufind-2.1\crra\data\html\data\ead\xml\\';
+use constant SOLR        => 'http://localhost:8080/solr/biblio';
 use constant TYPE        => 'ead';
 use constant WEBROOT     => 'http://www.catholicresearch.net/data/ead/html/';
 use constant FULLRECORD  => "<record><url description='View finding aid at owning institution'>##REMOTEURL##</url><url description='View finding aid in Portal display'>##LOCALURL##</url></record>";
@@ -35,7 +35,7 @@ use strict;
 use XML::XPath;
 use WebService::Solr;
 use Digest::MD5 qw( md5 );
-require '/shared/cportal_prod/data/crra/crra-scripts/lib/subroutines.pl';
+require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
 
 # initialize
 my $solr      = WebService::Solr->new( SOLR );

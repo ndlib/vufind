@@ -18,10 +18,17 @@ $config = array(
                         );
                         return $driver;
                     },
+					'solread' => function ($sm) {
+                        $driver = new \CRRA_Module\RecordDriver\SolrEad(
+                            $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
+                            null,
+                            $sm->getServiceLocator()->get('VuFind\Config')->get('searches')
+                        );
+						return $driver;						
+                    },
                 )
             ),
         ),
     ),
 );
-
 return $config;

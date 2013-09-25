@@ -15,7 +15,7 @@
 use constant AGENT  => 'MARCGetter';
 use constant ACCEPT => 'text/plain, text/html, text/xml';
 use constant DB     => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant NEW    => 'C:\vufind-2.1\crra\marc-incoming\\' ;
+use constant NEW    => 'C:\vufind-2.1\crra\data\marc-incoming\\' ;
 
 # require
 use strict;

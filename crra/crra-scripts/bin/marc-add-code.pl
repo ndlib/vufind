@@ -10,8 +10,8 @@
 
 # configure
 use constant DB      => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant NEW     => 'C:\vufind-2.1\crra\marc-incoming\\';
-use constant UPDATED => 'C:\vufind-2.1\crra\marc-updated\\';
+use constant NEW     => 'C:\vufind-2.1\crra\data\marc-incoming\\';
+use constant UPDATED => 'C:\vufind-2.1\crra\data\marc-updated\\';
 use constant TYPE    => 'marc';
 
 # require

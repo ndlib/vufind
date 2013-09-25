@@ -23,8 +23,14 @@ class SolrMarc extends \VuFind\RecordDriver\SolrMarc
     {
         return false;
     }
-
-
+	public function getScopeContent()
+    {
+		 return false;
+    }
+	public function getBiogHist()
+    {
+		 return false;
+    }
 
 }
 ?>

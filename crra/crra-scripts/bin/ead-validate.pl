@@ -10,11 +10,11 @@
 
 
 # define constants
-use constant CACHE   => '/shared/cportal_prod/data/crra/ead-incoming/';
-use constant DB      => '/shared/cportal_prod/data/crra/crra-scripts/etc/libraries.db';
-use constant DTD     => '/shared/cportal_prod/data/crra/crra-scripts/etc/ead.dtd';
-use constant SCHEMA  => '/shared/cportal_prod/data/crra/crra-scripts/etc/ead.xsd';
-use constant GETURL  => '/shared/cportal_prod/data/crra/crra-scripts/etc/geturl.xsl';
+use constant CACHE   => 'C:\vufind-2.1\crra\data\ead-incoming\\' ;
+use constant DB      => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
+use constant DTD     => 'C:\vufind-2.1\crra\crra-scripts\etc\ead.dtd';
+use constant SCHEMA  => 'C:\vufind-2.1\crra\crra-scripts\etc\ead.xsd';
+use constant GETURL  => 'C:\vufind-2.1\crra\crra-scripts\etc\geturl.xsl';
 use constant INVALID => 'invalid/';
 use constant NOURL   => 'nourl/';
 
@@ -23,7 +23,7 @@ use File::Copy;
 use strict;
 use XML::LibXML;
 use XML::LibXSLT;
-require '/shared/cportal_prod/data/crra/crra-scripts/lib/subroutines.pl';
+require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

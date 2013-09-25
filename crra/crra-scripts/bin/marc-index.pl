@@ -15,7 +15,7 @@ use constant DB         => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
 use constant PROPERTIES => 'C:\vufind-2.1\import\marc_local.properties';
 use constant SOLR       => 'http://localhost:8080/solr/biblio';
 use constant TEMPLATE   => 'C:\vufind-2.1\local\import\template.txt';
-use constant UPDATED    => 'C:\vufind-2.1\crra\marc-updated\\';
+use constant UPDATED    => 'C:\vufind-2.1\crra\data\marc-updated\\';
 use constant LOGS       => 'C:\vufind-2.1\crra\crra-scripts\logs\\';
 use constant TYPE       => 'marc';
 
