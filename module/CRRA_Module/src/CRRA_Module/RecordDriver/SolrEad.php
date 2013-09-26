@@ -1,98 +1,151 @@
 <?php
+/**
+ * Model for EAD records in Solr.
+ *
+ * PHP version 5
+ *
+ * Copyright (C) Villanova University 2010.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @category VuFind2
+ * @package  RecordDrivers
+ * @author   Demian Katz <demian.katz@villanova.edu>
+ * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * @link     http://vufind.org/wiki/vufind2:record_drivers Wiki
+ */
 namespace CRRA_Module\RecordDriver;
+/**
+ * CRRA EAD Record Driver
+ *
+ * This class is designed to handle CRRA EAD records. Much of its functionality
+ * is inherited from the default index-based driver.
+ * 
+ * @category VuFind2
+ * @package  RecordDrivers
+ * @author   Demian Katz <demian.katz@villanova.edu>
+ * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * @link     http://vufind.org/wiki/vufind2:record_drivers Wiki
+ */
 class SolrEad extends \VuFind\RecordDriver\SolrDefault
 {
-	
-
-
-	// extract the urls from the full record
-	public function getURLs()
-	{
-
-		// initialize
-		$urls   = array();
-		$parser = new \DOMXPath( \DOMDocument::loadXML( $this->fields[ 'fullrecord' ]));
-		
-		// process all the urls
-		$results = $parser->query( '//url' );
-		foreach ($results as $result) {
-			$urls[] = array(
-				'url' => $result->nodeValue,
-                'desc' => $result->getAttribute( 'description' )
-			);
-		}
-		
-		// done
-		return $urls;
-
-	}
-
-	/**
-	 * Assign necessary Smarty variables and return a template name to 
-	 * load in order to display holdings extracted from the base record 
-	 * (i.e. URLs in MARC 856 fields) and, if necessary, the ILS driver.
-	 * Returns null if no data is available.
-	 *
-	 * @access  public
-	 * @return  string              Name of Smarty template file to display.
-	 */
-   
-   /**
-    * Get all subject headings associated with this record.  Each heading is
-    * returned as an array of chunks, increasing from least specific to most
-    * specific.
-    *
-    * @return array
-    * @access protected
-    */
-   public function getAllSubjectHeadings()
-   {
-       $retVal = array();
-       if (isset($this->fields['topic'])) {
-           foreach ($this->fields['topic'] as $current) {
-               $retVal[] = explode('--', $current);
-           }
-       }
-       return $retVal;
-   }
-
-
-	public function getScopeContent()
+    /**    
+     * extract the urls from the full record.
+     *
+     * @return array
+     */
+    public function getURLs()
     {
-        // added by ELM (October 4, 2012)
-		 return isset($this->fields['crra_scopecontent_str'])
-            ? $this->fields['crra_scopecontent_str'] : '';
-     //   return $this->fields['crra_scopecontent_str'];
-    }
+        // initialize
+        $urls   = array();
+        $parser = new \DOMXPath(\DOMDocument::loadXML($this->fields['fullrecord']));
+         
+        // process all the urls
+        $results = $parser->query('//url');
+        foreach ($results as $result) {
+            $urls[] = array(
+                'url' => $result->nodeValue,
+                'desc' => $result->getAttribute('description')
+            );
+        }
+         
+        // done
+        return $urls;
 
-   public function getBiogHist()
-   {
-        // added by ELM (October 3, 2012)
-        return isset($this->fields['crra_bioghist_str'])
-            ? $this->fields['crra_bioghist_str'] : '';
-		//return $this->fields['crra_bioghist_str'];
+    }	
+    
+    /**
+     * Get all subject headings associated with this record.  Each heading is
+     * returned as an array of chunks, increasing from least specific to most
+     * specific.
+     *
+     * @return array
+     * @access public
+     */
+    public function getAllSubjectHeadings()
+    {
+        $retVal = array();
+        if (isset($this->fields['topic'])) {
+            foreach ($this->fields['topic'] as $current) {
+                $retVal[] = explode('--', $current);
+            }
+        }
+        return $retVal;
     }
- public function getCRRALibrary()
+     
+    /**    
+     * Get scope content for the CRRA EAD record.
+     *
+     * @return string
+     */
+    public function getScopeContent()
+    {
+        return isset($this->fields['crra_scopecontent_str'])
+            ? $this->fields['crra_scopecontent_str'] : '';
+    }
+    
+    /**    
+     * Get Biographical History for the CRRA EAD record.
+     *
+     * @return string
+     */
+    public function getBiogHist()
+    {
+         return isset($this->fields['crra_bioghist_str'])
+            ? $this->fields['crra_bioghist_str'] : '';
+    }
+    
+    /**    
+     * Get library name for the CRRA EAD record.
+     *
+     * @return string
+     */
+    public function getCRRALibrary()
     {
         return $this->fields['building'][0];
     }
-    
+     
+    /**
+     * Get institution name for the CRRA EAD record.
+     *
+     * @return string
+     */
     public function getCRRAInstitution()
     {
         return $this->fields['institution'][0];
 
     }
-
-	public function getCRRAKey()
+     
+    /**
+     * Get the unique id for the CRRA EAD record.
+     *
+     * @return id
+     */
+    public function getCRRAKey()
     {
-        return substr ($this->fields['id'], 0, 3 );
+        return substr($this->fields['id'], 0, 3);
 
     }
-
-	public function supportsAjaxStatus()
+     
+    /**
+     * Turn off the Ajax status for CRRA portal.
+     * 
+     * @return false
+     */
+    public function supportsAjaxStatus()
     {
         return false;
     }
-
 }
 ?>

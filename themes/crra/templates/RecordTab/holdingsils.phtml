@@ -36,14 +36,16 @@
 <? $holdingTitleHold = $this->driver->tryMethod('getRealTimeTitleHold'); if (!empty($holdingTitleHold)): ?>
     <a class="holdPlace" href="<?=$this->recordLink()->getHoldUrl($holdingTitleHold)?>"><?=$this->transEsc('title_hold_place')?></a>
 <? endif; ?>
-<!-- added call number ELM (11/9/2010) -->
+<!-- added library, institution and unique key for CRRA records -->
 <? $crraLibrary = $this->driver->tryMethod('getCRRALibrary'); if ($crraLibrary): ?>
-<h3>Location</h3>
-Library: <a href='http://www.catholicresearch.net/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
+  <h3>Location</h3>
+  Library: <a href='http://www.catholicresearch.net/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
 <? endif; ?>
+<!-- added call number for CRRA records -->
 <? $callNumber = $this->driver->trymethod( 'getCallNumber'); if($callNumber):?>
-Call number: <?=$callNumber ?><br/>
+  Call number: <?=$callNumber ?><br/>
 <? endif; ?>
+<!-- commented out Internet heading for CRRA portal -->
 <? if (!empty($urls) || $openUrl): ?>
   <h3><?//=$this->transEsc("Internet")?></h3>  
   <? if (!empty($urls)): ?>

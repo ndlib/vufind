@@ -47,26 +47,26 @@
     </tr>
   <? endif; ?>
   
-   <!-- added by ELM (October 3, 2012) -->
-  <? $scopeContent = $this->driver->getScopeContent(); if (!empty($scopeContent)): ?>
-   <? $contentDisplayed = true; ?>
-  <tr valign="top">
-    <th><?=$this->transEsc('Scope content')?>: </th>
-    <td>
-          <?=$this->escapeHtml($scopeContent)?><br/>
-    </td>
-  </tr>
+   <!-- added Scope Content for CRRA EAD records -->
+  <? $scopeContent = $this->driver->tryMethod('getScopeContent'); if (!empty($scopeContent)): ?>
+    <? $contentDisplayed = true; ?>
+    <tr valign="top">
+      <th><?=$this->transEsc('Scope content')?>: </th>
+      <td>
+        <?=$this->escapeHtml($scopeContent)?><br/>
+      </td>
+    </tr>
   <? endif; ?>
 
-  <!-- added by ELM (October 3, 2012) -->
-   <? $biogHist = $this->driver->getBiogHist(); if (!empty($biogHist)): ?>
-   <? $contentDisplayed = true; ?>
-  <tr valign="top">
-    <th> <?=$this->transEsc('Biographical history')?>: </th>
-    <td>
-          <?=$this->escapeHtml($biogHist)?><br/>
-    </td>
-  </tr>
+  <!-- added Biographical history for CRRA EAD records -->
+  <? $biogHist = $this->driver->tryMethod('getBiogHist'); if (!empty($biogHist)): ?>
+    <? $contentDisplayed = true; ?>
+    <tr valign="top">
+      <th> <?=$this->transEsc('Biographical history')?>: </th>
+      <td>
+        <?=$this->escapeHtml($biogHist)?><br/>
+      </td>
+    </tr>
   <? endif; ?>
 
   <? $physical = $this->driver->getPhysicalDescriptions(); if (!empty($physical)): ?>

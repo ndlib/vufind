@@ -1,6 +1,6 @@
 <?php
 /**
- * Model for MARC records in Solr.
+ * Model for Past Perfect records in Solr.
  *
  * PHP version 5
  *
@@ -27,19 +27,62 @@
  */
 namespace CRRA_Module\RecordDriver;
 /**
- * Model for MARC records in Solr for CRRA_Module.
+ * CRRA Past perfect Record Driver
  *
+ * This class is designed to handle CRRA EAD records. Much of its functionality
+ * is inherited from the default index-based driver.
+ * 
  * @category VuFind2
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     http://vufind.org/wiki/vufind2:record_drivers Wiki
  */
-    
-class SolrMarc extends \VuFind\RecordDriver\SolrMarc
+class SolrPp extends \VuFind\RecordDriver\SolrDefault
 {
     /**    
-     * Get library name for the CRRA Marc record.
+     * extract the urls from the full record.
+     *
+     * @return array
+     */
+    public function getURLs()
+    {
+        // initialize
+        $urls   = array();
+        $parser = new \DOMXPath(\DOMDocument::loadXML($this->fields['fullrecord']));
+         
+        // process all the urls
+        $results = $parser->query('//url');
+        foreach ($results as $result) {
+            $urls[] = array(
+                'url' => $result->nodeValue,
+                'desc' => $result->getAttribute('description')
+            );
+        }
+         
+        // done
+        return $urls;
+    }	
+    
+    /**
+     * Get all subject headings associated with this record.  Each heading is
+     * returned as an array of chunks, increasing from least specific to most
+     * specific.
+     *
+     * @return array
+     * @access public
+     */
+    public function getAllSubjectHeadings()
+    {
+        $headings = parent::getAllSubjectHeadings();
+	   for ($i = 0; $i < count($headings); $i++) {
+		   $headings[$i] = explode('--', $headings[$i][0]);
+	   }
+	   return $headings;
+    }
+    
+    /**    
+     * Get library name for the CRRA Past Perfect record.
      *
      * @return string
      */
@@ -47,9 +90,9 @@ class SolrMarc extends \VuFind\RecordDriver\SolrMarc
     {
         return $this->fields['building'][0];
     }
-    
+     
     /**
-     * Get institution name for the CRRA Marc record.
+     * Get institution name for the CRRA Past Perfect record.
      *
      * @return string
      */
@@ -58,9 +101,9 @@ class SolrMarc extends \VuFind\RecordDriver\SolrMarc
         return $this->fields['institution'][0];
 
     }
-    
+     
     /**
-     * Get the unique id for the CRRA Marc record.
+     * Get the unique id for the CRRA Past Perfect record.
      *
      * @return id
      */
@@ -69,15 +112,5 @@ class SolrMarc extends \VuFind\RecordDriver\SolrMarc
         return substr($this->fields['id'], 0, 3);
 
     }
-    
-    /**
-     * Turn off the Ajax status for CRRA portal.
-     * 
-     * @return false
-     */
-    public function supportsAjaxStatus()
-    {
-        return false;
-    }	
 }
 ?>

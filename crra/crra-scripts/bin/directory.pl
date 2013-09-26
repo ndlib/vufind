@@ -8,13 +8,13 @@
 
 
 # define
-use constant DB   => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\etc\libraries.db';
-use constant HTML => 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\directory.html';
+use constant DB   => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
+use constant HTML => 'C:\vufind-2.1\crra\data\html\data\directory.html';
 
 # include
 use CGI;
 use strict;
-require 'C:\Users\psinghvi\Desktop\vufind\CRRA_Pragya\crra-scripts\lib\subroutines.pl';
+require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
 
 # initialize
 my $libraries = &read_institutions( DB, [ @ARGV ] );
