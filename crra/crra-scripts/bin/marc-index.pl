@@ -10,9 +10,9 @@
 
 # configure
 # changed command parameter as per vufind-2.1 and rather than changing import properties, changes are dine in marc_local_properties.Changed the template.txt file as per marc_local.properties. (vufind-2.1)
-use constant CMD        => "\"C:\\Program Files\\Java\\jdk1.7.0_25\\bin\\java\" -Xms512m -Xmx512m -Duser.timezone=UTC -Dsolr.core.name=biblio -Dsolr.path=REMOTE -Dsolr.solr.home=C:\\vufind-2.1\\solr -Dsolrmarc.path=C:\\vufind-2.1\\import -jar C:\\vufind-2.1\\import\\SolrMarc.jar C:\\vufind-2.1\\import\\import.properties ##MARC## 2> ##LOG##";
+use constant CMD        => "\"C:\\Program Files\\Java\\jdk1.7.0_25\\bin\\java\" -Xms512m -Xmx512m -Duser.timezone=UTC -Dsolr.core.name=biblio -Dsolr.path=REMOTE -Dsolr.solr.home=C:\\vufind-2.1\\solr -Dsolrmarc.path=C:\\vufind-2.1\\import -jar C:\\vufind-2.1\\import\\SolrMarc.jar C:\\vufind-2.1\\local\\import\\import.properties ##MARC## 2> ##LOG##";
 use constant DB         => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant PROPERTIES => 'C:\vufind-2.1\import\marc_local.properties';
+use constant PROPERTIES => 'C:\vufind-2.1\local\import\marc_local.properties';
 use constant SOLR       => 'http://localhost:8080/solr/biblio';
 use constant TEMPLATE   => 'C:\vufind-2.1\local\import\template.txt';
 use constant UPDATED    => 'C:\vufind-2.1\crra\data\marc-updated\\';

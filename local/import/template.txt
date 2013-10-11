@@ -42,7 +42,7 @@ building = "##LIBRARY##"
 # depends on a full text tool being installed on your system.  See the wiki for
 # details:
 #       http://vufind.org/wiki/importing_records#indexing_full_text
-#fulltext = custom, getFulltext(856u, pdf)
+fulltext = custom, getFulltext(856u, pdf)
 
 # Uncomment the following line if you want to index latitude/longitude data for
 # Google Map recommendations:
