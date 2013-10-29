@@ -116,7 +116,9 @@
 
       <br class="hideIfDetailed"/>
       <?=$this->record($this->driver)->getFormatList()?>
-
+      <? if (!$openUrlActive && empty($urls)): ?>
+      <div class="ajax_availability hide" id="status"><?=$this->transEsc('Loading')?>...</div>
+      <?endif;?>
       <?=$this->record($this->driver)->getPreviews()?>
     </div>
   </div>

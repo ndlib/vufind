@@ -43,7 +43,7 @@
     <br/><?=$this->transEsc("Your search terms")?> : "<strong><?=$this->escapeHtml($this->lookfor)?></strong>"
   <? else: ?>
     <form method="get" action="<?=$this->url($basicSearch)?>" name="searchForm" id="searchForm" class="search">
-      <label for="searchForm_lookfor" class="offscreen"><?=$this->transEsc("Search the Catholic Portal:")?></label>
+      <label for="searchForm_lookfor" class="soffscreen"><?=$this->transEsc("Search the Catholic Portal:")?></label>
       <input id="searchForm_lookfor" type="text" name="lookfor" size="50" value="<?=$this->escapeHtml($this->lookfor)?>"<?=$options->autocompleteEnabled() ? ' class="autocomplete searcher:' . $this->escapeHtml($this->searchClassId) . ' typeSelector:searchForm_type"' : ''?>/>
       <label for="searchForm_type" class="offscreen"><?=$this->transEsc("Search Type")?></label>
       <? if ($handlerCount > 1): ?>
