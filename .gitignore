@@ -16,3 +16,4 @@ vendor/.git
 /.gitignore
 bar-indexing.log
 /crra/crra-scripts/logs
+/local
