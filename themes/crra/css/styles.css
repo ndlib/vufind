@@ -435,6 +435,10 @@ dl.narrowList a {
     background-color: #eee;
 }
 
+dd input[type="checkbox"] {
+    margin:0 4px 0 0;
+    vertical-align:text-bottom;
+}
 /* Icon Classes */
 
 .bookbag {

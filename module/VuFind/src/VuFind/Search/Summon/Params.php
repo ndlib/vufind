@@ -60,10 +60,11 @@ class Params extends \VuFind\Search\Base\Params
      *
      * @param string $newField Field name
      * @param string $newAlias Optional on-screen display label
+     * @param bool   $ored     Should we treat this as an ORed facet?
      *
      * @return void
      */
-    public function addFacet($newField, $newAlias = null)
+    public function addFacet($newField, $newAlias = null, $ored = false)
     {
         // Save the full field name (which may include extra parameters);
         // we'll need these to do the proper search using the Summon class:
@@ -78,7 +79,7 @@ class Params extends \VuFind\Search\Base\Params
 
         // Field name may have parameters attached -- remove them:
         $parts = explode(',', $newField);
-        return parent::addFacet($parts[0], $newAlias);
+        return parent::addFacet($parts[0], $newAlias, $ored);
     }
 
     /**
@@ -128,11 +129,14 @@ class Params extends \VuFind\Search\Base\Params
         // Grab checkbox facet details using the standard method:
         $facets = parent::getCheckboxFacets();
 
-        // Special case -- if we have a "holdings only" facet, we want this to
-        // always appear, even on the "no results" screen, since setting this
-        // facet actually EXPANDS the result set, rather than reducing it:
+        // Special case -- if we have a "holdings only" or "expand query" facet,
+        // we want this to always appear, even on the "no results" screen, since
+        // setting this facet actually EXPANDS rather than reduces the result set.
         if (isset($facets['holdingsOnly'])) {
             $facets['holdingsOnly']['alwaysVisible'] = true;
+        }
+        if (isset($facets['queryExpansion'])) {
+            $facets['queryExpansion']['alwaysVisible'] = true;
         }
 
         // Return modified list:
@@ -158,10 +162,17 @@ class Params extends \VuFind\Search\Base\Params
 
         $backendParams->set('didYouMean', $options->spellcheckEnabled());
 
+        // Get the language setting:
+        $lang = $this->getServiceLocator()->get('VuFind\Translator')->getLocale();
+        $backendParams->set('language', substr($lang, 0, 2));
+
         if ($options->highlightEnabled()) {
             $backendParams->set('highlight', true);
             $backendParams->set('highlightStart', '{{{{START_HILITE}}}}');
             $backendParams->set('highlightEnd', '{{{{END_HILITE}}}}');
+        }
+        if ($maxTopics = $options->getMaxTopicRecommendations()) {
+            $backendParams->set('maxTopics', $maxTopics);
         }
         $backendParams->set('facets', $this->getBackendFacetParameters());
         $this->createBackendFilterParameters($backendParams);
@@ -186,7 +197,8 @@ class Params extends \VuFind\Search\Base\Params
             // if not, override them with defaults.
             $parts = explode(',', $facet);
             $facetName = $parts[0];
-            $facetMode = isset($parts[1]) ? $parts[1] : 'and';
+            $defaultMode = ($this->getFacetOperator($facet) == 'OR') ? 'or' : 'and';
+            $facetMode = isset($parts[1]) ? $parts[1] : $defaultMode;
             $facetPage = isset($parts[2]) ? $parts[2] : 1;
             $facetLimit = isset($parts[3]) ? $parts[3] : $defaultFacetLimit;
             $facetParams = "{$facetMode},{$facetPage},{$facetLimit}";
@@ -207,6 +219,8 @@ class Params extends \VuFind\Search\Base\Params
         // Which filters should be applied to our query?
         $filterList = $this->getFilterList();
         if (!empty($filterList)) {
+            $orFacets = array();
+
             // Loop through all filters and add appropriate values to request:
             foreach ($filterList as $filterArray) {
                 foreach ($filterArray as $filt) {
@@ -216,6 +230,12 @@ class Params extends \VuFind\Search\Base\Params
                     if ($filt['field'] == 'holdingsOnly') {
                         $params->set(
                             'holdings', strtolower(trim($safeValue)) == 'true'
+                        );
+                    } else if ($filt['field'] == 'queryExpansion') {
+                        // Special case -- "query expansion" is a separate parameter
+                        // from other facets.
+                        $params->set(
+                            'expand', strtolower(trim($safeValue)) == 'true'
                         );
                     } else if ($filt['field'] == 'excludeNewspapers') {
                         // Special case -- support a checkbox for excluding
@@ -228,12 +248,52 @@ class Params extends \VuFind\Search\Base\Params
                         $to = SummonQuery::escapeParam($range['to']);
                         $params
                             ->add('rangeFilters', "{$filt['field']},{$from}:{$to}");
+                    } else if ($filt['operator'] == 'OR') {
+                        // Special case -- OR facets:
+                        $orFacets[$filt['field']] = isset($orFacets[$filt['field']])
+                            ? $orFacets[$filt['field']] : array();
+                        $orFacets[$filt['field']][] = $safeValue;
                     } else {
                         // Standard case:
-                        $params->add('filters', "{$filt['field']},{$safeValue}");
+                        $fq = "{$filt['field']},{$safeValue}";
+                        if ($filt['operator'] == 'NOT') {
+                            $fq .= ',true';
+                        }
+                        $params->add('filters', $fq);
                     }
+                }
+
+                // Deal with OR facets:
+                foreach ($orFacets as $field => $values) {
+                    $params->add(
+                        'groupFilters', $field . ',or,' . implode(',', $values)
+                    );
                 }
             }
         }
+    }
+
+    /**
+     * Format a single filter for use in getFilterList().
+     *
+     * @param string $field     Field name
+     * @param string $value     Field value
+     * @param string $operator  Operator (AND/OR/NOT)
+     * @param bool   $translate Should we translate the label?
+     *
+     * @return array
+     */
+    protected function formatFilterListEntry($field, $value, $operator, $translate)
+    {
+        $filter = parent::formatFilterListEntry(
+            $field, $value, $operator, $translate
+        );
+
+        // Convert range queries to a language-non-specific format:
+        if (preg_match('/^\[(.*) TO (.*)\]$/', $value, $matches)) {
+            $filter['displayText'] = $matches[1] . '-' . $matches[2];
+        }
+
+        return $filter;
     }
 }
