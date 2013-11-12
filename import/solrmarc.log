@@ -300,3 +300,13 @@
 2013-10-01 19:37:23,762 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 11398 read from file: undmarc_003078070
 2013-10-01 19:37:30,694 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Starting Shutdown hook
 2013-10-01 19:37:30,694 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Stopping main loop
+2013-11-05 17:16:13,336 [main] INFO  main org.solrmarc.marc.MarcImporter - Starting SolrMarc indexing.
+2013-11-05 17:16:13,392 [main] INFO  main org.solrmarc.tools.Utils - Opening file: /usr/local/vufind2/local/import/import.properties
+2013-11-05 17:16:13,430 [main] INFO  main org.solrmarc.marc.MarcImporter -  Connecting to remote Solr server at URL http://localhost:8080/solr/biblio/update
+2013-11-05 17:16:15,822 [main] INFO  main org.solrmarc.marc.MarcHandler - Attempting to read data from stdin 
+2013-11-05 17:51:09,048 [main] INFO  main org.solrmarc.marc.MarcImporter - Exception occurred while Indexing: Input/output error
+2013-11-05 17:51:09,050 [main] INFO  main org.solrmarc.marc.MarcImporter - Setting Solr closed flag
+2013-11-05 17:51:09,051 [main] INFO  main org.solrmarc.marc.MarcImporter -  Adding 0 of 0 documents to index
+2013-11-05 17:51:09,052 [main] INFO  main org.solrmarc.marc.MarcImporter -  Deleting 0 documents from index
+2013-11-05 17:51:09,054 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Starting Shutdown hook
+2013-11-05 17:51:09,055 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Finished Shutdown hook

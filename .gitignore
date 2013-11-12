@@ -19,3 +19,6 @@ bar-indexing.log
 /local
 cache
 /local
+/cronjob
+/env.sh
+/log

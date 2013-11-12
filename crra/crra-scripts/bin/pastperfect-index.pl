@@ -29,7 +29,7 @@ use LWP::UserAgent;
 use strict;
 use WebService::Solr;
 use XML::XPath;
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initialize
 binmode STDOUT, ':utf8';
