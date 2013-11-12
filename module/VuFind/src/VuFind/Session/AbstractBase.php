@@ -113,7 +113,7 @@ abstract class AbstractBase implements SaveHandlerInterface,
      *
      * @return string
      */
-    abstract public function read($sess_id);
+//    abstract public function read($sess_id);
 
     /**
      * Write function that is called when session data is to be saved.
@@ -123,7 +123,7 @@ abstract class AbstractBase implements SaveHandlerInterface,
      *
      * @return void
      */
-    abstract public function write($sess_id, $data);
+//    abstract public function write($sess_id, $data);
 
     /**
      * The destroy handler, this is executed when a session is destroyed with
