@@ -95,17 +95,32 @@ class Params extends \VuFind\Search\Base\Params
     {
         // Define Filter Query
         $filterQuery = $this->getOptions()->getHiddenFilters();
+        $orFilters = array();
         foreach ($this->filterList as $field => $filter) {
+            if ($orFacet = (substr($field, 0, 1) == '~')) {
+                $field = substr($field, 1);
+            }
             foreach ($filter as $value) {
                 // Special case -- allow trailing wildcards and ranges:
                 if (substr($value, -1) == '*'
                     || preg_match('/\[[^\]]+\s+TO\s+[^\]]+\]/', $value)
                 ) {
-                    $filterQuery[] = $field.':'.$value;
+                    $q = $field.':'.$value;
                 } else {
-                    $filterQuery[] = $field.':"'.addcslashes($value, '"\\').'"';
+                    $q = $field.':"'.addcslashes($value, '"\\').'"';
+                }
+                if ($orFacet) {
+                    $orFilters[$field] = isset($orFilters[$field])
+                        ? $orFilters[$field] : array();
+                    $orFilters[$field][] = $q;
+                } else {
+                    $filterQuery[] = $q;
                 }
             }
+        }
+        foreach ($orFilters as $field => $parts) {
+            $filterQuery[] = '{!tag=' . $field . '_filter}' . $field
+                . ':(' . implode(' OR ', $parts) . ')';
         }
         return $filterQuery;
     }
@@ -121,7 +136,10 @@ class Params extends \VuFind\Search\Base\Params
         $facetSet = array();
         if (!empty($this->facetConfig)) {
             $facetSet['limit'] = $this->facetLimit;
-            foreach ($this->facetConfig as $facetField => $facetName) {
+            foreach (array_keys($this->facetConfig) as $facetField) {
+                if ($this->getFacetOperator($facetField) == 'OR') {
+                    $facetField = '{!ex=' . $facetField . '_filter}' . $facetField;
+                }
                 $facetSet['field'][] = $facetField;
             }
             if ($this->facetOffset != null) {
@@ -225,8 +243,16 @@ class Params extends \VuFind\Search\Base\Params
         if (!isset($config->$facetList)) {
             return false;
         }
+        if (isset($config->$facetSettings->orFacets)) {
+            $orFields
+                = array_map('trim', explode(',', $config->$facetSettings->orFacets));
+        } else {
+            $orFields = array();
+        }
         foreach ($config->$facetList as $key => $value) {
-            $this->addFacet($key, $value);
+            $useOr = (isset($orFields[0]) && $orFields[0] == '*')
+                || in_array($key, $orFields);
+            $this->addFacet($key, $value, $useOr);
         }
         if (isset($config->$facetSettings->facet_limit)
             && is_numeric($config->$facetSettings->facet_limit)
@@ -266,17 +292,8 @@ class Params extends \VuFind\Search\Base\Params
      */
     public function initBasicFacets()
     {
-        $config = $this->getServiceLocator()->get('VuFind\Config')->get('facets');
-        if (isset($config->ResultsTop)) {
-            foreach ($config->ResultsTop as $key => $value) {
-                $this->addFacet($key, $value);
-            }
-        }
-        if (isset($config->Results)) {
-            foreach ($config->Results as $key => $value) {
-                $this->addFacet($key, $value);
-            }
-        }
+        $this->initFacetList('ResultsTop', 'Results_Settings');
+        $this->initFacetList('Results', 'Results_Settings');
     }
 
     /**
@@ -474,5 +491,29 @@ class Params extends \VuFind\Search\Base\Params
         }
 
         return $backendParams;
+    }
+
+    /**
+     * Format a single filter for use in getFilterList().
+     *
+     * @param string $field     Field name
+     * @param string $value     Field value
+     * @param string $operator  Operator (AND/OR/NOT)
+     * @param bool   $translate Should we translate the label?
+     *
+     * @return array
+     */
+    protected function formatFilterListEntry($field, $value, $operator, $translate)
+    {
+        $filter = parent::formatFilterListEntry(
+            $field, $value, $operator, $translate
+        );
+
+        // Convert range queries to a language-non-specific format:
+        if (preg_match('/^\[(.*) TO (.*)\]$/', $value, $matches)) {
+            $filter['displayText'] = $matches[1] . '-' . $matches[2];
+        }
+
+        return $filter;
     }
 }

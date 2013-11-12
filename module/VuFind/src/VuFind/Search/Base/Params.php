@@ -73,6 +73,7 @@ class Params implements ServiceLocatorAwareInterface
     protected $facetConfig = array();
     protected $checkboxFacets = array();
     protected $filterList = array();
+    protected $orFacets = array();
 
     /**
      * Override Query
@@ -91,6 +92,8 @@ class Params implements ServiceLocatorAwareInterface
      *
      * @param \VuFind\Search\Base\Options  $options      Options to use
      * @param \VuFind\Config\PluginManager $configLoader Config loader
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function __construct($options, \VuFind\Config\PluginManager $configLoader)
     {
@@ -852,15 +855,31 @@ class Params implements ServiceLocatorAwareInterface
      *
      * @param string $newField Field name
      * @param string $newAlias Optional on-screen display label
+     * @param bool   $ored     Should we treat this as an ORed facet?
      *
      * @return void
      */
-    public function addFacet($newField, $newAlias = null)
+    public function addFacet($newField, $newAlias = null, $ored = false)
     {
         if ($newAlias == null) {
             $newAlias = $newField;
         }
         $this->facetConfig[$newField] = $newAlias;
+        if ($ored) {
+            $this->orFacets[] = $newField;
+        }
+    }
+
+    /**
+     * Get facet operator for the specified field
+     *
+     * @param string $field Field name
+     *
+     * @return string
+     */
+    public function getFacetOperator($field)
+    {
+        return in_array($field, $this->orFacets) ? 'OR' : 'AND';
     }
 
     /**
@@ -926,8 +945,7 @@ class Params implements ServiceLocatorAwareInterface
     }
 
     /**
-     * Return an array structure containing all current filters
-     *    and urls to remove them.
+     * Return an array structure containing information about all current filters.
      *
      * @param bool $excludeCheckboxFilters Should we exclude checkbox filters from
      * the list (to be used as a complement to getCheckboxFacets()).
@@ -937,37 +955,87 @@ class Params implements ServiceLocatorAwareInterface
     public function getFilterList($excludeCheckboxFilters = false)
     {
         // Get a list of checkbox filters to skip if necessary:
-        $skipList = array();
-        if ($excludeCheckboxFilters) {
-            foreach ($this->checkboxFacets as $current) {
-                list($field, $value) = $this->parseFilter($current['filter']);
-                if (!isset($skipList[$field])) {
-                    $skipList[$field] = array();
-                }
-                $skipList[$field][] = $value;
-            }
-        }
+        $skipList = $excludeCheckboxFilters
+            ? $this->getCheckboxFacetValues() : array();
 
         $list = array();
         // Loop through all the current filter fields
         foreach ($this->filterList as $field => $values) {
-            // and each value currently used for that field
+            list($operator, $field) = $this->parseOperatorAndFieldName($field);
             $translate
                 = in_array($field, $this->getOptions()->getTranslatedFacets());
+            // and each value currently used for that field
             foreach ($values as $value) {
                 // Add to the list unless it's in the list of fields to skip:
                 if (!isset($skipList[$field])
                     || !in_array($value, $skipList[$field])
                 ) {
                     $facetLabel = $this->getFacetLabel($field);
-                    $list[$facetLabel][] = array(
-                        'value'       => $value,
-                        'displayText' =>
-                            $translate ? $this->translate($value) : $value,
-                        'field'       => $field
+                    $list[$facetLabel][] = $this->formatFilterListEntry(
+                        $field, $value, $operator, $translate
                     );
                 }
             }
+        }
+        return $list;
+    }
+
+    /**
+     * Format a single filter for use in getFilterList().
+     *
+     * @param string $field     Field name
+     * @param string $value     Field value
+     * @param string $operator  Operator (AND/OR/NOT)
+     * @param bool   $translate Should we translate the label?
+     *
+     * @return array
+     */
+    protected function formatFilterListEntry($field, $value, $operator, $translate)
+    {
+        return array(
+            'value'       => $value,
+            'displayText' => $translate ? $this->translate($value) : $value,
+            'field'       => $field,
+            'operator'    => $operator,
+        );
+    }
+
+    /**
+     * Parse the operator and field name from a prefixed field string.
+     *
+     * @param string $field Prefixed string
+     *
+     * @return array (0 = operator, 1 = field name)
+     */
+    protected function parseOperatorAndFieldName($field)
+    {
+        $firstChar = substr($field, 0, 1);
+        if ($firstChar == '-') {
+            $operator = 'NOT';
+            $field = substr($field, 1);
+        } else if ($firstChar == '~') {
+            $operator = 'OR';
+            $field = substr($field, 1);
+        } else {
+            $operator = 'AND';
+        }
+        return array($operator, $field);
+    }
+
+    /**
+     * Get a formatted list of checkbox filter values ($field => array of values).
+     *
+     * @return array
+     */
+    protected function getCheckboxFacetValues()
+    {
+        $list = array();
+        foreach ($this->checkboxFacets as $current) {
+            list($field, $value) = $this->parseFilter($current['filter']);
+            if (!isset($list[$field])) {
+                $list[$field] = array();
+            }
+            $list[$field][] = $value;
         }
         return $list;
     }
@@ -1210,10 +1278,11 @@ class Params implements ServiceLocatorAwareInterface
      * will be favored.
      *
      * @return void
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function activateAllFacets($preferredSection = false)
     {
-        // By default, there is only set of facet settings, so this function isn't
+        // By default, there is only 1 set of facet settings, so this function isn't
         // really necessary.  However, in the Search History screen, we need to
         // use this for Solr-based Search Objects, so we need this dummy method to
         // allow other types of Search Objects to co-exist with Solr-based ones.
@@ -1228,6 +1297,7 @@ class Params implements ServiceLocatorAwareInterface
      * @param array $ids Record IDs to load
      *
      * @return void
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function setQueryIDs($ids)
     {

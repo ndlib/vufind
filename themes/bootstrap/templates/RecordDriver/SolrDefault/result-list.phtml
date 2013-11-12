@@ -1,7 +1,7 @@
 <div class="row-fluid result<?=$this->driver->supportsAjaxStatus()?' ajaxItem':''?>">
   <input type="hidden" value="<?=$this->escapeHtml($this->driver->getUniqueID())?>" class="hiddenId" />
   <input type="hidden" value="<?=$this->escapeHtml($this->driver->getResourceSource())?>" class="hiddenSource" />
-  <div class="span2 text-center">
+  <div class="span2 text-center left">
     <a href="<?=$this->recordLink()->getUrl($this->driver)?>" class="title">
       <? if ($summThumb = $this->record($this->driver)->getThumbnail()): ?>
         <img class="img-polaroid" src="<?=$this->escapeHtml($summThumb)?>" alt="<?=$this->transEsc('Cover Image')?>"/>
@@ -10,7 +10,7 @@
       <? endif; ?>
     </a>
   </div>
-  <div class="span7">
+  <div class="span7 middle">
     <div>
       <a href="<?=$this->recordLink()->getUrl($this->driver)?>" class="title">
       <?
@@ -118,7 +118,7 @@
       <?=str_replace('class="', 'class="label label-info ', $this->record($this->driver)->getFormatList())?>
       
       <? if (!$openUrlActive && empty($urls) && $this->driver->supportsAjaxStatus()): ?>
-        <span class="status ajax-availability small ">
+        <span class="status ajax-availability small hide">
           <span class="label"><?=$this->transEsc('Loading')?>...</span>
         </span>
       <? endif; ?>
@@ -136,14 +136,14 @@
       <i class="icon-qrcode"></i> <a href="<?=$this->escapeHtml($QRCode);?>" class="qrcodeLink"><?=$this->transEsc('qrcode_show')?></a>
       <div class="qrcode hide">
         <img alt="<?=$this->transEsc('QR Code')?>" class="img-polaroid" src="<?=$this->escapeHtml($QRCode);?>"/>
-      </div>
+      </div><br/>
     <? endif; ?>
     
     <? /* Add to favorites */ ?>
     <i class="icon-heart"></i> <a href="<?=$this->recordLink()->getActionUrl($this->driver, 'Save')?>" class="save-record modal-link" id="<?=$this->driver->getUniqueId() ?>" title="<?=$this->transEsc('Add to favorites')?>"><?=$this->transEsc('Add to favorites')?></a><br/>
 
     <? /* Saved lists */ ?>
-    <div class="savedLists info hide">
+    <div class="savedLists alert alert-info hide">
       <strong><?=$this->transEsc("Saved in")?>:</strong>
     </div>
 
