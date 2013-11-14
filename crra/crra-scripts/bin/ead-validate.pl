@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # validate.pl - make sure an EAD file is well-formed, conforms to the DTD, and has an eadid url
 
