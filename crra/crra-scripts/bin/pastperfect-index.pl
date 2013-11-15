@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # pastperfect-index.pl - stuff Past Perfect (Dublin Core) from PAHRC into Solr
 

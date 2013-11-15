@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # directory.pl - create a list of libraries for the "portal"
 
@@ -8,13 +8,13 @@
 
 
 # define
-use constant DB   => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant HTML => 'C:\vufind-2.1\crra\data\html\data\directory.html';
+use constant DB   => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
+use constant HTML => '/usr/local/vufind2/crra/data/html/data/directory.html';
 
 # include
 use CGI;
 use strict;
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initialize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

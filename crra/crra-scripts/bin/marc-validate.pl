@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # validate.pl - check for non-UTF-8 characters in a file of MARC records
 

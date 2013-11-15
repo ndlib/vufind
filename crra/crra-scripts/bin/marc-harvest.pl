@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # harvest.pl - save the contents of a URL to a local file
 

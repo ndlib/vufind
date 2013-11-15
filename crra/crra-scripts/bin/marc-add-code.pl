@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # add-code.pl - prepend library code to 001 fields of MARC records
 
@@ -9,16 +9,16 @@
 # December 20, 2012 - added command line input
 
 # configure
-use constant DB      => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant NEW     => 'C:\vufind-2.1\crra\data\marc-incoming\\';
-use constant UPDATED => 'C:\vufind-2.1\crra\data\marc-updated\\';
+use constant DB      => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
+use constant NEW     => '/usr/local/vufind2/crra/data/marc-incoming/';
+use constant UPDATED => '/usr/local/vufind2/crra/data/marc-updated/';
 use constant TYPE    => 'marc';
 
 # require
 use strict;
 use MARC::Batch;
 use Encode qw( encode decode );
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );
