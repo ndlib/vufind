@@ -10,9 +10,9 @@
 
 # configure
 # changed command parameter as per vufind-2.1 and rather than changing import properties, changes are dine in marc_local_properties.Changed the template.txt file as per marc_local.properties. (vufind-2.1)
-use constant CMD        => "/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/bin/java -Xms512m -Xmx512m -Duser.timezone=UTC -Dsolr.core.name=biblio -Dsolr.path=REMOTE -Dsolr.solr.home=/usr/local/vufind2/solr -Dsolrmarc.path=/usr/local/vufind2/import -jar /usr/local/vufind2/import/SolrMarc.jar /usr/local/vufind2/local/import/import.properties ##MARC## 2> ##LOG##";
+use constant CMD        => "/usr/local/vufind2/import-marc.sh ##MARC## 2> ##LOG##";
 use constant DB         => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant PROPERTIES => '/usr/local/vufind2/import/marc_local.properties';
+use constant PROPERTIES => '/usr/local/vufind2/local/import/marc_local.properties';
 use constant SOLR       => 'http://localhost:8080/solr/biblio';
 use constant TEMPLATE   => '/usr/local/vufind2/local/import/template.txt';
 use constant UPDATED    => '/usr/local/vufind2/crra/data/marc-updated/';
@@ -51,12 +51,12 @@ foreach my $key ( sort keys %$libraries ) {
 	print "Indexing $key...\n";
 	my $marc = UPDATED . "$key.mrc";
 	my $cmd  = CMD;
-	$cmd =~ s/##MARC##/$marc/e;
+        $cmd =~ s/##MARC##/$marc/e;
 	$cmd =~ s/##LOG##/LOGS . $key . "-indexing.log"/e;
-	
+
 	# do the work
 	print "$cmd\n";
-	system $cmd;
+	system ("$cmd");
 		
 }
 
