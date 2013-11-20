@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # log-load.pl - parse Apache combined log files and stuff them into a flat database
 
@@ -7,19 +7,21 @@
 # May        6, 2011 - added date as command line input
 # September 14, 2011 - added classification of requests, etc.; added multiple date processing
 # September 16, 2011 - added more robots
+# November  20, 2013 - Paths and database names changed - T. Hanstra
+# 
 
 # Note: the oldest logfile in the archive is dated 20110421
 
 
 # configure
-use constant ARCHIVE  => '/shared/cportal_prod/httpd/logs/archive/2013/';
-use constant DSN      => 'dbi:mysql:crra_transactions_prod:dbprod.library.nd.edu';
+use constant ARCHIVE  => '/global/home/catholic/httpd_archive/2013/';
+use constant DSN      => 'dbi:mysql:crra_transactions_pprd:dbpprd.library.nd.edu';
 use constant ECHO     => 0;
 use constant FILENAME => 'catholic_portal_access_log';
 use constant GUNZIP   => '/bin/gunzip ';
-use constant LOGFILE  => '/shared/cportal_prod/tmp/catholic_portal_access_log.';
-use constant PASSWORD => 'portal';
-use constant TMP      => '/shared/cportal_prod/tmp/';
+use constant LOGFILE  => '/tmp/catholic_portal_access_log.';
+use constant PASSWORD => 'devlP0rt@l';
+use constant TMP      => '/tmp/';
 use constant USERNAME => 'catholic';
 
 # require
