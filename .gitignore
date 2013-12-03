@@ -20,3 +20,5 @@ cache
 /local
 
 marc-incoming
+/import/*.log
+/import/solrmarc.log.1
