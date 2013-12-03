@@ -6,12 +6,11 @@ ChangeLog
 TAGS
 *~
 vendor/.git
-/solr/biblio/index
-/solr/biblio/spellchecker
-/solr/biblio/spellShingle
-/solr/biblio/tlog
-/crra/marc-incoming/ctu.mrc
-/crra/marc-updated/ctu.mrc
+/solr/biblio/index/*
+/solr/biblio/spellchecker/*
+/solr/biblio/spellShingle/*
+/solr/biblio/tlog/*
+/crra/marc-incoming/*
 /crra/crra-scripts/logs/bar-indexing.log
 /.gitignore
 bar-indexing.log
@@ -19,6 +18,13 @@ bar-indexing.log
 /local
 cache
 /local
+<<<<<<< HEAD
+
+marc-incoming
+/import/*.log
+/import/solrmarc.log.1
+=======
 /cronjob
 /env.sh
 /log
+>>>>>>> da297701498efdfad6ff975088deb81277db7e00

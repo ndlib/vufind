@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract base class of user query components.
+ * Unit tests for WorldCat backend.
  *
  * PHP version 5
  *
@@ -27,10 +27,12 @@
  * @link     http://vufind.org
  */
 
-namespace VuFindSearch\Query;
+namespace VuFindTest\Backend\WorldCat\Response\XML;
+
+use VuFindSearch\Backend\WorldCat\Response\XML\RecordCollectionFactory;
 
 /**
- * Abstract base class of user query components.
+ * Unit tests for WorldCat backend.
  *
  * @category VuFind2
  * @package  Search
@@ -38,6 +40,30 @@ namespace VuFindSearch\Query;
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     http://vufind.org
  */
-abstract class AbstractQuery implements QueryInterface
+class RecordCollectionFactoryTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Test bad callback.
+     *
+     * @return void
+     * @expectedException VuFindSearch\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Record factory must be callable.
+     */
+    public function testBadCallback()
+    {
+        $x = new RecordCollectionFactory('bad');
+    }
+
+    /**
+     * Test bad factory input.
+     *
+     * @return void
+     * @expectedException VuFindSearch\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Unexpected type of value: Expected array, got string
+     */
+    public function testBadFactoryInput()
+    {
+        $x = new RecordCollectionFactory();
+        $x->factory('bad');
+    }
 }
