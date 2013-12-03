@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract base class of user query components.
+ * Unit tests for SOLR raw XML document class.
  *
  * PHP version 5
  *
@@ -27,10 +27,14 @@
  * @link     http://vufind.org
  */
 
-namespace VuFindSearch\Query;
+namespace VuFindTest\Backend\Solr\Document;
+
+use VuFindSearch\Backend\Solr\Document\RawXMLDocument;
+
+use PHPUnit_Framework_TestCase;
 
 /**
- * Abstract base class of user query components.
+ * Unit tests for SOLR raw XML document class.
  *
  * @category VuFind2
  * @package  Search
@@ -38,6 +42,16 @@ namespace VuFindSearch\Query;
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     http://vufind.org
  */
-abstract class AbstractQuery implements QueryInterface
+class RawXMLDocumentTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * Test creation of XML document.
+     *
+     * @return void
+     */
+    public function testAsXML()
+    {
+        $document = new RawXMLDocument('<empty />');
+        $this->assertXmlStringEqualsXmlString('<empty />', $document->asXML());
+    }
 }
