@@ -18,7 +18,13 @@ bar-indexing.log
 /local
 cache
 /local
+<<<<<<< HEAD
 
 marc-incoming
 /import/*.log
 /import/solrmarc.log.1
+=======
+/cronjob
+/env.sh
+/log
+>>>>>>> da297701498efdfad6ff975088deb81277db7e00

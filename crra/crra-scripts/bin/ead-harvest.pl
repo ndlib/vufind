@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # harvest-ead.pl - copy remote EAD files locally; mirror them
 
@@ -10,15 +10,15 @@
 
 # configure
 use constant AGENT  => 'EADGetter';
-use constant DB     => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant CACHE  =>  'C:\vufind-2.1\crra\data\ead-incoming\\' ;
+use constant DB     => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
+use constant CACHE  =>  '/usr/local/vufind2/crra/data/ead-incoming/' ;
 
 # require
 use HTML::SimpleLinkExtor;
 use HTML::LinkExtor;
 use LWP::UserAgent;
 use strict;
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

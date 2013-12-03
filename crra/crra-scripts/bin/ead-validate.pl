@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # validate.pl - make sure an EAD file is well-formed, conforms to the DTD, and has an eadid url
 
@@ -10,11 +10,11 @@
 
 
 # define constants
-use constant CACHE   => 'C:\vufind-2.1\crra\data\ead-incoming\\' ;
-use constant DB      => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant DTD     => 'C:\vufind-2.1\crra\crra-scripts\etc\ead.dtd';
-use constant SCHEMA  => 'C:\vufind-2.1\crra\crra-scripts\etc\ead.xsd';
-use constant GETURL  => 'C:\vufind-2.1\crra\crra-scripts\etc\geturl.xsl';
+use constant CACHE   => '/usr/local/vufind2/crra/data/ead-incoming/' ;
+use constant DB      => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
+use constant DTD     => '/usr/local/vufind2/crra/crra-scripts/etc/ead.dtd';
+use constant SCHEMA  => '/usr/local/vufind2/crra/crra-scripts/etc/ead.xsd';
+use constant GETURL  => '/usr/local/vufind2/crra/crra-scripts/etc/geturl.xsl';
 use constant INVALID => 'invalid/';
 use constant NOURL   => 'nourl/';
 
@@ -23,7 +23,7 @@ use File::Copy;
 use strict;
 use XML::LibXML;
 use XML::LibXSLT;
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

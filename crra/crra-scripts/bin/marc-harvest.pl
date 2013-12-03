@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # harvest.pl - save the contents of a URL to a local file
 
@@ -14,14 +14,14 @@
 # configure
 use constant AGENT  => 'MARCGetter';
 use constant ACCEPT => 'text/plain, text/html, text/xml';
-use constant DB     => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
-use constant NEW    => 'C:\vufind-2.1\crra\data\marc-incoming\\' ;
+use constant DB     => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
+use constant NEW    => '/usr/local/vufind2/crra/data/marc-incoming/' ;
 
 # require
 use strict;
 use LWP::UserAgent;
 #use Encode qw(encode decode);
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

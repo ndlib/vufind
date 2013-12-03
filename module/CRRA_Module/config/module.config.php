@@ -1,8 +1,7 @@
 <?php
-namespace CRRA_Module\Module\Configuration;   
+namespace CRRA_Module\Module\Configuration;
 
-$config = array(
-    'vufind' => array(
+$config = array('vufind' => array(
         'plugin_managers' => array(
             'recorddriver' => array(
                 'factories' => array(
@@ -40,4 +39,5 @@ $config = array(
         ),
     ),
 );
+
 return $config;

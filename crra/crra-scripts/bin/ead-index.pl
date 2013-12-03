@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # index-ead.pl - put EAD content into SOLR
 
@@ -20,9 +20,9 @@
 
 # configure
 use constant VERBOSE     => 1;
-use constant DB          => 'C:\vufind-2.1\crra\crra-scripts\etc\libraries.db';
+use constant DB          => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
 use constant FORMAT      => 'Archival material';
-use constant EAD         => 'C:\vufind-2.1\crra\data\html\data\ead\xml\\';
+use constant EAD         => '/usr/local/vufind2/crra/data/html/data/ead/xml/';
 use constant SOLR        => 'http://localhost:8080/solr/biblio';
 use constant TYPE        => 'ead';
 use constant WEBROOT     => 'http://www.catholicresearch.net/data/ead/html/';
@@ -35,7 +35,7 @@ use strict;
 use XML::XPath;
 use WebService::Solr;
 use Digest::MD5 qw( md5 );
-require 'C:\vufind-2.1\crra\crra-scripts\lib\subroutines.pl';
+require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
 
 # initialize
 my $solr      = WebService::Solr->new( SOLR );
