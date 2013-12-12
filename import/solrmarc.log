@@ -1,919 +1,288 @@
-<<<<<<< HEAD
-2013-11-20 21:01:10,182 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 382 read from file: shumarc_599110
-2013-11-20 21:01:10,193 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 383 read from file: shumarc_664353
-2013-11-20 21:01:10,202 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 384 read from file: shumarc_172631
-2013-11-20 21:01:10,222 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 385 read from file: shumarc_664393
-2013-11-20 21:01:10,231 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 386 read from file: shumarc_249331
-2013-11-20 21:01:10,244 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 387 read from file: shumarc_62814
-2013-11-20 21:01:10,255 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 388 read from file: shumarc_263959
-2013-11-20 21:01:10,265 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 389 read from file: shumarc_254539
-2013-11-20 21:01:10,274 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 390 read from file: shumarc_533772
-2013-11-20 21:01:10,283 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 391 read from file: shumarc_313619
-2013-11-20 21:01:10,294 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 392 read from file: shumarc_534395
-2013-11-20 21:01:10,305 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 393 read from file: shumarc_502061
-2013-11-20 21:01:10,315 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 394 read from file: shumarc_232000
-2013-11-20 21:01:10,324 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 395 read from file: shumarc_231732
-2013-11-20 21:01:10,334 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 396 read from file: shumarc_267051
-2013-11-20 21:01:10,343 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 397 read from file: shumarc_605990
-2013-11-20 21:01:10,352 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 398 read from file: shumarc_664351
-2013-11-20 21:01:10,364 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 399 read from file: shumarc_661700
-2013-11-20 21:01:10,375 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 400 read from file: shumarc_464538
-2013-11-20 21:01:10,383 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 401 read from file: shumarc_122899
-2013-11-20 21:01:10,393 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 402 read from file: shumarc_83290
-2013-11-20 21:01:10,402 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 403 read from file: shumarc_64612
-2013-11-20 21:01:10,410 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 404 read from file: shumarc_168896
-2013-11-20 21:01:10,419 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 405 read from file: shumarc_534396
-2013-11-20 21:01:10,427 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 406 read from file: shumarc_3178
-2013-11-20 21:01:10,436 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 407 read from file: shumarc_661621
-2013-11-20 21:01:10,445 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 408 read from file: shumarc_664349
-2013-11-20 21:01:10,453 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 409 read from file: shumarc_661795
-2013-11-20 21:01:10,463 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 410 read from file: shumarc_663317
-2013-11-20 21:01:10,471 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 411 read from file: shumarc_627789
-2013-11-20 21:01:10,479 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 412 read from file: shumarc_179841
-2013-11-20 21:01:10,488 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 413 read from file: shumarc_509686
-2013-11-20 21:01:10,496 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 414 read from file: shumarc_90574
-2013-11-20 21:01:10,505 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 415 read from file: shumarc_148581
-2013-11-20 21:01:10,514 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 416 read from file: shumarc_187682
-2013-11-20 21:01:10,524 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 417 read from file: shumarc_605962
-2013-11-20 21:01:10,538 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 418 read from file: shumarc_26271
-2013-11-20 21:01:10,546 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 419 read from file: shumarc_204732
-2013-11-20 21:01:10,555 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 420 read from file: shumarc_661702
-2013-11-20 21:01:10,565 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 421 read from file: shumarc_485215
-2013-11-20 21:01:10,574 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 422 read from file: shumarc_509464
-2013-11-20 21:01:10,585 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 423 read from file: shumarc_533771
-2013-11-20 21:01:10,595 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 424 read from file: shumarc_554544
-2013-11-20 21:01:10,603 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 425 read from file: shumarc_128666
-2013-11-20 21:01:10,612 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 426 read from file: shumarc_533889
-2013-11-20 21:01:10,622 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 427 read from file: shumarc_187695
-2013-11-20 21:01:10,635 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 428 read from file: shumarc_88967
-2013-11-20 21:01:10,645 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 429 read from file: shumarc_523521
-2013-11-20 21:01:10,654 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 430 read from file: shumarc_509689
-2013-11-20 21:01:10,672 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 431 read from file: shumarc_110915
-2013-11-20 21:01:10,682 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 432 read from file: shumarc_281436
-2013-11-20 21:01:10,692 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 433 read from file: shumarc_231067
-2013-11-20 21:01:10,702 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 434 read from file: shumarc_533892
-2013-11-20 21:01:10,711 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 435 read from file: shumarc_53284
-2013-11-20 21:01:10,719 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 436 read from file: shumarc_533773
-2013-11-20 21:01:10,729 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 437 read from file: shumarc_501270
-2013-11-20 21:01:10,736 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 438 read from file: shumarc_89022
-2013-11-20 21:01:10,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 439 read from file: shumarc_128759
-2013-11-20 21:01:10,752 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 440 read from file: shumarc_178535
-2013-11-20 21:01:10,760 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 441 read from file: shumarc_249759
-2013-11-20 21:01:10,775 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 442 read from file: shumarc_543327
-2013-11-20 21:01:10,786 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 443 read from file: shumarc_599110
-2013-11-20 21:01:10,795 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 444 read from file: shumarc_249331
-2013-11-20 21:01:10,803 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 445 read from file: shumarc_62814
-2013-11-20 21:01:10,812 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 446 read from file: shumarc_263959
-2013-11-20 21:01:10,821 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 447 read from file: shumarc_254539
-2013-11-20 21:01:10,832 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 448 read from file: shumarc_533772
-2013-11-20 21:01:10,842 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 449 read from file: shumarc_313619
-2013-11-20 21:01:10,852 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 450 read from file: shumarc_534395
-2013-11-20 21:01:10,863 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 451 read from file: shumarc_502061
-2013-11-20 21:01:10,871 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 452 read from file: shumarc_232000
-2013-11-20 21:01:10,902 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 453 read from file: shumarc_231732
-2013-11-20 21:01:10,918 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 454 read from file: shumarc_267051
-2013-11-20 21:01:10,927 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 455 read from file: shumarc_605990
-2013-11-20 21:01:10,936 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 456 read from file: shumarc_122899
-2013-11-20 21:01:10,945 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 457 read from file: shumarc_83290
-2013-11-20 21:01:10,954 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 458 read from file: shumarc_64612
-2013-11-20 21:01:10,963 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 459 read from file: shumarc_168896
-2013-11-20 21:01:10,972 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 460 read from file: shumarc_534396
-2013-11-20 21:01:10,980 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 461 read from file: shumarc_3178
-2013-11-20 21:01:10,989 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 462 read from file: shumarc_627789
-2013-11-20 21:01:10,997 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 463 read from file: shumarc_179841
-2013-11-20 21:01:11,006 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 464 read from file: shumarc_509686
-2013-11-20 21:01:11,015 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 465 read from file: shumarc_90574
-2013-11-20 21:01:11,024 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 466 read from file: shumarc_148581
-2013-11-20 21:01:11,033 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 467 read from file: shumarc_187682
-2013-11-20 21:01:11,042 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 468 read from file: shumarc_605962
-2013-11-20 21:01:11,052 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 469 read from file: shumarc_26271
-2013-11-20 21:01:11,060 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 470 read from file: shumarc_204732
-2013-11-20 21:01:11,070 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 471 read from file: shumarc_884924
-2013-11-20 21:01:11,088 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 472 read from file: shumarc_885114
-2013-11-20 21:01:11,102 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 473 read from file: shumarc_892247
-2013-11-20 21:01:11,119 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 474 read from file: shumarc_892869
-2013-11-20 21:01:11,128 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 475 read from file: shumarc_892881
-2013-11-20 21:01:11,143 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 476 read from file: shumarc_892886
-2013-11-20 21:01:11,155 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 477 read from file: shumarc_892888
-2013-11-20 21:01:11,168 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 478 read from file: shumarc_892919
-2013-11-20 21:01:11,178 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 479 read from file: shumarc_893016
-2013-11-20 21:01:11,187 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 480 read from file: shumarc_893349
-2013-11-20 21:01:11,196 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 481 read from file: shumarc_894157
-2013-11-20 21:01:11,208 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 482 read from file: shumarc_901406
-2013-11-20 21:01:11,215 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 483 read from file: shumarc_884960
-2013-11-20 21:01:11,232 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 484 read from file: shumarc_888802
-2013-11-20 21:01:11,241 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 485 read from file: shumarc_889022
-2013-11-20 21:01:11,249 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 486 read from file: shumarc_888451
-2013-11-20 21:01:11,258 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 487 read from file: shumarc_892471
-2013-11-20 21:01:11,265 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 488 read from file: shumarc_893264
-2013-11-20 21:01:11,274 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 489 read from file: shumarc_895677
-2013-11-20 21:01:11,282 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 490 read from file: shumarc_901695
-2013-11-20 21:01:11,290 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 491 read from file: shumarc_901698
-2013-11-20 21:01:11,299 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 492 read from file: shumarc_852490
-2013-11-20 21:01:11,306 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 493 read from file: shumarc_884161
-2013-11-20 21:01:11,314 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 494 read from file: shumarc_885967
-2013-11-20 21:01:11,325 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 495 read from file: shumarc_888416
-2013-11-20 21:01:11,341 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 496 read from file: shumarc_893014
-2013-11-20 21:01:11,360 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 497 read from file: shumarc_893019
-2013-11-20 21:01:11,368 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 498 read from file: shumarc_893267
-2013-11-20 21:01:11,375 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 499 read from file: shumarc_901939
-2013-11-20 21:01:11,383 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 500 read from file: shumarc_884773
-2013-11-20 21:01:11,391 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 501 read from file: shumarc_884839
-2013-11-20 21:01:11,402 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 502 read from file: shumarc_885138
-2013-11-20 21:01:11,411 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 503 read from file: shumarc_886117
-2013-11-20 21:01:11,424 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 504 read from file: shumarc_676260
-2013-11-20 21:01:11,447 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 505 read from file: shumarc_889848
-2013-11-20 21:01:11,457 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 506 read from file: shumarc_892260
-2013-11-20 21:01:11,465 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 507 read from file: shumarc_892805
-2013-11-20 21:01:11,475 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 508 read from file: shumarc_893262
-2013-11-20 21:01:11,484 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 509 read from file: shumarc_893352
-2013-11-20 21:01:11,491 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 510 read from file: shumarc_893358
-2013-11-20 21:01:11,499 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 511 read from file: shumarc_893611
-2013-11-20 21:01:11,510 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 512 read from file: shumarc_895663
-2013-11-20 21:01:11,518 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 513 read from file: shumarc_901409
-2013-11-20 21:01:11,526 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 514 read from file: shumarc_901586
-2013-11-20 21:01:11,535 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 515 read from file: shumarc_214427
-2013-11-20 21:01:11,544 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 516 read from file: shumarc_676247
-2013-11-20 21:01:11,552 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 517 read from file: shumarc_892882
-2013-11-20 21:01:11,561 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 518 read from file: shumarc_893346
-2013-11-20 21:01:11,569 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 519 read from file: shumarc_893350
-2013-11-20 21:01:11,577 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 520 read from file: shumarc_901659
-2013-11-20 21:01:11,587 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 521 read from file: shumarc_884589
-2013-11-20 21:01:11,595 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 522 read from file: shumarc_891985
-2013-11-20 21:01:11,603 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 523 read from file: shumarc_892870
-2013-11-20 21:01:11,611 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 524 read from file: shumarc_893344
-2013-11-20 21:01:11,619 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 525 read from file: shumarc_895675
-2013-11-20 21:01:11,628 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 526 read from file: shumarc_901300
-2013-11-20 21:01:11,636 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 527 read from file: shumarc_901354
-2013-11-20 21:01:11,643 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 528 read from file: shumarc_901583
-2013-11-20 21:01:11,653 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 529 read from file: shumarc_882365
-2013-11-20 21:01:11,661 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 530 read from file: shumarc_23254
-2013-11-20 21:01:11,672 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 531 read from file: shumarc_884156
-2013-11-20 21:01:11,683 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 532 read from file: shumarc_886456
-2013-11-20 21:01:11,692 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 533 read from file: shumarc_886116
-2013-11-20 21:01:11,700 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 534 read from file: shumarc_888804
-2013-11-20 21:01:11,709 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 535 read from file: shumarc_892245
-2013-11-20 21:01:11,718 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 536 read from file: shumarc_515009
-2013-11-20 21:01:11,726 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 537 read from file: shumarc_892885
-2013-11-20 21:01:11,734 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 538 read from file: shumarc_893017
-2013-11-20 21:01:11,742 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 539 read from file: shumarc_893271
-2013-11-20 21:01:11,750 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 540 read from file: shumarc_893359
-2013-11-20 21:01:11,757 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 541 read from file: shumarc_895671
-2013-11-20 21:01:11,765 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 542 read from file: shumarc_901660
-2013-11-20 21:01:11,779 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 543 read from file: shumarc_901957
-2013-11-20 21:01:11,786 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 544 read from file: shumarc_901958
-2013-11-20 21:01:11,796 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 545 read from file: shumarc_885140
-2013-11-20 21:01:11,807 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 546 read from file: shumarc_885200
-2013-11-20 21:01:11,815 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 547 read from file: shumarc_885212
-2013-11-20 21:01:11,823 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 548 read from file: shumarc_678205
-2013-11-20 21:01:11,834 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 549 read from file: shumarc_892808
-2013-11-20 21:01:11,857 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 550 read from file: shumarc_892809
-2013-11-20 21:01:11,865 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 551 read from file: shumarc_892813
-2013-11-20 21:01:11,876 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 552 read from file: shumarc_892872
-2013-11-20 21:01:11,884 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 553 read from file: shumarc_893284
-2013-11-20 21:01:11,892 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 554 read from file: shumarc_893355
-2013-11-20 21:01:11,902 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 555 read from file: shumarc_895687
-2013-11-20 21:01:11,909 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 556 read from file: shumarc_901357
-2013-11-20 21:01:11,917 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 557 read from file: shumarc_901584
-2013-11-20 21:01:11,925 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 558 read from file: shumarc_901661
-2013-11-20 21:01:11,933 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 559 read from file: shumarc_901965
-2013-11-20 21:01:11,933 [main] INFO  main org.solrmarc.marc.MarcImporter -  Adding 559 of 559 documents to index
-2013-11-20 21:01:11,933 [main] INFO  main org.solrmarc.marc.MarcImporter -  Deleting 0 documents from index
-2013-11-20 21:01:11,933 [main] INFO  main org.solrmarc.marc.MarcImporter - Calling commit (with optimize set to false)
-2013-11-20 21:01:12,526 [main] INFO  main org.solrmarc.marc.MarcImporter - Done with the commit, closing Solr
-2013-11-20 21:01:12,526 [main] INFO  main org.solrmarc.marc.MarcImporter - Setting Solr closed flag
-2013-11-20 21:01:12,527 [main] INFO  main org.solrmarc.marc.MarcImporter - Finished indexing in 0:09.00
-2013-11-20 21:01:12,527 [main] INFO  main org.solrmarc.marc.MarcImporter - Indexed 559 at a rate of about 60.0 per sec
-2013-11-20 21:01:12,527 [main] INFO  main org.solrmarc.marc.MarcImporter - Deleted 0 records
-2013-11-20 21:01:12,528 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Starting Shutdown hook
-2013-11-20 21:01:12,529 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Finished Shutdown hook
-2013-11-20 21:02:12,635 [main] INFO  main org.solrmarc.marc.MarcImporter - Starting SolrMarc indexing.
-2013-11-20 21:02:12,662 [main] INFO  main org.solrmarc.tools.Utils - Opening file: /usr/local/vufind2/local/import/import.properties
-2013-11-20 21:02:12,676 [main] INFO  main org.solrmarc.marc.MarcImporter -  Connecting to remote Solr server at URL http://localhost:8080/solr/biblio/update
-2013-11-20 21:02:12,788 [main] INFO  main org.solrmarc.marc.MarcHandler - Attempting to open data file: /usr/local/vufind2/crra/data/marc-updated/shu.mrc
-2013-11-20 21:02:13,367 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 1 read from file: shumarc_685820
-2013-11-20 21:02:13,515 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 2 read from file: shumarc_758349
-2013-11-20 21:02:13,609 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 3 read from file: shumarc_758355
-2013-11-20 21:02:13,716 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 4 read from file: shumarc_756764
-2013-11-20 21:02:13,753 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 5 read from file: shumarc_756783
-2013-11-20 21:02:13,839 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 6 read from file: shumarc_679815
-2013-11-20 21:02:13,869 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 7 read from file: shumarc_1616
-2013-11-20 21:02:13,911 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 8 read from file: shumarc_679715
-2013-11-20 21:02:13,945 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 9 read from file: shumarc_684719
-2013-11-20 21:02:13,977 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 10 read from file: shumarc_756779
-2013-11-20 21:02:14,016 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 11 read from file: shumarc_676469
-2013-11-20 21:02:14,048 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 12 read from file: shumarc_680188
-2013-11-20 21:02:14,085 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 13 read from file: shumarc_660296
-2013-11-20 21:02:14,123 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 14 read from file: shumarc_758249
-2013-11-20 21:02:14,155 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 15 read from file: shumarc_758353
-2013-11-20 21:02:14,196 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 16 read from file: shumarc_756767
-2013-11-20 21:02:14,230 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 17 read from file: shumarc_676473
-2013-11-20 21:02:14,254 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 18 read from file: shumarc_659371
-2013-11-20 21:02:14,278 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 19 read from file: shumarc_685824
-2013-11-20 21:02:14,308 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 20 read from file: shumarc_685313
-2013-11-20 21:02:14,333 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 21 read from file: shumarc_757749
-2013-11-20 21:02:14,360 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 22 read from file: shumarc_758352
-2013-11-20 21:02:14,410 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 23 read from file: shumarc_679820
-2013-11-20 21:02:14,434 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 24 read from file: shumarc_660437
-2013-11-20 21:02:14,461 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 25 read from file: shumarc_757744
-2013-11-20 21:02:14,489 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 26 read from file: shumarc_758262
-2013-11-20 21:02:14,520 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 27 read from file: shumarc_757813
-2013-11-20 21:02:14,548 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 28 read from file: shumarc_659317
-2013-11-20 21:02:14,585 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 29 read from file: shumarc_660407
-2013-11-20 21:02:14,609 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 30 read from file: shumarc_685320
-2013-11-20 21:02:14,632 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 31 read from file: shumarc_758261
-2013-11-20 21:02:14,661 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 32 read from file: shumarc_757822
-2013-11-20 21:02:14,686 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 33 read from file: shumarc_679826
-2013-11-20 21:02:14,708 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 34 read from file: shumarc_660489
-2013-11-20 21:02:14,733 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 35 read from file: shumarc_680873
-2013-11-20 21:02:14,757 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 36 read from file: shumarc_269197
-2013-11-20 21:02:14,785 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 37 read from file: shumarc_679824
-2013-11-20 21:02:14,810 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 38 read from file: shumarc_684509
-2013-11-20 21:02:14,831 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 39 read from file: shumarc_685806
-2013-11-20 21:02:14,852 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 40 read from file: shumarc_680991
-2013-11-20 21:02:14,874 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 41 read from file: shumarc_756890
-2013-11-20 21:02:14,895 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 42 read from file: shumarc_757748
-2013-11-20 21:02:14,917 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 43 read from file: shumarc_758348
-2013-11-20 21:02:14,946 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 44 read from file: shumarc_679884
-2013-11-20 21:02:14,968 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 45 read from file: shumarc_676481
-2013-11-20 21:02:15,004 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 46 read from file: shumarc_672021
-2013-11-20 21:02:15,028 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 47 read from file: shumarc_676556
-2013-11-20 21:02:15,052 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 48 read from file: shumarc_677851
-2013-11-20 21:02:15,100 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 49 read from file: shumarc_677958
-2013-11-20 21:02:15,119 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 50 read from file: shumarc_228932
-2013-11-20 21:02:15,142 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 51 read from file: shumarc_677965
-2013-11-20 21:02:15,167 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 52 read from file: shumarc_678166
-2013-11-20 21:02:15,188 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 53 read from file: shumarc_678665
-2013-11-20 21:02:15,209 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 54 read from file: shumarc_680060
-2013-11-20 21:02:15,249 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 55 read from file: shumarc_681286
-2013-11-20 21:02:15,289 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 56 read from file: shumarc_684294
-2013-11-20 21:02:15,332 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 57 read from file: shumarc_673990
-2013-11-20 21:02:15,352 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 58 read from file: shumarc_674027
-2013-11-20 21:02:15,390 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 59 read from file: shumarc_674108
-2013-11-20 21:02:15,423 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 60 read from file: shumarc_676469
-2013-11-20 21:02:15,441 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 61 read from file: shumarc_676492
-2013-11-20 21:02:15,476 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 62 read from file: shumarc_678664
-2013-11-20 21:02:15,503 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 63 read from file: shumarc_679715
-2013-11-20 21:02:15,530 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 64 read from file: shumarc_679763
-2013-11-20 21:02:15,570 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 65 read from file: shumarc_679697
-2013-11-20 21:02:15,586 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 66 read from file: shumarc_680187
-2013-11-20 21:02:15,604 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 67 read from file: shumarc_684493
-2013-11-20 21:02:15,623 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 68 read from file: shumarc_674105
-2013-11-20 21:02:15,639 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 69 read from file: shumarc_677870
-2013-11-20 21:02:15,662 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 70 read from file: shumarc_677966
-2013-11-20 21:02:15,679 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 71 read from file: shumarc_680188
-2013-11-20 21:02:15,693 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 72 read from file: shumarc_672061
-2013-11-20 21:02:15,708 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 73 read from file: shumarc_671865
-2013-11-20 21:02:15,728 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 74 read from file: shumarc_671848
-2013-11-20 21:02:15,749 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 75 read from file: shumarc_673989
-2013-11-20 21:02:15,785 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 76 read from file: shumarc_676260
-2013-11-20 21:02:15,813 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 77 read from file: shumarc_679952
-2013-11-20 21:02:15,838 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 78 read from file: shumarc_684497
-2013-11-20 21:02:15,851 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 79 read from file: shumarc_671916
-2013-11-20 21:02:15,867 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 80 read from file: shumarc_672089
-2013-11-20 21:02:15,882 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 81 read from file: shumarc_676247
-2013-11-20 21:02:15,897 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 82 read from file: shumarc_677679
-2013-11-20 21:02:15,915 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 83 read from file: shumarc_677677
-2013-11-20 21:02:15,929 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 84 read from file: shumarc_24560
-2013-11-20 21:02:15,946 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 85 read from file: shumarc_680183
-2013-11-20 21:02:15,964 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 86 read from file: shumarc_681011
-2013-11-20 21:02:15,984 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 87 read from file: shumarc_681788
-2013-11-20 21:02:15,998 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 88 read from file: shumarc_661700
-2013-11-20 21:02:16,015 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 89 read from file: shumarc_684489
-2013-11-20 21:02:16,030 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 90 read from file: shumarc_677960
-2013-11-20 21:02:16,045 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 91 read from file: shumarc_184878
-2013-11-20 21:02:16,058 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 92 read from file: shumarc_678677
-2013-11-20 21:02:16,072 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 93 read from file: shumarc_680873
-2013-11-20 21:02:16,087 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 94 read from file: shumarc_681213
-2013-11-20 21:02:16,101 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 95 read from file: shumarc_681792
-2013-11-20 21:02:16,116 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 96 read from file: shumarc_673759
-2013-11-20 21:02:16,132 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 97 read from file: shumarc_676471
-2013-11-20 21:02:16,148 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 98 read from file: shumarc_678161
-2013-11-20 21:02:16,161 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 99 read from file: shumarc_678205
-2013-11-20 21:02:16,173 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 100 read from file: shumarc_680044
-2013-11-20 21:02:16,188 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 101 read from file: shumarc_680070
-2013-11-20 21:02:16,201 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 102 read from file: shumarc_680991
-2013-11-20 21:02:16,221 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 103 read from file: shumarc_508195
-2013-11-20 21:02:16,250 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 104 read from file: shumarc_69963
-2013-11-20 21:02:16,262 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 105 read from file: shumarc_664220
-2013-11-20 21:02:16,280 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 106 read from file: shumarc_663317
-2013-11-20 21:02:16,295 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 107 read from file: shumarc_663303
-2013-11-20 21:02:16,311 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 108 read from file: shumarc_508195
-2013-11-20 21:02:16,325 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 109 read from file: shumarc_664220
-2013-11-20 21:02:16,344 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 110 read from file: shumarc_69963
-2013-11-20 21:02:16,361 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 111 read from file: shumarc_667441
-2013-11-20 21:02:16,401 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 112 read from file: shumarc_667144
-2013-11-20 21:02:16,420 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 113 read from file: shumarc_666211
-2013-11-20 21:02:16,434 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 114 read from file: shumarc_663303
-2013-11-20 21:02:16,446 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 115 read from file: shumarc_665235
-2013-11-20 21:02:16,457 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 116 read from file: shumarc_349125
-2013-11-20 21:02:16,470 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 117 read from file: shumarc_665129
-2013-11-20 21:02:16,482 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 118 read from file: shumarc_666176
-2013-11-20 21:02:16,493 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 119 read from file: shumarc_665227
-2013-11-20 21:02:16,508 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 120 read from file: shumarc_663317
-2013-11-20 21:02:16,520 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 121 read from file: shumarc_665239
-2013-11-20 21:02:16,535 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 122 read from file: shumarc_664260
-2013-11-20 21:02:16,556 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 123 read from file: shumarc_665152
-2013-11-20 21:02:16,568 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 124 read from file: shumarc_665240
-2013-11-20 21:02:16,581 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 125 read from file: shumarc_31437
-2013-11-20 21:02:16,597 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 126 read from file: shumarc_289257
-2013-11-20 21:02:16,609 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 127 read from file: shumarc_277678
-2013-11-20 21:02:16,621 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 128 read from file: shumarc_425871
-2013-11-20 21:02:16,634 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 129 read from file: shumarc_125822
-2013-11-20 21:02:16,646 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 130 read from file: shumarc_272747
-2013-11-20 21:02:16,659 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 131 read from file: shumarc_625469
-2013-11-20 21:02:16,673 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 132 read from file: shumarc_453294
-2013-11-20 21:02:16,686 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 133 read from file: shumarc_627600
-2013-11-20 21:02:16,697 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 134 read from file: shumarc_625824
-2013-11-20 21:02:16,721 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 135 read from file: shumarc_514958
-2013-11-20 21:02:16,740 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 136 read from file: shumarc_162565
-2013-11-20 21:02:16,754 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 137 read from file: shumarc_628365
-2013-11-20 21:02:16,768 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 138 read from file: shumarc_529691
-2013-11-20 21:02:16,779 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 139 read from file: shumarc_527854
-2013-11-20 21:02:16,791 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 140 read from file: shumarc_534130
-2013-11-20 21:02:16,802 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 141 read from file: shumarc_125553
-2013-11-20 21:02:16,824 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 142 read from file: shumarc_174804
-2013-11-20 21:02:16,837 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 143 read from file: shumarc_627720
-2013-11-20 21:02:16,854 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 144 read from file: shumarc_617025
-2013-11-20 21:02:16,876 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 145 read from file: shumarc_120463
-2013-11-20 21:02:16,888 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 146 read from file: shumarc_345407
-2013-11-20 21:02:16,906 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 147 read from file: shumarc_521297
-2013-11-20 21:02:16,920 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 148 read from file: shumarc_278120
-2013-11-20 21:02:16,932 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 149 read from file: shumarc_278524
-2013-11-20 21:02:16,945 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 150 read from file: shumarc_281349
-2013-11-20 21:02:16,957 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 151 read from file: shumarc_336918
-2013-11-20 21:02:16,969 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 152 read from file: shumarc_520773
-2013-11-20 21:02:16,985 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 153 read from file: shumarc_262183
-2013-11-20 21:02:17,004 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 154 read from file: shumarc_627339
-2013-11-20 21:02:17,022 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 155 read from file: shumarc_352295
-2013-11-20 21:02:17,036 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 156 read from file: shumarc_203114
-2013-11-20 21:02:17,052 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 157 read from file: shumarc_299612
-2013-11-20 21:02:17,065 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 158 read from file: shumarc_254392
-2013-11-20 21:02:17,076 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 159 read from file: shumarc_533791
-2013-11-20 21:02:17,087 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 160 read from file: shumarc_55640
-2013-11-20 21:02:17,099 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 161 read from file: shumarc_87234
-2013-11-20 21:02:17,110 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 162 read from file: shumarc_510789
-2013-11-20 21:02:17,121 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 163 read from file: shumarc_594286
-2013-11-20 21:02:17,133 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 164 read from file: shumarc_569121
-2013-11-20 21:02:17,144 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 165 read from file: shumarc_340634
-2013-11-20 21:02:17,156 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 166 read from file: shumarc_24191
-2013-11-20 21:02:17,177 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 167 read from file: shumarc_134064
-2013-11-20 21:02:17,189 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 168 read from file: shumarc_96487
-2013-11-20 21:02:17,202 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 169 read from file: shumarc_594692
-2013-11-20 21:02:17,213 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 170 read from file: shumarc_559810
-2013-11-20 21:02:17,223 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 171 read from file: shumarc_472823
-2013-11-20 21:02:17,234 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 172 read from file: shumarc_533851
-2013-11-20 21:02:17,258 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 173 read from file: shumarc_150763
-2013-11-20 21:02:17,274 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 174 read from file: shumarc_424763
-2013-11-20 21:02:17,297 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 175 read from file: shumarc_540775
-2013-11-20 21:02:17,312 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 176 read from file: shumarc_625425
-2013-11-20 21:02:17,329 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 177 read from file: shumarc_120516
-2013-11-20 21:02:17,341 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 178 read from file: shumarc_551893
-2013-11-20 21:02:17,352 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 179 read from file: shumarc_280801
-2013-11-20 21:02:17,363 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 180 read from file: shumarc_519512
-2013-11-20 21:02:17,373 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 181 read from file: shumarc_578770
-2013-11-20 21:02:17,382 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 182 read from file: shumarc_279644
-2013-11-20 21:02:17,393 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 183 read from file: shumarc_80083
-2013-11-20 21:02:17,406 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 184 read from file: shumarc_624515
-2013-11-20 21:02:17,418 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 185 read from file: shumarc_629651
-2013-11-20 21:02:17,432 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 186 read from file: shumarc_149575
-2013-11-20 21:02:17,442 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 187 read from file: shumarc_134880
-2013-11-20 21:02:17,453 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 188 read from file: shumarc_534074
-2013-11-20 21:02:17,462 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 189 read from file: shumarc_578771
-2013-11-20 21:02:17,472 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 190 read from file: shumarc_338405
-2013-11-20 21:02:17,493 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 191 read from file: shumarc_534077
-2013-11-20 21:02:17,504 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 192 read from file: shumarc_26621
-2013-11-20 21:02:17,516 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 193 read from file: shumarc_627734
-2013-11-20 21:02:17,528 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 194 read from file: shumarc_387357
-2013-11-20 21:02:17,539 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 195 read from file: shumarc_120527
-2013-11-20 21:02:17,549 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 196 read from file: shumarc_168979
-2013-11-20 21:02:17,560 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 197 read from file: shumarc_513327
-2013-11-20 21:02:17,575 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 198 read from file: shumarc_234619
-2013-11-20 21:02:17,590 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 199 read from file: shumarc_628359
-2013-11-20 21:02:17,606 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 200 read from file: shumarc_557753
-2013-11-20 21:02:17,617 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 201 read from file: shumarc_252705
-2013-11-20 21:02:17,626 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 202 read from file: shumarc_15857
-2013-11-20 21:02:17,647 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 203 read from file: shumarc_82736
-2013-11-20 21:02:17,663 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 204 read from file: shumarc_559811
-2013-11-20 21:02:17,682 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 205 read from file: shumarc_624419
-2013-11-20 21:02:17,694 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 206 read from file: shumarc_521321
-2013-11-20 21:02:17,705 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 207 read from file: shumarc_629646
-2013-11-20 21:02:17,715 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 208 read from file: shumarc_503579
-2013-11-20 21:02:17,725 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 209 read from file: shumarc_349159
-2013-11-20 21:02:17,736 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 210 read from file: shumarc_128357
-2013-11-20 21:02:17,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 211 read from file: shumarc_557770
-2013-11-20 21:02:17,756 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 212 read from file: shumarc_521389
-2013-11-20 21:02:17,771 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 213 read from file: shumarc_345704
-2013-11-20 21:02:17,783 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 214 read from file: shumarc_627716
-2013-11-20 21:02:17,794 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 215 read from file: shumarc_51900
-2013-11-20 21:02:17,803 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 216 read from file: shumarc_578869
-2013-11-20 21:02:17,815 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 217 read from file: shumarc_506177
-2013-11-20 21:02:17,827 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 218 read from file: shumarc_624514
-2013-11-20 21:02:17,836 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 219 read from file: shumarc_431702
-2013-11-20 21:02:17,847 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 220 read from file: shumarc_65569
-2013-11-20 21:02:17,858 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 221 read from file: shumarc_437818
-2013-11-20 21:02:17,869 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 222 read from file: shumarc_439123
-2013-11-20 21:02:17,883 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 223 read from file: shumarc_473229
-2013-11-20 21:02:17,894 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 224 read from file: shumarc_264663
-2013-11-20 21:02:17,910 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 225 read from file: shumarc_510795
-2013-11-20 21:02:17,922 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 226 read from file: shumarc_171006
-2013-11-20 21:02:17,932 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 227 read from file: shumarc_545727
-2013-11-20 21:02:17,944 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 228 read from file: shumarc_448567
-2013-11-20 21:02:17,956 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 229 read from file: shumarc_483990
-2013-11-20 21:02:17,966 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 230 read from file: shumarc_473845
-2013-11-20 21:02:17,978 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 231 read from file: shumarc_80260
-2013-11-20 21:02:17,989 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 232 read from file: shumarc_158564
-2013-11-20 21:02:17,999 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 233 read from file: shumarc_96531
-2013-11-20 21:02:18,008 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 234 read from file: shumarc_275748
-2013-11-20 21:02:18,017 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 235 read from file: shumarc_456845
-2013-11-20 21:02:18,041 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 236 read from file: shumarc_108090
-2013-11-20 21:02:18,053 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 237 read from file: shumarc_552655
-2013-11-20 21:02:18,062 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 238 read from file: shumarc_437808
-2013-11-20 21:02:18,075 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 239 read from file: shumarc_247814
-2013-11-20 21:02:18,085 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 240 read from file: shumarc_488340
-2013-11-20 21:02:18,094 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 241 read from file: shumarc_30398
-2013-11-20 21:02:18,105 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 242 read from file: shumarc_263265
-2013-11-20 21:02:18,116 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 243 read from file: shumarc_248521
-2013-11-20 21:02:18,126 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 244 read from file: shumarc_12554
-2013-11-20 21:02:18,135 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 245 read from file: shumarc_122503
-2013-11-20 21:02:18,146 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 246 read from file: shumarc_282138
-2013-11-20 21:02:18,158 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 247 read from file: shumarc_480922
-2013-11-20 21:02:18,168 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 248 read from file: shumarc_511856
-2013-11-20 21:02:18,180 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 249 read from file: shumarc_554267
-2013-11-20 21:02:18,190 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 250 read from file: shumarc_231720
-2013-11-20 21:02:18,206 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 251 read from file: shumarc_241541
-2013-11-20 21:02:18,217 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 252 read from file: shumarc_213000
-2013-11-20 21:02:18,227 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 253 read from file: shumarc_625679
-2013-11-20 21:02:18,237 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 254 read from file: shumarc_529726
-2013-11-20 21:02:18,259 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 255 read from file: shumarc_629612
-2013-11-20 21:02:18,276 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 256 read from file: shumarc_491969
-2013-11-20 21:02:18,291 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 257 read from file: shumarc_199971
-2013-11-20 21:02:18,306 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 258 read from file: shumarc_569138
-2013-11-20 21:02:18,319 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 259 read from file: shumarc_108048
-2013-11-20 21:02:18,333 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 260 read from file: shumarc_466689
-2013-11-20 21:02:18,346 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 261 read from file: shumarc_45809
-2013-11-20 21:02:18,359 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 262 read from file: shumarc_24098
-2013-11-20 21:02:18,375 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 263 read from file: shumarc_128180
-2013-11-20 21:02:18,389 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 264 read from file: shumarc_625453
-2013-11-20 21:02:18,402 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 265 read from file: shumarc_559852
-2013-11-20 21:02:18,417 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 266 read from file: shumarc_521298
-2013-11-20 21:02:18,433 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 267 read from file: shumarc_144914
-2013-11-20 21:02:18,447 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 268 read from file: shumarc_557905
-2013-11-20 21:02:18,466 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 269 read from file: shumarc_284006
-2013-11-20 21:02:18,480 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 270 read from file: shumarc_521373
-2013-11-20 21:02:18,495 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 271 read from file: shumarc_278529
-2013-11-20 21:02:18,513 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 272 read from file: shumarc_527247
-2013-11-20 21:02:18,527 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 273 read from file: shumarc_23475
-2013-11-20 21:02:18,544 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 274 read from file: shumarc_533854
-2013-11-20 21:02:18,559 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 275 read from file: shumarc_515009
-2013-11-20 21:02:18,575 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 276 read from file: shumarc_628344
-2013-11-20 21:02:18,586 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 277 read from file: shumarc_628368
-2013-11-20 21:02:18,603 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 278 read from file: shumarc_629623
-2013-11-20 21:02:18,619 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 279 read from file: shumarc_55497
-2013-11-20 21:02:18,635 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 280 read from file: shumarc_79568
-2013-11-20 21:02:18,645 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 281 read from file: shumarc_464538
-2013-11-20 21:02:18,654 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 282 read from file: shumarc_12685
-2013-11-20 21:02:18,663 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 283 read from file: shumarc_289714
-2013-11-20 21:02:18,671 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 284 read from file: shumarc_533787
-2013-11-20 21:02:18,681 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 285 read from file: shumarc_552802
-2013-11-20 21:02:18,690 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 286 read from file: shumarc_24186
-2013-11-20 21:02:18,700 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 287 read from file: shumarc_533966
-2013-11-20 21:02:18,710 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 288 read from file: shumarc_49963
-2013-11-20 21:02:18,718 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 289 read from file: shumarc_67925
-2013-11-20 21:02:18,727 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 290 read from file: shumarc_343849
-2013-11-20 21:02:18,737 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 291 read from file: shumarc_346668
-2013-11-20 21:02:18,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 292 read from file: shumarc_534575
-2013-11-20 21:02:18,755 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 293 read from file: shumarc_424033
-2013-11-20 21:02:18,764 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 294 read from file: shumarc_514952
-2013-11-20 21:02:18,774 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 295 read from file: shumarc_627360
-2013-11-20 21:02:18,784 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 296 read from file: shumarc_199487
-2013-11-20 21:02:18,795 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 297 read from file: shumarc_488339
-2013-11-20 21:02:18,805 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 298 read from file: shumarc_552652
-2013-11-20 21:02:18,814 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 299 read from file: shumarc_155071
-2013-11-20 21:02:18,825 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 300 read from file: shumarc_47016
-2013-11-20 21:02:18,836 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 301 read from file: shumarc_514997
-2013-11-20 21:02:18,846 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 302 read from file: shumarc_55456
-2013-11-20 21:02:18,857 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 303 read from file: shumarc_286314
-2013-11-20 21:02:18,868 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 304 read from file: shumarc_67679
-2013-11-20 21:02:18,878 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 305 read from file: shumarc_186257
-2013-11-20 21:02:18,887 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 306 read from file: shumarc_472774
-2013-11-20 21:02:18,897 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 307 read from file: shumarc_270669
-2013-11-20 21:02:18,906 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 308 read from file: shumarc_244589
-2013-11-20 21:02:18,920 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 309 read from file: shumarc_95289
-2013-11-20 21:02:18,953 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 310 read from file: shumarc_152136
-2013-11-20 21:02:18,964 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 311 read from file: shumarc_557673
-2013-11-20 21:02:18,973 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 312 read from file: shumarc_164208
-2013-11-20 21:02:18,983 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 313 read from file: shumarc_625455
-2013-11-20 21:02:18,993 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 314 read from file: shumarc_519792
-2013-11-20 21:02:19,003 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 315 read from file: shumarc_277911
-2013-11-20 21:02:19,013 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 316 read from file: shumarc_398411
-2013-11-20 21:02:19,023 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 317 read from file: shumarc_351849
-2013-11-20 21:02:19,041 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 318 read from file: shumarc_501468
-2013-11-20 21:02:19,049 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 319 read from file: shumarc_170478
-2013-11-20 21:02:19,059 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 320 read from file: shumarc_527857
-2013-11-20 21:02:19,067 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 321 read from file: shumarc_261641
-2013-11-20 21:02:19,078 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 322 read from file: shumarc_559812
-2013-11-20 21:02:19,088 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 323 read from file: shumarc_521358
-2013-11-20 21:02:19,096 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 324 read from file: shumarc_552613
-2013-11-20 21:02:19,107 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 325 read from file: shumarc_513360
-2013-11-20 21:02:19,116 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 326 read from file: shumarc_629618
-2013-11-20 21:02:19,126 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 327 read from file: shumarc_87863
-2013-11-20 21:02:19,136 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 328 read from file: shumarc_279661
-2013-11-20 21:02:19,145 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 329 read from file: shumarc_126620
-2013-11-20 21:02:19,157 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 330 read from file: shumarc_624539
-2013-11-20 21:02:19,165 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 331 read from file: shumarc_335638
-2013-11-20 21:02:19,175 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 332 read from file: shumarc_529687
-2013-11-20 21:02:19,183 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 333 read from file: shumarc_155076
-2013-11-20 21:02:19,194 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 334 read from file: shumarc_425743
-2013-11-20 21:02:19,203 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 335 read from file: shumarc_54887
-2013-11-20 21:02:19,212 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 336 read from file: shumarc_578844
-2013-11-20 21:02:19,220 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 337 read from file: shumarc_174400
-2013-11-20 21:02:19,229 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 338 read from file: shumarc_249408
-2013-11-20 21:02:19,239 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 339 read from file: shumarc_87947
-2013-11-20 21:02:19,247 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 340 read from file: shumarc_23409
-2013-11-20 21:02:19,259 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 341 read from file: shumarc_627236
-2013-11-20 21:02:19,270 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 342 read from file: shumarc_629610
-2013-11-20 21:02:19,279 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 343 read from file: shumarc_254699
-2013-11-20 21:02:19,290 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 344 read from file: shumarc_345702
-2013-11-20 21:02:19,302 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 345 read from file: shumarc_250361
-2013-11-20 21:02:19,311 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 346 read from file: shumarc_551871
-2013-11-20 21:02:19,320 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 347 read from file: shumarc_510813
-2013-11-20 21:02:19,329 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 348 read from file: shumarc_72302
-2013-11-20 21:02:19,338 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 349 read from file: shumarc_279446
-2013-11-20 21:02:19,349 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 350 read from file: shumarc_278155
-2013-11-20 21:02:19,359 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 351 read from file: shumarc_278517
-2013-11-20 21:02:19,369 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 352 read from file: shumarc_485215
-2013-11-20 21:02:19,378 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 353 read from file: shumarc_509464
-2013-11-20 21:02:19,389 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 354 read from file: shumarc_533771
-2013-11-20 21:02:19,399 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 355 read from file: shumarc_554544
-2013-11-20 21:02:19,408 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 356 read from file: shumarc_128666
-2013-11-20 21:02:19,417 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 357 read from file: shumarc_533889
-2013-11-20 21:02:19,426 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 358 read from file: shumarc_187695
-2013-11-20 21:02:19,436 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 359 read from file: shumarc_88967
-2013-11-20 21:02:19,446 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 360 read from file: shumarc_523521
-2013-11-20 21:02:19,458 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 361 read from file: shumarc_664362
-2013-11-20 21:02:19,467 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 362 read from file: shumarc_661895
-2013-11-20 21:02:19,478 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 363 read from file: shumarc_664395
-2013-11-20 21:02:19,488 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 364 read from file: shumarc_509689
-2013-11-20 21:02:19,499 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 365 read from file: shumarc_110915
-2013-11-20 21:02:19,520 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 366 read from file: shumarc_281436
-2013-11-20 21:02:19,531 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 367 read from file: shumarc_231067
-2013-11-20 21:02:19,544 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 368 read from file: shumarc_533892
-2013-11-20 21:02:19,554 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 369 read from file: shumarc_53284
-2013-11-20 21:02:19,565 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 370 read from file: shumarc_533773
-2013-11-20 21:02:19,574 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 371 read from file: shumarc_501270
-2013-11-20 21:02:19,589 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 372 read from file: shumarc_89022
-2013-11-20 21:02:19,600 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 373 read from file: shumarc_661897
-2013-11-20 21:02:19,609 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 374 read from file: shumarc_661799
-2013-11-20 21:02:19,620 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 375 read from file: shumarc_661759
-2013-11-20 21:02:19,629 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 376 read from file: shumarc_663303
-2013-11-20 21:02:19,639 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 377 read from file: shumarc_664389
-2013-11-20 21:02:19,647 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 378 read from file: shumarc_128759
-2013-11-20 21:02:19,655 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 379 read from file: shumarc_178535
-2013-11-20 21:02:19,663 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 380 read from file: shumarc_249759
-2013-11-20 21:02:19,703 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 381 read from file: shumarc_543327
-2013-11-20 21:02:19,714 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 382 read from file: shumarc_599110
-2013-11-20 21:02:19,723 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 383 read from file: shumarc_664353
-2013-11-20 21:02:19,735 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 384 read from file: shumarc_172631
-2013-11-20 21:02:19,743 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 385 read from file: shumarc_664393
-2013-11-20 21:02:19,753 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 386 read from file: shumarc_249331
-2013-11-20 21:02:19,761 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 387 read from file: shumarc_62814
-2013-11-20 21:02:19,770 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 388 read from file: shumarc_263959
-2013-11-20 21:02:19,780 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 389 read from file: shumarc_254539
-2013-11-20 21:02:19,790 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 390 read from file: shumarc_533772
-2013-11-20 21:02:19,800 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 391 read from file: shumarc_313619
-2013-11-20 21:02:19,810 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 392 read from file: shumarc_534395
-2013-11-20 21:02:19,820 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 393 read from file: shumarc_502061
-2013-11-20 21:02:19,830 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 394 read from file: shumarc_232000
-2013-11-20 21:02:19,839 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 395 read from file: shumarc_231732
-2013-11-20 21:02:19,849 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 396 read from file: shumarc_267051
-2013-11-20 21:02:19,858 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 397 read from file: shumarc_605990
-2013-11-20 21:02:19,867 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 398 read from file: shumarc_664351
-2013-11-20 21:02:19,878 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 399 read from file: shumarc_661700
-2013-11-20 21:02:19,887 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 400 read from file: shumarc_464538
-2013-11-20 21:02:19,895 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 401 read from file: shumarc_122899
-2013-11-20 21:02:19,904 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 402 read from file: shumarc_83290
-2013-11-20 21:02:19,913 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 403 read from file: shumarc_64612
-2013-11-20 21:02:19,921 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 404 read from file: shumarc_168896
-2013-11-20 21:02:19,931 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 405 read from file: shumarc_534396
-2013-11-20 21:02:19,939 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 406 read from file: shumarc_3178
-2013-11-20 21:02:19,950 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 407 read from file: shumarc_661621
-2013-11-20 21:02:19,960 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 408 read from file: shumarc_664349
-2013-11-20 21:02:19,968 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 409 read from file: shumarc_661795
-2013-11-20 21:02:19,978 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 410 read from file: shumarc_663317
-2013-11-20 21:02:19,986 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 411 read from file: shumarc_627789
-2013-11-20 21:02:19,994 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 412 read from file: shumarc_179841
-2013-11-20 21:02:20,003 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 413 read from file: shumarc_509686
-2013-11-20 21:02:20,012 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 414 read from file: shumarc_90574
-2013-11-20 21:02:20,028 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 415 read from file: shumarc_148581
-2013-11-20 21:02:20,037 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 416 read from file: shumarc_187682
-2013-11-20 21:02:20,046 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 417 read from file: shumarc_605962
-2013-11-20 21:02:20,062 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 418 read from file: shumarc_26271
-2013-11-20 21:02:20,076 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 419 read from file: shumarc_204732
-2013-11-20 21:02:20,085 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 420 read from file: shumarc_661702
-2013-11-20 21:02:20,095 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 421 read from file: shumarc_485215
-2013-11-20 21:02:20,104 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 422 read from file: shumarc_509464
-2013-11-20 21:02:20,114 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 423 read from file: shumarc_533771
-2013-11-20 21:02:20,124 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 424 read from file: shumarc_554544
-2013-11-20 21:02:20,133 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 425 read from file: shumarc_128666
-2013-11-20 21:02:20,141 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 426 read from file: shumarc_533889
-2013-11-20 21:02:20,150 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 427 read from file: shumarc_187695
-2013-11-20 21:02:20,162 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 428 read from file: shumarc_88967
-2013-11-20 21:02:20,172 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 429 read from file: shumarc_523521
-2013-11-20 21:02:20,180 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 430 read from file: shumarc_509689
-2013-11-20 21:02:20,200 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 431 read from file: shumarc_110915
-2013-11-20 21:02:20,214 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 432 read from file: shumarc_281436
-2013-11-20 21:02:20,225 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 433 read from file: shumarc_231067
-2013-11-20 21:02:20,234 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 434 read from file: shumarc_533892
-2013-11-20 21:02:20,244 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 435 read from file: shumarc_53284
-2013-11-20 21:02:20,252 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 436 read from file: shumarc_533773
-2013-11-20 21:02:20,267 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 437 read from file: shumarc_501270
-2013-11-20 21:02:20,275 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 438 read from file: shumarc_89022
-2013-11-20 21:02:20,283 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 439 read from file: shumarc_128759
-2013-11-20 21:02:20,293 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 440 read from file: shumarc_178535
-2013-11-20 21:02:20,301 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 441 read from file: shumarc_249759
-2013-11-20 21:02:20,315 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 442 read from file: shumarc_543327
-2013-11-20 21:02:20,326 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 443 read from file: shumarc_599110
-2013-11-20 21:02:20,335 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 444 read from file: shumarc_249331
-2013-11-20 21:02:20,343 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 445 read from file: shumarc_62814
-2013-11-20 21:02:20,352 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 446 read from file: shumarc_263959
-2013-11-20 21:02:20,361 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 447 read from file: shumarc_254539
-2013-11-20 21:02:20,370 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 448 read from file: shumarc_533772
-2013-11-20 21:02:20,379 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 449 read from file: shumarc_313619
-2013-11-20 21:02:20,390 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 450 read from file: shumarc_534395
-2013-11-20 21:02:20,401 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 451 read from file: shumarc_502061
-2013-11-20 21:02:20,409 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 452 read from file: shumarc_232000
-2013-11-20 21:02:20,418 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 453 read from file: shumarc_231732
-2013-11-20 21:02:20,428 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 454 read from file: shumarc_267051
-2013-11-20 21:02:20,437 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 455 read from file: shumarc_605990
-2013-11-20 21:02:20,445 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 456 read from file: shumarc_122899
-2013-11-20 21:02:20,454 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 457 read from file: shumarc_83290
-2013-11-20 21:02:20,463 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 458 read from file: shumarc_64612
-2013-11-20 21:02:20,471 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 459 read from file: shumarc_168896
-2013-11-20 21:02:20,480 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 460 read from file: shumarc_534396
-2013-11-20 21:02:20,488 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 461 read from file: shumarc_3178
-2013-11-20 21:02:20,496 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 462 read from file: shumarc_627789
-2013-11-20 21:02:20,504 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 463 read from file: shumarc_179841
-2013-11-20 21:02:20,513 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 464 read from file: shumarc_509686
-2013-11-20 21:02:20,521 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 465 read from file: shumarc_90574
-2013-11-20 21:02:20,530 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 466 read from file: shumarc_148581
-2013-11-20 21:02:20,539 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 467 read from file: shumarc_187682
-2013-11-20 21:02:20,547 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 468 read from file: shumarc_605962
-2013-11-20 21:02:20,559 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 469 read from file: shumarc_26271
-2013-11-20 21:02:20,568 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 470 read from file: shumarc_204732
-2013-11-20 21:02:20,578 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 471 read from file: shumarc_884924
-2013-11-20 21:02:20,597 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 472 read from file: shumarc_885114
-2013-11-20 21:02:20,613 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 473 read from file: shumarc_892247
-2013-11-20 21:02:20,626 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 474 read from file: shumarc_892869
-2013-11-20 21:02:20,635 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 475 read from file: shumarc_892881
-2013-11-20 21:02:20,649 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 476 read from file: shumarc_892886
-2013-11-20 21:02:20,661 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 477 read from file: shumarc_892888
-2013-11-20 21:02:20,675 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 478 read from file: shumarc_892919
-2013-11-20 21:02:20,688 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 479 read from file: shumarc_893016
-2013-11-20 21:02:20,696 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 480 read from file: shumarc_893349
-2013-11-20 21:02:20,704 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 481 read from file: shumarc_894157
-2013-11-20 21:02:20,712 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 482 read from file: shumarc_901406
-2013-11-20 21:02:20,719 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 483 read from file: shumarc_884960
-2013-11-20 21:02:20,729 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 484 read from file: shumarc_888802
-2013-11-20 21:02:20,738 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 485 read from file: shumarc_889022
-2013-11-20 21:02:20,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 486 read from file: shumarc_888451
-2013-11-20 21:02:20,753 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 487 read from file: shumarc_892471
-2013-11-20 21:02:20,761 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 488 read from file: shumarc_893264
-2013-11-20 21:02:20,769 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 489 read from file: shumarc_895677
-2013-11-20 21:02:20,777 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 490 read from file: shumarc_901695
-2013-11-20 21:02:20,785 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 491 read from file: shumarc_901698
-2013-11-20 21:02:20,793 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 492 read from file: shumarc_852490
-2013-11-20 21:02:20,811 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 493 read from file: shumarc_884161
-2013-11-20 21:02:20,818 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 494 read from file: shumarc_885967
-2013-11-20 21:02:20,829 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 495 read from file: shumarc_888416
-2013-11-20 21:02:20,839 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 496 read from file: shumarc_893014
-2013-11-20 21:02:20,847 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 497 read from file: shumarc_893019
-2013-11-20 21:02:20,854 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 498 read from file: shumarc_893267
-2013-11-20 21:02:20,862 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 499 read from file: shumarc_901939
-2013-11-20 21:02:20,869 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 500 read from file: shumarc_884773
-2013-11-20 21:02:20,877 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 501 read from file: shumarc_884839
-2013-11-20 21:02:20,888 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 502 read from file: shumarc_885138
-2013-11-20 21:02:20,896 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 503 read from file: shumarc_886117
-2013-11-20 21:02:20,906 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 504 read from file: shumarc_676260
-2013-11-20 21:02:20,934 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 505 read from file: shumarc_889848
-2013-11-20 21:02:20,943 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 506 read from file: shumarc_892260
-2013-11-20 21:02:20,950 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 507 read from file: shumarc_892805
-2013-11-20 21:02:20,959 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 508 read from file: shumarc_893262
-2013-11-20 21:02:20,968 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 509 read from file: shumarc_893352
-2013-11-20 21:02:20,976 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 510 read from file: shumarc_893358
-2013-11-20 21:02:20,983 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 511 read from file: shumarc_893611
-2013-11-20 21:02:20,991 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 512 read from file: shumarc_895663
-2013-11-20 21:02:20,998 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 513 read from file: shumarc_901409
-2013-11-20 21:02:21,006 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 514 read from file: shumarc_901586
-2013-11-20 21:02:21,014 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 515 read from file: shumarc_214427
-2013-11-20 21:02:21,024 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 516 read from file: shumarc_676247
-2013-11-20 21:02:21,032 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 517 read from file: shumarc_892882
-2013-11-20 21:02:21,040 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 518 read from file: shumarc_893346
-2013-11-20 21:02:21,048 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 519 read from file: shumarc_893350
-2013-11-20 21:02:21,056 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 520 read from file: shumarc_901659
-2013-11-20 21:02:21,065 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 521 read from file: shumarc_884589
-2013-11-20 21:02:21,073 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 522 read from file: shumarc_891985
-2013-11-20 21:02:21,082 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 523 read from file: shumarc_892870
-2013-11-20 21:02:21,090 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 524 read from file: shumarc_893344
-2013-11-20 21:02:21,097 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 525 read from file: shumarc_895675
-2013-11-20 21:02:21,106 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 526 read from file: shumarc_901300
-2013-11-20 21:02:21,113 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 527 read from file: shumarc_901354
-2013-11-20 21:02:21,120 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 528 read from file: shumarc_901583
-2013-11-20 21:02:21,129 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 529 read from file: shumarc_882365
-2013-11-20 21:02:21,137 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 530 read from file: shumarc_23254
-2013-11-20 21:02:21,150 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 531 read from file: shumarc_884156
-2013-11-20 21:02:21,160 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 532 read from file: shumarc_886456
-2013-11-20 21:02:21,168 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 533 read from file: shumarc_886116
-2013-11-20 21:02:21,176 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 534 read from file: shumarc_888804
-2013-11-20 21:02:21,184 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 535 read from file: shumarc_892245
-2013-11-20 21:02:21,192 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 536 read from file: shumarc_515009
-2013-11-20 21:02:21,201 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 537 read from file: shumarc_892885
-2013-11-20 21:02:21,208 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 538 read from file: shumarc_893017
-2013-11-20 21:02:21,216 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 539 read from file: shumarc_893271
-2013-11-20 21:02:21,223 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 540 read from file: shumarc_893359
-2013-11-20 21:02:21,231 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 541 read from file: shumarc_895671
-2013-11-20 21:02:21,238 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 542 read from file: shumarc_901660
-2013-11-20 21:02:21,249 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 543 read from file: shumarc_901957
-2013-11-20 21:02:21,257 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 544 read from file: shumarc_901958
-2013-11-20 21:02:21,266 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 545 read from file: shumarc_885140
-2013-11-20 21:02:21,276 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 546 read from file: shumarc_885200
-2013-11-20 21:02:21,284 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 547 read from file: shumarc_885212
-2013-11-20 21:02:21,291 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 548 read from file: shumarc_678205
-2013-11-20 21:02:21,302 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 549 read from file: shumarc_892808
-2013-11-20 21:02:21,312 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 550 read from file: shumarc_892809
-2013-11-20 21:02:21,320 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 551 read from file: shumarc_892813
-2013-11-20 21:02:21,331 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 552 read from file: shumarc_892872
-2013-11-20 21:02:21,338 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 553 read from file: shumarc_893284
-2013-11-20 21:02:21,346 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 554 read from file: shumarc_893355
-2013-11-20 21:02:21,354 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 555 read from file: shumarc_895687
-2013-11-20 21:02:21,362 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 556 read from file: shumarc_901357
-2013-11-20 21:02:21,370 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 557 read from file: shumarc_901584
-2013-11-20 21:02:21,377 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 558 read from file: shumarc_901661
-2013-11-20 21:02:21,385 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 559 read from file: shumarc_901965
-2013-11-20 21:02:21,385 [main] INFO  main org.solrmarc.marc.MarcImporter -  Adding 559 of 559 documents to index
-2013-11-20 21:02:21,385 [main] INFO  main org.solrmarc.marc.MarcImporter -  Deleting 0 documents from index
-2013-11-20 21:02:21,385 [main] INFO  main org.solrmarc.marc.MarcImporter - Calling commit (with optimize set to false)
-2013-11-20 21:02:22,040 [main] INFO  main org.solrmarc.marc.MarcImporter - Done with the commit, closing Solr
-2013-11-20 21:02:22,040 [main] INFO  main org.solrmarc.marc.MarcImporter - Setting Solr closed flag
-2013-11-20 21:02:22,041 [main] INFO  main org.solrmarc.marc.MarcImporter - Finished indexing in 0:09.00
-2013-11-20 21:02:22,041 [main] INFO  main org.solrmarc.marc.MarcImporter - Indexed 559 at a rate of about 61.0 per sec
-2013-11-20 21:02:22,041 [main] INFO  main org.solrmarc.marc.MarcImporter - Deleted 0 records
-2013-11-20 21:02:22,042 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Starting Shutdown hook
-2013-11-20 21:02:22,042 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Finished Shutdown hook
-=======
-2013-11-15 18:59:52,825 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1428799 (record count 46) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,826 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,832 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1177716 (record count 47) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,839 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,844 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1177757 (record count 48) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,848 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,853 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1433691 (record count 49) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,861 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,867 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1424857 (record count 50) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,869 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,875 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1424675 (record count 51) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,885 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,890 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1425033 (record count 52) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,894 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,899 [main] ERROR main org.solrmarc.marc.MarcImporter - Unable to index record luwmarc_1177748 (record count 53) -- No such core: biblio
-org.apache.solr.common.SolrException: No such core: biblio
-	at org.apache.solr.client.solrj.embedded.EmbeddedSolrServer.request(EmbeddedSolrServer.java:112)
-	at org.apache.solr.client.solrj.request.AbstractUpdateRequest.process(AbstractUpdateRequest.java:117)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:116)
-	at org.apache.solr.client.solrj.SolrServer.add(SolrServer.java:102)
-	at org.solrmarc.solr.SolrServerProxy.addDoc(SolrServerProxy.java:56)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:474)
-	at org.solrmarc.marc.MarcImporter.addToIndex(MarcImporter.java:400)
-	at org.solrmarc.marc.MarcImporter.importRecords(MarcImporter.java:313)
-	at org.solrmarc.marc.MarcImporter.handleAll(MarcImporter.java:607)
-	at org.solrmarc.marc.MarcImporter.main(MarcImporter.java:867)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at com.simontuffs.onejar.Boot.run(Boot.java:334)
-	at com.simontuffs.onejar.Boot.main(Boot.java:170)
-2013-11-15 18:59:52,910 [main] ERROR main org.solrmarc.marc.MarcImporter - ******** Halting indexing! ********
-2013-11-15 18:59:52,910 [main] INFO  main org.solrmarc.marc.MarcImporter -  Adding 0 of 53 documents to index
-2013-11-15 18:59:52,910 [main] INFO  main org.solrmarc.marc.MarcImporter -  Deleting 0 documents from index
-2013-11-15 18:59:52,910 [main] INFO  main org.solrmarc.marc.MarcImporter - Calling commit (with optimize set to false)
->>>>>>> e9d7bd1af488453ee3e0e91971c694b100108f09
+2013-12-12 18:33:36,715 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 122 read from file: tormarc_histoiredelgli04herg
+2013-12-12 18:33:37,705 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 123 read from file: tormarc_annalescatholiqu02pari
+2013-12-12 18:33:38,723 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 124 read from file: tormarc_monseigneurprove00duga
+2013-12-12 18:33:39,734 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 125 read from file: tormarc_perptuitdela04arna
+2013-12-12 18:33:40,794 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 126 read from file: tormarc_annalescatholiqu40pari
+2013-12-12 18:33:41,847 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 127 read from file: tormarc_bibliothquesac07rich
+2013-12-12 18:33:42,881 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 128 read from file: tormarc_dictionnaireapos09mont
+2013-12-12 18:33:43,912 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 129 read from file: tormarc_annalescatholiqu01pari
+2013-12-12 18:33:44,945 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 130 read from file: tormarc_voyagesdungentle00moor
+2013-12-12 18:33:46,025 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 131 read from file: tormarc_dictionnaireuniv14pelt
+2013-12-12 18:33:47,042 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 132 read from file: tormarc_bibliothquesac14rich
+2013-12-12 18:33:48,100 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 133 read from file: tormarc_lofficedelglis00cath
+2013-12-12 18:33:49,129 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 134 read from file: tormarc_instructionpasto00lalu
+2013-12-12 18:33:50,154 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 135 read from file: tormarc_devoirsdusacerdo02math
+2013-12-12 18:33:51,257 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 136 read from file: tormarc_annalescatholiqu38pari
+2013-12-12 18:33:52,294 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 137 read from file: tormarc_viedelavnrab00abbe
+2013-12-12 18:33:53,360 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 138 read from file: tormarc_bibliothquesac01rich
+2013-12-12 18:33:54,405 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 139 read from file: tormarc_lettresdundocteu00basl
+2013-12-12 18:33:55,445 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 140 read from file: tormarc_recueilhistoriq00cath
+2013-12-12 18:33:56,477 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 141 read from file: tormarc_tudesdhistoire01bati
+2013-12-12 18:33:57,484 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 142 read from file: tormarc_dictionnairealph16bois
+2013-12-12 18:33:58,490 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 143 read from file: tormarc_annalescatholiqu17pari
+2013-12-12 18:33:59,520 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 144 read from file: tormarc_annalescatholiqu19pari
+2013-12-12 18:34:00,521 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 145 read from file: tormarc_annepastoraleo03reyr
+2013-12-12 18:34:01,559 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 146 read from file: tormarc_sermonsdemmassil04mass
+2013-12-12 18:34:02,558 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 147 read from file: tormarc_annalescatholiqu18pari
+2013-12-12 18:34:03,555 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 148 read from file: tormarc_histoiredelgli02herg
+2013-12-12 18:34:04,624 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 149 read from file: tormarc_rpertoireg00tang
+2013-12-12 18:34:05,629 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 150 read from file: tormarc_annalescatholiqu27pari
+2013-12-12 18:34:06,716 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 151 read from file: tormarc_annepastoraleo05reyr
+2013-12-12 18:34:07,771 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 152 read from file: tormarc_sermonsdemmassil02mass
+2013-12-12 18:34:08,787 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 153 read from file: tormarc_vieetmmoiresde02pott
+2013-12-12 18:34:09,843 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 154 read from file: tormarc_confrencesetse00ribi
+2013-12-12 18:34:10,887 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 155 read from file: tormarc_leprogrsparlec1860fl
+2013-12-12 18:34:11,898 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 156 read from file: tormarc_choixdeslettrese01mont
+2013-12-12 18:34:12,948 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 157 read from file: tormarc_letablissementde00hugo
+2013-12-12 18:34:14,016 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 158 read from file: tormarc_annalescatholiqu52pari
+2013-12-12 18:34:15,050 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 159 read from file: tormarc_histoiregnr09ceil
+2013-12-12 18:34:16,080 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 160 read from file: tormarc_examencritiquede00mail
+2013-12-12 18:34:17,127 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 161 read from file: tormarc_crmonialselo00bald
+2013-12-12 18:34:18,201 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 162 read from file: tormarc_lavitainteriored00leon
+2013-12-12 18:34:19,200 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 163 read from file: tormarc_annalescatholiqu60pari
+2013-12-12 18:34:20,244 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 164 read from file: tormarc_confrences02laco
+2013-12-12 18:34:21,265 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 165 read from file: tormarc_delunionintimede00caqu
+2013-12-12 18:34:22,407 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 166 read from file: tormarc_larenaissanceca03thur
+2013-12-12 18:34:23,390 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 167 read from file: tormarc_devoirsdusacerdo03math
+2013-12-12 18:34:24,384 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 168 read from file: tormarc_annalescatholiqu57pari
+2013-12-12 18:34:25,402 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 169 read from file: tormarc_annalescatholiqu46pari
+2013-12-12 18:34:26,432 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 170 read from file: tormarc_annalescatholiqu26pari
+2013-12-12 18:34:27,481 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 171 read from file: tormarc_p2lchoducabinetd09mont
+2013-12-12 18:34:28,503 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 172 read from file: tormarc_annalescatholiqu75pari
+2013-12-12 18:34:29,680 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 173 read from file: tormarc_perptuitdela01arna
+2013-12-12 18:34:30,708 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 174 read from file: tormarc_lareligionenseig00robe
+2013-12-12 18:34:31,815 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 175 read from file: tormarc_dictionnairedeth34berg
+2013-12-12 18:34:32,889 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 176 read from file: tormarc_histoiregnr08ceil
+2013-12-12 18:34:33,947 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 177 read from file: tormarc_leprogrsparlec1857fl
+2013-12-12 18:34:34,955 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 178 read from file: tormarc_indexlibrorumpr00roma
+2013-12-12 18:34:36,010 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 179 read from file: tormarc_annepastoraleo01reyr
+2013-12-12 18:34:37,056 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 180 read from file: tormarc_bibliothquesac19rich
+2013-12-12 18:34:38,066 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 181 read from file: tormarc_sermonsduprebr06brid
+2013-12-12 18:34:39,127 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 182 read from file: tormarc_leprogrsparlec1866fl
+2013-12-12 18:34:40,141 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 183 read from file: tormarc_dictionnairealph17bois
+2013-12-12 18:34:41,140 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 184 read from file: tormarc_oeuvrescomplte10boss
+2013-12-12 18:34:42,177 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 185 read from file: tormarc_institutionslitu02gu
+2013-12-12 18:34:43,168 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 186 read from file: tormarc_tractatusdeactib00peri
+2013-12-12 18:34:44,187 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 187 read from file: tormarc_annalescatholiqu32pari
+2013-12-12 18:34:45,237 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 188 read from file: tormarc_lchoducabinetd08mont
+2013-12-12 18:34:46,279 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 189 read from file: tormarc_annalescatholiqu68pari
+2013-12-12 18:34:47,329 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 190 read from file: tormarc_choixdeslettrese08mont
+2013-12-12 18:34:48,359 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 191 read from file: tormarc_annalescatholiqu06pari
+2013-12-12 18:34:49,417 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 192 read from file: tormarc_annalescatholiqu41pari
+2013-12-12 18:34:50,440 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 193 read from file: tormarc_bibliothquesac27rich
+2013-12-12 18:34:51,519 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 194 read from file: tormarc_histoiredelenl00bald
+2013-12-12 18:34:52,543 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 195 read from file: tormarc_p2lchoducabinetd15mont
+2013-12-12 18:34:53,590 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 196 read from file: tormarc_confrencessurl02wise
+2013-12-12 18:34:54,583 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 197 read from file: tormarc_histoiredelgli08herg
+2013-12-12 18:34:55,614 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 198 read from file: tormarc_mmoirespours04pico
+2013-12-12 18:34:56,650 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 199 read from file: tormarc_viedemgrdanicour00dani
+2013-12-12 18:34:57,688 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 200 read from file: tormarc_histoiregnr10ceil
+2013-12-12 18:34:58,688 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 201 read from file: tormarc_sermonsdemmassil01mass
+2013-12-12 18:34:59,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 202 read from file: tormarc_histoiregnr04ceil
+2013-12-12 18:35:00,775 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 203 read from file: tormarc_petitcatchisme00duti
+2013-12-12 18:35:01,760 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 204 read from file: tormarc_confrences01laco
+2013-12-12 18:35:02,742 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 205 read from file: tormarc_dictionnairealph15bois
+2013-12-12 18:35:03,755 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 206 read from file: tormarc_oeuvrescomplte09boss
+2013-12-12 18:35:04,759 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 207 read from file: tormarc_histoiregnr01ceil
+2013-12-12 18:35:05,780 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 208 read from file: tormarc_dictionnairerais37prom
+2013-12-12 18:35:06,795 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 209 read from file: tormarc_sommairedeladoct00sylv
+2013-12-12 18:35:07,781 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 210 read from file: tormarc_1842leprocession00cath
+2013-12-12 18:35:08,825 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 211 read from file: tormarc_histoiredesmalhe00beau
+2013-12-12 18:35:09,831 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 212 read from file: tormarc_oeuvrescompl06boss
+2013-12-12 18:35:10,837 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 213 read from file: tormarc_histoireduclerg02barr
+2013-12-12 18:35:11,851 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 214 read from file: tormarc_langedubagne00nave
+2013-12-12 18:35:12,856 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 215 read from file: tormarc_mmoirespours02pico
+2013-12-12 18:35:13,917 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 216 read from file: tormarc_p1lchoducabinetd13mont
+2013-12-12 18:35:14,919 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 217 read from file: tormarc_annalescatholiqu88pari
+2013-12-12 18:35:15,935 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 218 read from file: tormarc_instructionssurl03joly
+2013-12-12 18:35:16,969 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 219 read from file: tormarc_annalescatholiqu21pari
+2013-12-12 18:35:17,965 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 220 read from file: tormarc_histoiregnra23ceil
+2013-12-12 18:35:18,954 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 221 read from file: tormarc_choixdeslettrese07mont
+2013-12-12 18:35:19,990 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 222 read from file: tormarc_bibliothquesac25rich
+2013-12-12 18:35:21,027 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 223 read from file: tormarc_vritabletatd00cath
+2013-12-12 18:35:22,044 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 224 read from file: tormarc_pieixdevantlhist00taxi
+2013-12-12 18:35:23,022 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 225 read from file: tormarc_bibliothquesac26rich
+2013-12-12 18:35:24,084 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 226 read from file: tormarc_annalescatholiqu15pari
+2013-12-12 18:35:25,092 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 227 read from file: tormarc_sermonsduprebo03bour
+2013-12-12 18:35:26,129 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 228 read from file: tormarc_annuairedevillem01hugu
+2013-12-12 18:35:27,129 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 229 read from file: tormarc_paroissienromain00tour
+2013-12-12 18:35:28,137 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 230 read from file: tormarc_nouvelleexplicat03no
+2013-12-12 18:35:29,157 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 231 read from file: tormarc_instructionssurl01joly
+2013-12-12 18:35:30,167 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 232 read from file: tormarc_paroissienromai00tour
+2013-12-12 18:35:31,184 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 233 read from file: tormarc_annalescatholiqu51pari
+2013-12-12 18:35:32,181 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 234 read from file: tormarc_lchoducabinetd13mont
+2013-12-12 18:35:33,155 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 235 read from file: tormarc_bibliothquesac04rich
+2013-12-12 18:35:34,156 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 236 read from file: tormarc_lecultecatholiqu00bg
+2013-12-12 18:35:35,165 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 237 read from file: tormarc_sermonsdocteseta00roue
+2013-12-12 18:35:36,165 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 238 read from file: tormarc_annalescatholiqu58pari
+2013-12-12 18:35:37,203 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 239 read from file: tormarc_bibliothquesac03rich
+2013-12-12 18:35:38,278 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 240 read from file: tormarc_annalescatholiqu71pari
+2013-12-12 18:35:39,291 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 241 read from file: tormarc_bibliothquesac16rich
+2013-12-12 18:35:40,291 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 242 read from file: tormarc_essaihistorique01pico
+2013-12-12 18:35:41,289 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 243 read from file: tormarc_sermonsdepetit00mass
+2013-12-12 18:35:42,303 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 244 read from file: tormarc_instructionssurl04joly
+2013-12-12 18:35:43,317 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 245 read from file: tormarc_annalescatholiqu11pari
+2013-12-12 18:35:44,301 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 246 read from file: tormarc_annalescatholiqu08pari
+2013-12-12 18:35:45,338 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 247 read from file: tormarc_lanouvellefranc04qu
+2013-12-12 18:35:46,355 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 248 read from file: tormarc_histoiregnra21ceil
+2013-12-12 18:35:47,346 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 249 read from file: tormarc_histoiregnr06ceil
+2013-12-12 18:35:48,338 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 250 read from file: tormarc_miroirduclerg01coss
+2013-12-12 18:35:49,343 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 251 read from file: tormarc_ordonnanceetinst00fn
+2013-12-12 18:35:50,335 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 252 read from file: tormarc_oeuvrescompl07boss
+2013-12-12 18:35:51,369 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 253 read from file: tormarc_recueildordonnan00cath
+2013-12-12 18:35:52,432 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 254 read from file: tormarc_oeuvrescomp04boss
+2013-12-12 18:35:53,457 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 255 read from file: tormarc_bibliothquesac11rich
+2013-12-12 18:35:54,527 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 256 read from file: tormarc_annalescatholiqu69pari
+2013-12-12 18:35:55,528 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 257 read from file: tormarc_manueldesceremon02cath
+2013-12-12 18:35:56,562 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 258 read from file: tormarc_lettressurlesqua00litt
+2013-12-12 18:35:57,561 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 259 read from file: tormarc_choixdeslettrese02mont
+2013-12-12 18:35:58,564 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 260 read from file: tormarc_bibliothquesac05rich
+2013-12-12 18:35:59,576 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 261 read from file: tormarc_lglisecatholiq00saba
+2013-12-12 18:36:00,573 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 262 read from file: tormarc_lanouvellefranc17qu
+2013-12-12 18:36:01,623 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 263 read from file: tormarc_annalescatholiqu72pari
+2013-12-12 18:36:02,681 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 264 read from file: tormarc_annalescatholiqu56pari
+2013-12-12 18:36:03,720 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 265 read from file: tormarc_catchismeprati03mehl
+2013-12-12 18:36:04,723 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 266 read from file: tormarc_annalescatholiqu35pari
+2013-12-12 18:36:05,776 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 267 read from file: tormarc_p1lchoducabinetd09mont
+2013-12-12 18:36:06,780 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 268 read from file: tormarc_bibliothquesac24rich
+2013-12-12 18:36:07,794 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 269 read from file: tormarc_histoiredupapepi01arta
+2013-12-12 18:36:08,803 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 270 read from file: tormarc_tudesdhistoire02bati
+2013-12-12 18:36:09,801 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 271 read from file: tormarc_lepetitarsenaldu00cote
+2013-12-12 18:36:10,796 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 272 read from file: tormarc_annalescatholiqu03pari
+2013-12-12 18:36:11,818 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 273 read from file: tormarc_traittezsurlapri00dugu
+2013-12-12 18:36:12,834 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 274 read from file: tormarc_annalescatholiqu12pari
+2013-12-12 18:36:13,922 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 275 read from file: tormarc_lespitreseteva00amel
+2013-12-12 18:36:14,963 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 276 read from file: tormarc_p1lchoducabinetd10mont
+2013-12-12 18:36:15,997 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 277 read from file: tormarc_sermonsdupreb01bour
+2013-12-12 18:36:17,006 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 278 read from file: tormarc_oeuvrescompl08boss
+2013-12-12 18:36:17,999 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 279 read from file: tormarc_annalescatholiqu70pari
+2013-12-12 18:36:18,993 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 280 read from file: tormarc_lesyllabusbasede00peti
+2013-12-12 18:36:19,993 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 281 read from file: tormarc_instructionsgn01poug
+2013-12-12 18:36:21,015 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 282 read from file: tormarc_annalescatholiqu82pari
+2013-12-12 18:36:22,084 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 283 read from file: tormarc_annalescatholiqu28pari
+2013-12-12 18:36:23,093 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 284 read from file: tormarc_histoiredupapepi02arta
+2013-12-12 18:36:24,115 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 285 read from file: tormarc_confrencesetdi01mass
+2013-12-12 18:36:25,149 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 286 read from file: tormarc_annalescatholiqu14pari
+2013-12-12 18:36:26,185 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 287 read from file: tormarc_annalescatholiqu81pari
+2013-12-12 18:36:27,201 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 288 read from file: tormarc_leprogrsparlec1856fl
+2013-12-12 18:36:28,188 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 289 read from file: tormarc_annalescatholiqu31pari
+2013-12-12 18:36:29,164 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 290 read from file: tormarc_annalescatholiqu42pari
+2013-12-12 18:36:30,160 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 291 read from file: tormarc_lesbeautesdelafo00vent
+2013-12-12 18:36:31,165 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 292 read from file: tormarc_sermonsdupre175601bour
+2013-12-12 18:36:32,193 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 293 read from file: tormarc_missaleromanumex00cath
+2013-12-12 18:36:33,190 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 294 read from file: tormarc_vieetmmoiresde03pott
+2013-12-12 18:36:34,196 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 295 read from file: tormarc_taxesdespartiesc00cath
+2013-12-12 18:36:35,189 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 296 read from file: tormarc_annalescatholiqu25pari
+2013-12-12 18:36:36,225 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 297 read from file: tormarc_lanouvellefranc07qu
+2013-12-12 18:36:37,244 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 298 read from file: tormarc_exhortationseti01bour
+2013-12-12 18:36:38,282 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 299 read from file: tormarc_lanouvellefranc06qu
+2013-12-12 18:36:39,290 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 300 read from file: tormarc_surladclaratio00lalu
+2013-12-12 18:36:40,416 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 301 read from file: tormarc_leguidedessmin00dubo
+2013-12-12 18:36:41,413 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 302 read from file: tormarc_deletatactueldu00alli
+2013-12-12 18:36:42,425 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 303 read from file: tormarc_dictionnairerais36prom
+2013-12-12 18:36:43,410 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 304 read from file: tormarc_paroissienromain00cath
+2013-12-12 18:36:44,406 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 305 read from file: tormarc_histoiredupapepi03arta
+2013-12-12 18:36:45,440 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 306 read from file: tormarc_confrencessurl00chev
+2013-12-12 18:36:46,429 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 307 read from file: tormarc_histoiredelgli01herg
+2013-12-12 18:36:47,424 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 308 read from file: tormarc_vieetmmoiresde01pott
+2013-12-12 18:36:48,423 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 309 read from file: tormarc_leprogrsparlec1862fl
+2013-12-12 18:36:49,415 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 310 read from file: tormarc_histoiredelgli06herg
+2013-12-12 18:36:50,418 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 311 read from file: tormarc_dictionnairerais38prom
+2013-12-12 18:36:51,432 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 312 read from file: tormarc_annalescatholiqu05pari
+2013-12-12 18:36:52,437 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 313 read from file: tormarc_ladevotionautrez00dijo
+2013-12-12 18:36:53,450 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 314 read from file: tormarc_sermonsduprebr05brid
+2013-12-12 18:36:54,463 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 315 read from file: tormarc_annalescatholiqu64pari
+2013-12-12 18:36:55,513 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 316 read from file: tormarc_annalescatholiqu10pari
+2013-12-12 18:36:56,508 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 317 read from file: tormarc_dictionnairedeth33berg
+2013-12-12 18:36:57,550 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 318 read from file: tormarc_oeuvrescomplte11boss
+2013-12-12 18:36:58,611 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 319 read from file: tormarc_sermonsdupreb02bour
+2013-12-12 18:36:59,653 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 320 read from file: tormarc_annalescatholiqu80pari
+2013-12-12 18:37:00,664 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 321 read from file: tormarc_correspondancede01rome
+2013-12-12 18:37:01,798 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 322 read from file: tormarc_labbfidusmursd00rogu
+2013-12-12 18:37:02,860 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 323 read from file: tormarc_mditationssoci00mali
+2013-12-12 18:37:03,879 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 324 read from file: tormarc_leprocessionnalr00cath
+2013-12-12 18:37:04,881 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 325 read from file: tormarc_annalescatholiqu22pari
+2013-12-12 18:37:05,884 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 326 read from file: tormarc_statutssynodauxd00alet
+2013-12-12 18:37:06,902 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 327 read from file: tormarc_bibliothquesac10rich
+2013-12-12 18:37:07,907 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 328 read from file: tormarc_annalescatholiqu77pari
+2013-12-12 18:37:08,946 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 329 read from file: tormarc_listechronologiq00nois
+2013-12-12 18:37:09,963 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 330 read from file: tormarc_confrencessurl05chev
+2013-12-12 18:37:10,967 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 331 read from file: tormarc_lesjubilsetl02trud
+2013-12-12 18:37:12,006 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 332 read from file: tormarc_annalescatholiqu45pari
+2013-12-12 18:37:13,025 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 333 read from file: tormarc_annalescatholiqu66pari
+2013-12-12 18:37:14,029 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 334 read from file: tormarc_annepastoraleo02reyr
+2013-12-12 18:37:15,044 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 335 read from file: tormarc_p2lanouvellefranc16qu
+2013-12-12 18:37:16,068 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 336 read from file: tormarc_p2lettresintress03clem
+2013-12-12 18:37:17,092 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 337 read from file: tormarc_annalescatholiqu73pari
+2013-12-12 18:37:18,123 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 338 read from file: tormarc_histoiregnra22ceil
+2013-12-12 18:37:19,207 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 339 read from file: tormarc_chantesliturgiqu00cath
+2013-12-12 18:37:20,301 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 340 read from file: tormarc_essaihistorique02pico
+2013-12-12 18:37:21,333 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 341 read from file: tormarc_annalescatholiqu59pari
+2013-12-12 18:37:22,375 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 342 read from file: tormarc_annalescatholiqu79pari
+2013-12-12 18:37:23,447 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 343 read from file: tormarc_instructionssurl02joly
+2013-12-12 18:37:24,574 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 344 read from file: tormarc_paralleledeladoc00boye
+2013-12-12 18:37:25,602 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 345 read from file: tormarc_bibliothquesac12rich
+2013-12-12 18:37:26,620 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 346 read from file: tormarc_lanouvellefranc10qu
+2013-12-12 18:37:27,625 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 347 read from file: tormarc_histoiregnr02ceil
+2013-12-12 18:37:28,715 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 348 read from file: tormarc_annalescatholiqu47pari
+2013-12-12 18:37:29,780 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 349 read from file: tormarc_prnesrduitse180101bill
+2013-12-12 18:37:30,783 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 350 read from file: tormarc_lacordairejourna00fesc
+2013-12-12 18:37:31,859 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 351 read from file: tormarc_choixdeslettrese03mont
+2013-12-12 18:37:32,872 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 352 read from file: tormarc_sermonsduprebo01bour
+2013-12-12 18:37:33,871 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 353 read from file: tormarc_confrences03laco
+2013-12-12 18:37:34,864 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 354 read from file: tormarc_lchoducabinetd11mont
+2013-12-12 18:37:35,868 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 355 read from file: tormarc_confrencesetdi02mass
+2013-12-12 18:37:36,897 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 356 read from file: tormarc_annalescatholiqu50pari
+2013-12-12 18:37:37,935 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 357 read from file: tormarc_annalescatholiqu43pari
+2013-12-12 18:37:38,941 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 358 read from file: tormarc_choixdeslettrese06mont
+2013-12-12 18:37:39,976 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 359 read from file: tormarc_p2lchoducabinetd10mont
+2013-12-12 18:37:40,978 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 360 read from file: tormarc_labyrinthuscantu00carw
+2013-12-12 18:37:42,001 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 361 read from file: tormarc_annalescatholiqu76pari
+2013-12-12 18:37:43,199 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 362 read from file: tormarc_decretdensplepap00cath
+2013-12-12 18:37:44,212 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 363 read from file: tormarc_annalescatholiqu07pari
+2013-12-12 18:37:45,209 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 364 read from file: tormarc_dupapesuividel01mais
+2013-12-12 18:37:46,258 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 365 read from file: tormarc_lagrandeguerreec00dess
+2013-12-12 18:37:47,299 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 366 read from file: tormarc_instructonschret00tran
+2013-12-12 18:37:48,386 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 367 read from file: tormarc_sermonsduprebo04bour
+2013-12-12 18:37:49,382 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 368 read from file: tormarc_larenaissanceca01thur
+2013-12-12 18:37:50,355 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 369 read from file: tormarc_annalescatholiqu39pari
+2013-12-12 18:37:51,353 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 370 read from file: tormarc_p1lchoducabinetd15mont
+2013-12-12 18:37:52,341 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 371 read from file: tormarc_histoiregnr13ceil
+2013-12-12 18:37:53,347 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 372 read from file: tormarc_choixdeslettrese05mont
+2013-12-12 18:37:54,340 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 373 read from file: tormarc_affaireguibordqu00brow
+2013-12-12 18:37:55,342 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 374 read from file: tormarc_annalescatholiqu61pari
+2013-12-12 18:37:56,350 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 375 read from file: tormarc_ritualeromanump00cath
+2013-12-12 18:37:57,358 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 376 read from file: tormarc_annalescatholiqu63pari
+2013-12-12 18:37:58,356 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 377 read from file: tormarc_sermonsdemmassil03mass
+2013-12-12 18:37:59,342 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 378 read from file: tormarc_lofficedubonpast00cath
+2013-12-12 18:38:00,361 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 379 read from file: tormarc_p1lettresintress03clem
+2013-12-12 18:38:01,360 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 380 read from file: tormarc_nouvelleexplicat02no
+2013-12-12 18:38:02,350 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 381 read from file: tormarc_choixdeslettrese04mont
+2013-12-12 18:38:03,375 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 382 read from file: tormarc_lanouvellefranc02qu
+2013-12-12 18:38:04,370 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 383 read from file: tormarc_annalescatholiqu23pari
+2013-12-12 18:38:05,374 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 384 read from file: tormarc_histoiregnr15ceil
+2013-12-12 18:38:06,368 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 385 read from file: tormarc_annalescatholiqu16pari
+2013-12-12 18:38:07,394 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 386 read from file: tormarc_catchismeprati01mehl
+2013-12-12 18:38:08,423 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 387 read from file: tormarc_graduelromainl00cath
+2013-12-12 18:38:09,434 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 388 read from file: tormarc_bibliothquesac15rich
+2013-12-12 18:38:10,503 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 389 read from file: tormarc_sermonsdeoraison00mass
+2013-12-12 18:38:11,533 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 390 read from file: tormarc_lecatholicismec00viat
+2013-12-12 18:38:12,645 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 391 read from file: tormarc_pensessurdiff00mass
+2013-12-12 18:38:13,752 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 392 read from file: tormarc_histoiregnr12ceil
+2013-12-12 18:38:14,732 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 393 read from file: tormarc_bibliothquesac29rich
+2013-12-12 18:38:15,745 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 394 read from file: tormarc_lanouvellefranc15qu
+2013-12-12 18:38:16,767 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 395 read from file: tormarc_confrences04laco
+2013-12-12 18:38:17,757 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 396 read from file: tormarc_catechismeetsomm00cath
+2013-12-12 18:38:18,757 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 397 read from file: tormarc_annalescatholiqu89pari
+2013-12-12 18:38:19,772 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 398 read from file: tormarc_lanouvellefranc08qu
+2013-12-12 18:38:20,765 [main] INFO  main org.solrmarc.marc.MarcImporter - Added record 399 read from file: tormarc_annalescatholiqu53pari
+2013-12-12 18:38:20,766 [main] INFO  main org.solrmarc.marc.MarcImporter -  Adding 399 of 399 documents to index
+2013-12-12 18:38:20,766 [main] INFO  main org.solrmarc.marc.MarcImporter -  Deleting 0 documents from index
+2013-12-12 18:38:20,766 [main] INFO  main org.solrmarc.marc.MarcImporter - Calling commit (with optimize set to false)
+2013-12-12 18:38:55,407 [main] INFO  main org.solrmarc.marc.MarcImporter - Done with the commit, closing Solr
+2013-12-12 18:38:55,408 [main] INFO  main org.solrmarc.marc.MarcImporter - Setting Solr closed flag
+2013-12-12 18:38:55,408 [main] INFO  main org.solrmarc.marc.MarcImporter - Finished indexing in 7:26.00
+2013-12-12 18:38:55,409 [main] INFO  main org.solrmarc.marc.MarcImporter - Indexed 399 at a rate of about 0.0 per sec
+2013-12-12 18:38:55,409 [main] INFO  main org.solrmarc.marc.MarcImporter - Deleted 0 records
+2013-12-12 18:38:55,410 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Starting Shutdown hook
+2013-12-12 18:38:55,411 [Thread-1] INFO  Thread-1 org.solrmarc.marc.MarcImporter - Finished Shutdown hook
