@@ -113,7 +113,7 @@ foreach my $node ( $results->get_nodelist ) {
 	if ( $topics ) { foreach ( my $i = 1; $i <= $topics->size; $i++ ) { push @topics, $topics->get_node( $i )->string_value } }
 
 	# everything for display; note topic is not included!
-	my $fullrecord =  "<record><id>$id</id><recordtype>" . RECORDTYPE . "</recordtype><title>" . &escape_entities( $title ) . "</title><publisher>" . &escape_entities( $publisher ) . "</publisher><publisherStr>" . &escape_entities( $publisher ) . "</publisherStr><series2>$series</series2><series>$series</series><date>$date</date><format>$format</format><language>$language</language><url description='" . URLDESCRIPTION . "'>$url</url><institution>$institution</institution><library>$library</library><author>$author</author><author_letter>$author_letter</author_letter></record>";
+	my $fullrecord =  "<record><id>" . &escape_entities( $id )."</id><recordtype>" . RECORDTYPE . "</recordtype><title>" . &escape_entities( $title ) . "</title><publisher>" . &escape_entities( $publisher ) . "</publisher><publisherStr>" . &escape_entities( $publisher ) . "</publisherStr><series2>" . &escape_entities( $series ) . "</series2><series>" . &escape_entities( $series )."</series><date>" . &escape_entities( $date )."</date><format>" . &escape_entities( $format )."</format><language>" . &escape_entities( $language)."</language><url description='" . URLDESCRIPTION . "'>" . &escape_entities( $url )."</url><institution>" . &escape_entities( $institution )."</institution><library>" . &escape_entities( $library )."</library><author>" . &escape_entities( $author )."</author><author_letter>" . &escape_entities( $author_letter )."</author_letter></record>";
 
 	# echo
 	print "         count = $count\n";

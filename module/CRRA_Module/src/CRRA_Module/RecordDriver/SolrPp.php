@@ -49,19 +49,22 @@ class SolrPp extends \VuFind\RecordDriver\SolrDefault
     {
         // initialize
         $urls   = array();
-        $parser = new \DOMXPath(\DOMDocument::loadXML($this->fields['fullrecord']));
+  	$dom = new \DOMDocument();
+	if($doc = $dom::loadXML($this->fields['fullrecord']))	{
+		$parser = new \DOMXPath($doc);
          
-        // process all the urls
-        $results = $parser->query('//url');
-        foreach ($results as $result) {
-            $urls[] = array(
-                'url' => $result->nodeValue,
-                'desc' => $result->getAttribute('description')
-            );
-        }
+        	// process all the urls
+        	$results = $parser->query('//url');
+        	foreach ($results as $result) {
+            	$urls[] = array(
+                	'url' => $result->nodeValue,
+                	'desc' => $result->getAttribute('description')
+            		);
+        	}
          
-        // done
-        return $urls;
+        	// done
+        	return $urls;
+	}	
     }	
     
     /**
