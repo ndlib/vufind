@@ -166,7 +166,7 @@ class CAS extends AbstractBase
      * form is inadequate).  Returns false when no session initiator is needed.
      *
      * @param string $target Full URL where external authentication method should
-     * send user to after login (some drivers may override this).
+     * send user after login (some drivers may override this).
      *
      * @return bool|string
      */
@@ -178,8 +178,10 @@ class CAS extends AbstractBase
         } else {
             $casTarget = $target;
         }
+        $append = (strpos($casTarget, '?') !== false) ? '&' : '?';
         $sessionInitiator = $config->CAS->login
-            . '?service=' . urlencode($casTarget);
+            . '?service=' . urlencode($casTarget)
+            . urlencode($append . 'auth_method=CAS');
 
         return $sessionInitiator;
     }

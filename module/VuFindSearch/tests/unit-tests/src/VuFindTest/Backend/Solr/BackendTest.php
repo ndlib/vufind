@@ -29,9 +29,11 @@
 
 namespace VuFindTest\Backend\Solr;
 
+use VuFindSearch\Backend\Exception\RemoteErrorException;
 use VuFindSearch\Backend\Solr\Backend;
 use VuFindSearch\Backend\Solr\HandlerMap;
 use VuFindSearch\ParamBag;
+use VuFindSearch\Query\Query;
 
 use Zend\Http\Response;
 use PHPUnit_Framework_TestCase;
@@ -215,7 +217,85 @@ class BackendTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $back->getIdentifier());
     }
 
+    /**
+     * Test refining an alphabrowse exception (string 1).
+     *
+     * @return void
+     * @expectedException VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage Alphabetic Browse index missing.
+     */
+    public function testRefineAlphaBrowseException()
+    {
+        $this->runRefineExceptionCall('does not exist');
+    }
+
+    /**
+     * Test refining an alphabrowse exception (string 2).
+     *
+     * @return void
+     * @expectedException VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage Alphabetic Browse index missing.
+     */
+    public function testRefineAlphaBrowseExceptionWithAltString()
+    {
+        $this->runRefineExceptionCall('couldn\'t find a browse index');
+    }
+
+    /**
+     * Test that we don't refine a non-alphabrowse-related exception.
+     *
+     * @return void
+     * @expectedException VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage not a browse error
+     */
+    public function testRefineAlphaBrowseExceptionWithNonBrowseString()
+    {
+        $this->runRefineExceptionCall('not a browse error');
+    }
+
+    /**
+     * Test random method
+     *
+     * @return void
+     */
+    public function testRandom()
+    {
+        // Test that random sort parameter is added:
+        $params = $this->getMock('VuFindSearch\ParamBag', array('set'));
+        $params->expects($this->once())->method('set')
+            ->with($this->equalTo('sort'), $this->matchesRegularExpression('/[0-9]+_random asc/'));
+
+        // Test that random proxies search; stub out injectResponseWriter() to prevent it
+        // from injecting unwanted extra parameters into $params:
+        $back = $this->getMock(
+            'VuFindSearch\Backend\Solr\Backend', array('search', 'injectResponseWriter'),
+            array($this->getConnectorMock())
+        );
+        $back->expects($this->once())->method('injectResponseWriter');
+        $back->expects($this->once())->method('search')
+            ->will($this->returnValue('dummy'));
+        $this->assertEquals('dummy', $back->random(new Query('foo'), 1, $params));
+    }
+
     /// Internal API
+
+    /**
+     * Support method to run a "refine exception" test.
+     *
+     * @param string $msg Error message
+     *
+     * @return void
+     */
+    protected function runRefineExceptionCall($msg)
+    {
+        $conn = $this->getConnectorMock(array('query'));
+        $e = new RemoteErrorException($msg, 400, new \Zend\Http\Response());
+        $conn->expects($this->once())->method('query')
+            ->with($this->equalTo('browse'))
+            ->will($this->throwException($e));
+        $back = new Backend($conn);
+        $back->alphabeticBrowse('foo', 'bar', 1);
+    }
 
     /**
      * Load a SOLR response as fixture.
