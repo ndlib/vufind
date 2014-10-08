@@ -100,7 +100,7 @@ class AuthorityRecommend implements RecommendInterface
      */
     public function __construct(\VuFind\Search\Results\PluginManager $results)
     {
-        $this->resultsManager = $results;
+       $this->resultsManager = $results;
     }
 
     /**

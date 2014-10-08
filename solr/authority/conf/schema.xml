@@ -6,6 +6,7 @@
     <fieldtype name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
     <fieldtype name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="true"/>
     <fieldtype name="date" class="solr.TrieDateField" sortMissingLast="true" omitNorms="true" precisionStep="6"/>
+    <fieldType name="ext_file_field" keyField="id" defVal="0" class="solr.ExternalFileField" valType="int"/>
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.ICUTokenizerFactory"/>
@@ -23,6 +24,7 @@
   </types>
   <fields>
     <!-- Required by Solr 4.x -->
+    <field name="bibCount" type="ext_file_field" />
     <field name="_version_" type="long" indexed="true" stored="true"/>
     <!-- Core Fields  -->
     <field name="id" type="string" indexed="true" stored="true"/>
