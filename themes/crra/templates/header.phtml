@@ -1,25 +1,21 @@
 <? $account = $this->auth()->getManager(); ?>
 <!-- We should hide the top search bar and breadcrumbs in some contexts: -->
 <div>
-<img src= "<?=$this->imageLink("header.png") ?>" style='margin-bottom: 1em' />
+<img src= "/vufind/themes/crra/images/header.png" style='margin-bottom: 1em' />
 	<div style='margin-top: -45px; margin-bottom: 45px; margin-left: 87px' class="header-menu">
 		<ul id="nav-list">
             <li id="aboup"><a href="/">Home</a></li>
+            <li id="abouc"><a href="http://www.catholicresearch.net/cms/index.php/about-crra/">About</a></li>
 
-            <li id="abouc"><a href="http://www.catholicresearch.net/cms/index.php/about-crra/">About<br />CRRA</a></li>
-    
-            <li id="cont"><a href="http://www.catholicresearch.net/cms/index.php/crra-groups/">CRRA Groups</a></li>
-    
-            <li id="lead"><a href="http://www.catholicresearch.net/cms/index.php/the-catholic-portal/">The Catholic</br>Portal</a></li>
-    
-            <li id="part"><a href="http://www.catholicresearch.net/cms/index.php/crra-news-and-events/">News &amp; Events</a></li>
-    
-            <li id="port"><a href="http://www.catholicresearch.net/cms/index.php/join/">Join</a></li>
-    
-            <li id="logi"><a href="http://www.catholicresearch.net/cms/index.php/resources/">Links<br />&amp; Resources</a></li>
-        </ul>  
+            <li id="lead"><a href="http://www.catholicresearch.net/cms/index.php/the-catholic-portal/">Catholic</br>Portal</a></li>
+            <li id="papers"><a href="http://www.catholicresearch.net/cms/index.php/catholic-newspapers-program/">Catholic</br>Newspapers<br>Program</a></li>
+            <li id="logi"><a href="http://www.catholicresearch.net/cms/index.php/resources/">Links &amp; <br />Resources</a></li>
+            <li id="part"><a href="http://www.catholicresearch.net/cms/index.php/crra-news-and-events/">What's<br>New</a></li>
+            <li id="port"><a href="http://www.catholicresearch.net/cms/index.php/join/">Membership</a></li>
+        </ul>
 	</div>
 </div>
+
 <? if (!isset($this->layout()->renderingError)): ?>
   <div id="headerRight">
     <? $cart = $this->cart(); if ($cart->isActive()): ?>
