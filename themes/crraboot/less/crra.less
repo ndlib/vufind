@@ -5,10 +5,16 @@
 @container-large-desktop: 931px;
 
 body { background-color:#fff; }
-.container { border: 1px solid #ddd; }
-header .container {
+.container {
+  border: 1px solid #ddd;
   border-bottom: 0;
   border-radius: 0;
+}
+footer .container { border-top: 1px solid #ddd; }
+header .breadcrumb {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top: 0;
 }
 header .banner {
   background-image: url('../../images/header.png');
@@ -20,6 +26,7 @@ header .banner {
 header .navbar {
   padding: 0;
   background-color: @gray-lighter;
+  border-radius: 0;
 }
 header .navbar .searchForm {
   display: block !important;
@@ -154,6 +161,35 @@ header .header-menu {
 	font-weight: bold;
 	display: inline;
 }
+
+#content { border-top: 0; }
+.sidebar {
+  .active { font-weight: bold; }
+  .collapsed .nav-list li.active a {
+    background: none;
+    &:hover {
+      background: none;
+      color: red;
+    }
+  }
+  .list-group { margin-bottom: 10px; }
+  .list-group-item {
+    border-width: 1px 0;
+    padding: 3px;
+    font-size: 12px;
+    &.title {
+      padding: 3px 5px 2px;
+      border-top: 0;
+      background: @gray-lighter;
+      font-size: 11px;
+      color: @gray-light;
+      text-transform: uppercase;
+      text-shadow: 0px 1px 0px #FFF;
+      border-radius: 0;
+    }
+  }
+}
+.badge { margin-top: 0; }
 
 footer .container {
   border-top: 0;
