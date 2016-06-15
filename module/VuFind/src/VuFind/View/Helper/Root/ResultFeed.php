@@ -19,52 +19,49 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\View\Helper\Root;
-use DateTime, Zend\Feed\Writer\Writer as FeedWriter, Zend\Feed\Writer\Feed,
+use DateTime,
+    VuFind\I18n\Translator\TranslatorAwareInterface,
+    Zend\Feed\Writer\Writer as FeedWriter,
+    Zend\Feed\Writer\Feed,
     Zend\View\Helper\AbstractHelper;
 
 /**
  * "Results as feed" view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
-class ResultFeed extends AbstractHelper
+class ResultFeed extends AbstractHelper implements TranslatorAwareInterface
 {
-    protected $translator = false;
+    use \VuFind\I18n\Translator\TranslatorAwareTrait;
 
     /**
-     * Get access to the translator helper.
+     * Override title
      *
-     * @return object
+     * @var string
      */
-    public function getTranslatorHelper()
-    {
-        if (!$this->translator) {
-            $this->translator = $this->getView()->plugin('translate');
-        }
-        return $this->translator;
-    }
+    protected $overrideTitle = null;
 
     /**
-     * Override the translator helper (useful for testing purposes).
+     * Set override title.
      *
-     * @param object $translator New translator object.
+     * @param string $title Title
      *
      * @return void
      */
-    public function setTranslatorHelper($translator)
+    public function setOverrideTitle($title)
     {
-        $this->translator = $translator;
+        $this->overrideTitle = $title;
     }
 
     /**
@@ -82,6 +79,14 @@ class ResultFeed extends AbstractHelper
         $manager->setInvokableClass(
             'dublincoreentry', 'VuFind\Feed\Writer\Extension\DublinCore\Entry'
         );
+        $manager->setInvokableClass(
+            'opensearchrendererfeed',
+            'VuFind\Feed\Writer\Extension\OpenSearch\Renderer\Feed'
+        );
+        $manager->setInvokableClass(
+            'opensearchfeed', 'VuFind\Feed\Writer\Extension\OpenSearch\Feed'
+        );
+        FeedWriter::registerExtension('OpenSearch');
     }
 
     /**
@@ -107,11 +112,14 @@ class ResultFeed extends AbstractHelper
 
         // Create the parent feed
         $feed = new Feed();
-        $translator = $this->getTranslatorHelper();
-        $feed->setTitle(
-            $translator('Results for') . ' '
-            . $results->getParams()->getDisplayQuery()
-        );
+        if (null !== $this->overrideTitle) {
+            $feed->setTitle($this->translate($this->overrideTitle));
+        } else {
+            $feed->setTitle(
+                $this->translate('Results for') . ' '
+                . $results->getParams()->getDisplayQuery()
+            );
+        }
         $feed->setLink(
             $baseUrl . $results->getUrlQuery()->setViewParam(null, false)
         );
@@ -119,19 +127,88 @@ class ResultFeed extends AbstractHelper
             $baseUrl . $results->getUrlQuery()->getParams(false),
             $results->getParams()->getView()
         );
-
-        $records = $results->getResults();
         $feed->setDescription(
-            $translator('Displaying the top') . ' ' . count($records)
-            . ' ' . $translator('search results of') . ' '
-            . $results->getResultTotal() . ' ' . $translator('found')
+            $this->translate('Showing') . ' ' . $results->getStartRecord() . '-'
+            . $results->getEndRecord() . ' ' . $this->translate('of') . ' '
+            . $results->getResultTotal()
         );
 
+        $params = $results->getParams();
+
+        // add atom links for easier paging
+        $feed->addOpensearchLink(
+            $baseUrl . $results->getUrlQuery()->setPage(1, false),
+            'first',
+            $params->getView()
+        );
+        if ($params->getPage() > 1) {
+            $feed->addOpensearchLink(
+                $baseUrl . $results->getUrlQuery()
+                    ->setPage($params->getPage() - 1, false),
+                'previous',
+                $params->getView()
+            );
+        }
+        $lastPage = ceil($results->getResultTotal() / $params->getLimit());
+        if ($params->getPage() < $lastPage) {
+            $feed->addOpensearchLink(
+                $baseUrl . $results->getUrlQuery()
+                    ->setPage($params->getPage() + 1, false),
+                'next',
+                $params->getView()
+            );
+        }
+        $feed->addOpensearchLink(
+            $baseUrl . $results->getUrlQuery()->setPage($lastPage, false),
+            'last',
+            $params->getView()
+        );
+
+        // add opensearch fields
+        $feed->setOpensearchTotalResults($results->getResultTotal());
+        $feed->setOpensearchItemsPerPage($params->getLimit());
+        $feed->setOpensearchStartIndex($results->getStartRecord() - 1);
+        $feed->setOpensearchSearchTerms($params->getQuery()->getAllTerms());
+
+        $records = $results->getResults();
         foreach ($records as $current) {
             $this->addEntry($feed, $current);
         }
 
         return $feed;
+    }
+
+    /**
+     * Support method to extract a date from a record driver. Return empty string
+     * if no valid match is found.
+     *
+     * @param \VuFind\RecordDriver\AbstractBase $record Record to read from
+     *
+     * @return string
+     */
+    protected function getDcDate($record)
+    {
+        // See if we can extract a date that's pre-formatted in a DC-friendly way:
+        $dates = (array)$record->tryMethod('getPublicationDates');
+        $regex = '/[0-9]{4}(\-[01][0-9])?(\-[0-3][0-9])?/';
+        foreach ($dates as $date) {
+            if (preg_match($regex, $date, $matches)) {
+                // If the full string is longer than the match, see if we can use
+                // DateTime to format it to something more useful:
+                if (strlen($date) > strlen($matches[0])) {
+                    try {
+                        $formatter = new DateTime($date);
+                        return $formatter->format('Y-m-d');
+                    } catch (\Exception $ex) {
+                        // DateTime failed; fall through to default behavior below.
+                    }
+                }
+                return $matches[0];
+            }
+        }
+
+        // Still no good? Give up.
+        return '';
     }
 
     /**
@@ -146,7 +223,10 @@ class ResultFeed extends AbstractHelper
     {
         $entry = $feed->createEntry();
         $title = $record->tryMethod('getTitle');
-        $entry->setTitle(empty($title) ? $record->getBreadcrumb() : $title);
+        $title = empty($title) ? $record->getBreadcrumb() : $title;
+        $entry->setTitle(
+            empty($title) ? $this->translate('Title not available') : $title
+        );
         $serverUrl = $this->getView()->plugin('serverurl');
         $recordLink = $this->getView()->plugin('recordlink');
         try {
@@ -166,7 +246,7 @@ class ResultFeed extends AbstractHelper
         }
         $author = $record->tryMethod('getPrimaryAuthor');
         if (!empty($author)) {
-            $entry->addAuthor(array('name' => $author));
+            $entry->addAuthor(['name' => $author]);
         }
         $formats = $record->tryMethod('getFormats');
         if (is_array($formats)) {
@@ -174,9 +254,9 @@ class ResultFeed extends AbstractHelper
                 $entry->addDCFormat($format);
             }
         }
-        $date = $record->tryMethod('getPublicationDates');
-        if (isset($date[0]) && !empty($date[0])) {
-            $entry->setDCDate($date[0]);
+        $dcDate = $this->getDcDate($record);
+        if (!empty($dcDate)) {
+            $entry->setDCDate($dcDate);
         }
 
         $feed->addEntry($entry);

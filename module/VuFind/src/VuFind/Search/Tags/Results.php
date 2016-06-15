@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Tags
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Search\Tags;
 use VuFind\Search\Base\Results as BaseResults;
@@ -31,11 +31,11 @@ use VuFind\Search\Base\Results as BaseResults;
 /**
  * Search Tags Results
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Tags
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Results extends BaseResults
 {
@@ -52,7 +52,7 @@ class Results extends BaseResults
         if (!empty($tag)) {
             $rawResults = $tag->getResources(null, $this->getParams()->getSort());
         } else {
-            $rawResults = array();
+            $rawResults = [];
         }
 
         // How many results were there?
@@ -68,10 +68,10 @@ class Results extends BaseResults
         }
 
         // Retrieve record drivers for the selected items.
-        $recordsToRequest = array();
+        $recordsToRequest = [];
         foreach ($rawResults as $row) {
             $recordsToRequest[]
-                = array('id' => $row->record_id, 'source' => $row->source);
+                = ['id' => $row->record_id, 'source' => $row->source];
         }
         $this->results = $this->getServiceLocator()->get('VuFind\RecordLoader')
             ->loadBatch($recordsToRequest);
@@ -88,6 +88,6 @@ class Results extends BaseResults
     public function getFacetList($filter = null)
     {
         // Facets not supported:
-        return array();
+        return [];
     }
 }

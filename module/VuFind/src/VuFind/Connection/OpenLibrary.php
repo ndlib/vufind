@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  OpenLibrary
- * @author   Eoghan ” Carrag·in <eoghan.ocarragain@gmail.com>
+ * @author   Eoghan √ì Carrag√°in <eoghan.ocarragain@gmail.com>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Connection;
 
@@ -32,11 +32,11 @@ namespace VuFind\Connection;
  *
  * Class for accessing helpful Open Library APIs.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  OpenLibrary
- * @author   Eoghan ” Carrag·in <eoghan.ocarragain@gmail.com>
+ * @author   Eoghan √ì Carrag√°in <eoghan.ocarragain@gmail.com>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class OpenLibrary
 {
@@ -69,7 +69,7 @@ class OpenLibrary
      * @param bool   $details        Whether to return full details
      * @param int    $limit          The number of works to return
      * @param int    $offset         Paging offset
-     * @param bool   $publicFullText Only return publically available, full-text
+     * @param bool   $publicFullText Only return publicly available, full-text
      * works
      *
      * @return array
@@ -79,7 +79,7 @@ class OpenLibrary
         $limit = 5, $offset = null, $publicFullText = true
     ) {
         // empty array to hold the result
-        $result = array();
+        $result = [];
 
         // normalise subject term
         $subject = $this->normaliseSubjectString($subject);
@@ -100,7 +100,7 @@ class OpenLibrary
                 // ebooks parameter does not work at present, so limit has been set
                 // to 50 to increase likelihood of full-text, public scans being
                 // returned. see https://bugs.launchpad.net/openlibrary/+bug/709772
-                $url= "http://openlibrary.org/subjects/" . $subjectType . $subject .
+                $url = "http://openlibrary.org/subjects/" . $subjectType . $subject .
                     ".json?ebooks=" . $ebooks . "&details=" . $details .
                     "&offset=" . $offset . "&limit=50&published_in=" . $publishedIn;
 
@@ -111,13 +111,13 @@ class OpenLibrary
         return $result;
     }
 
-     /**
+    /**
      * Return the following array of values for each work:
      * title, cover_id, cover_id_type, key, ia, mainAuthor
      *
      * @param string $url            URL to request
      * @param int    $limit          The number of works to return
-     * @param bool   $publicFullText Only return publically available, full-text
+     * @param bool   $publicFullText Only return publicly available, full-text
      * works
      *
      * @return array
@@ -125,7 +125,7 @@ class OpenLibrary
     protected function processSubjectsApi($url, $limit, $publicFullText)
     {
         // empty array to hold the result
-        $result = array();
+        $result = [];
 
         // find out if there are any reviews
         $response = $this->client->setUri($url)->setMethod('GET')->send();
@@ -135,7 +135,7 @@ class OpenLibrary
             $json = $response->getBody();
             // parse json
             $data = json_decode($json, true);
-            if ($data) {
+            if ($data && isset($data['works']) && !empty($data['works'])) {
                 $i = 1;
                 foreach ($data['works'] as $work) {
                     if ($i <= $limit) {
@@ -163,7 +163,7 @@ class OpenLibrary
         return $result;
     }
 
-     /**
+    /**
      * Support function to return a normalised version of the search string
      *     for use in the API url
      *
@@ -173,13 +173,10 @@ class OpenLibrary
      */
     protected function normaliseSubjectString($subject)
     {
-        //normalise search term
-        $subject = str_replace('"', "", $subject);
-        $subject = str_replace(",", "", $subject);
+        // Normalise search term
+        $subject = str_replace(['"', ',', '/'], '', $subject);
         $subject = trim(strtolower($subject));
         $subject = preg_replace("/\s+/", "_", $subject);
         return $subject;
     }
 }
-
-?>

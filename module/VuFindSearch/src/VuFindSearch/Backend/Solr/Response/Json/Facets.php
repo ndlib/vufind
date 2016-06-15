@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindSearch\Backend\Solr\Response\Json;
 
 use ArrayObject;
@@ -34,11 +33,11 @@ use ArrayObject;
 /**
  * SOLR facet information.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class Facets
 {
@@ -62,6 +61,13 @@ class Facets
      * @var array
      */
     protected $facets;
+
+    /**
+     * SOLR pivot facet information.
+     *
+     * @var ArrayObject
+     */
+    protected $pivotFacets = null;
 
     /**
      * Constructor.
@@ -111,4 +117,26 @@ class Facets
         return $this->queries;
     }
 
+    /**
+     * Return facet pivot information.
+     *
+     * @return ArrayObject
+     */
+    public function getPivotFacets()
+    {
+        if (null === $this->pivotFacets) {
+            $this->pivotFacets = new ArrayObject();
+            if (isset($this->facets['facet_pivot'])) {
+                foreach ($this->facets['facet_pivot'] as $facetdata) {
+                    foreach ($facetdata as $onefacet) {
+                        // Gives us an ArrayObject with the field value
+                        // as the key and the full data for that field,
+                        // including count and pivot, as the value.
+                        $this->pivotFacets->offsetSet($onefacet['value'], $onefacet);
+                    }
+                }
+            }
+        }
+        return $this->pivotFacets;
+    }
 }

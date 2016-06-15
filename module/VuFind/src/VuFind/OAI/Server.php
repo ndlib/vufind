@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  OAI_Server
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\OAI;
 use SimpleXMLElement,
@@ -34,11 +34,11 @@ use SimpleXMLElement,
  *
  * This class provides OAI server functionality.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  OAI_Server
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class Server
 {
@@ -48,6 +48,13 @@ class Server
      * @var string
      */
     protected $baseURL;
+
+    /**
+     * Base URL of host containing VuFind.
+     *
+     * @var string
+     */
+    protected $baseHostURL;
 
     /**
      * Incoming request parameters
@@ -96,7 +103,7 @@ class Server
      *
      * @var array
      */
-    protected $metadataFormats = array();
+    protected $metadataFormats = [];
 
     /**
      * Namespace used for ID prefixing (if any)
@@ -148,6 +155,20 @@ class Server
     protected $tableManager;
 
     /**
+     * Record link helper (optional)
+     *
+     * @var \VuFind\View\Helper\Root\RecordLink
+     */
+    protected $recordLinkHelper = null;
+
+    /**
+     * Set queries
+     *
+     * @var array
+     */
+    protected $setQueries = [];
+
+    /**
      * Constructor
      *
      * @param \VuFind\Search\Results\PluginManager $results Search manager for
@@ -168,9 +189,27 @@ class Server
         $this->recordLoader = $loader;
         $this->tableManager = $tables;
         $this->baseURL = $baseURL;
-        $this->params = isset($params) && is_array($params) ? $params : array();
+        $parts = parse_url($baseURL);
+        $this->baseHostURL = $parts['scheme'] . '://' . $parts['host'];
+        if (isset($parts['port'])) {
+            $this->baseHostURL .= $parts['port'];
+        }
+        $this->params = isset($params) && is_array($params) ? $params : [];
         $this->initializeMetadataFormats(); // Load details on supported formats
         $this->initializeSettings($config); // Load config.ini settings
+    }
+
+    /**
+     * Add a record link helper (optional -- allows enhancement of some metadata
+     * with VuFind-specific links).
+     *
+     * @param \VuFind\View\Helper\Root\RecordLink $helper Helper to set
+     *
+     * @return void
+     */
+    public function setRecordLinkHelper($helper)
+    {
+        $this->recordLinkHelper = $helper;
     }
 
     /**
@@ -181,7 +220,7 @@ class Server
     public function getResponse()
     {
         if (!$this->hasParam('verb')) {
-            return $this->showError('badArgument', 'Missing Verb Argument');
+            return $this->showError('badVerb', 'Missing Verb Argument');
         } else {
             switch($this->params['verb']) {
             case 'GetRecord':
@@ -219,7 +258,7 @@ class Server
         $this->attachRecordHeader(
             $record, $this->prefixID($tracker['id']),
             date($this->iso8601, $this->normalizeDate($tracker['deleted'])),
-            array(),
+            [],
             'deleted'
         );
     }
@@ -235,7 +274,7 @@ class Server
      *
      * @return void
      */
-    protected function attachRecordHeader($xml, $id, $date, $sets = array(), 
+    protected function attachRecordHeader($xml, $id, $date, $sets = [],
         $status = ''
     ) {
         $header = $xml->addChild('header');
@@ -266,10 +305,18 @@ class Server
         if ($format === false) {
             $xml = '';      // no metadata if in header-only mode!
         } else {
-            $xml = $record->getXML($format);
+            $xml = $record
+                ->getXML($format, $this->baseHostURL, $this->recordLinkHelper);
             if ($xml === false) {
                 return false;
             }
+        }
+
+        // Headers should be returned only if the metadata format matching
+        // the supplied metadataPrefix is available.
+        // If RecordDriver returns nothing, skip this record.
+        if (empty($xml)) {
+            return true;
         }
 
         // Check for sets:
@@ -277,7 +324,7 @@ class Server
         if (!is_null($this->setField) && !empty($fields[$this->setField])) {
             $sets = $fields[$this->setField];
         } else {
-            $sets = array();
+            $sets = [];
         }
 
         // Get modification date:
@@ -294,9 +341,9 @@ class Server
         );
 
         // Inject metadata if necessary:
-        if (!$headerOnly) {
+        if (!$headerOnly && !empty($xml)) {
             $metadata = $recXml->addChild('metadata');
-            SimpleXML::appendElement($metadata, simplexml_load_string($xml));
+            SimpleXML::appendElement($metadata, $xml);
         }
 
         return true;
@@ -368,10 +415,10 @@ class Server
         $xml->repositoryName = $this->repositoryName;
         $xml->baseURL = $this->baseURL;
         $xml->protocolVersion = '2.0';
+        $xml->adminEmail = $this->adminEmail;
         $xml->earliestDatestamp = $this->earliestDatestamp;
         $xml->deletedRecord = 'transient';
         $xml->granularity = 'YYYY-MM-DDThh:mm:ssZ';
-        $xml->adminEmail = $this->adminEmail;
         if (!empty($this->idNamespace)) {
             $xml->addChild('description');
             $id = $xml->description->addChild(
@@ -401,12 +448,12 @@ class Server
      */
     protected function initializeMetadataFormats()
     {
-        $this->metadataFormats['oai_dc'] = array(
+        $this->metadataFormats['oai_dc'] = [
             'schema' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
-            'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
-        $this->metadataFormats['marc21'] = array(
+            'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/'];
+        $this->metadataFormats['marc21'] = [
             'schema' => 'http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd',
-            'namespace' => 'http://www.loc.gov/MARC21/slim');
+            'namespace' => 'http://www.loc.gov/MARC21/slim'];
     }
 
     /**
@@ -437,6 +484,11 @@ class Server
         // Use a Solr field to determine sets, if configured:
         if (isset($config->OAI->set_field)) {
             $this->setField = $config->OAI->set_field;
+        }
+
+        // Initialize custom sets queries:
+        if (isset($config->OAI->set_query)) {
+            $this->setQueries = $config->OAI->set_query->toArray();
         }
     }
 
@@ -507,7 +559,7 @@ class Server
         // they come from the OAI-PMH request or the database, the format may be
         // slightly different; this ensures they are reduced to a consistent value!
         $from = $this->normalizeDate($params['from']);
-        $until = $this->normalizeDate($params['until']);
+        $until = $this->normalizeDate($params['until'], '23:59:59');
         if (!$this->listRecordsValidateDates($from, $until)) {
             return;
         }
@@ -544,10 +596,11 @@ class Server
 
         // Get non-deleted records from the Solr index:
         $result = $this->listRecordsGetNonDeleted(
-            $from, $until, $solrOffset, $solrLimit, $params['set']
+            $from, $until, $solrOffset, $solrLimit,
+            isset($params['set']) ? $params['set'] : ''
         );
         $nonDeletedCount = $result->getResultTotal();
-        $format = $verb == 'ListIdentifiers' ? false : $params['metadataPrefix'];
+        $format = $params['metadataPrefix'];
         foreach ($result->getResults() as $doc) {
             if (!$this->attachNonDeleted($xml, $doc, $format, $headersOnly)) {
                 $this->unexpectedError('Cannot load document');
@@ -585,30 +638,44 @@ class Server
         }
 
         // If no set field is enabled, we can't provide a set list:
-        if (is_null($this->setField)) {
+        if (null === $this->setField && empty($this->setQueries)) {
             return $this->showError('noSetHierarchy', 'Sets not supported');
         }
 
-        // If we got this far, we can load all available set values.  For now,
-        // we'll assume that this list is short enough to load in a single response;
-        // it may be necessary to implement a resumption token mechanism if this
-        // proves not to be the case:
-        $results = $this->resultsManager->get($this->searchClassId);
-        try {
-            $facets = $results->getFullFieldFacets(array($this->setField));
-        } catch (\Exception $e) {
-            $facets = null;
-        }
-        if (empty($facets) || !isset($facets[$this->setField]['data']['list'])) {
-            $this->unexpectedError('Cannot find sets');
+        // Begin building XML:
+        $xml = new SimpleXMLElement('<ListSets />');
+
+        // Load set field if applicable:
+        if (null !== $this->setField) {
+            // If we got this far, we can load all available set values.  For now,
+            // we'll assume that this list is short enough to load in one response;
+            // it may be necessary to implement a resumption token mechanism if this
+            // proves not to be the case:
+            $results = $this->resultsManager->get($this->searchClassId);
+            try {
+                $facets = $results->getFullFieldFacets([$this->setField]);
+            } catch (\Exception $e) {
+                $facets = null;
+            }
+            if (empty($facets) || !isset($facets[$this->setField]['data']['list'])) {
+                $this->unexpectedError('Cannot find sets');
+            }
+
+            // Extract facet values from the Solr response:
+            foreach ($facets[$this->setField]['data']['list'] as $x) {
+                $set = $xml->addChild('set');
+                $set->setSpec = $x['value'];
+                $set->setName = $x['displayText'];
+            }
         }
 
-        // Extract facet values from the Solr response:
-        $xml = new SimpleXMLElement('<ListSets />');
-        foreach ($facets[$this->setField]['data']['list'] as $x) {
-            $set = $xml->addChild('set');
-            $set->setSpec = $x['value'];
-            $set->setName = $x['displayText'];
+        // Iterate over custom sets:
+        if (!empty($this->setQueries)) {
+            foreach ($this->setQueries as $setName => $solrQuery) {
+                $set = $xml->addChild('set');
+                $set->setSpec = $solrQuery;
+                $set->setName = $setName;
+            }
         }
 
         // Display the list:
@@ -651,7 +718,6 @@ class Server
         $params->setLimit($limit);
         $params->getOptions()->disableHighlighting();
         $params->getOptions()->spellcheckEnabled(false);
-        $params->recommendationsEnabled(false);
         $params->setSort('last_indexed asc', true);
 
         // Construct a range query based on last indexed time:
@@ -661,10 +727,16 @@ class Server
         );
 
         // Apply filters as needed.
-        if (!empty($set) && !is_null($this->setField)) {
-            $params->addFilter(
-                $this->setField . ':"' . addcslashes($set, '"') . '"'
-            );
+        if (!empty($set)) {
+            if (isset($this->setQueries[$set])) {
+                // use hidden filter here to allow for complex queries;
+                // plain old addFilter expects simple field:value queries.
+                $params->addHiddenFilter($this->setQueries[$set]);
+            } else if (null !== $this->setField) {
+                $params->addFilter(
+                    $this->setField . ':"' . addcslashes($set, '"') . '"'
+                );
+            }
         }
 
         // Perform a Solr search:
@@ -705,18 +777,33 @@ class Server
             // Set default date range if not already provided:
             if (empty($params['from'])) {
                 $params['from'] = $this->earliestDatestamp;
+                if (!empty($params['until'])
+                    && strlen($params['from']) > strlen($params['until'])
+                ) {
+                    $params['from'] = substr($params['from'], 0, 10);
+                }
             }
             if (empty($params['until'])) {
                 $params['until'] = date($this->iso8601);
+                if (strlen($params['until']) > strlen($params['from'])) {
+                    $params['until'] = substr($params['until'], 0, 10);
+                }
+            }
+            if ($this->isBadDate($params['from'], $params['until'])) {
+                throw new \Exception('badArgument:Bad Date Format');
             }
         }
 
         // If no set field is configured and a set parameter comes in, we have a
         // problem:
-        if (is_null($this->setField) && isset($params['set'])
+        if (null === $this->setField && empty($this->setQueries)
             && !empty($params['set'])
         ) {
             throw new \Exception('noSetHierarchy:Sets not supported');
+        }
+
+        if (!isset($params['metadataPrefix'])) {
+            throw new \Exception('badArgument:Missing metadataPrefix');
         }
 
         // Validate requested metadata format:
@@ -726,6 +813,46 @@ class Server
         }
 
         return $params;
+    }
+
+    /**
+     * Validate the from and until parameters for the listRecords method.
+     *
+     * @param int $from  String for start date.
+     * @param int $until String for end date.
+     *
+     * @return bool      True if invalid, false if not.
+     */
+    protected function isBadDate($from, $until)
+    {
+        $dt = \DateTime::createFromFormat("Y-m-d", substr($until, 0, 10));
+        if ($dt === false || array_sum($dt->getLastErrors())) {
+            return true;
+        }
+        $dt = \DateTime::createFromFormat("Y-m-d", substr($from, 0, 10));
+        if ($dt === false || array_sum($dt->getLastErrors())) {
+            return true;
+        }
+        //check for different date granularity
+        if (strpos($from, 'T') && strpos($from, 'Z')) {
+            if (strpos($until, 'T') && strpos($until, 'Z')) {
+                //this is good
+            } else {
+                return true;
+            }
+        } else if (strpos($until, 'T') && strpos($until, 'Z')) {
+            return true;
+        }
+
+        $from_time = $this->normalizeDate($from);
+        $until_time = $this->normalizeDate($until, '23:59:59');
+        if ($from_time > $until_time) {
+            throw new \Exception('noRecordsMatch:from vs. until');
+        }
+        if ($from_time < $this->normalizeDate($this->earliestDatestamp)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -806,14 +933,19 @@ class Server
      * Normalize a date to a Unix timestamp.
      *
      * @param string $date Date (ISO-8601 or YYYY-MM-DD HH:MM:SS)
+     * @param string $time Default time to use if $date has no time attached
      *
      * @return integer     Unix timestamp (or false if $date invalid)
      */
-    protected function normalizeDate($date)
+    protected function normalizeDate($date, $time = '00:00:00')
     {
         // Remove timezone markers -- we don't want PHP to outsmart us by adjusting
         // the time zone!
-        $date = str_replace(array('T', 'Z'), array(' ', ''), $date);
+        if (strlen($date) == 10) {
+            $date .= ' ' . $time;
+        } else {
+            $date = str_replace(['T', 'Z'], [' ', ''], $date);
+        }
 
         // Translate to a timestamp:
         return strtotime($date);
@@ -959,4 +1091,3 @@ class Server
         throw new \Exception("Unexpected fatal error -- {$msg}.");
     }
 }
-?>

@@ -20,23 +20,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindSearch\Query;
 
 /**
  * A single/simple query.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class Query extends AbstractQuery
 {
@@ -55,17 +54,24 @@ class Query extends AbstractQuery
     protected $queryString;
 
     /**
+     * Operator to apply to query string (null if not applicable)
+     *
+     * @var string
+     */
+    protected $operator;
+
+    /**
      * Constructor.
      *
-     * @param string $string  Search string
-     * @param string $handler Name of search handler
-     *
-     * @return void
+     * @param string $string   Search string
+     * @param string $handler  Name of search handler
+     * @param string $operator Operator to apply to query string (null if n/a)
      */
-    public function __construct($string = null, $handler = null)
+    public function __construct($string = null, $handler = null, $operator = null)
     {
         $this->queryHandler = $handler ? $handler : null;
         $this->queryString  = $string;
+        $this->operator = $operator;
     }
 
     /**
@@ -110,6 +116,28 @@ class Query extends AbstractQuery
     public function setHandler($handler)
     {
         $this->queryHandler = $handler;
+    }
+
+    /**
+     * Return operator (null if n/a).
+     *
+     * @return string
+     */
+    public function getOperator()
+    {
+        return $this->operator;
+    }
+
+    /**
+     * Set operator (null if n/a).
+     *
+     * @param string $operator Operator
+     *
+     * @return string
+     */
+    public function setOperator($operator)
+    {
+        $this->operator = $operator;
     }
 
     /**

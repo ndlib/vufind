@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller_Plugins
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Controller\Plugin;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin,
@@ -32,11 +32,11 @@ use Zend\Mvc\Controller\Plugin\AbstractPlugin,
 /**
  * Class for managing "next" and "previous" navigation within result sets.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller_Plugins
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class ResultScroller extends AbstractPlugin
 {
@@ -57,14 +57,15 @@ class ResultScroller extends AbstractPlugin
     /**
      * Constructor. Create a new search result scroller.
      *
-     * @param bool $enabled Is the scroller enabled?
+     * @param SessionContainer $session Session container
+     * @param bool             $enabled Is the scroller enabled?
      */
-    public function __construct($enabled = true)
+    public function __construct(SessionContainer $session, $enabled = true)
     {
         $this->enabled = $enabled;
 
         // Set up session namespace for the class.
-        $this->data = new SessionContainer('ResultScroller');
+        $this->data = $session;
     }
 
     /**
@@ -80,7 +81,7 @@ class ResultScroller extends AbstractPlugin
     {
         // Do nothing if disabled:
         if (!$this->enabled) {
-            return;
+            return false;
         }
 
         // Save the details of this search in the session
@@ -98,7 +99,7 @@ class ResultScroller extends AbstractPlugin
         unset($this->data->prevIds);
         unset($this->data->nextIds);
 
-        return true;
+        return (bool)$this->data->currIds;
     }
 
     /**
@@ -171,9 +172,11 @@ class ResultScroller extends AbstractPlugin
      */
     protected function fetchNextPage($retVal, $lastSearch, $pos)
     {
-        // if the next page has not been fetched, then
-        // fetch the next page
-        if ($this->data->nextIds == null) {
+        // if the current page is NOT the last page, and the next page has not been
+        // fetched, then fetch the next page
+        if ($this->data->page < ceil($this->data->total / $this->data->limit)
+            && $this->data->nextIds == null
+        ) {
             $this->data->nextIds = $this->fetchPage(
                 $lastSearch, $this->data->page + 1
             );
@@ -297,10 +300,10 @@ class ResultScroller extends AbstractPlugin
      */
     public function getScrollData($driver)
     {
-        $retVal = array(
-            'previousRecord'=>null, 'nextRecord'=>null,
-            'currentPosition'=>null, 'resultTotal'=>null
-        );
+        $retVal = [
+            'previousRecord' => null, 'nextRecord' => null,
+            'currentPosition' => null, 'resultTotal' => null
+        ];
 
         // Do nothing if disabled or data missing:
         if ($this->enabled
@@ -320,7 +323,7 @@ class ResultScroller extends AbstractPlugin
                 = isset($this->data->total) ? $this->data->total : 0;
 
             // build a full ID string using the driver:
-            $id = $driver->getResourceSource() . '|' . $driver->getUniqueId();
+            $id = $driver->getSourceIdentifier() . '|' . $driver->getUniqueId();
 
             // find where this record is in the current result page
             $pos = is_array($this->data->currIds)
@@ -389,9 +392,13 @@ class ResultScroller extends AbstractPlugin
             $searchObject->performAndProcessSearch();
         }
 
-        $retVal = array();
+        $retVal = [];
         foreach ($searchObject->getResults() as $record) {
-            $retVal[] = $record->getResourceSource() . '|' . $record->getUniqueId();
+            if (!($record instanceof \VuFind\RecordDriver\AbstractBase)) {
+                return false;
+            }
+            $retVal[]
+                = $record->getSourceIdentifier() . '|' . $record->getUniqueId();
         }
         return $retVal;
     }

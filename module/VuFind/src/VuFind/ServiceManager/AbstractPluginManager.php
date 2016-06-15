@@ -19,24 +19,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\ServiceManager;
 use Zend\ServiceManager\AbstractPluginManager as Base,
+    Zend\ServiceManager\ConfigInterface,
     Zend\ServiceManager\Exception\RuntimeException as ServiceManagerRuntimeException;
 
 /**
  * VuFind Plugin Manager
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
+ *
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  */
 abstract class AbstractPluginManager extends Base
@@ -46,14 +48,13 @@ abstract class AbstractPluginManager extends Base
      *
      * Make sure table gateways are properly initialized.
      *
-     * @param null|ConfigInterface $configuration Configuration settings (optional)
+     * @param ConfigInterface $configuration Configuration settings (optional)
      */
-    public function __construct(
-        \Zend\ServiceManager\ConfigInterface $configuration = null
-    ) {
+    public function __construct(ConfigInterface $configuration = null)
+    {
         parent::__construct($configuration);
         $this->addInitializer(
-            array('VuFind\ServiceManager\Initializer', 'initPlugin'), false
+            ['VuFind\ServiceManager\Initializer', 'initPlugin'], false
         );
     }
 

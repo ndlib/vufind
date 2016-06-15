@@ -19,38 +19,38 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Summon
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Search\Summon;
 
 /**
  * Summon Search Options
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Summon
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 class Options extends \VuFind\Search\Base\Options
 {
-    /**
-     * Maximum number of results
-     *
-     * @var int
-     */
-    protected $resultLimit = 400;
-
     /**
      * Maximum number of topic recommendations to show (false for none)
      *
      * @var int|bool
      */
     protected $maxTopicRecommendations = false;
+
+    /**
+     * Relevance sort override for empty searches
+     *
+     * @var string
+     */
+    protected $emptySearchRelevanceOverride = null;
 
     /**
      * Constructor
@@ -66,10 +66,9 @@ class Options extends \VuFind\Search\Base\Options
         if (isset($facetSettings->Advanced_Facet_Settings->translated_facets)
             && count($facetSettings->Advanced_Facet_Settings->translated_facets) > 0
         ) {
-            $list = $facetSettings->Advanced_Facet_Settings->translated_facets;
-            foreach ($list as $c) {
-                $this->translatedFacets[] = $c;
-            }
+            $this->setTranslatedFacets(
+                $facetSettings->Advanced_Facet_Settings->translated_facets->toArray()
+            );
         }
         if (isset($facetSettings->Advanced_Facet_Settings->special_facets)) {
             $this->specialAdvancedFacets
@@ -78,6 +77,15 @@ class Options extends \VuFind\Search\Base\Options
 
         // Load the search configuration file:
         $searchSettings = $configLoader->get($this->searchIni);
+
+        // Set up limit preferences
+        if (isset($searchSettings->General->default_limit)) {
+            $this->defaultLimit = $searchSettings->General->default_limit;
+        }
+        if (isset($searchSettings->General->limit_options)) {
+            $this->limitOptions
+                = explode(",", $searchSettings->General->limit_options);
+        }
 
         // Set up highlighting preference
         if (isset($searchSettings->General->highlighting)) {
@@ -90,12 +98,21 @@ class Options extends \VuFind\Search\Base\Options
         }
 
         // Load search preferences:
+        if (isset($searchSettings->General->default_view)) {
+            $this->defaultView = $searchSettings->General->default_view;
+        }
         if (isset($searchSettings->General->retain_filters_by_default)) {
             $this->retainFiltersByDefault
                 = $searchSettings->General->retain_filters_by_default;
         }
+        if (isset($searchSettings->General->default_filters)) {
+            $this->defaultFilters = $searchSettings->General->default_filters
+                ->toArray();
+        }
         if (isset($searchSettings->General->result_limit)) {
             $this->resultLimit = $searchSettings->General->result_limit;
+        } else {
+            $this->resultLimit = 400;   // default
         }
 
         // Search handler setup:
@@ -126,6 +143,21 @@ class Options extends \VuFind\Search\Base\Options
                 $this->defaultSortByHandler[$key] = $val;
             }
         }
+        if (isset($searchSettings->General->empty_search_relevance_override)) {
+            $this->emptySearchRelevanceOverride
+                = $searchSettings->General->empty_search_relevance_override;
+        }
+
+        // Load view preferences (or defaults if none in .ini file):
+        if (isset($searchSettings->Views)) {
+            foreach ($searchSettings->Views as $key => $value) {
+                $this->viewOptions[$key] = $value;
+            }
+        } elseif (isset($searchSettings->General->default_view)) {
+            $this->viewOptions = [$this->defaultView => $this->defaultView];
+        } else {
+            $this->viewOptions = ['list' => 'List'];
+        }
     }
 
     /**
@@ -150,15 +182,13 @@ class Options extends \VuFind\Search\Base\Options
     }
 
     /**
-     * If there is a limit to how many search results a user can access, this
-     * method will return that limit.  If there is no limit, this will return
-     * -1.
+     * Get the relevance sort override for empty searches.
      *
-     * @return int
+     * @return string Sort field or null if not set
      */
-    public function getVisibleSearchResultLimit()
+    public function getEmptySearchRelevanceOverride()
     {
-        return intval($this->resultLimit);
+        return $this->emptySearchRelevanceOverride;
     }
 
     /**

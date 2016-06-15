@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindTest\Backend\WorldCat;
 
 use VuFindSearch\Backend\WorldCat\Connector;
@@ -35,11 +34,11 @@ use VuFindSearch\ParamBag;
 /**
  * Unit tests for WorldCat backend.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class ConnectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -51,7 +50,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     public function testGetHoldings()
     {
         $client = $this->getMock('Zend\Http\Client');
-        $connector = new Connector('key', '', $client);
+        $connector = new Connector('key', $client);
         $client->expects($this->once())->method('setMethod')
             ->with($this->equalTo('POST'))
             ->will($this->returnValue($client));
@@ -73,12 +72,13 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
      * Test "get holdings" HTTP failure
      *
      * @return void
+     *
      * @expectedException VuFindSearch\Backend\Exception\RequestErrorException
      */
     public function testGetHoldingsHttpFailure()
     {
         $client = $this->getMock('Zend\Http\Client');
-        $connector = new Connector('key', '', $client);
+        $connector = new Connector('key', $client);
         $client->expects($this->once())->method('setMethod')
             ->with($this->equalTo('POST'))
             ->will($this->returnValue($client));
@@ -98,7 +98,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     public function testGetRecord()
     {
         $client = $this->getMock('Zend\Http\Client');
-        $connector = new Connector('key', '', $client);
+        $connector = new Connector('key', $client);
         $client->expects($this->once())->method('setMethod')
             ->with($this->equalTo('POST'))
             ->will($this->returnValue($client));
@@ -124,7 +124,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     public function testGetRecordWithError()
     {
         $client = $this->getMock('Zend\Http\Client');
-        $connector = new Connector('key', '', $client);
+        $connector = new Connector('key', $client);
         $client->expects($this->once())->method('setMethod')
             ->with($this->equalTo('POST'))
             ->will($this->returnValue($client));
@@ -139,7 +139,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
         $client->expects($this->once())->method('send')
             ->will($this->returnValue($response));
         $final = $connector->getRecord('baz');
-        $this->assertEquals(array(), $final['docs']);
+        $this->assertEquals([], $final['docs']);
     }
 
     /**
@@ -150,7 +150,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
     public function testSearch()
     {
         $client = $this->getMock('Zend\Http\Client');
-        $connector = new Connector('key', '', $client);
+        $connector = new Connector('key', $client);
         $client->expects($this->once())->method('setMethod')
             ->with($this->equalTo('POST'))
             ->will($this->returnValue($client));
@@ -164,7 +164,7 @@ class ConnectorTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue(true));
         $client->expects($this->once())->method('send')
             ->will($this->returnValue($response));
-        $final = $connector->search(new ParamBag(array('x' => 'y')), 0, 20);
+        $final = $connector->search(new ParamBag(['x' => 'y']), 0, 20);
         $this->assertEquals('<recordData>bar</recordData>', $final['docs'][0]);
         $this->assertEquals(1, $final['total']);
     }

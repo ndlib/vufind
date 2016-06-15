@@ -19,28 +19,33 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Auth;
-use VuFind\Exception\Auth as AuthException;
+use VuFind\Db\Row\User, VuFind\Exception\Auth as AuthException;
 
 /**
  * Abstract authentication base class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
-abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
+abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface,
+    \VuFind\I18n\Translator\TranslatorAwareInterface, \Zend\Log\LoggerAwareInterface
 {
+    use \VuFind\Db\Table\DbTableAwareTrait;
+    use \VuFind\I18n\Translator\TranslatorAwareTrait;
+    use \VuFind\Log\LoggerAwareTrait;
+
     /**
      * Has the configuration been validated?
      *
@@ -56,13 +61,6 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
     protected $config = null;
 
     /**
-     * Database table plugin manager
-     *
-     * @var \VuFind\Db\Table\PluginManager
-     */
-    protected $tableManager;
-
-    /**
      * Get configuration (load automatically if not previously set).  Throw an
      * exception if the configuration is invalid.
      *
@@ -74,9 +72,27 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
         // Validate configuration if not already validated:
         if (!$this->configValidated) {
             $this->validateConfig();
+            $this->configValidated = true;
         }
 
         return $this->config;
+    }
+
+    /**
+     * Inspect the user's request prior to processing a login request; this is
+     * essentially an event hook which most auth modules can ignore. See
+     * ChoiceAuth for a use case example.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object.
+     *
+     * @throws AuthException
+     * @return void
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function preLoginCheck($request)
+    {
+        // By default, do no checking.
     }
 
     /**
@@ -112,9 +128,30 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
      * account credentials.
      *
      * @throws AuthException
-     * @return \VuFind\Db\Row\User Object representing logged-in user.
+     * @return User Object representing logged-in user.
      */
     abstract public function authenticate($request);
+
+    /**
+     * Validate the credentials in the provided request, but do not change the state
+     * of the current logged-in user. Return true for valid credentials, false
+     * otherwise.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * account credentials.
+     *
+     * @throws AuthException
+     * @return bool
+     */
+    public function validateCredentials($request)
+    {
+        try {
+            $user = $this->authenticate($request);
+        } catch (AuthException $e) {
+            return false;
+        }
+        return isset($user) && $user instanceof User;
+    }
 
     /**
      * Has the user's login expired?
@@ -134,7 +171,8 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
      * new account details.
      *
      * @throws AuthException
-     * @return \VuFind\Db\Row\User New user row.
+     * @return User New user row.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function create($request)
@@ -145,13 +183,32 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
     }
 
     /**
+     * Update a user's password from the request.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * new account details.
+     *
+     * @throws AuthException
+     * @return User New user row.
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function updatePassword($request)
+    {
+        throw new AuthException(
+            'Account password updating not supported by ' . get_class($this)
+        );
+    }
+
+    /**
      * Get the URL to establish a session (needed when the internal VuFind login
      * form is inadequate).  Returns false when no session initiator is needed.
      *
      * @param string $target Full URL where external authentication method should
-     * send user to after login (some drivers may override this).
+     * send user after login (some drivers may override this).
      *
      * @return bool|string
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getSessionInitiator($target)
@@ -185,6 +242,48 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
     }
 
     /**
+     * Does this authentication method support password changing
+     *
+     * @return bool
+     */
+    public function supportsPasswordChange()
+    {
+        // By default, password changing is not supported.
+        return false;
+    }
+
+    /**
+     * Does this authentication method support password recovery
+     *
+     * @return bool
+     */
+    public function supportsPasswordRecovery()
+    {
+        // By default, password recovery is not supported.
+        return false;
+    }
+
+    /**
+     * Password policy for a new password (e.g. minLength, maxLength)
+     *
+     * @return array
+     */
+    public function getPasswordPolicy()
+    {
+        $policy = [];
+        $config = $this->getConfig();
+        if (isset($config->Authentication->minimum_password_length)) {
+            $policy['minLength']
+                = $config->Authentication->minimum_password_length;
+        }
+        if (isset($config->Authentication->maximum_password_length)) {
+            $policy['maxLength']
+                = $config->Authentication->maximum_password_length;
+        }
+        return $policy;
+    }
+
+    /**
      * Get access to the user table.
      *
      * @return \VuFind\Db\Table\User
@@ -195,28 +294,36 @@ abstract class AbstractBase implements \VuFind\Db\Table\DbTableAwareInterface
     }
 
     /**
-     * Get the table plugin manager.  Throw an exception if it is missing.
+     * Verify that a password fulfills the password policy. Throws exception if
+     * the password is invalid.
      *
-     * @throws \Exception
-     * @return \VuFind\Db\Table\PluginManager
-     */
-    public function getDbTableManager()
-    {
-        if (null === $this->tableManager) {
-            throw new \Exception('DB table manager missing.');
-        }
-        return $this->tableManager;
-    }
-
-    /**
-     * Set the table plugin manager.
-     *
-     * @param \VuFind\Db\Table\PluginManager $manager Plugin manager
+     * @param string $password Password to verify
      *
      * @return void
+     * @throws AuthException
      */
-    public function setDbTableManager(\VuFind\Db\Table\PluginManager $manager)
+    protected function validatePasswordAgainstPolicy($password)
     {
-        $this->tableManager = $manager;
+        $policy = $this->getPasswordPolicy();
+        if (isset($policy['minLength'])
+            && strlen($password) < $policy['minLength']
+        ) {
+            throw new AuthException(
+                $this->translate(
+                    'password_minimum_length',
+                    ['%%minlength%%' => $policy['minLength']]
+                )
+            );
+        }
+        if (isset($policy['maxLength'])
+            && strlen($password) > $policy['maxLength']
+        ) {
+            throw new AuthException(
+                $this->translate(
+                    'password_maximum_length',
+                    ['%%maxlength%%' => $policy['maxLength']]
+                )
+            );
+        }
     }
 }

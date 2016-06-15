@@ -10,8 +10,13 @@
   $basicSearch = $options->getSearchAction();
   $searchHome = $basicSearch;
   $searchHome['action'] = 'Home';
-  $lastSort = $options->getLastSort();
-  $lastLimit = $options->getLastLimit();
+  $lastSort = $this->searchMemory()->getLastSort($options->getSearchClassId());
+  $lastLimit = $this->searchMemory()->getLastLimit($options->getSearchClassId());
+  if (isset($this->saved) && is_object($this->saved)) {
+    $hiddenFilters = $this->saved->getParams()->getHiddenFilters();
+  } else {
+    $hiddenFilters = $this->searchtabs()->getHiddenFilters($this->searchClassId, true);
+  }
 ?>
 <div data-role="page" id="Search-home">
   <?=$this->mobileMenu()->header(array('hideSearchLink' => true))?>
@@ -30,7 +35,7 @@
         <div class="ui-block-b">
           <select id="searchForm_type" name="type0[]" data-mini="true">
             <? foreach ($options->getBasicHandlers() as $searchVal => $searchDesc): ?>
-              <option value="<?=$this->escapeHtml($searchVal)?>"<?=$this->searchIndex == $searchVal ? ' selected="selected"' : ''?>><?=$this->transEsc($searchDesc)?></option>
+              <option value="<?=$this->escapeHtmlAttr($searchVal)?>"<?=$this->searchIndex == $searchVal ? ' selected="selected"' : ''?>><?=$this->transEsc($searchDesc)?></option>
             <? endforeach; ?>
           </select>
         </div>
@@ -50,12 +55,17 @@
       <?
         /* Load hidden limit preference from Session */
         if (!empty($lastLimit)) {
-          echo '<input type="hidden" name="limit" value="' . $this->escapeHtml($lastLimit) . '" />';
+          echo '<input type="hidden" name="limit" value="' . $this->escapeHtmlAttr($lastLimit) . '" />';
         }
         if (!empty($lastSort)) {
-          echo '<input type="hidden" name="sort" value="' . $this->escapeHtml($lastSort) . '" />';
+          echo '<input type="hidden" name="sort" value="' . $this->escapeHtmlAttr($lastSort) . '" />';
         }
       ?>
+      <? foreach ($hiddenFilters as $key => $filter): ?>
+        <? foreach ($filter as $value): ?>
+          <input type="hidden" name="hiddenFilters[]" value="<?=$this->escapeHtmlAttr($key) . ':' . $this->escapeHtmlAttr($value)?>" />
+        <? endforeach; ?>
+      <? endforeach; ?>
     </form>
   </div>
   <?=$this->mobileMenu()->footer()?>

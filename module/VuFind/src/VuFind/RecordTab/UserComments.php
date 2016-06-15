@@ -19,25 +19,52 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordTabs
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:record_tabs Wiki
+ * @link     https://vufind.org/wiki/development:plugins:record_tabs Wiki
  */
 namespace VuFind\RecordTab;
 
 /**
  * User comments tab
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordTabs
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:record_tabs Wiki
+ * @link     https://vufind.org/wiki/development:plugins:record_tabs Wiki
  */
 class UserComments extends AbstractBase
 {
+    /**
+     * Is this tab enabled?
+     *
+     * @var bool
+     */
+    protected $enabled;
+
+    /**
+     * Constructor
+     *
+     * @param bool $enabled is this tab enabled?
+     */
+    public function __construct($enabled = true)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * Is this tab active?
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->enabled;
+    }
+
     /**
      * Get the on-screen description for this tab.
      *

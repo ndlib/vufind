@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Config
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Config;
 
 /**
  * Class to update VuFind configuration settings
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Config
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Writer
 {
@@ -64,12 +64,12 @@ class Writer
      *
      * @throws \Exception
      */
-    public function __construct($filename, $content = null, $comments = array())
+    public function __construct($filename, $content = null, $comments = [])
     {
         $this->filename = $filename;
         if (null === $content) {
             $this->content = file_get_contents($filename);
-            if (!$this->content) {
+            if (false === $this->content) {
                 throw new \Exception('Could not read ' . $filename);
             }
         } else if (is_array($content)) {
@@ -84,7 +84,7 @@ class Writer
      *
      * @param string $section Section to change/add
      * @param string $setting Setting within section to change/add
-     * @param string $value   Value to set
+     * @param string $value   Value to set (or null to unset)
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class Writer
         $lines = explode("\n", $this->content);
 
         // Reset some flags and prepare to rewrite the content:
-        $settingSet= false;
+        $settingSet = false;
         $currentSection = "";
         $this->content = "";
 
@@ -109,19 +109,27 @@ class Writer
             if (preg_match('/^\[(.+)\]$/', trim($content), $matches)) {
                 // If we just left the target section and didn't find the
                 // desired setting, we should write it to the end.
-                if ($currentSection == $section && !$settingSet) {
-                    $line = $setting . ' = "' . $value . '"' . "\n\n" . $line;
+                if ($currentSection == $section && !$settingSet
+                    && $value !== null
+                ) {
+                    $line = $this->buildContentLine($setting, $value, 0)
+                        . "\n\n" . $line;
                     $settingSet = true;
                 }
                 $currentSection = $matches[1];
             } else if (strstr($content, '=')) {
-                $key = reset(explode('=', $content, 2));
-                if ($currentSection == $section && trim($key) == $setting) {
-                    $line = $setting . ' = "' . $value . '"';
+                $contentParts = explode('=', $content, 2);
+                $key = trim($contentParts[0]);
+                if ($currentSection == $section && $key == $setting) {
+                    $settingSet = true;
+                    if ($value === null) {
+                        continue;
+                    } else {
+                        $line = $this->buildContentLine($setting, $value, 0);
+                    }
                     if (!empty($comment)) {
                         $line .= ' ;' . $comment;
                     }
-                    $settingSet = true;
                 }
             }
 
@@ -130,13 +138,26 @@ class Writer
         }
 
         // Did we loop through everything without finding a place to put the setting?
-        if (!$settingSet) {
+        if (!$settingSet && $value !== null) {
             // We never found the target section?
             if ($currentSection != $section) {
                 $this->content .= '[' . $section . "]\n";
             }
-            $this->content .= $setting . ' = "' . $value . '"' . "\n";
+            $this->content .= $this->buildContentLine($setting, $value, 0) . "\n";
         }
+    }
+
+    /**
+     * Remove a setting (convenience wrapper around set to null).
+     *
+     * @param string $section Section to change/add
+     * @param string $setting Setting within section to change/add
+     *
+     * @return void
+     */
+    public function clear($section, $setting)
+    {
+        $this->set($section, $setting, null);
     }
 
     /**
@@ -157,7 +178,7 @@ class Writer
     public function save()
     {
         // Create parent directory structure if necessary:
-        $stack = array();
+        $stack = [];
         $dirname = dirname($this->filename);
         while (!empty($dirname) && !is_dir($dirname)) {
             $stack[] = $dirname;
@@ -174,7 +195,7 @@ class Writer
     }
 
     /**
-     * support method for buildContent -- format a value
+     * Support method for buildContent -- format a value
      *
      * @param mixed $e Value to format
      *
@@ -189,12 +210,12 @@ class Writer
         } else if ($e == "") {
             return '';
         } else {
-            return '"' . $e . '"';
+            return '"' . str_replace('"', '\"', $e) . '"';
         }
     }
 
     /**
-     * support method for buildContent -- format a line
+     * Support method for buildContent -- format a line
      *
      * @param string $key   Configuration key
      * @param mixed  $value Configuration value
@@ -206,15 +227,41 @@ class Writer
     {
         // Build a tab string so the equals signs line up attractively:
         $tabStr = '';
-        for ($i = strlen($key); $i < $tab; $i++) {
+        for ($i = strlen($key) + 1; $i < $tab; $i++) {
             $tabStr .= ' ';
         }
 
-        return $key . $tabStr . "= ". $this->buildContentValue($value);
+        return $key . $tabStr . " = " . $this->buildContentValue($value);
     }
 
     /**
-     * write an ini file, adapted from
+     * Support method for buildContent -- format an array into lines
+     *
+     * @param string $key   Configuration key
+     * @param array  $value Configuration value
+     *
+     * @return string       Formatted line
+     */
+    protected function buildContentArrayLines($key, $value)
+    {
+        $expectedKey = 0;
+        $content = '';
+        foreach ($value as $key2 => $subValue) {
+            // We just want to use "[]" if this is a standard array with consecutive
+            // keys; however, if we have non-numeric keys or out-of-order keys, we
+            // want to retain those values as-is.
+            $subKey = (is_int($key2) && $key2 == $expectedKey)
+                ? ''
+                : (is_int($key2) ? $key2 : "'{$key2}'");    // quote string keys
+            $content .= $this->buildContentLine("{$key}[{$subKey}]", $subValue);
+            $content .= "\n";
+            $expectedKey++;
+        }
+        return $content;
+    }
+
+    /**
+     * Write an ini file, adapted from
      * http://php.net/manual/function.parse-ini-file.php
      *
      * @param array $assoc_arr Array to output
@@ -225,30 +272,25 @@ class Writer
     protected function buildContent($assoc_arr, $comments)
     {
         $content = "";
-        foreach ($assoc_arr as $key=>$elem) {
+        foreach ($assoc_arr as $key => $elem) {
             if (isset($comments['sections'][$key]['before'])) {
                 $content .= $comments['sections'][$key]['before'];
             }
-            $content .= "[".$key."]";
+            $content .= "[" . $key . "]";
             if (!empty($comments['sections'][$key]['inline'])) {
                 $content .= "\t" . $comments['sections'][$key]['inline'];
             }
             $content .= "\n";
-            foreach ($elem as $key2=>$elem2) {
+            foreach ($elem as $key2 => $elem2) {
                 if (isset($comments['sections'][$key]['settings'][$key2])) {
                     $settingComments
                         = $comments['sections'][$key]['settings'][$key2];
                     $content .= $settingComments['before'];
                 } else {
-                    $settingComments = array();
+                    $settingComments = [];
                 }
                 if (is_array($elem2)) {
-                    for ($i = 0; $i < count($elem2); $i++) {
-                        $content .= $this->buildContentLine(
-                            $key2 . "[]", $elem2[$i]
-                        );
-                        $content .= "\n";
-                    }
+                    $content .= $this->buildContentArrayLines($key2, $elem2);
                 } else {
                     $content .= $this->buildContentLine($key2, $elem2);
                 }
@@ -258,8 +300,9 @@ class Writer
                 $content .= "\n";
             }
         }
-
-        $content .= $comments['after'];
+        if (isset($comments['after'])) {
+            $content .= $comments['after'];
+        }
         return $content;
     }
 }

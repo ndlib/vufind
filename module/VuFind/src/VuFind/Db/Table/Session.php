@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Db\Table;
 use VuFind\Exception\SessionExpired as SessionExpiredException;
@@ -31,11 +31,11 @@ use VuFind\Exception\SessionExpired as SessionExpiredException;
 /**
  * Table Definition for session
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Session extends Gateway
 {
@@ -58,7 +58,7 @@ class Session extends Gateway
      */
     public function getBySessionId($sid, $create = true)
     {
-        $row = $this->select(array('session_id' => $sid))->current();
+        $row = $this->select(['session_id' => $sid])->current();
         if ($create && empty($row)) {
             $row = $this->createRow();
             $row->session_id = $sid;
@@ -137,5 +137,23 @@ class Session extends Gateway
                 ->lessThan('last_used', time() - intval($sess_maxlifetime));
         };
         $this->delete($callback);
+    }
+
+    /**
+     * Get a query representing expired sessions (this can be passed
+     * to select() or delete() for further processing).
+     *
+     * @param int $daysOld Age in days of an "expired" session.
+     *
+     * @return function
+     */
+    public function getExpiredQuery($daysOld = 2)
+    {
+        // Determine the expiration date:
+        $expireDate = time() - $daysOld * 24 * 60 * 60;
+        $callback = function ($select) use ($expireDate) {
+            $select->where->lessThan('last_used', $expireDate);
+        };
+        return $callback;
     }
 }

@@ -46,7 +46,9 @@ rem # You may also want to add the following:
 rem # -XX:+UseParallelGC
 rem # -XX:+AggressiveOpts
 rem ##################################################
-set INDEX_OPTIONS=-Xms512m -Xmx512m
+if not "!%INDEX_OPTIONS%!"=="!!" goto indexoptionsfound
+set INDEX_OPTIONS=-Xms512m -Xmx512m -DentityExpansionLimit=0
+:indexoptionsfound
 
 rem ##################################################
 rem # Set SOLRCORE
@@ -59,15 +61,15 @@ rem ##################################################
 rem # Set SOLR_HOME
 rem ##################################################
 if not "!%VUFIND_HOME%!"=="!!" goto vufindhomefound
-rem VUFIND_HOME not set -- try to call vufind.bat to 
+rem VUFIND_HOME not set -- try to call env.bat to 
 rem fix the problem before we give up completely
-if exist vufind.bat goto usevufindbat
-rem If vufind.bat doesn't exist, the user hasn't run the installer yet.
-echo ERROR: vufind.bat does not exist -- could not set up environment.
+if exist env.bat goto useenvbat
+rem If env.bat doesn't exist, the user hasn't run the installer yet.
+echo ERROR: env.bat does not exist -- could not set up environment.
 echo Please run "php install.php" to correct this problem.
 goto end
-:usevufindbat
-call vufind > nul
+:useenvbat
+call env > nul
 if not "!%VUFIND_HOME%!"=="!!" goto vufindhomefound
 echo You need to set the VUFIND_HOME environmental variable before running this script.
 goto end

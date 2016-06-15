@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Base
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Search\Base;
 use VuFind\Search\UrlQueryHelper, Zend\Paginator\Paginator,
@@ -36,33 +36,102 @@ use VuFindSearch\Service as SearchService;
  *
  * This abstract class defines the results methods for modeling a search in VuFind.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Base
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 abstract class Results implements ServiceLocatorAwareInterface
 {
+    use \Zend\ServiceManager\ServiceLocatorAwareTrait {
+        setServiceLocator as setServiceLocatorThroughTrait;
+    }
+
+    /**
+     * Search parameters
+     *
+     * @var Params
+     */
     protected $params;
-    // Total number of results available
+
+    /**
+     * Total number of results available
+     *
+     * @var int
+     */
     protected $resultTotal = null;
-    // Override (only for use in very rare cases)
+
+    /**
+     * Override (only for use in very rare cases)
+     *
+     * @var int
+     */
     protected $startRecordOverride = null;
-    // Array of results (represented as Record Driver objects) retrieved on latest
-    // search:
+
+    /**
+     * Array of results (represented as Record Driver objects) retrieved on latest
+     * search
+     *
+     * @var array
+     */
     protected $results = null;
-    // An ID number for saving/retrieving search
+
+    /**
+     * An ID number for saving/retrieving search
+     *
+     * @var int
+     */
     protected $searchId = null;
+
+    /**
+     * Is this a user-saved search?
+     *
+     * @var bool
+     */
     protected $savedSearch = null;
-    // STATS
+
+    /**
+     * Query start time
+     *
+     * @var float
+     */
     protected $queryStartTime = null;
+
+    /**
+     * Query end time
+     *
+     * @var float
+     */
     protected $queryEndTime = null;
+
+    /**
+     * Query time (total)
+     *
+     * @var float
+     */
     protected $queryTime = null;
-    // Helper objects
-    protected $helpers = array();
-    // Spelling
+
+    /**
+     * Helper objects
+     *
+     * @var array
+     */
+    protected $helpers = [];
+
+    /**
+     * Spelling suggestions
+     *
+     * @var array
+     */
     protected $suggestions = null;
+
+    /**
+     * Recommendations
+     *
+     * @var array
+     */
+    protected $recommend = [];
 
     /**
      * Search service.
@@ -72,13 +141,6 @@ abstract class Results implements ServiceLocatorAwareInterface
     protected $searchService;
 
     /**
-     * Service locator
-     *
-     * @var ServiceLocatorInterface
-     */
-    protected $serviceLocator;
-
-    /**
      * Constructor
      *
      * @param \VuFind\Search\Base\Params $params Object representing user search
@@ -86,7 +148,6 @@ abstract class Results implements ServiceLocatorAwareInterface
      */
     public function __construct(Params $params)
     {
-        // Save the parameters, then perform the search:
         $this->setParams($params);
     }
 
@@ -100,6 +161,7 @@ abstract class Results implements ServiceLocatorAwareInterface
         if (is_object($this->params)) {
             $this->params = clone($this->params);
         }
+        $this->helpers = [];
     }
 
     /**
@@ -149,6 +211,19 @@ abstract class Results implements ServiceLocatorAwareInterface
     }
 
     /**
+     * Override a helper object.
+     *
+     * @param string $key   Name of helper to set
+     * @param object $value Helper object
+     *
+     * @return void
+     */
+    public function setHelper($key, $value)
+    {
+        $this->helpers[$key] = $value;
+    }
+
+    /**
      * Actually execute the search.
      *
      * @return void
@@ -158,23 +233,13 @@ abstract class Results implements ServiceLocatorAwareInterface
         // Initialize variables to defaults (to ensure they don't stay null
         // and cause unnecessary repeat processing):
         $this->resultTotal = 0;
-        $this->results = array();
-        $this->suggestions = array();
+        $this->results = [];
+        $this->suggestions = [];
 
         // Run the search:
         $this->startQueryTimer();
         $this->performSearch();
         $this->stopQueryTimer();
-
-        // Process recommendations:
-        $recommendations = $this->getParams()->getRecommendations(null);
-        if (is_array($recommendations)) {
-            foreach ($recommendations as $currentSet) {
-                foreach ($currentSet as $current) {
-                    $current->process($this);
-                }
-            }
-        }
     }
 
     /**
@@ -204,7 +269,7 @@ abstract class Results implements ServiceLocatorAwareInterface
     public function getSpellingSuggestions()
     {
         // Not supported by default:
-        return array();
+        return [];
     }
 
     /**
@@ -239,11 +304,17 @@ abstract class Results implements ServiceLocatorAwareInterface
      */
     public function getStartRecord()
     {
-        if (!is_null($this->startRecordOverride)) {
+        if (null !== $this->startRecordOverride) {
             return $this->startRecordOverride;
         }
         $params = $this->getParams();
-        return (($params->getPage() - 1) * $params->getLimit()) + 1;
+        $page = $params->getPage();
+        $pageLimit = $params->getLimit();
+        $resultLimit = $this->getOptions()->getVisibleSearchResultLimit();
+        if ($resultLimit > -1 && $resultLimit < $page * $pageLimit) {
+            $page = ceil($resultLimit / $pageLimit);
+        }
+        return (($page - 1) * $pageLimit) + 1;
     }
 
     /**
@@ -254,16 +325,19 @@ abstract class Results implements ServiceLocatorAwareInterface
     public function getEndRecord()
     {
         $total = $this->getResultTotal();
-        $limit = $this->getParams()->getLimit();
-        $page = $this->getParams()->getPage();
-        if ($page * $limit > $total) {
-            // The end of the current page runs past the last record, use total
-            // results
-            return $total;
+        $params = $this->getParams();
+        $page = $params->getPage();
+        $pageLimit = $params->getLimit();
+        $resultLimit = $this->getOptions()->getVisibleSearchResultLimit();
+
+        if ($resultLimit > -1 && $resultLimit < ($page * $pageLimit)) {
+            $record = $resultLimit;
         } else {
-            // Otherwise use the last record on this page
-            return $page * $limit;
+            $record = $page * $pageLimit;
         }
+        // If the end of the current page runs past the last record, use total
+        // results; otherwise use the last record on this page:
+        return ($record > $total) ? $total : $record;
     }
 
     /**
@@ -389,59 +463,12 @@ abstract class Results implements ServiceLocatorAwareInterface
         }
 
         // Build the standard paginator control:
-        $nullAdapter = "Zend\Paginator\Adapter\Null";
+        $nullAdapter = "Zend\Paginator\Adapter\NullFill";
         $paginator = new Paginator(new $nullAdapter($total));
         $paginator->setCurrentPageNumber($this->getParams()->getPage())
             ->setItemCountPerPage($this->getParams()->getLimit())
             ->setPageRange(11);
         return $paginator;
-    }
-
-    /**
-     * Input Tokenizer - Specifically for spelling purposes
-     *
-     * Because of its focus on spelling, these tokens are unsuitable
-     * for actual searching. They are stripping important search data
-     * such as joins and groups, simply because they don't need to be
-     * spellchecked.
-     *
-     * @param string $input Query to tokenize
-     *
-     * @return array        Tokenized array
-     */
-    public function spellingTokens($input)
-    {
-        // Blacklist of useless tokens:
-        $joins = array("AND", "OR", "NOT");
-
-        // Strip out parentheses -- irrelevant for tokenization:
-        $paren = array("(" => " ", ")" => " ");
-        $input = trim(strtr($input, $paren));
-
-        // Base of this algorithm comes straight from PHP doc example by
-        // benighted at gmail dot com: http://php.net/manual/en/function.strtok.php
-        $tokens = array();
-        $token = strtok($input, " \t");
-        while ($token !== false) {
-            // find double quoted tokens
-            if (substr($token, 0, 1) == '"' && substr($token, -1) != '"') {
-                $token .= ' '.strtok('"').'"';
-            }
-            // skip boolean operators
-            if (!in_array($token, $joins)) {
-                $tokens[] = $token;
-            }
-            $token = strtok(" \t");
-        }
-
-        // If the last token ends in a double quote but the input string does not,
-        // the tokenization process added the quote, which will break spelling
-        // replacements.  We need to strip it back off again:
-        $last = count($tokens) > 0 ? $tokens[count($tokens) - 1] : null;
-        if ($last && substr($last, -1) == '"' && substr($input, -1) != '"') {
-            $tokens[count($tokens) - 1] = substr($last, 0, strlen($last) - 1);
-        }
-        return $tokens;
     }
 
     /**
@@ -482,11 +509,22 @@ abstract class Results implements ServiceLocatorAwareInterface
      */
     public function getRecommendations($location = 'top')
     {
-        // Proxy the params object's getRecommendations call -- we need to set up
-        // the recommendations in the params object since they need to be
-        // query-aware, but from a caller's perspective, it makes more sense to
-        // pull them from the results object.
-        return $this->getParams()->getRecommendations($location);
+        if (null === $location) {
+            return $this->recommend;
+        }
+        return isset($this->recommend[$location]) ? $this->recommend[$location] : [];
+    }
+
+    /**
+     * Set the recommendation objects (see \VuFind\Search\RecommendListener).
+     *
+     * @param array $recommend Recommendations
+     *
+     * @return void
+     */
+    public function setRecommendations($recommend)
+    {
+        $this->recommend = $recommend;
     }
 
     /**
@@ -502,8 +540,7 @@ abstract class Results implements ServiceLocatorAwareInterface
         if ($serviceLocator instanceof ServiceLocatorAwareInterface) {
             $serviceLocator = $serviceLocator->getServiceLocator();
         }
-        $this->serviceLocator = $serviceLocator;
-        return $this;
+        return $this->setServiceLocatorThroughTrait($serviceLocator);
     }
 
     /**
@@ -523,6 +560,8 @@ abstract class Results implements ServiceLocatorAwareInterface
         // Restore translator:
         $this->getOptions()
             ->setTranslator($serviceLocator->get('VuFind\Translator'));
+        $this->getOptions()
+            ->setConfigLoader($serviceLocator->get('VuFind\Config'));
         return $this;
     }
 
@@ -540,16 +579,6 @@ abstract class Results implements ServiceLocatorAwareInterface
         unset($vars['searchService']);
         $vars = array_keys($vars);
         return $vars;
-    }
-
-    /**
-     * Get the service locator.
-     *
-     * @return \Zend\ServiceManager\ServiceLocatorInterface
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
     }
 
     /**
@@ -582,14 +611,14 @@ abstract class Results implements ServiceLocatorAwareInterface
     }
 
     /**
-     * Translate a string if a translator is available.
-     *
-     * @param string $msg Message to translate
+     * Translate a string if a translator is available (proxies method in Options).
      *
      * @return string
      */
-    public function translate($msg)
+    public function translate()
     {
-        return $this->getOptions()->translate($msg);
+        return call_user_func_array(
+            [$this->getOptions(), 'translate'], func_get_args()
+        );
     }
 }

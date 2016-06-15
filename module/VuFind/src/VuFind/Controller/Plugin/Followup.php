@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller_Plugins
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Controller\Plugin;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin, Zend\Session\Container;
@@ -32,32 +32,80 @@ use Zend\Mvc\Controller\Plugin\AbstractPlugin, Zend\Session\Container;
  * Zend action helper to deal with login followup; responsible for remembering URLs
  * before login and then redirecting the user to the appropriate place afterwards.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller_Plugins
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 class Followup extends AbstractPlugin
 {
+    /**
+     * Session container
+     *
+     * @var Container
+     */
     protected $session;
 
     /**
      * Constructor
+     *
+     * @param Container $session Session container
      */
-    public function __construct()
+    public function __construct(Container $session)
     {
-        $this->session = new Container('Followup');
+        $this->session = $session;
+    }
+
+    /**
+     * Clear an element of the stored followup information.
+     *
+     * @param string $key Element to clear.
+     *
+     * @return bool       True if cleared, false if never set.
+     */
+    public function clear($key)
+    {
+        if (isset($this->session->$key)) {
+            unset($this->session->$key);
+            return true;
+        }
+        return false;
     }
 
     /**
      * Retrieve the stored followup information.
      *
-     * @return \Zend\Session\Container
+     * @param string $key     Element to retrieve and clear (null for entire
+     * \Zend\Session\Container object)
+     * @param mixed  $default Default value to return if no stored value found
+     * (ignored when $key is null)
+     *
+     * @return mixed
      */
-    public function retrieve()
+    public function retrieve($key = null, $default = null)
     {
-        return $this->session;
+        if (null === $key) {
+            return $this->session;
+        }
+        return isset($this->session->$key)
+            ? $this->session->$key : $default;
+
+    }
+
+    /**
+     * Retrieve and then clear a particular followup element.
+     *
+     * @param string $key     Element to retrieve and clear.
+     * @param mixed  $default Default value to return if no stored value found
+     *
+     * @return mixed
+     */
+    public function retrieveAndClear($key, $default = null)
+    {
+        $value = $this->retrieve($key, $default);
+        $this->clear($key);
+        return $value;
     }
 
     /**
@@ -70,7 +118,7 @@ class Followup extends AbstractPlugin
      *
      * @return void
      */
-    public function store($extras = array(), $overrideUrl = null)
+    public function store($extras = [], $overrideUrl = null)
     {
         // Store the current URL:
         $this->session->url = !empty($overrideUrl)

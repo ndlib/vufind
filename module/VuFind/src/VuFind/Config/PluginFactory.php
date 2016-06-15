@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Config;
 use Zend\Config\Config, Zend\Config\Reader\Ini as IniReader,
@@ -33,16 +33,16 @@ use Zend\Config\Config, Zend\Config\Reader\Ini as IniReader,
 /**
  * VuFind Config Plugin Factory
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class PluginFactory implements AbstractFactoryInterface
 {
     /**
-     * .ini reader
+     * INI file reader
      *
      * @var IniReader
      */
@@ -71,13 +71,13 @@ class PluginFactory implements AbstractFactoryInterface
      */
     protected function loadConfigFile($filename, $path = 'config/vufind')
     {
-        $configs = array();
+        $configs = [];
 
         $fullpath = Locator::getConfigPath($filename, $path);
 
         // Return empty configuration if file does not exist:
         if (!file_exists($fullpath)) {
-            return new Config(array());
+            return new Config([]);
         }
 
         // Retrieve and parse at least one configuration file, and possibly a whole
@@ -87,8 +87,15 @@ class PluginFactory implements AbstractFactoryInterface
                 = new Config($this->iniReader->fromFile($fullpath), true);
 
             $i = count($configs) - 1;
-            $fullpath = isset($configs[$i]->Parent_Config->path)
-                ? $configs[$i]->Parent_Config->path : false;
+            if (isset($configs[$i]->Parent_Config->path)) {
+                $fullpath = $configs[$i]->Parent_Config->path;
+            } elseif (isset($configs[$i]->Parent_Config->relative_path)) {
+                $fullpath = pathinfo($fullpath, PATHINFO_DIRNAME)
+                    . DIRECTORY_SEPARATOR
+                    . $configs[$i]->Parent_Config->relative_path;
+            } else {
+                $fullpath = false;
+            }
         } while ($fullpath);
 
         // The last element in the array will be the top of the inheritance tree.
@@ -104,8 +111,15 @@ class PluginFactory implements AbstractFactoryInterface
                         ' ', '', $child->Parent_Config->override_full_sections
                     )
                 )
-                : array();
+                : [];
             foreach ($child as $section => $contents) {
+                // Omit Parent_Config from the returned configuration; it is only
+                // needed during loading, and its presence will cause problems in
+                // config files that iterate through all of the sections (e.g.
+                // combined.ini, permissions.ini).
+                if ($section === 'Parent_Config') {
+                    continue;
+                }
                 if (in_array($section, $overrideSections)
                     || !isset($config->$section)
                 ) {
@@ -130,6 +144,7 @@ class PluginFactory implements AbstractFactoryInterface
      * @param string                  $requestedName  Unfiltered name of service
      *
      * @return bool
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator,
@@ -147,6 +162,7 @@ class PluginFactory implements AbstractFactoryInterface
      * @param string                  $requestedName  Unfiltered name of service
      *
      * @return object
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator,

@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\View\Helper\Root;
 use Zend\View\Helper\AbstractHelper;
@@ -31,11 +31,11 @@ use Zend\View\Helper\AbstractHelper;
 /**
  * "Add ellipsis" view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class AddEllipsis extends AbstractHelper
 {
@@ -53,12 +53,28 @@ class AddEllipsis extends AbstractHelper
         // Remove highlighting markers from the string so we can perform a clean
         // comparison:
         $dehighlighted = str_replace(
-            array('{{{{START_HILITE}}}}', '{{{{END_HILITE}}}}'), '', $highlighted
+            ['{{{{START_HILITE}}}}', '{{{{END_HILITE}}}}'], '', $highlighted
         );
 
         // If the dehighlighted string is shorter than the full string, we need
         // to figure out where things changed:
         if (strlen($dehighlighted) < strlen($fullString)) {
+            // If we can splice the highlighted text into the unhighlighted text,
+            // let's do so!
+            $pos = strpos($fullString, $dehighlighted);
+            if ($pos !== false) {
+                // Attach the highlighted snippet to the unhighlighted preceding text
+                $title = substr($fullString, 0, $pos) . $highlighted;
+                // If the overall title is relatively short, attach the rest;
+                // otherwise, unless we already have the full string, add ellipses.
+                if (strlen($fullString) < 160) {
+                    $title .= substr($fullString, $pos + strlen($dehighlighted));
+                } else if ($pos + strlen($dehighlighted) < strlen($fullString)) {
+                    $title = trim($title) . '...';
+                }
+                return $title;
+            }
+
             // If the first five characters don't match chances are something was cut
             // from the front:
             if (substr($dehighlighted, 0, 5) != substr($fullString, 0, 5)) {

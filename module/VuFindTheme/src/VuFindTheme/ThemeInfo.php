@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFindTheme;
 
 /**
  * Class to represent currently-selected theme and related information.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class ThemeInfo
 {
@@ -66,6 +66,9 @@ class ThemeInfo
      * @var array
      */
     protected $allThemeInfo = null;
+
+    // Constant for use with findContainingTheme:
+    const RETURN_ALL_DETAILS = 'all';
 
     /**
      * Constructor
@@ -143,7 +146,7 @@ class ThemeInfo
         // Fill in the theme info cache if it is not already populated:
         if (null === $this->allThemeInfo) {
             // Build an array of theme information by inheriting up the theme tree:
-            $this->allThemeInfo = array();
+            $this->allThemeInfo = [];
             $currentTheme = $this->getTheme();
             do {
                 $this->allThemeInfo[$currentTheme]
@@ -161,16 +164,17 @@ class ThemeInfo
      *
      * @param string|array $relativePath Relative path (or array of paths) to
      * search within themes
-     * @param bool         $returnFile   If true, return full file path instead
-     * of theme name
+     * @param string|bool  $returnType   If boolean true, return full file path;
+     * if boolean false, return containing theme name; if self::RETURN_ALL_DETAILS,
+     * return an array containing both values (keyed with 'path' and 'theme').
      *
      * @return string
      */
-    public function findContainingTheme($relativePath, $returnFile = false)
+    public function findContainingTheme($relativePath, $returnType = false)
     {
         $basePath = $this->getBaseDir();
         $allPaths = is_array($relativePath)
-            ? $relativePath : array($relativePath);
+            ? $relativePath : [$relativePath];
 
         $currentTheme = $this->getTheme();
         $allThemeInfo = $this->getThemeInfo();
@@ -179,7 +183,13 @@ class ThemeInfo
             foreach ($allPaths as $currentPath) {
                 $file = "$basePath/$currentTheme/$currentPath";
                 if (file_exists($file)) {
-                    return $returnFile ? $file : $currentTheme;
+                    if (true === $returnType) {
+                        return $file;
+                    } else if (self::RETURN_ALL_DETAILS === $returnType) {
+                        return ['path' => $file, 'theme' => $currentTheme];
+                    }
+                    // Default return type:
+                    return $currentTheme;
                 }
             }
             $currentTheme = $allThemeInfo[$currentTheme]['extends'];

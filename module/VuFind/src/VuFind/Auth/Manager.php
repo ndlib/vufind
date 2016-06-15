@@ -19,39 +19,54 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Auth;
-use VuFind\Exception\Auth as AuthException, VuFind\Exception\ILS as ILSException,
-    Zend\ServiceManager\ServiceLocatorAwareInterface,
-    Zend\ServiceManager\ServiceLocatorInterface;
+use VuFind\Cookie\CookieManager,
+    VuFind\Db\Row\User as UserRow, VuFind\Db\Table\User as UserTable,
+    VuFind\Exception\Auth as AuthException,
+    Zend\Config\Config, Zend\Session\SessionManager, Zend\Validator\Csrf;
 
 /**
  * Wrapper class for handling logged-in user in session.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
-class Manager implements ServiceLocatorAwareInterface
+class Manager implements \ZfcRbac\Identity\IdentityProviderInterface
 {
     /**
-     * Authentication module (false if uninitialized)
+     * Authentication modules
      *
-     * @var \VuFind\Auth\AbstractBase|bool
+     * @var \VuFind\Auth\AbstractBase[]
      */
-    protected $auth = false;
+    protected $auth = [];
+
+    /**
+     * Currently selected authentication module
+     *
+     * @var string
+     */
+    protected $activeAuth;
+
+    /**
+     * Whitelist of values allowed to be set into $activeAuth
+     *
+     * @var array
+     */
+    protected $legalAuthOptions;
 
     /**
      * VuFind configuration
      *
-     * @var \Zend\Config\Config
+     * @var Config
      */
     protected $config;
 
@@ -63,70 +78,172 @@ class Manager implements ServiceLocatorAwareInterface
     protected $session;
 
     /**
-     * ILS account information (false if uninitialized)
+     * Gateway to user table in database
      *
-     * @var array|bool
+     * @var UserTable
      */
-    protected $ilsAccount = false;
+    protected $userTable;
+
+    /**
+     * Session manager
+     *
+     * @var SessionManager
+     */
+    protected $sessionManager;
+
+    /**
+     * Authentication plugin manager
+     *
+     * @var PluginManager
+     */
+    protected $pluginManager;
+
+    /**
+     * Cookie Manager
+     *
+     * @var CookieManager
+     */
+    protected $cookieManager;
 
     /**
      * Cache for current logged in user object
      *
-     * @var \VuFind\Db\Row\User
+     * @var UserRow
      */
     protected $currentUser = false;
 
     /**
-     * Service locator
-     *
-     * @var ServiceLocatorInterface
-     */
-    protected $serviceLocator;
-
-    /**
      * Constructor
      *
-     * @param \Zend\Config\Config $config VuFind configuration
+     * @param Config         $config         VuFind configuration
+     * @param UserTable      $userTable      User table gateway
+     * @param SessionManager $sessionManager Session manager
+     * @param PluginManager  $pm             Authentication plugin manager
+     * @param CookieManager  $cookieManager  Cookie manager
      */
-    public function __construct(\Zend\Config\Config $config)
-    {
+    public function __construct(Config $config, UserTable $userTable,
+        SessionManager $sessionManager, PluginManager $pm,
+        CookieManager $cookieManager
+    ) {
+        // Store dependencies:
         $this->config = $config;
-        $this->session = new \Zend\Session\Container('Account');
-    }
+        $this->userTable = $userTable;
+        $this->sessionManager = $sessionManager;
+        $this->pluginManager = $pm;
+        $this->cookieManager = $cookieManager;
 
-    /**
-     * Get the ILS connection.
-     *
-     * @return \VuFind\ILS\Connection
-     */
-    protected function getILS()
-    {
-        return $this->getServiceLocator()->get('VuFind\ILSConnection');
+        // Set up session:
+        $this->session = new \Zend\Session\Container('Account', $sessionManager);
+
+        // Set up CSRF:
+        $this->csrf = new Csrf(
+            [
+                'session' => new \Zend\Session\Container('csrf', $sessionManager),
+                'salt' => isset($this->config->Security->HMACkey)
+                    ? $this->config->Security->HMACkey : 'VuFindCsrfSalt',
+            ]
+        );
+
+        // Initialize active authentication setting (defaulting to Database
+        // if no setting passed in):
+        $method = isset($config->Authentication->method)
+            ? $config->Authentication->method : 'Database';
+        $this->legalAuthOptions = [$method];   // mark it as legal
+        $this->setAuthMethod($method);              // load it
     }
 
     /**
      * Get the authentication handler.
      *
+     * @param string $name Auth module to load (null for currently active one)
+     *
      * @return AbstractBase
      */
-    protected function getAuth()
+    protected function getAuth($name = null)
     {
-        if (!$this->auth) {
-            $manager = $this->getServiceLocator()->get('VuFind\AuthPluginManager');
-            $this->auth = $manager->get($this->config->Authentication->method);
-            $this->auth->setConfig($this->config);
+        $name = empty($name) ? $this->activeAuth : $name;
+        if (!isset($this->auth[$name])) {
+            $this->auth[$name] = $this->makeAuth($name);
         }
-        return $this->auth;
+        return $this->auth[$name];
+    }
+
+    /**
+     * Helper
+     *
+     * @param string $method auth method to instantiate
+     *
+     * @return AbstractBase
+     */
+    protected function makeAuth($method)
+    {
+        // If an illegal option was passed in, don't allow the object to load:
+        if (!in_array($method, $this->legalAuthOptions)) {
+            throw new \Exception("Illegal authentication method: $method");
+        }
+        $auth = $this->pluginManager->get($method);
+        $auth->setConfig($this->config);
+        return $auth;
     }
 
     /**
      * Does the current configuration support account creation?
      *
+     * @param string $authMethod optional; check this auth method rather than
+     *  the one in config file
+     *
      * @return bool
      */
-    public function supportsCreation()
+    public function supportsCreation($authMethod = null)
     {
-        return $this->getAuth()->supportsCreation();
+        return $this->getAuth($authMethod)->supportsCreation();
+    }
+
+    /**
+     * Does the current configuration support password recovery?
+     *
+     * @param string $authMethod optional; check this auth method rather than
+     *  the one in config file
+     *
+     * @return bool
+     */
+    public function supportsRecovery($authMethod = null)
+    {
+        if ($this->getAuth($authMethod)->supportsPasswordRecovery()) {
+            return isset($this->config->Authentication->recover_password)
+                && $this->config->Authentication->recover_password;
+        }
+        return false;
+    }
+
+    /**
+     * Is new passwords currently allowed?
+     *
+     * @param string $authMethod optional; check this auth method rather than
+     *  the one in config file
+     *
+     * @return bool
+     */
+    public function supportsPasswordChange($authMethod = null)
+    {
+        if ($this->getAuth($authMethod)->supportsPasswordChange()) {
+            return isset($this->config->Authentication->change_password)
+                && $this->config->Authentication->change_password;
+        }
+        return false;
+    }
+
+    /**
+     * Password policy for a new password (e.g. minLength, maxLength)
+     *
+     * @param string $authMethod optional; check this auth method rather than
+     * the one in config file
+     *
+     * @return array
+     */
+    public function getPasswordPolicy($authMethod = null)
+    {
+        return $this->getAuth($authMethod)->getPasswordPolicy();
     }
 
     /**
@@ -134,23 +251,104 @@ class Manager implements ServiceLocatorAwareInterface
      * form is inadequate).  Returns false when no session initiator is needed.
      *
      * @param string $target Full URL where external authentication method should
-     * send user to after login (some drivers may override this).
+     * send user after login (some drivers may override this).
      *
      * @return bool|string
      */
     public function getSessionInitiator($target)
     {
-        return $this->getAuth()->getSessionInitiator($target);
+        try {
+            return $this->getAuth()->getSessionInitiator($target);
+        } catch (InvalidArgumentException $e) {
+            // If the authentication is in an illegal state but there is an
+            // active user session, we should clear everything out so the user
+            // can try again. This is useful, for example, if a user is logged
+            // in at the same time that an administrator changes the [ChoiceAuth]
+            // settings in config.ini. However, if the user is not logged in,
+            // they are probably attempting something nasty and should be given
+            // an error message.
+            if (!$this->isLoggedIn()) {
+                throw $e;
+            }
+            $this->logout('');
+            return $this->getAuth()->getSessionInitiator($target);
+        }
     }
 
     /**
-     * Get the name of the current authentication class.
+     * In VuFind, views are tied to the name of the active authentication class.
+     * This method returns that name so that an appropriate template can be
+     * selected. It supports authentication methods that proxy other authentication
+     * methods (see ChoiceAuth for an example).
      *
      * @return string
      */
-    public function getAuthClass()
+    public function getAuthClassForTemplateRendering()
     {
-        return get_class($this->getAuth());
+        $auth = $this->getAuth();
+        if (is_callable([$auth, 'getSelectedAuthOption'])) {
+            $selected = $auth->getSelectedAuthOption();
+            if ($selected) {
+                $auth = $this->getAuth($selected);
+            }
+        }
+        return get_class($auth);
+    }
+
+    /**
+     * Return an array of all of the authentication options supported by the
+     * current auth class. In most cases (except for ChoiceAuth), this will
+     * just contain a single value.
+     *
+     * @return array
+     */
+    public function getSelectableAuthOptions()
+    {
+        $auth = $this->getAuth();
+        if (is_callable([$auth, 'getSelectableAuthOptions'])) {
+            if ($methods = $auth->getSelectableAuthOptions()) {
+                return $methods;
+            }
+        }
+        return [$this->getAuthMethod()];
+    }
+
+    /**
+     * Does the current auth class allow for authentication from more than
+     * one target? (e.g. MultiILS)
+     * If so return an array that lists the targets.
+     *
+     * @return array
+     */
+    public function getLoginTargets()
+    {
+        $auth = $this->getAuth();
+        return is_callable([$auth, 'getLoginTargets'])
+            ? $auth->getLoginTargets() : [];
+    }
+
+    /**
+     * Does the current auth class allow for authentication from more than
+     * one target? (e.g. MultiILS)
+     * If so return the default target.
+     *
+     * @return string
+     */
+    public function getDefaultLoginTarget()
+    {
+        $auth = $this->getAuth();
+        return is_callable([$auth, 'getDefaultLoginTarget'])
+            ? $auth->getDefaultLoginTarget() : null;
+    }
+
+    /**
+     * Get the name of the current authentication method.
+     *
+     * @return string
+     */
+    public function getAuthMethod()
+    {
+        return $this->activeAuth;
     }
 
     /**
@@ -160,21 +358,10 @@ class Manager implements ServiceLocatorAwareInterface
      */
     public function loginEnabled()
     {
-        if (isset($this->config->Authentication->hideLogin)
-            && $this->config->Authentication->hideLogin
-        ) {
-            return false;
-        }
-        try {
-            $catalog = $this->getILS();
-        } catch (\Exception $e) {
-            // If we can't connect to the catalog, assume that no special
-            // ILS-related login settings exist -- this prevents ILS errors
-            // from triggering an exception early in initialization before
-            // VuFind is ready to display error messages.
-            return true;
-        }
-        return !$catalog->loginIsHidden();
+        // Assume login is enabled unless explicitly turned off:
+        return isset($this->config->Authentication->hideLogin)
+            ? !$this->config->Authentication->hideLogin
+            : true;
     }
 
     /**
@@ -193,22 +380,20 @@ class Manager implements ServiceLocatorAwareInterface
         // necessary.
         $url = $this->getAuth()->logout($url);
 
-        // Clear out cached ILS connection.
-        $this->ilsAccount = false;
-
         // Clear out the cached user object and session entry.
         $this->currentUser = false;
         unset($this->session->userId);
-        setcookie('loggedOut', 1, null, '/');
+        unset($this->session->userDetails);
+        $this->cookieManager->set('loggedOut', 1);
 
         // Destroy the session for good measure, if requested.
         if ($destroy) {
-            $this->getServiceLocator()->get('VuFind\SessionManager')->destroy();
+            $this->sessionManager->destroy();
         } else {
             // If we don't want to destroy the session, we still need to empty it.
             // There should be a way to do this through Zend\Session, but there
             // apparently isn't (TODO -- do this better):
-            $_SESSION = array();
+            $_SESSION = [];
         }
 
         return $url;
@@ -221,27 +406,60 @@ class Manager implements ServiceLocatorAwareInterface
      */
     public function userHasLoggedOut()
     {
-        return isset($_COOKIE['loggedOut']) && $_COOKIE['loggedOut'];
+        return (bool)$this->cookieManager->get('loggedOut');
     }
 
     /**
      * Checks whether the user is logged in.
      *
-     * @return \VuFind\Db\Row\User|bool Object if user is logged in, false
-     * otherwise.
+     * @return UserRow|bool Object if user is logged in, false otherwise.
      */
     public function isLoggedIn()
     {
         // If user object is not in cache, but user ID is in session,
         // load the object from the database:
-        if (!$this->currentUser && isset($this->session->userId)) {
-            $results = $this->getServiceLocator()
-                ->get('VuFind\DbTablePluginManager')->get('user')
-                ->select(array('id' => $this->session->userId));
-            $this->currentUser = count($results) < 1
-                ? false : $results->current();
+        if (!$this->currentUser) {
+            if (isset($this->session->userId)) {
+                // normal mode
+                $results = $this->userTable
+                    ->select(['id' => $this->session->userId]);
+                $this->currentUser = count($results) < 1
+                    ? false : $results->current();
+            } else if (isset($this->session->userDetails)) {
+                // privacy mode
+                $results = $this->userTable->createRow();
+                $results->exchangeArray($this->session->userDetails);
+                $this->currentUser = $results;
+            } else {
+                // unexpected state
+                $this->currentUser = false;
+            }
         }
         return $this->currentUser;
+    }
+
+    /**
+     * Retrieve CSRF token
+     *
+     * If no CSRF token currently exists, or should be regenerated, generates one.
+     *
+     * @param bool $regenerate Should we regenerate token? (default false)
+     *
+     * @return string
+     */
+    public function getCsrfHash($regenerate = false)
+    {
+        return $this->csrf->getHash($regenerate);
+    }
+
+    /**
+     * Get the identity
+     *
+     * @return \ZfcRbac\Identity\IdentityInterface|null
+     */
+    public function getIdentity()
+    {
+        return $this->isLoggedIn() ?: null;
     }
 
     /**
@@ -259,17 +477,32 @@ class Manager implements ServiceLocatorAwareInterface
     }
 
     /**
+     * Are we in privacy mode?
+     *
+     * @return bool
+     */
+    public function inPrivacyMode()
+    {
+        return isset($this->config->Authentication->privacy)
+            && $this->config->Authentication->privacy;
+    }
+
+    /**
      * Updates the user information in the session.
      *
-     * @param \VuFind\Db\Row\User $user User object to store in the session
+     * @param UserRow $user User object to store in the session
      *
      * @return void
      */
     public function updateSession($user)
     {
         $this->currentUser = $user;
-        $this->session->userId = $user->id;
-        setcookie('loggedOut', '', time() - 3600, '/'); // clear logged out cookie
+        if ($this->inPrivacyMode()) {
+            $this->session->userDetails = $user->toArray();
+        } else {
+            $this->session->userId = $user->id;
+        }
+        $this->cookieManager->clear('loggedOut');
     }
 
     /**
@@ -279,11 +512,27 @@ class Manager implements ServiceLocatorAwareInterface
      * new account details.
      *
      * @throws AuthException
-     * @return \VuFind\Db\Row\User New user row.
+     * @return UserRow New user row.
      */
     public function create($request)
     {
         $user = $this->getAuth()->create($request);
+        $this->updateSession($user);
+        return $user;
+    }
+
+    /**
+     * Update a user's password from the request.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * password change details.
+     *
+     * @throws AuthException
+     * @return UserRow New user row.
+     */
+    public function updatePassword($request)
+    {
+        $user = $this->getAuth()->updatePassword($request);
         $this->updateSession($user);
         return $user;
     }
@@ -296,10 +545,21 @@ class Manager implements ServiceLocatorAwareInterface
      * account credentials.
      *
      * @throws AuthException
-     * @return \VuFind\Db\Row\User Object representing logged-in user.
+     * @return UserRow Object representing logged-in user.
      */
     public function login($request)
     {
+        // Allow the auth module to inspect the request (used by ChoiceAuth,
+        // for example):
+        $this->getAuth()->preLoginCheck($request);
+
+        // Validate CSRF for form-based authentication methods:
+        if (!$this->getAuth()->getSessionInitiator(null)
+            && !$this->csrf->isValid($request->getPost()->get('csrf'))
+        ) {
+            throw new AuthException('authentication_error_technical');
+        }
+
         // Perform authentication:
         try {
             $user = $this->getAuth()->authenticate($request);
@@ -310,7 +570,12 @@ class Manager implements ServiceLocatorAwareInterface
             // Pass password security exceptions through unmodified
             throw $e;
         } catch (\Exception $e) {
-            // Catch other exceptions and treat them as technical difficulties
+            // Catch other exceptions, log verbosely, and treat them as technical
+            // difficulties
+            error_log(
+                "Exception in " . get_class($this) . "::login: " . $e->getMessage()
+            );
+            error_log($e);
             throw new AuthException('authentication_error_technical');
         }
 
@@ -320,102 +585,46 @@ class Manager implements ServiceLocatorAwareInterface
     }
 
     /**
-     * Log the current user into the catalog using stored credentials; if this
-     * fails, clear the user's stored credentials so they can enter new, corrected
-     * ones.
+     * Setter
      *
-     * Returns associative array of patron data on success, false on failure.
+     * @param string $method The auth class to proxy
      *
-     * @return array|bool
+     * @return void
      */
-    public function storedCatalogLogin()
+    public function setAuthMethod($method)
     {
-        // Do we have a previously cached ILS account?
-        if (is_array($this->ilsAccount)) {
-            return $this->ilsAccount;
-        }
+        // Change the setting:
+        $this->activeAuth = $method;
 
-        try {
-            $catalog = $this->getILS();
-        } catch (ILSException $e) {
-            return false;
-        }
-        $user = $this->isLoggedIn();
+        // If this method supports switching to a different method and we haven't
+        // already initialized it, add those options to the whitelist. If the object
+        // is already initialized, that means we've already gone through this step
+        // and can save ourselves the trouble.
 
-        // Fail if no username is found, but allow a missing password (not every ILS
-        // requires a password to connect).
-        if ($user && isset($user->cat_username) && !empty($user->cat_username)) {
-            try {
-                $patron = $catalog->patronLogin(
-                    $user->cat_username, $user->getCatPassword()
-                );
-            } catch (ILSException $e) {
-                $patron = null;
-            }
-            if (empty($patron)) {
-                // Problem logging in -- clear user credentials so they can be
-                // prompted again; perhaps their password has changed in the
-                // system!
-                $user->clearCredentials();
-            } else {
-                $this->ilsAccount = $patron;    // cache for future use
-                return $patron;
-            }
+        // This code also has the side effect of validating $method, since if an
+        // invalid value was passed in, the call to getSelectableAuthOptions will
+        // throw an exception.
+        if (!isset($this->auth[$method])) {
+            $this->legalAuthOptions = array_unique(
+                array_merge(
+                    $this->legalAuthOptions, $this->getSelectableAuthOptions()
+                )
+            );
         }
-
-        return false;
     }
-
     /**
-     * Attempt to log in the user to the ILS, and save credentials if it works.
+     * Validate the credentials in the provided request, but do not change the state
+     * of the current logged-in user. Return true for valid credentials, false
+     * otherwise.
      *
-     * @param string $username Catalog username
-     * @param string $password Catalog password
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * account credentials.
      *
-     * Returns associative array of patron data on success, false on failure.
-     *
-     * @return array|bool
+     * @throws AuthException
+     * @return bool
      */
-    public function newCatalogLogin($username, $password)
+    public function validateCredentials($request)
     {
-        try {
-            $catalog = $this->getILS();
-            $result = $catalog->patronLogin($username, $password);
-        } catch (ILSException $e) {
-            return false;
-        }
-        if ($result) {
-            $user = $this->isLoggedIn();
-            if ($user) {
-                $user->saveCredentials($username, $password);
-                $this->updateSession($user);
-                $this->ilsAccount = $result;    // cache for future use
-            }
-            return $result;
-        }
-        return false;
-    }
-
-    /**
-     * Set the service locator.
-     *
-     * @param ServiceLocatorInterface $serviceLocator Locator to register
-     *
-     * @return Manager
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-    {
-        $this->serviceLocator = $serviceLocator;
-        return $this;
-    }
-
-    /**
-     * Get the service locator.
-     *
-     * @return \Zend\ServiceManager\ServiceLocatorInterface
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
+        return $this->getAuth()->validateCredentials($request);
     }
 }

@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFindTest\Date;
 use VuFind\Date\Converter, VuFind\Exception\Date as DateException,
@@ -32,11 +32,11 @@ use VuFind\Date\Converter, VuFind\Exception\Date as DateException,
 /**
  * VuFindDate Test Class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 class ConverterTest extends \VuFindTest\Unit\TestCase
 {
@@ -50,13 +50,43 @@ class ConverterTest extends \VuFindTest\Unit\TestCase
      */
     public function testDates()
     {
+        // Get current default time zone
+        $real_zone = date_default_timezone_get();
+
+        // Try all the tests in different time zones to ensure consistency:
+        foreach (['America/New_York', 'Europe/Helsinki'] as $zone) {
+            date_default_timezone_set($zone);
+            $this->runTests();
+        }
+
+        // Restore original time zone
+        date_default_timezone_set($real_zone);
+    }
+
+    /**
+     * Support method for testDates()
+     *
+     * @return void
+     */
+    protected function runTests()
+    {
         // Build an object to test with (using empty configuration to ensure default
         // settings):
-        $date = new Converter(new Config(array()));
+        $date = new Converter(new Config([]));
 
         // Try some conversions:
         $this->assertEquals(
             '11-29-1973', $date->convertToDisplayDate('U', 123456879)
+        );
+        $this->assertEquals(
+            '11-29-1973', $date->convertToDisplayDate('U', 123456879.1234)
+        );
+        $this->assertEquals(
+            '11-29-1973--16:34',
+            $date->convertToDisplayDateAndTime('U', 123456879, '--')
+        );
+        $this->assertEquals(
+            '16:34 11-29-1973', $date->convertToDisplayTimeAndDate('U', 123456879)
         );
         $this->assertEquals(
             '11-29-1973', $date->convertToDisplayDate('m-d-y', '11-29-73')

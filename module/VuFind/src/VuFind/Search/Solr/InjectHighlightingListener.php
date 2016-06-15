@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
-
 namespace VuFind\Search\Solr;
 
 use VuFindSearch\Backend\BackendInterface;
@@ -37,11 +36,11 @@ use Zend\EventManager\EventInterface;
 /**
  * Solr highlighting listener.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class InjectHighlightingListener
 {
@@ -60,15 +59,24 @@ class InjectHighlightingListener
     protected $active = false;
 
     /**
+     * Fields to highlight when active.
+     *
+     * @var string
+     */
+    protected $fieldList;
+
+    /**
      * Constructor.
      *
-     * @param BackendInterface $backend Backend
+     * @param BackendInterface $backend   Backend
+     * @param string           $fieldList Field(s) to highlight (hl.fl param)
      *
      * @return void
      */
-    public function __construct(BackendInterface $backend)
+    public function __construct(BackendInterface $backend, $fieldList = '*')
     {
         $this->backend = $backend;
+        $this->fieldList = $fieldList;
     }
 
     /**
@@ -80,8 +88,8 @@ class InjectHighlightingListener
      */
     public function attach(SharedEventManagerInterface $manager)
     {
-        $manager->attach('VuFind\Search', 'pre', array($this, 'onSearchPre'));
-        $manager->attach('VuFind\Search', 'post', array($this, 'onSearchPost'));
+        $manager->attach('VuFind\Search', 'pre', [$this, 'onSearchPre']);
+        $manager->attach('VuFind\Search', 'post', [$this, 'onSearchPost']);
     }
 
     /**
@@ -93,6 +101,9 @@ class InjectHighlightingListener
      */
     public function onSearchPre(EventInterface $event)
     {
+        if ($event->getParam('context') != 'search') {
+            return $event;
+        }
         $backend = $event->getTarget();
         if ($backend === $this->backend) {
             $params = $event->getParam('params');
@@ -102,7 +113,7 @@ class InjectHighlightingListener
                 if (!isset($hl[0]) || $hl[0] != 'false') {
                     $this->active = true;
                     $params->set('hl', 'true');
-                    $params->set('hl.fl', '*');
+                    $params->set('hl.fl', $this->fieldList);
                     $params->set('hl.simple.pre', '{{{{START_HILITE}}}}');
                     $params->set('hl.simple.post', '{{{{END_HILITE}}}}');
 
@@ -124,8 +135,8 @@ class InjectHighlightingListener
      */
     public function onSearchPost(EventInterface $event)
     {
-        // Do nothing if highlighting is disabled....
-        if (!$this->active) {
+        // Do nothing if highlighting is disabled or context is wrong
+        if (!$this->active || $event->getParam('context') != 'search') {
             return $event;
         }
 

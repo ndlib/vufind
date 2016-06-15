@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\View\Helper\jQueryMobile;
 use Zend\View\Helper\AbstractHelper;
@@ -31,11 +31,11 @@ use Zend\View\Helper\AbstractHelper;
 /**
  * MobileMenu view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class MobileMenu extends AbstractHelper
 {
@@ -47,7 +47,7 @@ class MobileMenu extends AbstractHelper
      *
      * @return string
      */
-    public function header($extras = array())
+    public function header($extras = [])
     {
         $context = $this->getView()->plugin('context');
         return $context($this->getView())->renderInContext('header.phtml', $extras);
@@ -61,7 +61,7 @@ class MobileMenu extends AbstractHelper
      *
      * @return string
      */
-    public function footer($extras = array())
+    public function footer($extras = [])
     {
         $context = $this->getView()->plugin('context');
         return $context($this->getView())->renderInContext('footer.phtml', $extras);

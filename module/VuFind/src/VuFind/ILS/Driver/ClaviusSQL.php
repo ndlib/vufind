@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Josef Moravec <josef.moravec@knihovna-uo.cz>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
 namespace VuFind\ILS\Driver;
 use PDO, PDOException, VuFind\Exception\ILS as ILSException;
@@ -31,13 +31,11 @@ use PDO, PDOException, VuFind\Exception\ILS as ILSException;
 /**
  * VuFind Driver for Clavius SQL (version: 0.1 dev)
  *
- * last updated: 09/06/2012
- *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Josef Moravec <josef.moravec@knihovna-uo.cz>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
 class ClaviusSQL extends AbstractBase
 {
@@ -151,12 +149,11 @@ class ClaviusSQL extends AbstractBase
       *
       * @return array An associative array with key = department ID,
       * value = department name.
-      *
       */
     public function getDepartments()
     {
         if (!is_array($this->locations)) {
-            $this->locations = array();
+            $this->locations = [];
             try {
                 // TODO - overit/upavit funkcnost na MSSQL a Oracle
                 $sqlLoc = "SELECT TRIM(lokace) as lokace, TRIM(jmeno) as jmeno " .
@@ -181,17 +178,16 @@ class ClaviusSQL extends AbstractBase
       *
       * @return array An associative array with key = fine code,
       * value = fine description
-      *
       */
     public function getFineTypes()
     {
         if (!is_array($this->fineTypes)) {
-            $this->fineTypes = array("G" => "Registracní poplatek",
+            $this->fineTypes = ["G" => "Registracní poplatek",
                                     "H" => "Upomínka",
                                     "J" => "Poplatek za rezervaci",
                                     "L" => "Poplatek za pujcení",
                                     "M" => "Kauce za výpujcku"
-                                    );
+                                    ];
             // TODO MSsql Oracle
             $sql = "SELECT kod, nazev FROM defpopl";
             try {
@@ -208,12 +204,11 @@ class ClaviusSQL extends AbstractBase
     }
 
     /**
-      * Get a list of funds that can be used to limit the “new item” search
+      * Get a list of funds that can be used to limit the "new item" search
       *
       * @throws ILSException
       *
       * @return array An associative array with key = fund ID, value = fund name.
-      *
       */
     public function getFunds()
     {
@@ -241,14 +236,14 @@ class ClaviusSQL extends AbstractBase
       */
     public function getNewItems($page, $limit, $daysOld, $fundId = null)
     {
-        $limitFrom = ($page-1) * $limit;
+        $limitFrom = ($page - 1) * $limit;
         //TODO better escaping; mssql, oracle
         $sql = "SELECT t.tcislo as tcislo, t.druhdoku as druhdoku "
             . "FROM svazky s JOIN tituly t ON s.tcislo = t.tcislo "
             . "WHERE s.datumvloz > DATE_SUB(CURDATE(),INTERVAL "
             . $this->db->quote($daysOld)
             . " DAY) AND s.datumvloz <= DATE_SUB(CURDATE(),INTERVAL "
-            . $this->db->quote($this->hideNewItemsDays) ." DAY)";
+            . $this->db->quote($this->hideNewItemsDays) . " DAY)";
         if ($fundId) {
             $sql .= " AND s.lokace = " . $this->db->quote($fundId);
         }
@@ -257,11 +252,11 @@ class ClaviusSQL extends AbstractBase
             $sqlSt = $this->db->prepare($sql);
             $sqlSt->execute();
             $result = $sqlSt->fetchAll();
-            $return = array('count' => count($result), 'results' => array());;
+            $return = ['count' => count($result), 'results' => []];
             foreach ($result as $row) {
-                $return['results'][] = array(
+                $return['results'][] = [
                     'id' => $this->getLongId($row['tcislo'], $row['druhdoku'])
-                );
+                ];
             }
             return $return;
         } catch (PDOException $e) {
@@ -325,9 +320,9 @@ class ClaviusSQL extends AbstractBase
       *
       * todo: reserve
       */
-    public function getHolding($id, $patron = false)
+    public function getHolding($id, array $patron = null)
     {
-        $holding = array();
+        $holding = [];
         $originalId = $id;
         //if ($this->idPrefix) { $id = ltrim(substr($id, -11), "0"); }
         $id = $this->getShortID($id);
@@ -341,28 +336,28 @@ class ClaviusSQL extends AbstractBase
             . "FROM kpujcky WHERE scislo = :scislo ORDER BY datum2 DESC LIMIT 1";
         try {
             $sqlSt = $this->db->prepare($sql);
-            $sqlSt->execute(array(':id' => $id));
+            $sqlSt->execute([':id' => $id]);
             $sqlSt2 = $this->db->prepare($sql2);
             /**** TODO reserve  *******/
             foreach ($sqlSt->fetchAll() as $item) {
                 $reserve = "N";
-                $sqlSt2->execute(array(':scislo' => $item['scislo']));
+                $sqlSt2->execute([':scislo' => $item['scislo']]);
                 $item2 = $sqlSt2->fetch();
                 if (!$item2) {
                     $availability = true;
                     $status = "K dispozici";
                     $duedate = '';
                 } else {
-                    $availability = ($item2['availability'] == 1)?true:false;
+                    $availability = ($item2['availability'] == 1) ? true : false;
                     $status = $item2['status'];
                     $duedate = $item2['duedate'];
                 }
                 $locs = $this->getDepartments();
-                $holding[] = array(
+                $holding[] = [
                     'id' => $originalId,
                     //'location' => $item['location'],
                     'location' => $locs[$item['location']],
-                    'callnumber' => ($item['callnumber']=="")
+                    'callnumber' => ($item['callnumber'] == "")
                         ? null : $item['callnumber'],
                     'number' => intval($item['number']),
                     'barcode' => ($this->useBarcodes)
@@ -371,7 +366,7 @@ class ClaviusSQL extends AbstractBase
                     'status' => $status,
                     'duedate' => $duedate,
                     'reserve' => $reserve,
-                );
+                ];
             }
             return $holding;
         } catch (PDOException $e) {
@@ -390,6 +385,7 @@ class ClaviusSQL extends AbstractBase
      * @param array  $details Item details from getHoldings return array
      *
      * @return string         URL to ILS's OPAC's place hold screen.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getHoldLink($id, $details)
@@ -418,7 +414,7 @@ class ClaviusSQL extends AbstractBase
       *   <li>fine - A string describing the reason for the fine (i.e. "Overdue",
       * "Long Overdue").</li>
       *   <li>balance - The unpaid portion of the fine IN PENNIES.</li>
-      *   <li>createdate – A string representing the date when the fine was accrued
+      *   <li>createdate - A string representing the date when the fine was accrued
       * (optional)</li>
       *   <li>duedate - A string representing the date when the item was due.</li>
       *   <li>id - The bibliographic ID of the record involved in the fine.</li>
@@ -426,7 +422,7 @@ class ClaviusSQL extends AbstractBase
       */
     public function getMyFines($patron)
     {
-        $fines = array();
+        $fines = [];
         $reasons = $this->getFineTypes();
         // TODO mssql, oracle
         $sql = "SELECT scislo as amount, co as reason, "
@@ -434,17 +430,17 @@ class ClaviusSQL extends AbstractBase
             . "FROM poplatky WHERE ccislo = :patronId ORDER BY datum DESC";
         try {
             $sqlSt = $this->db->prepare($sql);
-            $sqlSt->execute(array(':patronId' => $patron['id']));
+            $sqlSt->execute([':patronId' => $patron['id']]);
             foreach ($sqlSt->fetchAll() as $fine) {
-                $fines[] = array(
+                $fines[] = [
                     'amount' => abs($fine['amount']),
                     'checkout' => null, // TODO maybe
                     'fine' => $reasons[$fine['reason']],
-                    'balance' => ($fine['amount']<0)?abs($fine['amount']):0,
+                    'balance' => ($fine['amount'] < 0) ? abs($fine['amount']) : 0,
                     'createdate' => $fine['createdate'],
                     'duedate' => null, // TODO maybe
                     'id' => null,        // TODO maybe
-                );
+                ];
             }
             return $fines;
         } catch (PDOException $e) {
@@ -467,15 +463,16 @@ class ClaviusSQL extends AbstractBase
      *
      * @return array        An array of associative arrays with locationID and
      * locationDisplay keys
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getPickUpLocations($patron = false, $holdDetails = null)
     {
-        $locations = array();
+        $locations = [];
         foreach ($this->getDepartments() as $id => $text) {
-            $locations[] = array('locationID' => $id,
+            $locations[] = ['locationID' => $id,
                                 'locationDisplay' => $text
-                                );
+                                ];
         }
         return $locations;
     }
@@ -492,7 +489,7 @@ class ClaviusSQL extends AbstractBase
      * @return array        Array of associative arrays, one for each hold associated
      *      with the specified account. Each associative array contains these keys:
      * <ul>
-     *   <li>type - A string describing the type of hold – i.e. hold vs. recall
+     *   <li>type - A string describing the type of hold - i.e. hold vs. recall
      * (optional).</li>
      *   <li>id - The bibliographic record ID associated with the hold
      * (optional).</li>
@@ -503,21 +500,22 @@ class ClaviusSQL extends AbstractBase
      *   <li>reqnum - A control number for the request (optional).</li>
      *   <li>expire - The expiration date of the hold (a string).</li>
      *   <li>create - The creation date of the hold (a string).</li>
-     *   <li>position – The position of the user in the holds queue (optional)</li>
-     *   <li>available – Whether or not the hold is available (true) or not (false)
+     *   <li>position - The position of the user in the holds queue (optional)</li>
+     *   <li>available - Whether or not the hold is available (true) or not (false)
      * (optional)</li>
-     *   <li>item_id – The item id the request item (optional).</li>
-     *   <li>volume – The volume number of the item (optional)</li>
-     *   <li>publication_year – The publication year of the item (optional)</li>
-     *   <li>title - The title of the item (optional – only used if the record
+     *   <li>item_id - The item id the request item (optional).</li>
+     *   <li>volume - The volume number of the item (optional)</li>
+     *   <li>publication_year - The publication year of the item (optional)</li>
+     *   <li>title - The title of the item (optional - only used if the record
      * cannot be found in VuFind's index).</li>
      * </ul>
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getMyHolds($patron)
     {
         // TODO
-        return array();
+        return [];
     }
 
     /**
@@ -535,28 +533,28 @@ class ClaviusSQL extends AbstractBase
             address2
             zip
             phone
-            group – i.e. Student, Staff, Faculty, etc.
+            group - i.e. Student, Staff, Faculty, etc.
      */
     public function getMyProfile($patron)
     {
-        $profile = array();
+        $profile = [];
         $sql = "SELECT jmeno, tulice, tmesto, tpsc, telefon "
             . "FROM ctenari WHERE ccislo = :userId";
         try {
             $sqlSt = $this->db->prepare($sql);
-            $sqlSt->execute(array(':userId' => $patron['id']));
+            $sqlSt->execute([':userId' => $patron['id']]);
             $patron2 = $sqlSt->fetch();
             $names = $this->explodeName($patron2['jmeno']);
             if ($patron2) {
-                $profile = array(
+                $profile = [
                     'firstname' => $names['firstname'],
                     'lastname' => $names['lastname'],
                     'address1' => $patron2['tulice'],
                     'address2' => $patron2['tmesto'],
                     'zip' => $patron2['tpsc'],
-                    'phone' => $patron2['telefon']?$patron2['telefon']:null,
+                    'phone' => $patron2['telefon'] ? $patron2['telefon'] : null,
                     'group' => null              //TODO - Maybe
-                );
+                ];
             }
         } catch (PDOException $e) {
             throw new ILSException($e->getMessage());
@@ -574,12 +572,13 @@ class ClaviusSQL extends AbstractBase
      *
      * @throws ILSException
      * @return array     An array with the acquisitions data on success.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getPurchaseHistory($id)
     {
         // TODO
-        return array();
+        return [];
     }
 
     /**
@@ -617,7 +616,7 @@ class ClaviusSQL extends AbstractBase
      */
     public function getStatuses($idLst)
     {
-        $statusLst = array();
+        $statusLst = [];
         foreach ($idLst as $id) {
             $statusLst[] = $this->getStatus($id);
         }
@@ -633,7 +632,7 @@ class ClaviusSQL extends AbstractBase
     public function getSuppressedRecords()
     {
         // TODO - MAYBE
-        return array();
+        return [];
     }
 
     /**
@@ -645,7 +644,7 @@ class ClaviusSQL extends AbstractBase
      */
     protected function explodeName($name)
     {
-        $names = array();
+        $names = [];
         $nameArray = explode(" ", $name);
         $names['lastname'] = array_pop($nameArray);
         $names['firstname'] = implode(" ", $nameArray);
@@ -700,7 +699,7 @@ class ClaviusSQL extends AbstractBase
             $kod3int = $kod3int - 5;
         }
         substr_replace($password, chr($kod3int), 2);
-        $sexConstant = $woman?1:0;
+        $sexConstant = $woman ? 1 : 0;
         $kod6 = substr($password, 5, 1);
         $kod6r = chr(70 + (intval($kod6) * 2) + $sexConstant);
         if ($kod6 != " ") {
@@ -740,7 +739,6 @@ class ClaviusSQL extends AbstractBase
      * @return mixed          Associative array of patron info on successful login,
      * null on unsuccessful login.
      */
-
     public function patronLogin($username, $password)
     {
         // TODO - oracle a mssql
@@ -748,7 +746,7 @@ class ClaviusSQL extends AbstractBase
             . " pin, pohlavi FROM ctenari WHERE ccislo = :userId";
         try {
             $sqlStPatron = $this->db->prepare($sqlPatron);
-            $sqlStPatron->execute(array(':userId' => $username));
+            $sqlStPatron->execute([':userId' => $username]);
             $patronRow = $sqlStPatron->fetch();
             if (!$patronRow) {
                 return null;
@@ -769,16 +767,16 @@ class ClaviusSQL extends AbstractBase
             }
         }
         $names = $this->explodeName($patronRow['jmeno']);
-        $patron = array(
+        $patron = [
             'id' => $patronRow['ccislo'],
             'firstname' => $names['firstname'],
             'lastname' => $names['lastname'],
             'cat_username' => $username,
             'cat_password' => $password,
-            'email' => $patronRow['mail']?$patronRow['mail']:null,
+            'email' => $patronRow['mail'] ? $patronRow['mail'] : null,
             'major' => null,
             'college' => null
-        );
+        ];
         return $patron;
     }
 
@@ -799,22 +797,23 @@ class ClaviusSQL extends AbstractBase
      *   <li>barcode - The barcode of the item (optional).</li>
      *   <li>renew - The number of times the item has been renewed (optional).</li>
      *   <li>request - The number of pending requests for the item (optional).</li>
-     *   <li>volume – The volume number of the item (optional)</li>
-     *   <li>publication_year – The publication year of the item (optional)</li>
-     *   <li>renewable – Whether or not an item is renewable (required for
+     *   <li>volume - The volume number of the item (optional)</li>
+     *   <li>publication_year - The publication year of the item (optional)</li>
+     *   <li>renewable - Whether or not an item is renewable (required for
      * renewals)</li>
-     *   <li>message – A message regarding the item (optional)</li>
-     *   <li>title - The title of the item (optional – only used if the record
+     *   <li>message - A message regarding the item (optional)</li>
+     *   <li>title - The title of the item (optional - only used if the record
      * cannot be found in VuFind's index).</li>
      *   <li>item_id - this is used to match up renew responses and must match
      * the item_id in the renew response</li>
      * </ul>
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getMyTransactions($user, $history = false)
     {
         //TODO mssql a Oracle
-        $sql = "SELECT DATE_FORMAT(k.datum2,'%e. %c. %Y') as duedate, 
+        $sql = "SELECT DATE_FORMAT(k.datum2,'%e. %c. %Y') as duedate,
                 TRIM(s.ckod) as barcode, t.druhdoku as druhdoku, t.tcislo as tcislo,
                 t.rokvydani as year, CONCAT(t.nazev, t.big_nazev) as title,
                 TRIM(s.pcislo) as item_id
@@ -826,13 +825,13 @@ class ClaviusSQL extends AbstractBase
                 WHERE k.ccislo = :userId AND k.co = :action";
         try {
             $sqlSt = $this->db->prepare($sql);
-            $sqlSt->execute(array(':userId' => $user['id'], ':action' => 'P'));
-            $transactions = array();
+            $sqlSt->execute([':userId' => $user['id'], ':action' => 'P']);
+            $transactions = [];
             foreach ($sqlSt->fetchAll() as $item) {
                 $id = $this->getLongId($item['tcislo'], $item['druhdoku']);
                 //TODO - requests
                 //$requestsSql = "";
-                $transactions[] = array(
+                $transactions[] = [
                     'duedate' => $item['duedate'],
                     'id' => $id,
                     'barcode' => $item['duedate'],
@@ -844,7 +843,7 @@ class ClaviusSQL extends AbstractBase
                     'message' => '',
                     'title' => $item['title'],
                     'item_id' => $item['item_id']  // TODO - maybe for renewals
-                );
+                ];
             }
             return $transactions;
         } catch (PDOException $e) {

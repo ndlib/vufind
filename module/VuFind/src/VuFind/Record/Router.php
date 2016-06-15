@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Record
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Record;
 
 /**
  * Record route generator
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Record
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Router
 {
@@ -91,7 +91,7 @@ class Router
     public function getTabRouteDetails($driver, $tab = null)
     {
         $route = $this->getRouteDetails(
-            $driver, '', empty($tab) ? array() : array('tab' => $tab)
+            $driver, '', empty($tab) ? [] : ['tab' => $tab]
         );
 
         // If collections are active and the record route was selected, we need
@@ -102,7 +102,7 @@ class Router
                 && $this->config->Collections->collections
             ) {
                 if (!is_object($driver)) {
-                    list($source, $id) = explode('|', $driver, 2);
+                    list($source, $id) = $this->extractSourceAndId($driver);
                     $driver = $this->loader->load($id, $source);
                 }
                 if (true === $driver->tryMethod('isCollection')) {
@@ -125,38 +125,49 @@ class Router
      *
      * @return array
      */
-    public function getRouteDetails($driver, $routeSuffix,
-        $extraParams = array()
+    public function getRouteDetails($driver, $routeSuffix = '',
+        $extraParams = []
     ) {
         // Extract source and ID from driver or string:
         if (is_object($driver)) {
-            $source = $driver->getResourceSource();
+            $source = $driver->getSourceIdentifier();
             $id = $driver->getUniqueId();
         } else {
-            $parts = explode('|', $driver, 2);
-            if (count($parts) < 2) {
-                $source = 'VuFind';
-                $id = $parts[0];
-            } else {
-                $source = $parts[0];
-                $id = $parts[1];
-            }
+            list($source, $id) = $this->extractSourceAndId($driver);
         }
 
         // Build URL parameters:
         $params = $extraParams;
         $params['id'] = $id;
-        if (!empty($action)) {
-            $params['action'] = $action;
-        }
 
         // Determine route based on naming convention (default VuFind route is
         // the exception to the rule):
-        $routeBase = ($source == 'VuFind')
+        $routeBase = ($source == DEFAULT_SEARCH_BACKEND)
             ? 'record' : strtolower($source . 'record');
 
-        return array(
+        return [
             'params' => $params, 'route' => $routeBase . $routeSuffix
-        );
+        ];
+    }
+
+    /**
+     * Extract source and ID from a pipe-delimited string, adding a default
+     * source if appropriate.
+     *
+     * @param string $driver source|ID string
+     *
+     * @return array
+     */
+    protected function extractSourceAndId($driver)
+    {
+        $parts = explode('|', $driver, 2);
+        if (count($parts) < 2) {
+            $source = DEFAULT_SEARCH_BACKEND;
+            $id = $parts[0];
+        } else {
+            $source = $parts[0];
+            $id = $parts[1];
+        }
+        return [$source, $id];
     }
 }

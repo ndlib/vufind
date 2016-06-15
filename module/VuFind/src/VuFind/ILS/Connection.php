@@ -22,15 +22,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
 namespace VuFind\ILS;
-use VuFind\Exception\ILS as ILSException, VuFind\ILS\Driver\DriverInterface;
+use VuFind\Exception\ILS as ILSException,
+    VuFind\ILS\Driver\DriverInterface,
+    VuFind\I18n\Translator\TranslatorAwareInterface;
+use Zend\Log\LoggerAwareInterface;
 
 /**
  * Catalog Connection Class
@@ -38,15 +41,18 @@ use VuFind\Exception\ILS as ILSException, VuFind\ILS\Driver\DriverInterface;
  * This wrapper works with a driver class to pass information from the ILS to
  * VuFind.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
-class Connection
+class Connection implements TranslatorAwareInterface, LoggerAwareInterface
 {
+    use \VuFind\I18n\Translator\TranslatorAwareTrait;
+    use \VuFind\Log\LoggerAwareTrait;
+
     /**
      * Has the driver been initialized yet?
      *
@@ -194,7 +200,7 @@ class Connection
         // Determine config file name based on class name:
         $parts = explode('\\', $this->getDriverClass());
         $config = $this->configReader->get(end($parts));
-        return is_object($config) ? $config->toArray() : array();
+        return is_object($config) ? $config->toArray() : [];
     }
 
     /**
@@ -204,24 +210,34 @@ class Connection
      * if the system supports a particular function.
      *
      * @param string $function The name of the function to check.
+     * @param array  $params   (optional) An array of function-specific parameters
      *
      * @return mixed On success, an associative array with specific function keys
      * and values; on failure, false.
      */
-    public function checkFunction($function)
+    public function checkFunction($function, $params = null)
     {
-        // Extract the configuration from the driver if available:
-        $functionConfig = $this->checkCapability('getConfig')
-            ? $this->getDriver()->getConfig($function) : false;
+        try {
+            // Extract the configuration from the driver if available:
+            $functionConfig = $this->checkCapability(
+                'getConfig', [$function, $params], true
+            ) ? $this->getDriver()->getConfig($function, $params) : false;
 
-        // See if we have a corresponding check method to analyze the response:
-        $checkMethod = "checkMethod".$function;
-        if (!method_exists($this, $checkMethod)) {
+            // See if we have a corresponding check method to analyze the response:
+            $checkMethod = "checkMethod" . $function;
+            if (!method_exists($this, $checkMethod)) {
+                return false;
+            }
+
+            // Send back the settings:
+            return $this->$checkMethod($functionConfig, $params);
+        } catch (ILSException $e) {
+            $this->logError(
+                "checkFunction($function) with params: " . print_r($params, true)
+                . ' failed: ' . $e->getMessage()
+            );
             return false;
         }
-
-        // Send back the settings:
-        return $this->$checkMethod($functionConfig);
     }
 
     /**
@@ -230,20 +246,25 @@ class Connection
      * A support method for checkFunction(). This is responsible for checking
      * the driver configuration to determine if the system supports Holds.
      *
-     * @param string $functionConfig The Hold configuration values
+     * @param array $functionConfig The Hold configuration values
+     * @param array $params         An array of function-specific params (or null)
      *
      * @return mixed On success, an associative array with specific function keys
      * and values either for placing holds via a form or a URL; on failure, false.
      */
-    protected function checkMethodHolds($functionConfig)
+    protected function checkMethodHolds($functionConfig, $params)
     {
         $response = false;
 
+        // We pass an array containing $params to checkCapability since $params
+        // should contain 'id' and 'patron' keys; this isn't exactly the same as
+        // the full parameter expected by placeHold() but should contain the
+        // necessary details for determining eligibility.
         if ($this->getHoldsMode() != "none"
-            && $this->checkCapability('placeHold')
+            && $this->checkCapability('placeHold', [$params ?: []])
             && isset($functionConfig['HMACKeys'])
         ) {
-            $response = array('function' => "placeHold");
+            $response = ['function' => "placeHold"];
             $response['HMACKeys'] = explode(":", $functionConfig['HMACKeys']);
             if (isset($functionConfig['defaultRequiredDate'])) {
                 $response['defaultRequiredDate']
@@ -252,8 +273,19 @@ class Connection
             if (isset($functionConfig['extraHoldFields'])) {
                 $response['extraHoldFields'] = $functionConfig['extraHoldFields'];
             }
-        } else if ($this->checkCapability('getHoldLink')) {
-            $response = array('function' => "getHoldLink");
+            if (isset($functionConfig['helpText'])) {
+                $response['helpText'] = $this->getHelpText(
+                    $functionConfig['helpText']
+                );
+            }
+            if (isset($functionConfig['consortium'])) {
+                $response['consortium'] = $functionConfig['consortium'];
+            }
+        } else {
+            $id = isset($params['id']) ? $params['id'] : null;
+            if ($this->checkCapability('getHoldLink', [$id, []])) {
+                $response = ['function' => "getHoldLink"];
+            }
         }
         return $response;
     }
@@ -264,27 +296,32 @@ class Connection
      * A support method for checkFunction(). This is responsible for checking
      * the driver configuration to determine if the system supports Cancelling Holds.
      *
-     * @param string $functionConfig The Cancel Hold configuration values
+     * @param array $functionConfig The Cancel Hold configuration values
+     * @param array $params         An array of function-specific params (or null)
      *
      * @return mixed On success, an associative array with specific function keys
      * and values either for cancelling holds via a form or a URL;
      * on failure, false.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function checkMethodcancelHolds($functionConfig)
+    protected function checkMethodcancelHolds($functionConfig, $params)
     {
         $response = false;
 
+        // We can't pass exactly accurate parameters to checkCapability in this
+        // context, so we'll just pass along $params as the best available
+        // approximation.
         if (isset($this->config->cancel_holds_enabled)
             && $this->config->cancel_holds_enabled == true
-            && $this->checkCapability('cancelHolds')
+            && $this->checkCapability('cancelHolds', [$params ?: []])
         ) {
-            $response = array('function' => "cancelHolds");
+            $response = ['function' => "cancelHolds"];
         } else if (isset($this->config->cancel_holds_enabled)
             && $this->config->cancel_holds_enabled == true
-            && $this->checkCapability('getCancelHoldLink')
+            && $this->checkCapability('getCancelHoldLink', [$params ?: []])
         ) {
-            $response = array('function' => "getCancelHoldLink");
+            $response = ['function' => "getCancelHoldLink"];
         }
         return $response;
     }
@@ -295,28 +332,244 @@ class Connection
      * A support method for checkFunction(). This is responsible for checking
      * the driver configuration to determine if the system supports Renewing Items.
      *
-     * @param string $functionConfig The Renewal configuration values
+     * @param array $functionConfig The Renewal configuration values
+     * @param array $params         An array of function-specific params (or null)
      *
      * @return mixed On success, an associative array with specific function keys
      * and values either for renewing items via a form or a URL; on failure, false.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function checkMethodRenewals($functionConfig)
+    protected function checkMethodRenewals($functionConfig, $params)
     {
         $response = false;
 
+        // We can't pass exactly accurate parameters to checkCapability in this
+        // context, so we'll just pass along $params as the best available
+        // approximation.
         if (isset($this->config->renewals_enabled)
             && $this->config->renewals_enabled == true
-            && $this->checkCapability('renewMyItems')
+            && $this->checkCapability('renewMyItems', [$params ?: []])
         ) {
-            $response = array('function' => "renewMyItems");
+            $response = ['function' => "renewMyItems"];
         } else if (isset($this->config->renewals_enabled)
             && $this->config->renewals_enabled == true
-            && $this->checkCapability('renewMyItemsLink')
+            && $this->checkCapability('renewMyItemsLink', [$params ?: []])
         ) {
-            $response = array('function' => "renewMyItemsLink");
+            $response = ['function' => "renewMyItemsLink"];
         }
         return $response;
+    }
+
+    /**
+     * Check Storage Retrieval Request
+     *
+     * A support method for checkFunction(). This is responsible for checking
+     * the driver configuration to determine if the system supports storage
+     * retrieval requests.
+     *
+     * @param array $functionConfig The storage retrieval request configuration
+     * values
+     * @param array $params         An array of function-specific params (or null)
+     *
+     * @return mixed On success, an associative array with specific function keys
+     * and values either for placing requests via a form; on failure, false.
+     */
+    protected function checkMethodStorageRetrievalRequests($functionConfig, $params)
+    {
+        $response = false;
+
+        // $params doesn't include all of the keys used by
+        // placeStorageRetrievalRequest, but it is the best we can do in the context.
+        $check = $this->checkCapability(
+            'placeStorageRetrievalRequest', [$params ?: []]
+        );
+        if ($check && isset($functionConfig['HMACKeys'])) {
+            $response = ['function' => 'placeStorageRetrievalRequest'];
+            $response['HMACKeys'] = explode(':', $functionConfig['HMACKeys']);
+            if (isset($functionConfig['extraFields'])) {
+                $response['extraFields'] = $functionConfig['extraFields'];
+            }
+            if (isset($functionConfig['helpText'])) {
+                $response['helpText'] = $this->getHelpText(
+                    $functionConfig['helpText']
+                );
+            }
+        }
+        return $response;
+    }
+
+    /**
+     * Check Cancel Storage Retrieval Requests
+     *
+     * A support method for checkFunction(). This is responsible for checking
+     * the driver configuration to determine if the system supports Cancelling
+     * Storage Retrieval Requests.
+     *
+     * @param array $functionConfig The Cancel function configuration values
+     * @param array $params         An array of function-specific params (or null)
+     *
+     * @return mixed On success, an associative array with specific function keys
+     * and values either for cancelling requests via a form or a URL;
+     * on failure, false.
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    protected function checkMethodcancelStorageRetrievalRequests($functionConfig,
+        $params
+    ) {
+        $response = false;
+
+        if (isset($this->config->cancel_storage_retrieval_requests_enabled)
+            && $this->config->cancel_storage_retrieval_requests_enabled
+        ) {
+            $check = $this->checkCapability(
+                'cancelStorageRetrievalRequests', [$params ?: []]
+            );
+            if ($check) {
+                $response = ['function' => 'cancelStorageRetrievalRequests'];
+            } else {
+                $cancelParams = [
+                    $params ?: [],
+                    isset($params['patron']) ? $params['patron'] : null
+                ];
+                $check2 = $this->checkCapability(
+                    'getCancelStorageRetrievalRequestLink', $cancelParams
+                );
+                if ($check2) {
+                    $response = [
+                        'function' => 'getCancelStorageRetrievalRequestLink'
+                    ];
+                }
+            }
+        }
+        return $response;
+    }
+
+    /**
+     * Check ILL Request
+     *
+     * A support method for checkFunction(). This is responsible for checking
+     * the driver configuration to determine if the system supports storage
+     * retrieval requests.
+     *
+     * @param array $functionConfig The ILL request configuration values
+     * @param array $params         An array of function-specific params (or null)
+     *
+     * @return mixed On success, an associative array with specific function keys
+     * and values either for placing requests via a form; on failure, false.
+     */
+    protected function checkMethodILLRequests($functionConfig, $params)
+    {
+        $response = false;
+
+        // $params doesn't include all of the keys used by
+        // placeILLRequest, but it is the best we can do in the context.
+        if ($this->checkCapability('placeILLRequest', [$params ?: []])
+            && isset($functionConfig['HMACKeys'])
+        ) {
+            $response = ['function' => 'placeILLRequest'];
+            if (isset($functionConfig['defaultRequiredDate'])) {
+                $response['defaultRequiredDate']
+                    = $functionConfig['defaultRequiredDate'];
+            }
+            $response['HMACKeys'] = explode(':', $functionConfig['HMACKeys']);
+            if (isset($functionConfig['extraFields'])) {
+                $response['extraFields'] = $functionConfig['extraFields'];
+            }
+            if (isset($functionConfig['helpText'])) {
+                $response['helpText'] = $this->getHelpText(
+                    $functionConfig['helpText']
+                );
+            }
+        }
+        return $response;
+    }
+
+    /**
+     * Check Cancel ILL Requests
+     *
+     * A support method for checkFunction(). This is responsible for checking
+     * the driver configuration to determine if the system supports Cancelling
+     * ILL Requests.
+     *
+     * @param array $functionConfig The Cancel function configuration values
+     * @param array $params         An array of function-specific params (or null)
+     *
+     * @return mixed On success, an associative array with specific function keys
+     * and values either for cancelling requests via a form or a URL;
+     * on failure, false.
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    protected function checkMethodcancelILLRequests($functionConfig, $params)
+    {
+        $response = false;
+
+        if (isset($this->config->cancel_ill_requests_enabled)
+            && $this->config->cancel_ill_requests_enabled
+        ) {
+            $check = $this->checkCapability(
+                'cancelILLRequests', [$params ?: []]
+            );
+            if ($check) {
+                $response = ['function' => 'cancelILLRequests'];
+            } else {
+                $cancelParams = [
+                    $params ?: [],
+                    isset($params['patron']) ? $params['patron'] : null
+                ];
+                $check2 = $this->checkCapability(
+                    'getCancelILLRequestLink', $cancelParams
+                );
+                if ($check2) {
+                    $response = [
+                        'function' => 'getCancelILLRequestLink'
+                    ];
+                }
+            }
+        }
+        return $response;
+    }
+
+    /**
+     * Check Password Change
+     *
+     * A support method for checkFunction(). This is responsible for checking
+     * the driver configuration to determine if the system supports changing
+     * password.
+     *
+     * @param array $functionConfig The password change configuration values
+     * @param array $params         Patron data
+     *
+     * @return mixed On success, an associative array with specific function keys
+     * and values either for cancelling requests via a form or a URL;
+     * on failure, false.
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    protected function checkMethodchangePassword($functionConfig, $params)
+    {
+        if ($this->checkCapability('changePassword', [$params ?: []])) {
+            return ['function' => 'changePassword'];
+        }
+        return false;
+    }
+
+    /**
+     * Get proper help text from the function config
+     *
+     * @param string|array $helpText Help text(s)
+     *
+     * @return string Language-specific help text
+     */
+    protected function getHelpText($helpText)
+    {
+        if (is_array($helpText)) {
+            $lang = $this->getTranslatorLocale();
+            return isset($helpText[$lang]) ? $helpText[$lang] : '';
+        }
+        return $helpText;
     }
 
     /**
@@ -333,13 +586,67 @@ class Connection
      */
     public function checkRequestIsValid($id, $data, $patron)
     {
-        if ($this->checkCapability('checkRequestIsValid')) {
+        if ($this->checkCapability(
+            'checkRequestIsValid', [$id, $data, $patron]
+        )) {
             return $this->getDriver()->checkRequestIsValid($id, $data, $patron);
         }
         // If the driver has no checkRequestIsValid method, we will assume that
         // all requests are valid - failure can be handled later after the user
         // attempts to place an illegal hold
         return true;
+    }
+
+    /**
+     * Check Storage Retrieval Request is Valid
+     *
+     * This is responsible for checking if a storage retrieval request is valid
+     *
+     * @param string $id     A Bibliographic ID
+     * @param array  $data   Collected Holds Data
+     * @param array  $patron Patron related data
+     *
+     * @return mixed The result of the checkStorageRetrievalRequestIsValid
+     * function if it exists, false if it does not
+     */
+    public function checkStorageRetrievalRequestIsValid($id, $data, $patron)
+    {
+        if ($this->checkCapability(
+            'checkStorageRetrievalRequestIsValid', [$id, $data, $patron]
+        )) {
+            return $this->getDriver()->checkStorageRetrievalRequestIsValid(
+                $id, $data, $patron
+            );
+        }
+        // If the driver has no checkStorageRetrievalRequestIsValid method, we
+        // will assume that the request is not valid
+        return false;
+    }
+
+    /**
+     * Check ILL Request is Valid
+     *
+     * This is responsible for checking if an ILL request is valid
+     *
+     * @param string $id     A Bibliographic ID
+     * @param array  $data   Collected Holds Data
+     * @param array  $patron Patron related data
+     *
+     * @return mixed The result of the checkILLRequestIsValid
+     * function if it exists, false if it does not
+     */
+    public function checkILLRequestIsValid($id, $data, $patron)
+    {
+        if ($this->checkCapability(
+            'checkILLRequestIsValid', [$id, $data, $patron]
+        )) {
+            return $this->getDriver()->checkILLRequestIsValid(
+                $id, $data, $patron
+            );
+        }
+        // If the driver has no checkILLRequestIsValid method, we
+        // will assume that the request is not valid
+        return false;
     }
 
     /**
@@ -393,7 +700,7 @@ class Connection
     public function hasHoldings($id)
     {
         // Graceful degradation -- return true if no method supported.
-        return $this->checkCapability('hasHoldings')
+        return $this->checkCapability('hasHoldings', [$id])
             ? $this->getDriver()->hasHoldings($id) : true;
     }
 
@@ -417,27 +724,68 @@ class Connection
      *
      * @param string $method Method to check
      * @param array  $params Array of passed parameters (optional)
+     * @param bool   $throw  Whether to throw exceptions instead of returning false
      *
      * @return bool
+     * @throws ILSException
      */
-    public function checkCapability($method, $params = array())
+    public function checkCapability($method, $params = [], $throw = false)
     {
-        // If possible, we want to try to check the capability without the expense
-        // of instantiating an object:
-        if (is_callable(array($this->getDriverClass(), $method))) {
-            return true;
-        }
-
-        // The problem with is_callable is that it doesn't work well for classes
-        // implementing the __call() magic method; to compensate for this, ILS
-        // drivers using __call() must also implement supportsMethod().
-        if (is_callable(array($this->getDriverClass(), 'supportsMethod'))) {
-            return $this->getDriver()->supportsMethod($method, $params);
+        try {
+            // First check that the function is callable without the expense of
+            // initializing the driver:
+            if (is_callable([$this->getDriverClass(), $method])) {
+                // At least drivers implementing the __call() magic method must also
+                // implement supportsMethod() to verify that the method is actually
+                // usable:
+                if (method_exists($this->getDriverClass(), 'supportsMethod')) {
+                    return $this->getDriver()->supportsMethod($method, $params);
+                }
+                return true;
+            }
+        } catch (ILSException $e) {
+            $this->logError(
+                "checkCapability($method) with params: " . print_r($params, true)
+                . ' failed: ' . $e->getMessage()
+            );
+            if ($throw) {
+                throw $e;
+            }
         }
 
         // If we got this far, the feature is unsupported:
         return false;
     }
+
+    /**
+     * Get Names of Textual Holdings Fields
+     *
+     * Obtain information on which textual holdings fields should be displayed
+     *
+     * @return string[]
+     */
+    public function getHoldingsTextFieldNames()
+    {
+        return isset($this->config->holdings_text_fields)
+            ? $this->config->holdings_text_fields->toArray()
+            : ['holdings_notes', 'summary', 'supplements', 'indexes'];
+    }
+
+    /**
+     * Get the password policy from the driver
+     *
+     * @param array $patron Patron data
+     *
+     * @return bool|array Password policy array or false if unsupported
+     */
+    public function getPasswordPolicy($patron)
+    {
+        return $this->checkCapability(
+            'getConfig', ['changePassword', compact('patron')]
+        ) ? $this->getDriver()->getConfig('changePassword', compact('patron'))
+            : false;
+    }
+
     /**
      * Default method -- pass along calls to the driver if available; return
      * false otherwise.  This allows custom functions to be implemented in
@@ -453,7 +801,7 @@ class Connection
     {
         if ($this->checkCapability($methodName, $params)) {
             return call_user_func_array(
-                array($this->getDriver(), $methodName), $params
+                [$this->getDriver(), $methodName], $params
             );
         }
         throw new ILSException(

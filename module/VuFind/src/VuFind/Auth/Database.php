@@ -19,13 +19,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 namespace VuFind\Auth;
 use VuFind\Exception\Auth as AuthException, Zend\Crypt\Password\Bcrypt;
@@ -33,13 +33,13 @@ use VuFind\Exception\Auth as AuthException, Zend\Crypt\Password\Bcrypt;
 /**
  * Database authentication class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 class Database extends AbstractBase
 {
@@ -110,31 +110,24 @@ class Database extends AbstractBase
     {
         // Ensure that all expected parameters are populated to avoid notices
         // in the code below.
-        $params = array(
+        $params = [
             'firstname' => '', 'lastname' => '', 'username' => '',
             'password' => '', 'password2' => '', 'email' => ''
-        );
+        ];
         foreach ($params as $param => $default) {
             $params[$param] = $request->getPost()->get($param, $default);
         }
 
         // Validate Input
-        // Needs a username
-        if (trim($params['username']) == '') {
-            throw new AuthException('Username cannot be blank');
-        }
-        // Needs a password
-        if (trim($params['password']) == '') {
-            throw new AuthException('Password cannot be blank');
-        }
-        // Passwords don't match
-        if ($params['password'] != $params['password2']) {
-            throw new AuthException('Passwords do not match');
-        }
+        $this->validateUsernameAndPassword($params);
+
         // Invalid Email Check
         $validator = new \Zend\Validator\EmailAddress();
         if (!$validator->isValid($params['email'])) {
             throw new AuthException('Email address is invalid');
+        }
+        if (!$this->emailAllowed($params['email'])) {
+            throw new AuthException('authentication_error_creation_blocked');
         }
 
         // Make sure we have a unique username
@@ -148,23 +141,80 @@ class Database extends AbstractBase
         }
 
         // If we got this far, we're ready to create the account:
-        $data = array(
-            'username'  => $params['username'],
-            'firstname' => $params['firstname'],
-            'lastname'  => $params['lastname'],
-            'email'     => $params['email'],
-            'created'   => date('Y-m-d H:i:s')
-        );
-
+        $user = $table->createRowForUsername($params['username']);
+        $user->firstname = $params['firstname'];
+        $user->lastname = $params['lastname'];
+        $user->email = $params['email'];
         if ($this->passwordHashingEnabled()) {
             $bcrypt = new Bcrypt();
-            $data['pass_hash'] = $bcrypt->create($params['password']);
+            $user->pass_hash = $bcrypt->create($params['password']);
         } else {
-            $data['password'] = $params['password'];
+            $user->password = $params['password'];
         }
+        $user->save();
+        return $user;
+    }
+
+    /**
+     * Update a user's password from the request.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * new account details.
+     *
+     * @throws AuthException
+     * @return \VuFind\Db\Row\User New user row.
+     */
+    public function updatePassword($request)
+    {
+        // Ensure that all expected parameters are populated to avoid notices
+        // in the code below.
+        $params = [
+            'username' => '', 'password' => '', 'password2' => ''
+        ];
+        foreach ($params as $param => $default) {
+            $params[$param] = $request->getPost()->get($param, $default);
+        }
+
+        // Validate Input
+        $this->validateUsernameAndPassword($params);
+
         // Create the row and send it back to the caller:
-        $table->insert($data);
-        return $table->getByUsername($params['username'], false);
+        $table = $this->getUserTable();
+        $user = $table->getByUsername($params['username'], false);
+        if ($this->passwordHashingEnabled()) {
+            $bcrypt = new Bcrypt();
+            $user->pass_hash = $bcrypt->create($params['password']);
+        } else {
+            $user->password = $params['password'];
+        }
+        $user->save();
+        return $user;
+    }
+
+    /**
+     * Make sure username and password aren't blank
+     * Make sure passwords match
+     *
+     * @param array $params request parameters
+     *
+     * @return void
+     */
+    protected function validateUsernameAndPassword($params)
+    {
+        // Needs a username
+        if (trim($params['username']) == '') {
+            throw new AuthException('Username cannot be blank');
+        }
+        // Needs a password
+        if (trim($params['password']) == '') {
+            throw new AuthException('Password cannot be blank');
+        }
+        // Passwords don't match
+        if ($params['password'] != $params['password2']) {
+            throw new AuthException('Passwords do not match');
+        }
+        // Password policy
+        $this->validatePasswordAgainstPolicy($params['password']);
     }
 
     /**
@@ -195,6 +245,38 @@ class Database extends AbstractBase
         return $password == $userRow->password;
     }
 
+    /**
+     * Check that an email address is legal based on whitelist (if configured).
+     *
+     * @param string $email Email address to check (assumed to be valid/well-formed)
+     *
+     * @return bool
+     */
+    protected function emailAllowed($email)
+    {
+        // If no whitelist is configured, all emails are allowed:
+        $config = $this->getConfig();
+        if (!isset($config->Authentication->domain_whitelist)
+            || empty($config->Authentication->domain_whitelist)
+        ) {
+            return true;
+        }
+
+        // Normalize the whitelist:
+        $whitelist = array_map(
+            'trim',
+            array_map(
+                'strtolower', $config->Authentication->domain_whitelist->toArray()
+            )
+        );
+
+        // Extract the domain from the email address:
+        $parts = explode('@', $email);
+        $domain = strtolower(trim(array_pop($parts)));
+
+        // Match domain against whitelist:
+        return in_array($domain, $whitelist);
+    }
 
     /**
      * Does this authentication method support account creation?
@@ -204,5 +286,40 @@ class Database extends AbstractBase
     public function supportsCreation()
     {
         return true;
+    }
+
+    /**
+     * Does this authentication method support password changing
+     *
+     * @return bool
+     */
+    public function supportsPasswordChange()
+    {
+        return true;
+    }
+
+    /**
+     * Does this authentication method support password recovery
+     *
+     * @return bool
+     */
+    public function supportsPasswordRecovery()
+    {
+        return true;
+    }
+
+    /**
+     * Password policy for a new password (e.g. minLength, maxLength)
+     *
+     * @return array
+     */
+    public function getPasswordPolicy()
+    {
+        $policy = parent::getPasswordPolicy();
+        // Limit maxLength to the database limit
+        if (!isset($policy['maxLength']) || $policy['maxLength'] > 32) {
+            $policy['maxLength'] = 32;
+        }
+        return $policy;
     }
 }

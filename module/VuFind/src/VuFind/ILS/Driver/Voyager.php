@@ -5,6 +5,7 @@
  * PHP version 5
  *
  * Copyright (C) Villanova University 2007.
+ * Copyright (C) The National Library of Finland 2014.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -19,12 +20,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
+ * @author   Ere Maijala <ere.maijala@helsinki.fi>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
 namespace VuFind\ILS\Driver;
 use File_MARC, PDO, PDOException,
@@ -36,21 +38,21 @@ use File_MARC, PDO, PDOException,
 /**
  * Voyager ILS Driver
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ILS_Drivers
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
+ * @author   Ere Maijala <ere.maijala@helsinki.fi>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_an_ils_driver Wiki
+ * @link     https://vufind.org/wiki/development:plugins:ils_drivers Wiki
  */
-class Voyager extends AbstractBase implements TranslatorAwareInterface
+class Voyager extends AbstractBase
+    implements TranslatorAwareInterface, \Zend\Log\LoggerAwareInterface
 {
-    /**
-     * Translator (or null if unavailable)
-     *
-     * @var \Zend\I18n\Translator\Translator
-     */
-    protected $translator = null;
+    use \VuFind\I18n\Translator\TranslatorAwareTrait;
+    use \VuFind\Log\LoggerAwareTrait {
+        logError as error;
+    }
 
     /**
      * Database connection
@@ -82,6 +84,13 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected $dateFormat;
 
     /**
+     * Whether to use holdings sort groups to sort holdings records
+     *
+     * @var bool
+     */
+    protected $useHoldingsSortGroups;
+
+    /**
      * Constructor
      *
      * @param \VuFind\Date\Converter $dateConverter Date converter object
@@ -89,6 +98,26 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     public function __construct(\VuFind\Date\Converter $dateConverter)
     {
         $this->dateFormat = $dateConverter;
+    }
+
+    /**
+     * Log an SQL statement debug message.
+     *
+     * @param string $func   Function name or description
+     * @param string $sql    The SQL statement
+     * @param array  $params SQL bind parameters
+     *
+     * @return void
+     */
+    protected function debugSQL($func, $sql, $params = null)
+    {
+        if ($this->logger) {
+            $logString = "[$func] $sql";
+            if (isset($params)) {
+                $logString .= ', params: ' . print_r($params, true);
+            }
+            $this->debug($logString);
+        }
     }
 
     /**
@@ -135,8 +164,15 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             );
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            throw $e;
+            $this->error(
+                "PDO Connection failed ($this->dbName): " . $e->getMessage()
+            );
+            throw new ILSException($e->getMessage());
         }
+
+        $this->useHoldingsSortGroups
+            = isset($this->config['Holdings']['use_sort_groups'])
+            ? $this->config['Holdings']['use_sort_groups'] : true;
     }
 
     /**
@@ -148,16 +184,19 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function buildSqlFromArray($sql)
     {
-        $modifier = isset($sql['modifier']) ? $sql['modifier'] . " " : "";
+        $modifier = isset($sql['modifier']) ? $sql['modifier'] . ' ' : '';
 
         // Put String Together
-        $sqlString = "SELECT ". $modifier . implode(", ", $sql['expressions']);
-        $sqlString .= " FROM " .implode(", ", $sql['from']);
-        $sqlString .= " WHERE " .implode(" AND ", $sql['where']);
+        $sqlString = 'SELECT ' . $modifier . implode(', ', $sql['expressions']);
+        $sqlString .= " FROM " . implode(", ", $sql['from']);
+        $sqlString .= (!empty($sql['where']))
+            ? ' WHERE ' . implode(' AND ', $sql['where']) : '';
+        $sqlString .= (!empty($sql['group']))
+            ? ' GROUP BY ' . implode(', ', $sql['group']) : '';
         $sqlString .= (!empty($sql['order']))
-            ? " ORDER BY " .implode(", ", $sql['order']) : "";
+            ? ' ORDER BY ' . implode(', ', $sql['order']) : '';
 
-        return array('string' => $sqlString, 'bind' => $sql['bind']);
+        return ['string' => $sqlString, 'bind' => $sql['bind']];
     }
 
     /**
@@ -201,8 +240,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             // Execute SQL
             $sql = "SELECT * FROM $this->dbName.ITEM_STATUS_TYPE";
             try {
-                $sqlStmt = $this->db->prepare($sql);
-                $sqlStmt->execute();
+                $sqlStmt = $this->executeSQL($sql);
             } catch (PDOException $e) {
                 throw new ILSException($e->getMessage());
             }
@@ -211,6 +249,12 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $this->statusRankings[$row['ITEM_STATUS_DESC']]
                     = $row['ITEM_STATUS_TYPE'];
+            }
+
+            if (!empty($this->config['StatusRankings'])) {
+                $this->statusRankings = array_merge(
+                    $this->statusRankings, $this->config['StatusRankings']
+                );
             }
         }
 
@@ -240,7 +284,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         // shelf) status, collecting any other statuses we find along the
         // way...
         $notCharged = false;
-        $otherStatuses = array();
+        $otherStatuses = [];
         foreach ($statusArray as $status) {
             switch ($status) {
             case 'Not Charged':
@@ -256,7 +300,28 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         // the item is not available!
         $available = (count($otherStatuses) == 0 && $notCharged);
 
-        return array('available' => $available, 'otherStatuses' => $otherStatuses);
+        return ['available' => $available, 'otherStatuses' => $otherStatuses];
+    }
+
+    /**
+     * Helper function that returns SQL for getting a sort sequence for a location
+     *
+     * @param string $locationColumn Column in the full where clause containing
+     * the column id
+     *
+     * @return string
+     */
+    protected function getItemSortSequenceSQL($locationColumn)
+    {
+        if (!$this->useHoldingsSortGroups) {
+            return '0 as SORT_SEQ';
+        }
+
+        return '(SELECT SORT_GROUP_LOCATION.SEQUENCE_NUMBER ' .
+            "FROM $this->dbName.SORT_GROUP, $this->dbName.SORT_GROUP_LOCATION " .
+            "WHERE SORT_GROUP.SORT_GROUP_DEFAULT = 'Y' " .
+            'AND SORT_GROUP_LOCATION.SORT_GROUP_ID = SORT_GROUP.SORT_GROUP_ID ' .
+            "AND SORT_GROUP_LOCATION.LOCATION_ID = $locationColumn) SORT_SEQ";
     }
 
     /**
@@ -270,26 +335,28 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function getStatusSQL($id)
     {
         // Expressions
-        $sqlExpressions = array(
+        $sqlExpressions = [
             "BIB_ITEM.BIB_ID", "ITEM.ITEM_ID",
             "ITEM.ON_RESERVE", "ITEM_STATUS_DESC as status",
             "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
                 "LOCATION.LOCATION_NAME) as location",
             "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
-            "ITEM.TEMP_LOCATION"
-        );
+            "ITEM.TEMP_LOCATION", "ITEM.ITEM_TYPE_ID",
+            "ITEM.ITEM_SEQUENCE_NUMBER",
+            $this->getItemSortSequenceSQL('ITEM.PERM_LOCATION')
+        ];
 
         // From
-        $sqlFrom = array(
-            $this->dbName.".BIB_ITEM", $this->dbName.".ITEM",
-            $this->dbName.".ITEM_STATUS_TYPE",
-            $this->dbName.".ITEM_STATUS",
-            $this->dbName.".LOCATION", $this->dbName.".MFHD_ITEM",
-            $this->dbName.".MFHD_MASTER"
-        );
+        $sqlFrom = [
+            $this->dbName . ".BIB_ITEM", $this->dbName . ".ITEM",
+            $this->dbName . ".ITEM_STATUS_TYPE",
+            $this->dbName . ".ITEM_STATUS",
+            $this->dbName . ".LOCATION", $this->dbName . ".MFHD_ITEM",
+            $this->dbName . ".MFHD_MASTER"
+        ];
 
         // Where
-        $sqlWhere = array(
+        $sqlWhere = [
             "BIB_ITEM.BIB_ID = :id",
             "BIB_ITEM.ITEM_ID = ITEM.ITEM_ID",
             "ITEM.ITEM_ID = ITEM_STATUS.ITEM_ID",
@@ -298,17 +365,17 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             "MFHD_ITEM.ITEM_ID = ITEM.ITEM_ID",
             "MFHD_MASTER.MFHD_ID = MFHD_ITEM.MFHD_ID",
             "MFHD_MASTER.SUPPRESS_IN_OPAC='N'"
-        );
+        ];
 
         // Bind
-        $sqlBind = array(':id' => $id);
+        $sqlBind = [':id' => $id];
 
-        $sqlArray = array(
+        $sqlArray = [
             'expressions' => $sqlExpressions,
             'from' => $sqlFrom,
             'where' => $sqlWhere,
             'bind' => $sqlBind,
-        );
+        ];
 
         return $sqlArray;
     }
@@ -324,35 +391,43 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function getStatusNoItemsSQL($id)
     {
         // Expressions
-        $sqlExpressions = array("BIB_MFHD.BIB_ID",
-                                "1 as ITEM_ID", "'N' as ON_RESERVE",
-                                "'No information available' as status",
-                                "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
-                                    "LOCATION.LOCATION_NAME) as location",
-                                "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
-                                "0 AS TEMP_LOCATION"
-                               );
+        $sqlExpressions = [
+            "BIB_MFHD.BIB_ID",
+            "1 as ITEM_ID", "'N' as ON_RESERVE",
+            "'No information available' as status",
+            "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
+                "LOCATION.LOCATION_NAME) as location",
+            "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
+            "0 AS TEMP_LOCATION",
+            "0 as ITEM_SEQUENCE_NUMBER",
+            $this->getItemSortSequenceSQL('LOCATION.LOCATION_ID'),
+        ];
 
         // From
-        $sqlFrom = array($this->dbName.".BIB_MFHD", $this->dbName.".LOCATION",
-                         $this->dbName.".MFHD_MASTER"
-                        );
+        $sqlFrom = [
+            $this->dbName . ".BIB_MFHD", $this->dbName . ".LOCATION",
+            $this->dbName . ".MFHD_MASTER"
+        ];
 
         // Where
-        $sqlWhere = array("BIB_MFHD.BIB_ID = :id",
-                          "LOCATION.LOCATION_ID = MFHD_MASTER.LOCATION_ID",
-                          "MFHD_MASTER.MFHD_ID = BIB_MFHD.MFHD_ID",
-                          "MFHD_MASTER.SUPPRESS_IN_OPAC='N'"
-                         );
+        $sqlWhere = [
+            "BIB_MFHD.BIB_ID = :id",
+            "LOCATION.LOCATION_ID = MFHD_MASTER.LOCATION_ID",
+            "MFHD_MASTER.MFHD_ID = BIB_MFHD.MFHD_ID",
+            "MFHD_MASTER.SUPPRESS_IN_OPAC='N'",
+            "NOT EXISTS (SELECT MFHD_ID FROM {$this->dbName}.MFHD_ITEM " .
+            "WHERE MFHD_ITEM.MFHD_ID=MFHD_MASTER.MFHD_ID)"
+        ];
 
         // Bind
-        $sqlBind = array(':id' => $id);
+        $sqlBind = [':id' => $id];
 
-        $sqlArray = array('expressions' => $sqlExpressions,
-                          'from' => $sqlFrom,
-                          'where' => $sqlWhere,
-                          'bind' => $sqlBind,
-                          );
+        $sqlArray = [
+            'expressions' => $sqlExpressions,
+            'from' => $sqlFrom,
+            'where' => $sqlWhere,
+            'bind' => $sqlBind,
+        ];
 
         return $sqlArray;
     }
@@ -367,20 +442,24 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function getStatusData($sqlRows)
     {
-        $data = array();
+        $data = [];
 
         foreach ($sqlRows as $row) {
             if (!isset($data[$row['ITEM_ID']])) {
-                $data[$row['ITEM_ID']] = array(
+                $data[$row['ITEM_ID']] = [
                     'id' => $row['BIB_ID'],
                     'status' => $row['STATUS'],
-                    'status_array' => array($row['STATUS']),
+                    'status_array' => [$row['STATUS']],
                     'location' => $row['TEMP_LOCATION'] > 0
                         ? $this->getLocationName($row['TEMP_LOCATION'])
                         : utf8_encode($row['LOCATION']),
                     'reserve' => $row['ON_RESERVE'],
-                    'callnumber' => $row['CALLNUMBER']
-                );
+                    'callnumber' => $row['CALLNUMBER'],
+                    'item_sort_seq' => $row['ITEM_SEQUENCE_NUMBER'],
+                    'sort_seq' => isset($row['SORT_SEQ'])
+                        ? $row['SORT_SEQ']
+                        : PHP_INT_MAX
+                ];
             } else {
                 if (!in_array(
                     $row['STATUS'], $data[$row['ITEM_ID']]['status_array']
@@ -404,7 +483,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function processStatusData($data)
     {
         // Process the raw data into final status information:
-        $status = array();
+        $status = [];
         foreach ($data as $current) {
             // Get availability/status info based on the array of status codes:
             $availability = $this->determineAvailability($current['status_array']);
@@ -416,7 +495,21 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                     = $this->pickStatus($availability['otherStatuses']);
             }
             $current['availability'] = $availability['available'];
+            $current['use_unknown_message']
+                = in_array('No information available', $current['status_array']);
+
             $status[] = $current;
+        }
+
+        if ($this->useHoldingsSortGroups) {
+            usort(
+                $status,
+                function ($a, $b) {
+                    return $a['sort_seq'] == $b['sort_seq']
+                        ? $a['item_sort_seq'] - $b['item_sort_seq']
+                        : $a['sort_seq'] - $b['sort_seq'];
+                }
+            );
         }
 
         return $status;
@@ -442,34 +535,27 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         // information from the holdings record when no items are available.
         $sqlArrayItems = $this->getStatusSQL($id);
         $sqlArrayNoItems = $this->getStatusNoItemsSQL($id);
-        $possibleQueries = array(
+        $possibleQueries = [
             $this->buildSqlFromArray($sqlArrayItems),
             $this->buildSqlFromArray($sqlArrayNoItems)
-        );
+        ];
 
-        // Loop through the possible queries and try each in turn -- the first one
-        // that yields results will cause us to break out of the loop.
+        // Loop through the possible queries and merge results.
+        $data = [];
         foreach ($possibleQueries as $sql) {
             // Execute SQL
             try {
-                $sqlStmt = $this->db->prepare($sql['string']);
-                $sqlStmt->execute($sql['bind']);
+                $sqlStmt = $this->executeSQL($sql);
             } catch (PDOException $e) {
                 throw new ILSException($e->getMessage());
             }
 
-            $sqlRows = array();
+            $sqlRows = [];
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $sqlRows[] = $row;
             }
 
-            $data = $this->getStatusData($sqlRows);
-
-            // If we found data, we can leave the foreach loop -- we don't need to
-            // try any more queries.
-            if (count($data) > 0) {
-                break;
-            }
+            $data += $this->getStatusData($sqlRows);
         }
         return $this->processStatusData($data);
     }
@@ -487,7 +573,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getStatuses($idList)
     {
-        $status = array();
+        $status = [];
         foreach ($idList as $id) {
             $status[] = $this->getStatus($id);
         }
@@ -504,8 +590,8 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function getHoldingItemsSQL($id)
     {
         // Expressions
-        $sqlExpressions = array(
-            "BIB_ITEM.BIB_ID",
+        $sqlExpressions = [
+            "BIB_ITEM.BIB_ID", "MFHD_ITEM.MFHD_ID",
             "ITEM_BARCODE.ITEM_BARCODE", "ITEM.ITEM_ID",
             "ITEM.ON_RESERVE", "ITEM.ITEM_SEQUENCE_NUMBER",
             "ITEM.RECALLS_PLACED", "ITEM.HOLDS_PLACED",
@@ -514,26 +600,29 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
                 "LOCATION.LOCATION_NAME) as location",
             "ITEM.TEMP_LOCATION",
+            "ITEM.PERM_LOCATION",
             "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
             "to_char(CIRC_TRANSACTIONS.CURRENT_DUE_DATE, 'MM-DD-YY') as duedate",
             "(SELECT TO_CHAR(MAX(CIRC_TRANS_ARCHIVE.DISCHARGE_DATE), " .
             "'MM-DD-YY HH24:MI') FROM $this->dbName.CIRC_TRANS_ARCHIVE " .
-            "WHERE CIRC_TRANS_ARCHIVE.ITEM_ID = ITEM.ITEM_ID) RETURNDATE"
-        );
+            "WHERE CIRC_TRANS_ARCHIVE.ITEM_ID = ITEM.ITEM_ID) RETURNDATE",
+            "ITEM.ITEM_SEQUENCE_NUMBER",
+            $this->getItemSortSequenceSQL('ITEM.PERM_LOCATION')
+        ];
 
         // From
-        $sqlFrom = array(
-            $this->dbName.".BIB_ITEM", $this->dbName.".ITEM",
-            $this->dbName.".ITEM_STATUS_TYPE",
-            $this->dbName.".ITEM_STATUS",
-            $this->dbName.".LOCATION", $this->dbName.".MFHD_ITEM",
-            $this->dbName.".MFHD_MASTER", $this->dbName.".MFHD_DATA",
-            $this->dbName.".CIRC_TRANSACTIONS",
-            $this->dbName.".ITEM_BARCODE"
-        );
+        $sqlFrom = [
+            $this->dbName . ".BIB_ITEM", $this->dbName . ".ITEM",
+            $this->dbName . ".ITEM_STATUS_TYPE",
+            $this->dbName . ".ITEM_STATUS",
+            $this->dbName . ".LOCATION", $this->dbName . ".MFHD_ITEM",
+            $this->dbName . ".MFHD_MASTER", $this->dbName . ".MFHD_DATA",
+            $this->dbName . ".CIRC_TRANSACTIONS",
+            $this->dbName . ".ITEM_BARCODE"
+        ];
 
         // Where
-        $sqlWhere = array(
+        $sqlWhere = [
             "BIB_ITEM.BIB_ID = :id",
             "BIB_ITEM.ITEM_ID = ITEM.ITEM_ID",
             "ITEM.ITEM_ID = ITEM_STATUS.ITEM_ID",
@@ -545,23 +634,23 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             "MFHD_MASTER.MFHD_ID = MFHD_ITEM.MFHD_ID",
             "MFHD_DATA.MFHD_ID = MFHD_ITEM.MFHD_ID",
             "MFHD_MASTER.SUPPRESS_IN_OPAC='N'"
-        );
+        ];
 
         // Order
-        $sqlOrder = array(
+        $sqlOrder = [
             "ITEM.ITEM_SEQUENCE_NUMBER", "MFHD_DATA.MFHD_ID", "MFHD_DATA.SEQNUM"
-        );
+        ];
 
         // Bind
-        $sqlBind = array(':id' => $id);
+        $sqlBind = [':id' => $id];
 
-        $sqlArray = array(
+        $sqlArray = [
             'expressions' => $sqlExpressions,
             'from' => $sqlFrom,
             'where' => $sqlWhere,
             'order' => $sqlOrder,
             'bind' => $sqlBind,
-        );
+        ];
 
         return $sqlArray;
     }
@@ -576,42 +665,51 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function getHoldingNoItemsSQL($id)
     {
         // Expressions
-        $sqlExpressions = array("null as ITEM_BARCODE", "null as ITEM_ID",
-                                "MFHD_DATA.RECORD_SEGMENT", "null as ITEM_ENUM",
-                                "'N' as ON_RESERVE", "1 as ITEM_SEQUENCE_NUMBER",
-                                "'No information available' as status",
-                                "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
-                                    "LOCATION.LOCATION_NAME) as location",
-                                "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
-                                "BIB_MFHD.BIB_ID", "null as duedate",
-                                "0 AS TEMP_LOCATION"
-                               );
+        $sqlExpressions = [
+            "null as ITEM_BARCODE", "null as ITEM_ID",
+            "MFHD_DATA.RECORD_SEGMENT", "null as ITEM_ENUM",
+            "'N' as ON_RESERVE", "1 as ITEM_SEQUENCE_NUMBER",
+            "'No information available' as status",
+            "NVL(LOCATION.LOCATION_DISPLAY_NAME, " .
+                "LOCATION.LOCATION_NAME) as location",
+            "MFHD_MASTER.DISPLAY_CALL_NO as callnumber",
+            "BIB_MFHD.BIB_ID", "MFHD_MASTER.MFHD_ID",
+            "null as duedate", "0 AS TEMP_LOCATION",
+            "0 as PERM_LOCATION",
+            "0 as ITEM_SEQUENCE_NUMBER",
+            $this->getItemSortSequenceSQL('LOCATION.LOCATION_ID')
+        ];
 
         // From
-        $sqlFrom = array($this->dbName.".BIB_MFHD", $this->dbName.".LOCATION",
-                         $this->dbName.".MFHD_MASTER", $this->dbName.".MFHD_DATA"
-                        );
+        $sqlFrom = [
+            $this->dbName . ".BIB_MFHD", $this->dbName . ".LOCATION",
+            $this->dbName . ".MFHD_MASTER", $this->dbName . ".MFHD_DATA"
+        ];
 
         // Where
-        $sqlWhere = array("BIB_MFHD.BIB_ID = :id",
-                          "LOCATION.LOCATION_ID = MFHD_MASTER.LOCATION_ID",
-                          "MFHD_MASTER.MFHD_ID = BIB_MFHD.MFHD_ID",
-                          "MFHD_DATA.MFHD_ID = BIB_MFHD.MFHD_ID",
-                          "MFHD_MASTER.SUPPRESS_IN_OPAC='N'"
-                         );
+        $sqlWhere = [
+            "BIB_MFHD.BIB_ID = :id",
+            "LOCATION.LOCATION_ID = MFHD_MASTER.LOCATION_ID",
+            "MFHD_MASTER.MFHD_ID = BIB_MFHD.MFHD_ID",
+            "MFHD_DATA.MFHD_ID = BIB_MFHD.MFHD_ID",
+            "MFHD_MASTER.SUPPRESS_IN_OPAC='N'",
+            "NOT EXISTS (SELECT MFHD_ID FROM {$this->dbName}.MFHD_ITEM"
+            . " WHERE MFHD_ITEM.MFHD_ID=MFHD_MASTER.MFHD_ID)"
+        ];
 
         // Order
-        $sqlOrder = array("MFHD_DATA.MFHD_ID", "MFHD_DATA.SEQNUM");
+        $sqlOrder = ["MFHD_DATA.MFHD_ID", "MFHD_DATA.SEQNUM"];
 
         // Bind
-        $sqlBind = array(':id' => $id);
+        $sqlBind = [':id' => $id];
 
-        $sqlArray = array('expressions' => $sqlExpressions,
-                          'from' => $sqlFrom,
-                          'where' => $sqlWhere,
-                          'order' => $sqlOrder,
-                          'bind' => $sqlBind,
-                          );
+        $sqlArray = [
+            'expressions' => $sqlExpressions,
+            'from' => $sqlFrom,
+            'where' => $sqlWhere,
+            'order' => $sqlOrder,
+            'bind' => $sqlBind,
+        ];
 
         return $sqlArray;
     }
@@ -625,7 +723,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function getHoldingData($sqlRows)
     {
-        $data = array();
+        $data = [];
 
         foreach ($sqlRows as $row) {
             // Determine Copy Number (always use sequence number; append volume
@@ -637,12 +735,13 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
 
             // Concat wrapped rows (MARC data more than 300 bytes gets split
             // into multiple rows)
-            if (isset($data[$row['ITEM_ID']][$number])) {
+            $rowId = isset($row['ITEM_ID']) ? $row['ITEM_ID'] : $row['MFHD_ID'];
+            if (isset($data[$rowId][$number])) {
                 // We don't want to concatenate the same MARC information to
                 // itself over and over due to a record with multiple status
                 // codes -- we should only concat wrapped rows for the FIRST
                 // status code we encounter!
-                $record = & $data[$row['ITEM_ID']][$number];
+                $record = & $data[$rowId][$number];
                 if ($record['STATUS_ARRAY'][0] == $row['STATUS']) {
                     $record['RECORD_SEGMENT'] .= $row['RECORD_SEGMENT'];
                 }
@@ -656,12 +755,108 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             } else {
                 // This is the first time we've encountered this row number --
                 // initialize the row and start an array of statuses.
-                $data[$row['ITEM_ID']][$number] = $row;
-                $data[$row['ITEM_ID']][$number]['STATUS_ARRAY']
-                    = array($row['STATUS']);
+                $data[$rowId][$number] = $row;
+                $data[$rowId][$number]['STATUS_ARRAY']
+                    = [$row['STATUS']];
             }
         }
         return $data;
+    }
+
+    /**
+     * Get Purchase History Data
+     *
+     * This is responsible for retrieving the acquisitions history data for the
+     * specific record (usually recently received issues of a serial). It is used
+     * by getHoldings() and getPurchaseHistory() depending on whether the purchase
+     * history is displayed by holdings or in a separate list.
+     *
+     * @param string $id The record id to retrieve the info for
+     *
+     * @throws ILSException
+     * @return array     An array with the acquisitions data on success.
+     */
+    protected function getPurchaseHistoryData($id)
+    {
+        $sql = "select LINE_ITEM_COPY_STATUS.MFHD_ID, SERIAL_ISSUES.ENUMCHRON " .
+               "from $this->dbName.SERIAL_ISSUES, $this->dbName.COMPONENT, " .
+               "$this->dbName.ISSUES_RECEIVED, $this->dbName.SUBSCRIPTION, " .
+               "$this->dbName.LINE_ITEM, $this->dbName.LINE_ITEM_COPY_STATUS " .
+               "where SERIAL_ISSUES.COMPONENT_ID = COMPONENT.COMPONENT_ID " .
+               "and ISSUES_RECEIVED.ISSUE_ID = SERIAL_ISSUES.ISSUE_ID " .
+               "and ISSUES_RECEIVED.COMPONENT_ID = COMPONENT.COMPONENT_ID " .
+               "and COMPONENT.SUBSCRIPTION_ID = SUBSCRIPTION.SUBSCRIPTION_ID " .
+               "and SUBSCRIPTION.LINE_ITEM_ID = LINE_ITEM.LINE_ITEM_ID " .
+               "and LINE_ITEM_COPY_STATUS.LINE_ITEM_ID = LINE_ITEM.LINE_ITEM_ID " .
+               "and SERIAL_ISSUES.RECEIVED > 0 " .
+               "and ISSUES_RECEIVED.OPAC_SUPPRESSED = 1 " .
+               "and LINE_ITEM.BIB_ID = :id " .
+               "order by LINE_ITEM_COPY_STATUS.MFHD_ID, SERIAL_ISSUES.ISSUE_ID DESC";
+        try {
+            $sqlStmt = $this->executeSQL($sql, [':id' => $id]);
+        } catch (PDOException $e) {
+            throw new ILSException($e->getMessage());
+        }
+        $raw = $processed = [];
+        // Collect raw data:
+        while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
+            $raw[] = $row['MFHD_ID'] . '||' . utf8_encode($row['ENUMCHRON']);
+        }
+        // Deduplicate data and format it:
+        foreach (array_unique($raw) as $current) {
+            list($holdings_id, $issue) = explode('||', $current, 2);
+            $processed[] = compact('issue', 'holdings_id');
+        }
+        return $processed;
+    }
+
+    /**
+     * Get specified fields from an MFHD MARC Record
+     *
+     * @param object       $record     File_MARC object
+     * @param array|string $fieldSpecs Array or colon-separated list of
+     * field/subfield specifications (3 chars for field code and then subfields,
+     * e.g. 866az)
+     *
+     * @return string|string[] Results as a string if single, array if multiple
+     */
+    protected function getMFHDData($record, $fieldSpecs)
+    {
+        if (!is_array($fieldSpecs)) {
+            $fieldSpecs = explode(':', $fieldSpecs);
+        }
+        $results = '';
+        foreach ($fieldSpecs as $fieldSpec) {
+            $fieldCode = substr($fieldSpec, 0, 3);
+            $subfieldCodes = substr($fieldSpec, 3);
+            if ($fields = $record->getFields($fieldCode)) {
+                foreach ($fields as $field) {
+                    if ($subfields = $field->getSubfields()) {
+                        $line = '';
+                        foreach ($subfields as $code => $subfield) {
+                            if (!strstr($subfieldCodes, $code)) {
+                                continue;
+                            }
+                            if ($line) {
+                                $line .= ' ';
+                            }
+                            $line .= $subfield->getData();
+                        }
+                        if ($line) {
+                            if (!$results) {
+                                $results = $line;
+                            } else {
+                                if (!is_array($results)) {
+                                    $results = [$results];
+                                }
+                                $results[] = $line;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return $results;
     }
 
     /**
@@ -673,60 +868,55 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function processRecordSegment($recordSegment)
     {
-        $marcDetails = array();
+        $marcDetails = [];
 
         try {
             $marc = new File_MARC(
-                str_replace(array("\n", "\r"), '', $recordSegment),
+                str_replace(["\n", "\r"], '', $recordSegment),
                 File_MARC::SOURCE_STRING
             );
             if ($record = $marc->next()) {
                 // Get Notes
-                if ($fields = $record->getFields('852')) {
-                    foreach ($fields as $field) {
-                        if ($subfields = $field->getSubfields('z')) {
-                            foreach ($subfields as $subfield) {
-                                // If this is the first time through,
-                                // assume a single-line summary
-                                if (!isset($marcDetails['notes'])) {
-                                    $marcDetails['notes']
-                                        = $subfield->getData();
-                                } else {
-                                    // If we already have a summary
-                                    // line, convert it to an array and
-                                    // append more data
-                                    if (!is_array($marcDetails['notes'])) {
-                                        $marcDetails['notes']
-                                            = array($marcDetails['notes']);
-                                    }
-                                    $marcDetails['notes'][]
-                                        = $subfield->getData();
-                                }
-                            }
-                        }
-                    }
+                $data = $this->getMFHDData(
+                    $record,
+                    isset($this->config['Holdings']['notes'])
+                    ? $this->config['Holdings']['notes']
+                    : '852z'
+                );
+                if ($data) {
+                    $marcDetails['notes'] = $data;
                 }
 
                 // Get Summary (may be multiple lines)
-                if ($fields = $record->getFields('866')) {
-                    foreach ($fields as $field) {
-                        if ($subfield = $field->getSubfield('a')) {
-                            // If this is the first time through, assume
-                            // a single-line summary
-                            if (!isset($marcDetails['summary'])) {
-                                $marcDetails['summary']
-                                    = $subfield->getData();
-                                // If we already have a summary line,
-                                // convert it to an array and append
-                                // more data
-                            } else {
-                                if (!is_array($marcDetails['summary'])) {
-                                    $marcDetails['summary']
-                                        = array($marcDetails['summary']);
-                                }
-                                $marcDetails['summary'][] = $subfield->getData();
-                            }
-                        }
+                $data = $this->getMFHDData(
+                    $record,
+                    isset($this->config['Holdings']['summary'])
+                    ? $this->config['Holdings']['summary']
+                    : '866a'
+                );
+                if ($data) {
+                    $marcDetails['summary'] = $data;
+                }
+
+                // Get Supplements
+                if (isset($this->config['Holdings']['supplements'])) {
+                    $data = $this->getMFHDData(
+                        $record,
+                        $this->config['Holdings']['supplements']
+                    );
+                    if ($data) {
+                        $marcDetails['supplements'] = $data;
+                    }
+                }
+
+                // Get Indexes
+                if (isset($this->config['Holdings']['indexes'])) {
+                    $data = $this->getMFHDData(
+                        $record,
+                        $this->config['Holdings']['indexes']
+                    );
+                    if ($data) {
+                        $marcDetails['indexes'] = $data;
                     }
                 }
             }
@@ -747,15 +937,14 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function getLocationName($id)
     {
-        static $cache = array();
+        static $cache = [];
 
         // Fill cache if empty:
         if (!isset($cache[$id])) {
             $sql = "SELECT NVL(LOCATION_DISPLAY_NAME, LOCATION_NAME) as location " .
                 "FROM {$this->dbName}.LOCATION WHERE LOCATION_ID=:id";
-            $bind = array('id' => $id);
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bind);
+            $bind = ['id' => $id];
+            $sqlStmt = $this->executeSQL($sql, $bind);
             $sqlRow = $sqlStmt->fetch(PDO::FETCH_ASSOC);
             $cache[$id] = utf8_encode($sqlRow['LOCATION']);
         }
@@ -772,34 +961,50 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function processHoldingRow($sqlRow)
     {
-        return array(
+        return [
             'id' => $sqlRow['BIB_ID'],
+            'holdings_id' => $sqlRow['MFHD_ID'],
+            'item_id' => $sqlRow['ITEM_ID'],
             'status' => $sqlRow['STATUS'],
             'location' => $sqlRow['TEMP_LOCATION'] > 0
                 ? $this->getLocationName($sqlRow['TEMP_LOCATION'])
                 : utf8_encode($sqlRow['LOCATION']),
             'reserve' => $sqlRow['ON_RESERVE'],
             'callnumber' => $sqlRow['CALLNUMBER'],
-            'barcode' => $sqlRow['ITEM_BARCODE']
-        );
+            'barcode' => $sqlRow['ITEM_BARCODE'],
+            'use_unknown_message' =>
+                in_array('No information available', $sqlRow['STATUS_ARRAY']),
+            'item_sort_seq' => $sqlRow['ITEM_SEQUENCE_NUMBER'],
+            'sort_seq' => isset($sqlRow['SORT_SEQ'])
+                ? $sqlRow['SORT_SEQ']
+                : PHP_INT_MAX
+        ];
     }
 
     /**
      * Protected support method for getHolding.
      *
-     * @param array $data   Item Data
-     * @param array $patron Patron Data
+     * @param array  $data   Item Data
+     * @param string $id     The BIB record id
+     * @param array  $patron Patron Data
      *
      * @throws DateException
      * @throws ILSException
      * @return array Keyed data
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function processHoldingData($data, $patron = false)
+    protected function processHoldingData($data, $id, $patron = false)
     {
-        $holding = array();
+        $holding = [];
 
         // Build Holdings Array
+        $purchaseHistory = [];
+        if (isset($this->config['Holdings']['purchase_history'])
+            && $this->config['Holdings']['purchase_history'] === 'split'
+        ) {
+            $purchaseHistory = $this->getPurchaseHistoryData($id);
+        }
         $i = 0;
         foreach ($data as $item) {
             foreach ($item as $number => $row) {
@@ -841,13 +1046,20 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                 }
 
                 $holding[$i] = $this->processHoldingRow($row);
-                $holding[$i] += array(
+                $purchases = [];
+                foreach ($purchaseHistory as $historyItem) {
+                    if ($holding[$i]['holdings_id'] == $historyItem['holdings_id']) {
+                        $purchases[] = $historyItem;
+                    }
+                }
+                $holding[$i] += [
                     'availability' => $availability['available'],
                     'duedate' => $dueDate,
                     'number' => $number,
                     'requests_placed' => $requests_placed,
-                    'returnDate' => $returnDate
-                );
+                    'returnDate' => $returnDate,
+                    'purchase_history' => $purchases
+                ];
 
                 // Parse Holding Record
                 if ($row['RECORD_SEGMENT']) {
@@ -861,6 +1073,18 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                 $i++;
             }
         }
+
+        if ($this->useHoldingsSortGroups) {
+            usort(
+                $holding,
+                function ($a, $b) {
+                    return $a['sort_seq'] == $b['sort_seq']
+                        ? $a['item_sort_seq'] - $b['item_sort_seq']
+                        : $a['sort_seq'] - $b['sort_seq'];
+                }
+            );
+        }
+
         return $holding;
     }
 
@@ -879,9 +1103,9 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      * keys: id, availability (boolean), status, location, reserve, callnumber,
      * duedate, number, barcode.
      */
-    public function getHolding($id, $patron = false)
+    public function getHolding($id, array $patron = null)
     {
-        $possibleQueries = array();
+        $possibleQueries = [];
 
         // There are two possible queries we can use to obtain status information.
         // The first (and most common) obtains information from a combination of
@@ -894,31 +1118,24 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         $sqlArrayNoItems = $this->getHoldingNoItemsSQL($id);
         $possibleQueries[] = $this->buildSqlFromArray($sqlArrayNoItems);
 
-        // Loop through the possible queries and try each in turn -- the first one
-        // that yields results will cause us to break out of the loop.
+        // Loop through the possible queries and merge results.
+        $data = [];
         foreach ($possibleQueries as $sql) {
             // Execute SQL
             try {
-                $sqlStmt = $this->db->prepare($sql['string']);
-                $sqlStmt->execute($sql['bind']);
+                $sqlStmt = $this->executeSQL($sql);
             } catch (PDOException $e) {
                 throw new ILSException($e->getMessage());
             }
 
-            $sqlRows = array();
+            $sqlRows = [];
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $sqlRows[] = $row;
             }
 
-            $data = $this->getHoldingData($sqlRows);
-
-            // If we found data, we can leave the foreach loop -- we don't need to
-            // try any more queries.
-            if (count($data) > 0) {
-                break;
-            }
+            $data = array_merge($data, $this->getHoldingData($sqlRows));
         }
-        return $this->processHoldingData($data, $patron);
+        return $this->processHoldingData($data, $id, $patron);
     }
 
     /**
@@ -934,30 +1151,25 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getPurchaseHistory($id)
     {
-        $sql = "select SERIAL_ISSUES.ENUMCHRON " .
-               "from $this->dbName.SERIAL_ISSUES, $this->dbName.COMPONENT, ".
-               "$this->dbName.ISSUES_RECEIVED, $this->dbName.SUBSCRIPTION, ".
-               "$this->dbName.LINE_ITEM " .
-               "where SERIAL_ISSUES.COMPONENT_ID = COMPONENT.COMPONENT_ID " .
-               "and ISSUES_RECEIVED.ISSUE_ID = SERIAL_ISSUES.ISSUE_ID " .
-               "and ISSUES_RECEIVED.COMPONENT_ID = COMPONENT.COMPONENT_ID " .
-               "and COMPONENT.SUBSCRIPTION_ID = SUBSCRIPTION.SUBSCRIPTION_ID " .
-               "and SUBSCRIPTION.LINE_ITEM_ID = LINE_ITEM.LINE_ITEM_ID " .
-               "and SERIAL_ISSUES.RECEIVED > 0 " .
-               "and ISSUES_RECEIVED.OPAC_SUPPRESSED = 1 " .
-               "and LINE_ITEM.BIB_ID = :id " .
-               "order by SERIAL_ISSUES.ISSUE_ID DESC";
-        try {
-            $data = array();
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute(array(':id' => $id));
-            while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
-                $data[] = array('issue' => $row['ENUMCHRON']);
-            }
-            return $data;
-        } catch (PDOException $e) {
-            throw new ILSException($e->getMessage());
-        }
+        // Return empty array if purchase history is disabled or embedded
+        // in holdings
+        $setting = isset($this->config['Holdings']['purchase_history'])
+            ? $this->config['Holdings']['purchase_history'] : true;
+        return (!$setting || $setting === 'split')
+            ? [] : $this->getPurchaseHistoryData($id);
+    }
+
+    /**
+     * Sanitize patron PIN code (remove characters Voyager doesn't handle properly)
+     *
+     * @param string $pin PIN code to sanitize
+     *
+     * @return string Sanitized PIN code
+     */
+    protected function sanitizePIN($pin)
+    {
+        $pin = preg_replace('/[^0-9a-zA-Z#&<>+^`~]+/', '', $pin);
+        return $pin;
     }
 
     /**
@@ -979,36 +1191,67 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         $login_field = isset($this->config['Catalog']['login_field'])
             ? $this->config['Catalog']['login_field'] : 'LAST_NAME';
         $login_field = preg_replace('/[^\w]/', '', $login_field);
+        $fallback_login_field
+            = isset($this->config['Catalog']['fallback_login_field'])
+            ? preg_replace(
+                '/[^\w]/', '', $this->config['Catalog']['fallback_login_field']
+            ) : '';
 
-        $sql = "SELECT PATRON.PATRON_ID, PATRON.FIRST_NAME, PATRON.LAST_NAME " .
-               "FROM $this->dbName.PATRON, $this->dbName.PATRON_BARCODE " .
+        // Turns out it's difficult and inefficient to handle the mismatching
+        // character sets of the Voyager database in the query (in theory something
+        // like
+        // "UPPER(UTL_I18N.RAW_TO_NCHAR(UTL_RAW.CAST_TO_RAW(field), 'WE8ISO8859P1'))"
+        // could be used, but it's SLOW and ugly). We'll rely on the fact that the
+        // barcode shouldn't contain any characters outside the basic latin
+        // characters and check login verification fields here.
+
+        $sql = "SELECT PATRON.PATRON_ID, PATRON.FIRST_NAME, PATRON.LAST_NAME, " .
+               "PATRON.{$login_field} as LOGIN";
+        if ($fallback_login_field) {
+            $sql .= ", PATRON.{$fallback_login_field} as FALLBACK_LOGIN";
+        }
+        $sql .= " FROM $this->dbName.PATRON, $this->dbName.PATRON_BARCODE " .
                "WHERE PATRON.PATRON_ID = PATRON_BARCODE.PATRON_ID AND " .
-               "lower(PATRON.{$login_field}) = :login AND " .
                "lower(PATRON_BARCODE.PATRON_BARCODE) = :barcode";
+
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $bindLogin = strtolower(utf8_decode($login));
-            $sqlStmt->bindParam(':login', $bindLogin, PDO::PARAM_STR);
             $bindBarcode = strtolower(utf8_decode($barcode));
+            $compareLogin = mb_strtolower($login, 'UTF-8');
+
+            $this->debugSQL(__FUNCTION__, $sql, [':barcode' => $bindBarcode]);
+            $sqlStmt = $this->db->prepare($sql);
             $sqlStmt->bindParam(':barcode', $bindBarcode, PDO::PARAM_STR);
             $sqlStmt->execute();
-            $row = $sqlStmt->fetch(PDO::FETCH_ASSOC);
-            if (isset($row['PATRON_ID']) && ($row['PATRON_ID'] != '')) {
-                return array(
-                    'id' => utf8_encode($row['PATRON_ID']),
-                    'firstname' => utf8_encode($row['FIRST_NAME']),
-                    'lastname' => utf8_encode($row['LAST_NAME']),
-                    'cat_username' => $barcode,
-                    'cat_password' => $login,
-                    // There's supposed to be a getPatronEmailAddress stored
-                    // procedure in Oracle, but I couldn't get it to work here;
-                    // might be worth investigating further if needed later.
-                    'email' => null,
-                    'major' => null,
-                    'college' => null);
-            } else {
-                return null;
+            // For some reason barcode is not unique, so evaluate all resulting
+            // rows just to be safe
+            while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
+                $primary = !is_null($row['LOGIN'])
+                    ? mb_strtolower(utf8_encode($row['LOGIN']), 'UTF-8')
+                    : null;
+                $fallback = $fallback_login_field && is_null($row['LOGIN'])
+                    ? mb_strtolower(utf8_encode($row['FALLBACK_LOGIN']), 'UTF-8')
+                    : null;
+
+                if ((!is_null($primary) && ($primary == $compareLogin
+                    || $primary == $this->sanitizePIN($compareLogin)))
+                    || ($fallback_login_field && is_null($primary)
+                    && $fallback == $compareLogin)
+                ) {
+                    return [
+                        'id' => utf8_encode($row['PATRON_ID']),
+                        'firstname' => utf8_encode($row['FIRST_NAME']),
+                        'lastname' => utf8_encode($row['LAST_NAME']),
+                        'cat_username' => $barcode,
+                        'cat_password' => $login,
+                        // There's supposed to be a getPatronEmailAddress stored
+                        // procedure in Oracle, but I couldn't get it to work here;
+                        // might be worth investigating further if needed later.
+                        'email' => null,
+                        'major' => null,
+                        'college' => null];
+                }
             }
+            return null;
         } catch (PDOException $e) {
             throw new ILSException($e->getMessage());
         }
@@ -1024,49 +1267,88 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     protected function getMyTransactionsSQL($patron)
     {
         // Expressions
-        $sqlExpressions = array(
-            "to_char(CIRC_TRANSACTIONS.CURRENT_DUE_DATE, 'MM-DD-YY HH24:MI')" .
+        $sqlExpressions = [
+            "to_char(MAX(CIRC_TRANSACTIONS.CURRENT_DUE_DATE), 'MM-DD-YY HH24:MI')" .
             " as DUEDATE",
-            "to_char(CURRENT_DUE_DATE, 'YYYYMMDD HH24:MI') as FULLDATE",
-            "BIB_ITEM.BIB_ID",
-            "CIRC_TRANSACTIONS.ITEM_ID as ITEM_ID",
-            "MFHD_ITEM.ITEM_ENUM",
-            "MFHD_ITEM.YEAR",
-            "BIB_TEXT.TITLE_BRIEF",
-            "BIB_TEXT.TITLE"
-        );
+            "to_char(MAX(CURRENT_DUE_DATE), 'YYYYMMDD HH24:MI') as FULLDATE",
+            "MAX(BIB_ITEM.BIB_ID) AS BIB_ID",
+            "MAX(CIRC_TRANSACTIONS.ITEM_ID) as ITEM_ID",
+            "MAX(MFHD_ITEM.ITEM_ENUM) AS ITEM_ENUM",
+            "MAX(MFHD_ITEM.YEAR) AS YEAR",
+            "MAX(BIB_TEXT.TITLE_BRIEF) AS TITLE_BRIEF",
+            "MAX(BIB_TEXT.TITLE) AS TITLE",
+            "LISTAGG(ITEM_STATUS_DESC, CHR(9)) "
+            . "WITHIN GROUP (ORDER BY ITEM_STATUS_DESC) as status",
+            "MAX(CIRC_TRANSACTIONS.RENEWAL_COUNT) AS RENEWAL_COUNT",
+            "MAX(CIRC_POLICY_MATRIX.RENEWAL_COUNT) as RENEWAL_LIMIT",
+            "MAX(LOCATION.LOCATION_DISPLAY_NAME) as BORROWING_LOCATION"
+        ];
 
         // From
-        $sqlFrom = array(
-            $this->dbName.".CIRC_TRANSACTIONS",
-            $this->dbName.".BIB_ITEM",
-            $this->dbName.".MFHD_ITEM",
-            $this->dbName.".BIB_TEXT"
-        );
+        $sqlFrom = [
+            $this->dbName . ".CIRC_TRANSACTIONS",
+            $this->dbName . ".BIB_ITEM",
+            $this->dbName . ".ITEM",
+            $this->dbName . ".ITEM_STATUS",
+            $this->dbName . ".ITEM_STATUS_TYPE",
+            $this->dbName . ".MFHD_ITEM",
+            $this->dbName . ".BIB_TEXT",
+            $this->dbName . ".CIRC_POLICY_MATRIX",
+            $this->dbName . ".LOCATION"
+        ];
 
         // Where
-        $sqlWhere = array(
+        $sqlWhere = [
             "CIRC_TRANSACTIONS.PATRON_ID = :id",
             "BIB_ITEM.ITEM_ID = CIRC_TRANSACTIONS.ITEM_ID",
             "CIRC_TRANSACTIONS.ITEM_ID = MFHD_ITEM.ITEM_ID(+)",
-            "BIB_TEXT.BIB_ID = BIB_ITEM.BIB_ID"
-        );
+            "BIB_TEXT.BIB_ID = BIB_ITEM.BIB_ID",
+            "CIRC_TRANSACTIONS.CIRC_POLICY_MATRIX_ID = " .
+            "CIRC_POLICY_MATRIX.CIRC_POLICY_MATRIX_ID",
+            "CIRC_TRANSACTIONS.CHARGE_LOCATION = LOCATION.LOCATION_ID",
+            "BIB_ITEM.ITEM_ID = ITEM.ITEM_ID",
+            "ITEM.ITEM_ID = ITEM_STATUS.ITEM_ID",
+            "ITEM_STATUS.ITEM_STATUS = ITEM_STATUS_TYPE.ITEM_STATUS_TYPE",
+        ];
 
         // Order
-        $sqlOrder = array("FULLDATE ASC");
+        $sqlOrder = ["FULLDATE ASC", "TITLE ASC"];
 
         // Bind
-        $sqlBind = array(':id' => $patron['id']);
+        $sqlBind = [':id' => $patron['id']];
 
-        $sqlArray = array(
+        $sqlArray = [
             'expressions' => $sqlExpressions,
             'from' => $sqlFrom,
             'where' => $sqlWhere,
             'order' => $sqlOrder,
-            'bind' => $sqlBind
-        );
+            'bind' => $sqlBind,
+            'group' => ['CIRC_TRANSACTIONS.ITEM_ID']
+        ];
 
         return $sqlArray;
+    }
+
+    /**
+     * Pick a transaction status worth displaying to the user (or return false
+     * if nothing important is found).
+     *
+     * @param array $statuses Status strings
+     *
+     * @return string|bool
+     */
+    protected function pickTransactionStatus($statuses)
+    {
+        $regex = isset($this->config['Loans']['show_statuses'])
+            ? $this->config['Loans']['show_statuses']
+            : '/lost|missing|claim/i';
+        $retVal = [];
+        foreach ($statuses as $status) {
+            if (preg_match($regex, $status)) {
+                $retVal[] = $status;
+            }
+        }
+        return empty($retVal) ? false : implode(', ', $retVal);
     }
 
     /**
@@ -1077,6 +1359,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      *
      * @throws DateException
      * @return array Keyed data for display by template files
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     protected function processMyTransactionsData($sqlRow, $patron = false)
@@ -1098,13 +1381,13 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             if (is_numeric($dueTimeStamp)) {
                 if ($now > $dueTimeStamp) {
                     $dueStatus = "overdue";
-                } else if ($now > $dueTimeStamp-(1*24*60*60)) {
+                } else if ($now > $dueTimeStamp - (1 * 24 * 60 * 60)) {
                     $dueStatus = "due";
                 }
             }
         }
 
-        return array(
+        $transaction = [
             'id' => $sqlRow['BIB_ID'],
             'item_id' => $sqlRow['ITEM_ID'],
             'duedate' => $dueDate,
@@ -1113,8 +1396,20 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             'volume' => str_replace("v.", "", utf8_encode($sqlRow['ITEM_ENUM'])),
             'publication_year' => $sqlRow['YEAR'],
             'title' => empty($sqlRow['TITLE_BRIEF'])
-                ? $sqlRow['TITLE'] : $sqlRow['TITLE_BRIEF']
-        );
+                ? $sqlRow['TITLE'] : $sqlRow['TITLE_BRIEF'],
+            'renew' => $sqlRow['RENEWAL_COUNT'],
+            'renewLimit' => $sqlRow['RENEWAL_LIMIT'],
+            'message' =>
+                $this->pickTransactionStatus(explode(chr(9), $sqlRow['STATUS'])),
+        ];
+        if (isset($this->config['Loans']['display_borrowing_location'])
+            && $this->config['Loans']['display_borrowing_location']
+        ) {
+            $transaction['borrowingLocation']
+                = utf8_encode($sqlRow['BORROWING_LOCATION']);
+        }
+
+        return $transaction;
     }
 
     /**
@@ -1131,15 +1426,14 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getMyTransactions($patron)
     {
-        $transList = array();
+        $transList = [];
 
         $sqlArray = $this->getMyTransactionsSQL($patron);
 
         $sql = $this->buildSqlFromArray($sqlArray);
 
         try {
-            $sqlStmt = $this->db->prepare($sql['string']);
-            $sqlStmt->execute($sql['bind']);
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $processRow = $this->processMyTransactionsData($row, $patron);
                 $transList[] = $processRow;
@@ -1159,11 +1453,8 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function getFineSQL($patron)
     {
-        // Modifier
-        $sqlSelectModifier = "distinct";
-
         // Expressions
-        $sqlExpressions = array(
+        $sqlExpressions = [
             "FINE_FEE_TYPE.FINE_FEE_DESC",
             "PATRON.PATRON_ID", "FINE_FEE.FINE_FEE_AMOUNT",
             "FINE_FEE.FINE_FEE_BALANCE",
@@ -1171,33 +1462,32 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             "to_char(FINE_FEE.ORIG_CHARGE_DATE, 'MM-DD-YY') as CHARGEDATE",
             "to_char(FINE_FEE.DUE_DATE, 'MM-DD-YY') as DUEDATE",
             "BIB_ITEM.BIB_ID"
-        );
+        ];
 
         // From
-        $sqlFrom = array(
-            $this->dbName.".FINE_FEE", $this->dbName.".FINE_FEE_TYPE",
-            $this->dbName.".PATRON", $this->dbName.".BIB_ITEM"
-        );
+        $sqlFrom = [
+            $this->dbName . ".FINE_FEE", $this->dbName . ".FINE_FEE_TYPE",
+            $this->dbName . ".PATRON", $this->dbName . ".BIB_ITEM"
+        ];
 
         // Where
-        $sqlWhere = array(
+        $sqlWhere = [
             "PATRON.PATRON_ID = :id",
             "FINE_FEE.FINE_FEE_TYPE = FINE_FEE_TYPE.FINE_FEE_TYPE",
             "FINE_FEE.PATRON_ID  = PATRON.PATRON_ID",
             "FINE_FEE.ITEM_ID = BIB_ITEM.ITEM_ID(+)",
             "FINE_FEE.FINE_FEE_BALANCE > 0"
-        );
+        ];
 
         // Bind
-        $sqlBind = array(':id' => $patron['id']);
+        $sqlBind = [':id' => $patron['id']];
 
-        $sqlArray = array(
-            'modifier' => $sqlSelectModifier,
+        $sqlArray = [
             'expressions' => $sqlExpressions,
             'from' => $sqlFrom,
             'where' => $sqlWhere,
             'bind' => $sqlBind
-        );
+        ];
 
         return $sqlArray;
     }
@@ -1236,13 +1526,13 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             );
         }
 
-        return array('amount' => $sqlRow['FINE_FEE_AMOUNT'],
+        return ['amount' => $sqlRow['FINE_FEE_AMOUNT'],
               'fine' => $sqlRow['FINE_FEE_DESC'],
               'balance' => $sqlRow['FINE_FEE_BALANCE'],
               'createdate' => $createDate,
               'checkout' => $chargeDate,
               'duedate' => $dueDate,
-              'id' => $sqlRow['BIB_ID']);
+              'id' => $sqlRow['BIB_ID']];
     }
 
     /**
@@ -1258,17 +1548,16 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getMyFines($patron)
     {
-        $fineList = array();
+        $fineList = [];
 
         $sqlArray = $this->getFineSQL($patron);
 
         $sql = $this->buildSqlFromArray($sqlArray);
 
         try {
-            $sqlStmt = $this->db->prepare($sql['string']);
-            $sqlStmt->execute($sql['bind']);
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
-                $processFine= $this->processFinesData($row);
+                $processFine = $this->processFinesData($row);
                 $fineList[] = $processFine;
             }
             return $fineList;
@@ -1290,7 +1579,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         $sqlSelectModifier = "distinct";
 
         // Expressions
-        $sqlExpressions = array(
+        $sqlExpressions = [
             "HOLD_RECALL.HOLD_RECALL_ID", "HOLD_RECALL.BIB_ID",
             "HOLD_RECALL.PICKUP_LOCATION",
             "HOLD_RECALL.HOLD_RECALL_TYPE",
@@ -1302,37 +1591,44 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             "MFHD_ITEM.ITEM_ENUM",
             "MFHD_ITEM.YEAR",
             "BIB_TEXT.TITLE_BRIEF",
-            "BIB_TEXT.TITLE"
-        );
+            "BIB_TEXT.TITLE",
+            "REQUEST_GROUP.GROUP_NAME as REQUEST_GROUP_NAME"
+        ];
 
         // From
-        $sqlFrom = array(
-            $this->dbName.".HOLD_RECALL",
-            $this->dbName.".HOLD_RECALL_ITEMS",
-            $this->dbName.".MFHD_ITEM",
-            $this->dbName.".BIB_TEXT"
-        );
+        $sqlFrom = [
+            $this->dbName . ".HOLD_RECALL",
+            $this->dbName . ".HOLD_RECALL_ITEMS",
+            $this->dbName . ".MFHD_ITEM",
+            $this->dbName . ".BIB_TEXT",
+            $this->dbName . ".VOYAGER_DATABASES",
+            $this->dbName . ".REQUEST_GROUP"
+        ];
 
         // Where
-        $sqlWhere = array(
+        $sqlWhere = [
             "HOLD_RECALL.PATRON_ID = :id",
             "HOLD_RECALL.HOLD_RECALL_ID = HOLD_RECALL_ITEMS.HOLD_RECALL_ID(+)",
             "HOLD_RECALL_ITEMS.ITEM_ID = MFHD_ITEM.ITEM_ID(+)",
             "(HOLD_RECALL_ITEMS.HOLD_RECALL_STATUS IS NULL OR " .
             "HOLD_RECALL_ITEMS.HOLD_RECALL_STATUS < 3)",
-            "BIB_TEXT.BIB_ID = HOLD_RECALL.BIB_ID"
-        );
+            "BIB_TEXT.BIB_ID = HOLD_RECALL.BIB_ID",
+            "(HOLD_RECALL.HOLDING_DB_ID IS NULL OR HOLD_RECALL.HOLDING_DB_ID = 0 " .
+            "OR (HOLD_RECALL.HOLDING_DB_ID = " .
+            "VOYAGER_DATABASES.DB_ID AND VOYAGER_DATABASES.DB_CODE = 'LOCAL'))",
+            "HOLD_RECALL.REQUEST_GROUP_ID = REQUEST_GROUP.GROUP_ID(+)"
+        ];
 
         // Bind
-        $sqlBind = array(':id' => $patron['id']);
+        $sqlBind = [':id' => $patron['id']];
 
-        $sqlArray = array(
+        $sqlArray = [
             'modifier' => $sqlSelectModifier,
             'expressions' => $sqlExpressions,
             'from' => $sqlFrom,
             'where' => $sqlWhere,
             'bind' => $sqlBind
-        );
+        ];
 
         return $sqlArray;
     }
@@ -1364,10 +1660,11 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             );
         }
 
-        return array(
+        return [
             'id' => $sqlRow['BIB_ID'],
             'type' => $sqlRow['HOLD_RECALL_TYPE'],
             'location' => $sqlRow['PICKUP_LOCATION'],
+            'requestGroup' => $sqlRow['REQUEST_GROUP_NAME'],
             'expire' => $expireDate,
             'create' => $createDate,
             'position' => $sqlRow['QUEUE_POSITION'],
@@ -1378,7 +1675,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
             'publication_year' => $sqlRow['YEAR'],
             'title' => empty($sqlRow['TITLE_BRIEF'])
                 ? $sqlRow['TITLE'] : $sqlRow['TITLE_BRIEF']
-        );
+        ];
     }
 
     /**
@@ -1393,11 +1690,11 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     protected function processHoldsList($holdList)
     {
-        $returnList = array();
+        $returnList = [];
 
         if (!empty($holdList)) {
 
-            $sortHoldList = array();
+            $sortHoldList = [];
             // Get a unique List of Bib Ids
             foreach ($holdList as $holdItem) {
                 $sortHoldList[$holdItem['id']][] = $holdItem;
@@ -1424,22 +1721,179 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getMyHolds($patron)
     {
-        $holdList = array();
-        $returnList = array();
+        $holdList = [];
+        $returnList = [];
 
         $sqlArray = $this->getMyHoldsSQL($patron);
 
         $sql = $this->buildSqlFromArray($sqlArray);
 
         try {
-            $sqlStmt = $this->db->prepare($sql['string']);
-            $sqlStmt->execute($sql['bind']);
+            $sqlStmt = $this->executeSQL($sql);
             while ($sqlRow = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $holds = $this->processMyHoldsData($sqlRow);
                 $holdList[] = $holds;
             }
             $returnList = $this->processHoldsList($holdList);
             return $returnList;
+        } catch (PDOException $e) {
+            throw new ILSException($e->getMessage());
+        }
+    }
+
+    /**
+     * Protected support method for getMyStorageRetrievalRequests.
+     *
+     * @param array $patron Patron data for use in an sql query
+     *
+     * @return array Keyed data for use in an sql query
+     */
+    protected function getMyStorageRetrievalRequestsSQL($patron)
+    {
+        // Modifier
+        $sqlSelectModifier = "distinct";
+
+        // Expressions
+        $sqlExpressions = [
+            'CALL_SLIP.CALL_SLIP_ID', 'CALL_SLIP.BIB_ID',
+            'CALL_SLIP.PICKUP_LOCATION_ID',
+            "to_char(CALL_SLIP.DATE_REQUESTED, 'YYYY-MM-DD HH24:MI:SS')"
+                . ' as CREATE_DATE',
+            "to_char(CALL_SLIP.DATE_PROCESSED, 'YYYY-MM-DD HH24:MI:SS')"
+                . ' as PROCESSED_DATE',
+            "to_char(CALL_SLIP.STATUS_DATE, 'YYYY-MM-DD HH24:MI:SS')"
+                . ' as STATUS_DATE',
+            'CALL_SLIP.ITEM_ID',
+            'CALL_SLIP.MFHD_ID',
+            'CALL_SLIP.STATUS',
+            'CALL_SLIP_STATUS_TYPE.STATUS_DESC',
+            'CALL_SLIP.ITEM_YEAR',
+            'CALL_SLIP.ITEM_ENUM',
+            'CALL_SLIP.ITEM_CHRON',
+            'CALL_SLIP.REPLY_NOTE',
+            'CALL_SLIP.PICKUP_LOCATION_ID',
+            'MFHD_ITEM.ITEM_ENUM',
+            'MFHD_ITEM.YEAR',
+            'BIB_TEXT.TITLE_BRIEF',
+            'BIB_TEXT.TITLE'
+        ];
+
+        // From
+        $sqlFrom = [
+            $this->dbName . '.CALL_SLIP',
+            $this->dbName . '.CALL_SLIP_STATUS_TYPE',
+            $this->dbName . '.MFHD_ITEM',
+            $this->dbName . '.BIB_TEXT'
+        ];
+
+        // Where
+        $sqlWhere = [
+            'CALL_SLIP.PATRON_ID = :id',
+            'CALL_SLIP.STATUS = CALL_SLIP_STATUS_TYPE.STATUS_TYPE(+)',
+            'CALL_SLIP.ITEM_ID = MFHD_ITEM.ITEM_ID(+)',
+            'BIB_TEXT.BIB_ID = CALL_SLIP.BIB_ID'
+        ];
+
+        // Order by
+        $sqlOrderBy = [
+            "to_char(CALL_SLIP.DATE_REQUESTED, 'YYYY-MM-DD HH24:MI:SS')"
+        ];
+
+        // Bind
+        $sqlBind = [':id' => $patron['id']];
+
+        $sqlArray = [
+            'modifier' => $sqlSelectModifier,
+            'expressions' => $sqlExpressions,
+            'from' => $sqlFrom,
+            'where' => $sqlWhere,
+            'order' => $sqlOrderBy,
+            'bind' => $sqlBind
+        ];
+
+        return $sqlArray;
+    }
+
+    /**
+     * Protected support method for getMyStorageRetrievalRequests.
+     *
+     * @param array $sqlRow An array of keyed data
+     *
+     * @return array Keyed data for display by template files
+     */
+    protected function processMyStorageRetrievalRequestsData($sqlRow)
+    {
+        $available = ($sqlRow['STATUS'] == 4) ? true : false;
+        $expireDate = '';
+        $processedDate = '';
+        $statusDate = '';
+        // Convert Voyager Format to display format
+        if (!empty($sqlRow['PROCESSED_DATE'])) {
+            $processedDate = $this->dateFormat->convertToDisplayDate(
+                "m-d-y", $sqlRow['PROCESSED_DATE']
+            );
+        }
+        if (!empty($sqlRow['STATUS_DATE'])) {
+            $statusDate = $this->dateFormat->convertToDisplayDate(
+                "m-d-y", $sqlRow['STATUS_DATE']
+            );
+        }
+
+        $createDate = $this->translate("Unknown");
+        // Convert Voyager Format to display format
+        if (!empty($sqlRow['CREATE_DATE'])) {
+            $createDate = $this->dateFormat->convertToDisplayDate(
+                "m-d-y", $sqlRow['CREATE_DATE']
+            );
+        }
+
+        return [
+            'id' => $sqlRow['BIB_ID'],
+            'status' => utf8_encode($sqlRow['STATUS_DESC']),
+            'statusDate' => $statusDate,
+            'location' => $this->getLocationName($sqlRow['PICKUP_LOCATION_ID']),
+            'create' => $createDate,
+            'processed' => $processedDate,
+            'expire' => $expireDate,
+            'reply' => utf8_encode($sqlRow['REPLY_NOTE']),
+            'available' => $available,
+            'canceled' => $sqlRow['STATUS'] == 7 ? $statusDate : false,
+            'reqnum' => $sqlRow['CALL_SLIP_ID'],
+            'item_id' => $sqlRow['ITEM_ID'],
+            'volume' => str_replace(
+                "v.", "", utf8_encode($sqlRow['ITEM_ENUM'])
+            ),
+            'issue' => utf8_encode($sqlRow['ITEM_CHRON']),
+            'year' => utf8_encode($sqlRow['ITEM_YEAR']),
+            'title' => empty($sqlRow['TITLE_BRIEF'])
+                ? $sqlRow['TITLE'] : $sqlRow['TITLE_BRIEF']
+        ];
+    }
+
+    /**
+     * Get Patron Storage Retrieval Requests
+     *
+     * This is responsible for retrieving all call slips by a specific patron.
+     *
+     * @param array $patron The patron array from patronLogin
+     *
+     * @return array        Array of the patron's storage retrieval requests.
+     */
+    public function getMyStorageRetrievalRequests($patron)
+    {
+        $list = [];
+
+        $sqlArray = $this->getMyStorageRetrievalRequestsSQL($patron);
+
+        $sql = $this->buildSqlFromArray($sqlArray);
+        try {
+            $sqlStmt = $this->db->prepare($sql['string']);
+            $this->debugSQL(__FUNCTION__, $sql['string'], $sql['bind']);
+            $sqlStmt->execute($sql['bind']);
+            while ($sqlRow = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
+                $list[] = $this->processMyStorageRetrievalRequestsData($sqlRow);
+            }
+            return $list;
         } catch (PDOException $e) {
             throw new ILSException($e->getMessage());
         }
@@ -1459,9 +1913,10 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     {
         $sql = "SELECT PATRON.LAST_NAME, PATRON.FIRST_NAME, " .
                "PATRON.HISTORICAL_CHARGES, PATRON_ADDRESS.ADDRESS_LINE1, " .
-               "PATRON_ADDRESS.ADDRESS_LINE2, PATRON_ADDRESS.ZIP_POSTAL, ".
+               "PATRON_ADDRESS.ADDRESS_LINE2, PATRON_ADDRESS.ZIP_POSTAL, " .
+               "PATRON_ADDRESS.CITY, PATRON_ADDRESS.COUNTRY, " .
                "PATRON_PHONE.PHONE_NUMBER, PATRON_GROUP.PATRON_GROUP_NAME " .
-               "FROM $this->dbName.PATRON, $this->dbName.PATRON_ADDRESS, ".
+               "FROM $this->dbName.PATRON, $this->dbName.PATRON_ADDRESS, " .
                "$this->dbName.PATRON_PHONE, $this->dbName.PATRON_BARCODE, " .
                "$this->dbName.PATRON_GROUP " .
                "WHERE PATRON.PATRON_ID = PATRON_ADDRESS.PATRON_ID (+) " .
@@ -1471,9 +1926,8 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "PATRON_GROUP.PATRON_GROUP_ID (+) " .
                "AND PATRON.PATRON_ID = :id";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute(array(':id' => $patron['id']));
-            $patron = array();
+            $sqlStmt = $this->executeSQL($sql, [':id' => $patron['id']]);
+            $patron = [];
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 if (!empty($row['FIRST_NAME'])) {
                     $patron['firstname'] = utf8_encode($row['FIRST_NAME']);
@@ -1501,6 +1955,12 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                     if (!empty($row['ZIP_POSTAL'])) {
                         $patron['zip'] = utf8_encode($row['ZIP_POSTAL']);
                     }
+                    if (!empty($row['CITY'])) {
+                        $patron['city'] = utf8_encode($row['CITY']);
+                    }
+                    if (!empty($row['COUNTRY'])) {
+                        $patron['country'] = utf8_encode($row['COUNTRY']);
+                    }
                 }
             }
             return (empty($patron) ? null : $patron);
@@ -1520,6 +1980,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      * @param array  $details  Item details from getHoldings return array
      *
      * @return string          URL to ILS's OPAC's place hold screen.
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function getHoldLink($recordId, $details)
@@ -1550,12 +2011,12 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getNewItems($page, $limit, $daysOld, $fundId = null)
     {
-        $items = array();
+        $items = [];
 
-        $bindParams = array(
+        $bindParams = [
             ':enddate' => date('d-m-Y', strtotime('now')),
             ':startdate' => date('d-m-Y', strtotime("-$daysOld day"))
-        );
+        ];
 
         $sql = "select count(distinct LINE_ITEM.BIB_ID) as count " .
                "from $this->dbName.LINE_ITEM, " .
@@ -1574,8 +2035,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         $sql .= "and LINE_ITEM.CREATE_DATE >= to_date(:startdate, 'dd-mm-yyyy') " .
                "and LINE_ITEM.CREATE_DATE < to_date(:enddate, 'dd-mm-yyyy')";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql, $bindParams);
             $row = $sqlStmt->fetch(PDO::FETCH_ASSOC);
             $items['count'] = $row['COUNT'];
         } catch (PDOException $e) {
@@ -1584,8 +2044,8 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
 
         $page = ($page) ? $page : 1;
         $limit = ($limit) ? $limit : 20;
-        $bindParams[':startRow'] = (($page-1)*$limit)+1;
-        $bindParams[':endRow'] = ($page*$limit);
+        $bindParams[':startRow'] = (($page - 1) * $limit) + 1;
+        $bindParams[':endRow'] = ($page * $limit);
         /*
         $sql = "select * from " .
                "(select a.*, rownum rnum from " .
@@ -1624,8 +2084,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "where rownum <= :endRow) " .
                "where rnum >= :startRow";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql, $bindParams);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $items['results'][]['id'] = $row['BIB_ID'];
             }
@@ -1645,7 +2104,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getFunds()
     {
-        $list = array();
+        $list = [];
 
         // Are funds disabled?  If so, do no work!
         if (isset($this->config['Funds']['disabled'])
@@ -1658,7 +2117,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         if (isset($this->config['Funds']['whitelist'])
             && is_array($this->config['Funds']['whitelist'])
         ) {
-            $whitelist = array();
+            $whitelist = [];
             foreach ($this->config['Funds']['whitelist'] as $current) {
                 $whitelist[] = strtolower($current);
             }
@@ -1668,7 +2127,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         if (isset($this->config['Funds']['blacklist'])
             && is_array($this->config['Funds']['blacklist'])
         ) {
-            $blacklist = array();
+            $blacklist = [];
             foreach ($this->config['Funds']['blacklist'] as $current) {
                 $blacklist[] = strtolower($current);
             }
@@ -1679,17 +2138,16 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
         // Retrieve the data from Voyager; if we're limiting to a parent fund, we
         // need to apply a special WHERE clause and bind parameter.
         if (isset($this->config['Funds']['parent_fund'])) {
-            $bindParams = array(':parent' => $this->config['Funds']['parent_fund']);
+            $bindParams = [':parent' => $this->config['Funds']['parent_fund']];
             $whereClause = 'WHERE FUND.PARENT_FUND = :parent';
         } else {
-            $bindParams = array();
+            $bindParams = [];
             $whereClause = '';
         }
         $sql = "select distinct lower(FUND.FUND_NAME) as name " .
             "from $this->dbName.FUND {$whereClause} order by name";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql, $bindParams);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 // Process blacklist and whitelist to skip illegal values:
                 if ((is_array($blacklist) && in_array($row['NAME'], $blacklist))
@@ -1732,7 +2190,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getDepartments()
     {
-        $deptList = array();
+        $deptList = [];
 
         $sql = "select DEPARTMENT.DEPARTMENT_ID, DEPARTMENT.DEPARTMENT_NAME " .
                "from $this->dbName.RESERVE_LIST, " .
@@ -1744,8 +2202,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "group by DEPARTMENT.DEPARTMENT_ID, DEPARTMENT_NAME " .
                "order by DEPARTMENT_NAME";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute();
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $deptList[$row['DEPARTMENT_ID']] = $row['DEPARTMENT_NAME'];
             }
@@ -1766,9 +2223,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getInstructors()
     {
-        $instList = array();
-
-        $bindParams = array();
+        $instList = [];
 
         $sql = "select INSTRUCTOR.INSTRUCTOR_ID, " .
                "INSTRUCTOR.LAST_NAME || ', ' || INSTRUCTOR.FIRST_NAME as NAME " .
@@ -1780,8 +2235,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "group by INSTRUCTOR.INSTRUCTOR_ID, LAST_NAME, FIRST_NAME " .
                "order by LAST_NAME";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $instList[$row['INSTRUCTOR_ID']] = $row['NAME'];
             }
@@ -1802,9 +2256,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getCourses()
     {
-        $courseList = array();
-
-        $bindParams = array();
+        $courseList = [];
 
         $sql = "select COURSE.COURSE_NUMBER || ': ' || COURSE.COURSE_NAME as NAME," .
                " COURSE.COURSE_ID " .
@@ -1816,8 +2268,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "group by COURSE.COURSE_ID, COURSE_NUMBER, COURSE_NAME " .
                "order by COURSE_NUMBER";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $courseList[$row['COURSE_ID']] = $row['NAME'];
             }
@@ -1846,20 +2297,20 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function findReserves($course, $inst, $dept)
     {
-        $recordList = array();
-        $reserveWhere = array();
-        $bindParams = array();
+        $recordList = [];
+        $reserveWhere = [];
+        $bindParams = [];
 
         if ($course != '') {
-            $reserveWhere[] = "RESERVE_LIST_COURSES.COURSE_ID = :course" ;
+            $reserveWhere[] = "RESERVE_LIST_COURSES.COURSE_ID = :course";
             $bindParams[':course'] = $course;
         }
         if ($inst != '') {
-            $reserveWhere[] = "RESERVE_LIST_COURSES.INSTRUCTOR_ID = :inst" ;
+            $reserveWhere[] = "RESERVE_LIST_COURSES.INSTRUCTOR_ID = :inst";
             $bindParams[':inst'] = $inst;
         }
         if ($dept != '') {
-            $reserveWhere[] = "RESERVE_LIST_COURSES.DEPARTMENT_ID = :dept" ;
+            $reserveWhere[] = "RESERVE_LIST_COURSES.DEPARTMENT_ID = :dept";
             $bindParams[':dept'] = $dept;
         }
 
@@ -1903,7 +2354,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                " JOIN $this->dbName.MFHD_MASTER " .
                " ON BIB_MFHD.MFHD_ID = MFHD_MASTER.MFHD_ID" .
                " JOIN " .
-               "  ( ".
+               "  ( " .
                "  ((select distinct eitem.mfhd_id, subsubquery1.COURSE_ID, " .
                "     subsubquery1.INSTRUCTOR_ID, subsubquery1.DEPARTMENT_ID " .
                "     from $this->dbName.eitem join " .
@@ -1933,8 +2384,7 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
                "  ) subquery ON mfhd_master.mfhd_id = subquery.mfhd_id ";
 
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute($bindParams);
+            $sqlStmt = $this->executeSQL($sql, $bindParams);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $recordList[] = $row;
             }
@@ -1953,14 +2403,13 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
      */
     public function getSuppressedRecords()
     {
-        $list = array();
+        $list = [];
 
         $sql = "select BIB_MASTER.BIB_ID " .
                "from $this->dbName.BIB_MASTER " .
                "where BIB_MASTER.SUPPRESS_IN_OPAC='Y'";
         try {
-            $sqlStmt = $this->db->prepare($sql);
-            $sqlStmt->execute();
+            $sqlStmt = $this->executeSQL($sql);
             while ($row = $sqlStmt->fetch(PDO::FETCH_ASSOC)) {
                 $list[] = $row['BIB_ID'];
             }
@@ -1972,28 +2421,27 @@ class Voyager extends AbstractBase implements TranslatorAwareInterface
     }
 
     /**
-     * Set a translator
+     * Execute an SQL query
      *
-     * @param \Zend\I18n\Translator\Translator $translator Translator
+     * @param string|array $sql  SQL statement (string or array that includes
+     * bind params)
+     * @param array        $bind Bind parameters (if $sql is string)
      *
-     * @return Voyager
+     * @return PDOStatement
      */
-    public function setTranslator(\Zend\I18n\Translator\Translator $translator)
+    protected function executeSQL($sql, $bind = [])
     {
-        $this->translator = $translator;
-        return $this;
-    }
+        if (is_array($sql)) {
+            $bind = $sql['bind'];
+            $sql = $sql['string'];
+        }
+        if ($this->logger) {
+            list(, $caller) = debug_backtrace(false);
+            $this->debugSQL($caller['function'], $sql, $bind);
+        }
+        $sqlStmt = $this->db->prepare($sql);
+        $sqlStmt->execute($bind);
 
-    /**
-     * Translate a string if a translator is available.
-     *
-     * @param string $msg Message to translate
-     *
-     * @return string
-     */
-    protected function translate($msg)
-    {
-        return null !== $this->translator
-            ? $this->translator->translate($msg) : $msg;
+        return $sqlStmt;
     }
 }

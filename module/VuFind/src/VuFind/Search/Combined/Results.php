@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Base
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Search\Combined;
 
 /**
  * Combined results search model.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Base
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 class Results extends \VuFind\Search\Base\Results
 {
@@ -49,7 +49,7 @@ class Results extends \VuFind\Search\Base\Results
     public function getFacetList($filter = null)
     {
         // Not relevant:
-        return array();
+        return [];
     }
 
     /**
@@ -61,8 +61,7 @@ class Results extends \VuFind\Search\Base\Results
      */
     protected function performSearch()
     {
-        throw new \Exception(
-            'This is a placeholder class and is not meant to be called!'
-        );
+        // No actual processing goes on here, but we still need the class to
+        // generate recommendation module output.
     }
 }

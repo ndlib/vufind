@@ -51,6 +51,12 @@
 #    #     for an example.  This is applied whether we use DismaxFields or
 #    #     QueryFields.
 #    FilterQuery: (optional Lucene filter query)
+#    ExactSettings:
+#      DismaxFields: ...
+#      QueryFields: ...
+#    # All the same settings as above, but for exact searches, i.e. search terms
+#    #     enclosed in quotes. Allows different fields or weights for exact
+#    #     searches. See below for commented-out examples.
 #
 # ...etc.
 #
@@ -150,7 +156,11 @@ Author:
     - author^100
     - author_fuller^50
     - author2
+    - author2_fuller
     - author_additional
+    - author_corporate
+    - author_variant
+    - author2_variant
   QueryFields:
     author:
       - [onephrase, 350]
@@ -164,7 +174,23 @@ Author:
       - [onephrase, 100]
       - [and, 50]
       - [or, ~]
+    author2_fuller:
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
     author_additional:
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
+    author_corporate:
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
+    author_variant:
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
+    author2_variant:
       - [onephrase, 100]
       - [and, 50]
       - [or, ~]
@@ -208,6 +234,14 @@ Subject:
     era:
       - [and, 100]
       - [or, ~]
+#  ExactSettings:
+#    DismaxFields:
+#      - topic_unstemmed^150
+#    QueryFields:
+#      - topic_unstemmed:
+#        - [onephrase, 350]
+#        - [and, 150]
+#        - [or, ~]
 
 # This field definition is a compromise that supports both journal-level and
 # article-level data.  The disadvantage is that hits in article titles will
@@ -253,6 +287,14 @@ JournalTitle:
       - [onephrase, 50]
       - [and , ~]
   FilterQuery: "format:Journal OR format:Article"
+#  ExactSettings:
+#    DismaxFields:
+#      - title_full_unstemmed^450
+#    QueryFields:
+#      - title_full_unstemmed:
+#        - [onephrase, 450]
+#        - [and, 400]
+#    FilterQuery: "format:Journal OR format:Article"
 
 Title:
   DismaxFields:
@@ -288,6 +330,13 @@ Title:
     series2:
       - [onephrase, 50]
       - [and , ~]
+#  ExactSettings:
+#    DismaxFields:
+#      - title_full_unstemmed^450
+#    QueryFields:
+#      - title_full_unstemmed:
+#        - [onephrase, 450]
+#        - [and, 400]
 
 Series:
   DismaxFields:
@@ -324,6 +373,9 @@ AllFields:
     - fulltext_unstemmed^10
     - allfields
     - fulltext
+    - description
+    - isbn
+    - issn
   QueryFields:
     0:
       0:
@@ -376,11 +428,45 @@ AllFields:
       - [or, ~]
     fulltext:
       - [or, ~]
+    description:
+      - [or, ~]
+    isbn:
+      - [onephrase, ~]
+    issn:
+      - [onephrase, ~]
+#  ExactSettings:
+#    DismaxFields:
+#      - title_full_unstemmed^600
+#      - topic_unstemmed^550
+#      - allfields_unstemmed^10
+#      - fulltext_unstemmed^10
+#      - isbn
+#      - issn
+#    QueryFields:
+#      title_full_unstemmed:
+#        - [onephrase, 600]
+#        - [and, 500]
+#      topic_unstemmed:
+#        - [onephrase, 550]
+#        - [and, 500]
+#      allfields_unstemmed:
+#        - [or, 10]
+#      fulltext_unstemmed:
+#        - [or, 10]
+#      isbn:
+#        - [onephrase, ~]
+#      issn:
+#        - [onephrase, ~]
 
 # These are advanced searches that never use Dismax:
 id:
   QueryFields:
     id:
+      - [onephrase, ~]
+
+ParentID:
+  QueryFields:
+    hierarchy_parent_id:
       - [onephrase, ~]
 
 # Fields for exact matches originating from alphabetic browse
@@ -411,7 +497,7 @@ DeweyBrowse:
 
 LccBrowse:
   QueryFields:
-    callnumber-a:
+    callnumber-raw:
       - [onephrase, ~]
 
 CallNumber:
@@ -420,29 +506,27 @@ CallNumber:
   # which will return a larger number of hits at a lower boost.
   CustomMunge:
     callnumber_exact:
-      - [uppercase]
       # Strip whitespace and quotes:
-      - [preg_replace, '/[ "]/', ""]
+      - [preg_replace, '/[ "]/', '']
       # Escape colons (unescape first to avoid double-escapes):
-      - [preg_replace, "/(\\\:)/", ':']
+      - [preg_replace, '/(\\:)/', ':']
       - [preg_replace, '/:/', '\:']
       # Strip pre-existing trailing asterisks:
-      - [preg_replace, "/\*+$/", ""]
+      - [preg_replace, '/\*+$/', '']
     callnumber_fuzzy:
-      - [uppercase]
       # Strip whitespace and quotes:
-      - [preg_replace, '/[ "]/', ""]
+      - [preg_replace, '/[ "]/', '']
       # Escape colons (unescape first to avoid double-escapes):
-      - [preg_replace, "/(\\\:)/", ':']
+      - [preg_replace, '/(\\:)/', ':']
       - [preg_replace, '/:/', '\:']
       # Strip pre-existing trailing asterisks, then add a new one:
-      - [preg_replace, "/\*+$/", ""]
+      - [preg_replace, '/\*+$/', '']
       - [append, "*"]
   QueryFields:
-    callnumber:
+    callnumber-search:
       - [callnumber_exact, 1000]
       - [callnumber_fuzzy, ~]
-    dewey-full:
+    dewey-search:
       - [callnumber_exact, 1000]
       - [callnumber_fuzzy, ~]
 
@@ -487,7 +571,7 @@ geographic:
     geographic:
       - [and, 50]
     geographic_facet:
-      - [and ~]
+      - [and, ~]
 
 genre:
   QueryFields:

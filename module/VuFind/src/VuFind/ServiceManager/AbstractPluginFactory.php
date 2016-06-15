@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\ServiceManager;
 use Zend\ServiceManager\AbstractFactoryInterface,
@@ -32,11 +32,11 @@ use Zend\ServiceManager\AbstractFactoryInterface,
 /**
  * VuFind Abstract Plugin Factory
  *
- * @category VuFind2
+ * @category VuFind
  * @package  ServiceManager
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 abstract class AbstractPluginFactory implements AbstractFactoryInterface
 {
@@ -64,17 +64,18 @@ abstract class AbstractPluginFactory implements AbstractFactoryInterface
      */
     protected function getClassName($name, $requestedName)
     {
-        // If we have a FQCN, return it as-is; otherwise, prepend the default prefix:
-        if (strpos($name, '\\') === false) {
-            // First try the raw service name, then try a normalized version:
-            $name = $this->defaultNamespace . '\\' . $requestedName
-                . $this->classSuffix;
-            if (!class_exists($name)) {
-                $name = $this->defaultNamespace . '\\' . ucwords(strtolower($name))
-                    . $this->classSuffix;
-            }
+        // If we have a FQCN that refers to an existing class, return it as-is:
+        if (strpos($requestedName, '\\') !== false && class_exists($requestedName)) {
+            return $requestedName;
         }
-        return $name;
+        // First try the raw service name, then try a normalized version:
+        $finalName = $this->defaultNamespace . '\\' . $requestedName
+            . $this->classSuffix;
+        if (!class_exists($finalName)) {
+            $finalName = $this->defaultNamespace . '\\' . ucwords(strtolower($name))
+                . $this->classSuffix;
+        }
+        return $finalName;
     }
 
     /**
@@ -85,6 +86,7 @@ abstract class AbstractPluginFactory implements AbstractFactoryInterface
      * @param string                  $requestedName  Unfiltered name of service
      *
      * @return bool
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator,
@@ -102,6 +104,7 @@ abstract class AbstractPluginFactory implements AbstractFactoryInterface
      * @param string                  $requestedName  Unfiltered name of service
      *
      * @return object
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator,

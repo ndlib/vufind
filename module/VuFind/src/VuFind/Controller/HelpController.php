@@ -19,26 +19,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Controller;
 
 /**
  * Home action for Help module
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class HelpController extends AbstractBase
 {
@@ -51,26 +51,8 @@ class HelpController extends AbstractBase
     public function homeAction()
     {
         $this->layout()->setTemplate('layout/help');
-
-        // Sanitize the topic name to include only alphanumeric characters
-        // or underscores.
-        $safe_topic
-            = preg_replace('/[^\w]/', '', $this->params()->fromQuery('topic'));
-
-        // Construct two possible template names -- the help screen in the
-        // current selected language and help in English (most likely to exist).
-        // The code will attempt to display the most appropriate existing help screen
-        $language = $this->getServiceLocator()->has('VuFind\Translator')
-            ? $this->getServiceLocator()->get('VuFind\Translator')->getLocale()
-            : 'en';
-
-        $tpl_lang = 'HelpTranslations/' . $language
-            . '/' . $safe_topic . '.phtml';
-        $tpl_en = 'HelpTranslations/en/' . $safe_topic . '.phtml';
-       
-        // Best case -- help is available in the user's chosen language
         return $this->createViewModel(
-            array('tpl_lang' => $tpl_lang, 'tpl_en' => $tpl_en)
+            ['topic' => $this->params()->fromQuery('topic')]
         );
     }
 }

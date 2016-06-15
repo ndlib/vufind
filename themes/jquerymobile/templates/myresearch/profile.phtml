@@ -7,6 +7,9 @@
   <div data-role="content">
     <h3><?=$this->transEsc('Your Profile')?></h3>
     <?=$this->flashmessages();?>
+
+    <?=$this->context($this)->renderInContext('librarycards/selectcard.phtml', array('user' => $this->auth()->isLoggedIn())); ?>
+
     <dl class="biblio">
     <?
         echo $this->renderArray(
@@ -17,6 +20,8 @@
                 $this->transEsc('Address') . ' 1' => 'address1',
                 $this->transEsc('Address') . ' 2' => 'address2',
                 $this->transEsc('Zip') => 'zip',
+                $this->transEsc('City') => 'city',
+                $this->transEsc('Country') => 'country',
                 $this->transEsc('Phone Number') => 'phone',
                 $this->transEsc('Group') => 'group'
             )

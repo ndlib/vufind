@@ -25,18 +25,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
  * @link     http://code.google.com/p/mobileesp/ MobileESP Project
  */
 namespace VuFindTheme;
+use uagent_info;
 
 /**
  * Mobile Device Detection Wrapper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
@@ -45,11 +46,28 @@ namespace VuFindTheme;
 class Mobile
 {
     /**
+     * Mobile detection object
+     *
+     * @var uagent_info
+     */
+    protected $detector;
+
+    /**
      * Are mobile themes enabled?
      *
      * @var bool
      */
     protected $enabled = false;
+
+    /**
+     * Constructor
+     *
+     * @param uagent_info $detector Detector object to wrap (null to create one)
+     */
+    public function __construct(uagent_info $detector = null)
+    {
+        $this->detector = (null === $detector) ? new uagent_info() : $detector;
+    }
 
     /**
      * Function to detect if a mobile device is being used.
@@ -61,8 +79,7 @@ class Mobile
         // Do the most exhaustive device detection possible; other method calls
         // may be used instead of DetectMobileLong if you want to target a narrower
         // class of devices.
-        $mobile = new \uagent_info();
-        return $mobile->DetectMobileLong();
+        return $this->detector->DetectMobileLong();
     }
 
     /**

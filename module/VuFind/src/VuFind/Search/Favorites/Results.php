@@ -19,28 +19,45 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Favorites
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Search\Favorites;
 use VuFind\Exception\ListPermission as ListPermissionException,
-    VuFind\Search\Base\Results as BaseResults;
+    VuFind\Search\Base\Results as BaseResults,
+    VuFind\Record\Cache,
+    ZfcRbac\Service\AuthorizationServiceAwareInterface,
+    ZfcRbac\Service\AuthorizationServiceAwareTrait;
 
 /**
  * Search Favorites Results
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search_Favorites
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Results extends BaseResults
+    implements AuthorizationServiceAwareInterface
 {
+    use AuthorizationServiceAwareTrait;
+
+    /**
+     * Object if user is logged in, false otherwise.
+     *
+     * @var \VuFind\Db\Row\User|bool
+     */
     protected $user = null;
+
+    /**
+     * Active user list (false if none).
+     *
+     * @var \VuFind\Db\Row\UserList|bool
+     */
     protected $list = false;
 
     /**
@@ -64,43 +81,31 @@ class Results extends BaseResults
         }
 
         // Start building the facet list:
-        $retVal = array();
+        $retVal = [];
 
         // Loop through every requested field:
         $validFields = array_keys($filter);
         foreach ($validFields as $field) {
             if (!isset($this->facets[$field])) {
-                $this->facets[$field] = array(
+                $this->facets[$field] = [
                     'label' => $this->getParams()->getFacetLabel($field),
-                    'list' => array()
-                );
+                    'list' => []
+                ];
                 switch ($field) {
-                case 'lists':
-                    $lists = $this->user ? $this->user->getLists() : array();
-                    foreach ($lists as $list) {
-                        $this->facets[$field]['list'][] = array(
-                            'value' => $list->id,
-                            'displayText' => $list->title,
-                            'count' => $list->cnt,
-                            'isApplied' =>
-                                $this->getParams()->hasFilter("$field:".$list->id)
-                        );
-                    }
-                    break;
                 case 'tags':
                     if ($this->list) {
                         $tags = $this->list->getTags();
                     } else {
-                        $tags = $this->user ? $this->user->getTags() : array();
+                        $tags = $this->user ? $this->user->getTags() : [];
                     }
                     foreach ($tags as $tag) {
-                        $this->facets[$field]['list'][] = array(
+                        $this->facets[$field]['list'][] = [
                             'value' => $tag->tag,
                             'displayText' => $tag->tag,
                             'count' => $tag->cnt,
                             'isApplied' =>
-                                $this->getParams()->hasFilter("$field:".$tag->tag)
-                        );
+                                $this->getParams()->hasFilter("$field:" . $tag->tag)
+                        ];
                     }
                     break;
                 }
@@ -121,8 +126,8 @@ class Results extends BaseResults
     protected function performSearch()
     {
         $list = $this->getListObject();
-        $account = $this->getParams()->getAuthManager();
-        $this->user = $account ? $account->isLoggedIn() : false;
+        $auth = $this->getAuthorizationService();
+        $this->user = $auth ? $auth->getIdentity() : false;
 
         // Make sure the user and/or list objects make it possible to view
         // the current result set -- we need to check logged in status and
@@ -159,17 +164,19 @@ class Results extends BaseResults
         }
 
         // Retrieve record drivers for the selected items.
-        $recordsToRequest = array();
+        $recordsToRequest = [];
         foreach ($rawResults as $row) {
-            $recordsToRequest[] = array(
+            $recordsToRequest[] = [
                 'id' => $row->record_id, 'source' => $row->source,
-                'extra_fields' => array(
+                'extra_fields' => [
                     'title' => $row->title
-                )
-            );
+                ]
+            ];
         }
-        $this->results = $this->getServiceLocator()->get('VuFind\RecordLoader')
-            ->loadBatch($recordsToRequest);
+
+        $recordLoader = $this->getServiceLocator()->get('VuFind\RecordLoader');
+        $recordLoader->setCacheContext(Cache::CONTEXT_FAVORITE);
+        $this->results = $recordLoader->loadBatch($recordsToRequest);
     }
 
     /**
@@ -180,7 +187,7 @@ class Results extends BaseResults
     protected function getTagFilters()
     {
         $filters = $this->getParams()->getFilters();
-        return isset($filters['tags']) ? $filters['tags'] : array();
+        return isset($filters['tags']) ? $filters['tags'] : [];
     }
 
     /**

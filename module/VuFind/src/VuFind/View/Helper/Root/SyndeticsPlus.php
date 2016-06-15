@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\View\Helper\Root;
 
 /**
  * SyndeticsPlus view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class SyndeticsPlus extends \Zend\View\Helper\AbstractHelper
 {
@@ -78,7 +78,9 @@ class SyndeticsPlus extends \Zend\View\Helper\AbstractHelper
     {
         // Determine whether to include script tag for SyndeticsPlus
         if (isset($this->config->plus_id)) {
-            return "http://plus.syndetics.com/widget.php?id="
+            $baseUrl = (isset($this->config->use_ssl) && $this->config->use_ssl)
+                ? 'https://secure.syndetics.com' : 'http://plus.syndetics.com';
+            return $baseUrl . "/widget.php?id="
                 . urlencode($this->config->plus_id);
         }
 

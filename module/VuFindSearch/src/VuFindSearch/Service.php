@@ -20,18 +20,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindSearch;
 
 use VuFindSearch\Backend\BackendInterface;
 use VuFindSearch\Feature\RetrieveBatchInterface;
+use VuFindSearch\Feature\RandomInterface;
 use VuFindSearch\Backend\Exception\BackendException;
+use VuFindSearch\Response\RecordCollectionInterface;
 
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\EventManager;
@@ -39,11 +40,11 @@ use Zend\EventManager\EventManager;
 /**
  * Search service.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class Service
 {
@@ -78,7 +79,7 @@ class Service
      */
     public function __construct()
     {
-        $this->backends = array();
+        $this->backends = [];
     }
 
     /**
@@ -90,7 +91,7 @@ class Service
      * @param integer             $limit   Search limit
      * @param ParamBag            $params  Search backend parameters
      *
-     * @return ResponseInterface
+     * @return RecordCollectionInterface
      */
     public function search($backend, Query\AbstractQuery $query, $offset = 0,
         $limit = 20, ParamBag $params = null
@@ -119,7 +120,7 @@ class Service
      * @param string   $id      Record identifier
      * @param ParamBag $params  Search backend parameters
      *
-     * @return ResponseInterface
+     * @return RecordCollectionInterface
      */
     public function retrieve($backend, $id, ParamBag $params = null)
     {
@@ -147,7 +148,7 @@ class Service
      * @param array    $ids     Record identifier
      * @param ParamBag $params  Search backend parameters
      *
-     * @return ResponseInterface
+     * @return RecordCollectionInterface
      */
     public function retrieveBatch($backend, $ids, ParamBag $params = null)
     {
@@ -191,6 +192,89 @@ class Service
     }
 
     /**
+     * Retrieve a random batch of records.
+     *
+     * @param string              $backend Search backend identifier
+     * @param Query\AbstractQuery $query   Search query
+     * @param integer             $limit   Search limit
+     * @param ParamBag            $params  Search backend parameters
+     *
+     * @return RecordCollectionInterface
+     */
+    public function random($backend, $query, $limit = 20, $params = null)
+    {
+        $params  = $params ?: new ParamBag();
+        $context = __FUNCTION__;
+        $args = compact('backend', 'query', 'limit', 'params', 'context');
+        $backend = $this->resolve($backend, $args);
+        $args['backend_instance'] = $backend;
+
+        $this->triggerPre($backend, $args);
+
+        // If the backend implements the RetrieveRandomInterface, we can load
+        // all the records at once; otherwise, we need to load them one at a
+        // time and aggregate them:
+        if ($backend instanceof RandomInterface) {
+            try {
+                $response = $backend->random($query, $limit, $params);
+            } catch (BackendException $e) {
+                $this->triggerError($e, $args);
+                throw $e;
+            }
+        } else {
+            // offset/limit of 0 - we don't need records, just count
+            try {
+                $results = $backend->search($query, 0, 0, $params);
+            } catch (BackendException $e) {
+                $this->triggerError($e, $args);
+                throw $e;
+            }
+            $total_records = $results->getTotal();
+
+            if (0 === $total_records) {
+                // Empty result? Send back as-is:
+                $response = $results;
+            } elseif ($total_records < $limit) {
+                // Result set smaller than limit? Get everything and shuffle:
+                try {
+                     $response = $backend->search($query, 0, $limit, $params);
+                } catch (BackendException $e) {
+                    $this->triggerError($e, $args);
+                    throw $e;
+                }
+                $response->shuffle();
+            } else {
+                // Default case: retrieve n random records:
+                $response = false;
+                $retrievedIndexes = [];
+                for ($i = 0; $i < $limit; $i++) {
+                    $nextIndex = rand(0, $total_records - 1);
+                    while (in_array($nextIndex, $retrievedIndexes)) {
+                        // avoid duplicate records
+                        $nextIndex = rand(0, $total_records - 1);
+                    }
+                    $retrievedIndexes[] = $nextIndex;
+                    try {
+                        $currentBatch = $backend->search(
+                            $query, $nextIndex, 1, $params
+                        );
+                    } catch (BackendException $e) {
+                        $this->triggerError($e, $args);
+                        throw $e;
+                    }
+                    if (!$response) {
+                        $response = $currentBatch;
+                    } else if ($record = $currentBatch->first()) {
+                        $response->add($record);
+                    }
+                }
+            }
+        }
+        $this->triggerPost($response, $args);
+        return $response;
+    }
+
+    /**
      * Return similar records.
      *
      * @param string   $backend Search backend identifier
@@ -204,12 +288,15 @@ class Service
         $params  = $params ?: new ParamBag();
         $context = __FUNCTION__;
         $args = compact('backend', 'id', 'params', 'context');
-        $backend = $this->resolve($backend, $args);
-        $args['backend_instance'] = $backend;
+        $backendInstance = $this->resolve($backend, $args);
+        $args['backend_instance'] = $backendInstance;
 
-        $this->triggerPre($backend, $args);
+        $this->triggerPre($backendInstance, $args);
         try {
-            $response = $backend->similar($id, $params);
+            if (!($backendInstance instanceof Feature\SimilarInterface)) {
+                throw new BackendException("$backend does not support similar()");
+            }
+            $response = $backendInstance->similar($id, $params);
         } catch (BackendException $e) {
             $this->triggerError($e, $args);
             throw $e;
@@ -228,7 +315,7 @@ class Service
      */
     public function setEventManager(EventManagerInterface $events)
     {
-        $events->setIdentifiers(array('VuFind\Search', 'VuFindSearch'));
+        $events->setIdentifiers(['VuFind\Search', 'VuFindSearch']);
         $this->events = $events;
     }
 
@@ -267,7 +354,7 @@ class Service
                 $this,
                 $args,
                 function ($o) {
-                    return ($o instanceOf BackendInterface);
+                    return ($o instanceof BackendInterface);
                 }
             );
             if (!$response->stopped()) {

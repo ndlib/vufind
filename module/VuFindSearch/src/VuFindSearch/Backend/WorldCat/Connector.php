@@ -19,25 +19,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  WorldCat
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFindSearch\Backend\WorldCat;
-use VuFindSearch\Query\AbstractQuery;
 use VuFindSearch\ParamBag;
 
 /**
  * WorldCat SRU Search Interface
  *
- * @category VuFind2
+ * @category VuFind
  * @package  WorldCat
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class Connector extends \VuFindSearch\Backend\SRU\Connector
 {
@@ -49,26 +48,17 @@ class Connector extends \VuFindSearch\Backend\SRU\Connector
     protected $wskey;
 
     /**
-     * OCLC codes for limiting search results
-     *
-     * @var string
-     */
-    protected $limitCodes;
-
-    /**
      * Constructor
      *
-     * @param string            $wsKey      Web services key
-     * @param string            $limitCodes OCLC codes to use for limiting
-     * @param \Zend\Http\Client $client     An HTTP client object
+     * @param string            $wsKey  Web services key
+     * @param \Zend\Http\Client $client An HTTP client object
      */
-    public function __construct($wsKey, $limitCodes, \Zend\Http\Client $client)
+    public function __construct($wsKey, \Zend\Http\Client $client)
     {
         parent::__construct(
             'http://www.worldcat.org/webservices/catalog/search/sru', $client
         );
         $this->wskey = $wsKey;
-        $this->limitCodes = $limitCodes;
     }
 
     /**
@@ -120,11 +110,11 @@ class Connector extends \VuFindSearch\Backend\SRU\Connector
         $xml = simplexml_load_string($body);
         $error = isset($xml->diagnostic);
 
-        return array(
-            'docs' => $error ? array() : array($body),
+        return [
+            'docs' => $error ? [] : [$body],
             'offset' => 0,
             'total' => $error ? 0 : 1
-        );
+        ];
     }
 
     /**
@@ -143,24 +133,18 @@ class Connector extends \VuFindSearch\Backend\SRU\Connector
         $params->set('servicelevel', 'full');
         $params->set('wskey', $this->wskey);
 
-        // Establish a limitation on searching by OCLC Codes
-        if (!empty($this->limitCodes)) {
-            $params->set('oclcsymbol', $this->limitCodes);
-        }
-
         $response = $this->call('POST', $params->getArrayCopy(), false);
 
         $xml = simplexml_load_string($response);
-        $docs = isset($xml->records->record) ? $xml->records->record : array();
-        $finalDocs = array();
+        $docs = isset($xml->records->record) ? $xml->records->record : [];
+        $finalDocs = [];
         foreach ($docs as $doc) {
             $finalDocs[] = $doc->recordData->asXML();
         }
-        return array(
+        return [
             'docs' => $finalDocs,
             'offset' => $offset,
             'total' => isset($xml->numberOfRecords) ? (int)$xml->numberOfRecords : 0
-        );
+        ];
     }
-
 }

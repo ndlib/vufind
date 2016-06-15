@@ -4,7 +4,7 @@
  *
  * PHP version 5
  *
- * Copyright (C) Villanova University 2010.
+ * Copyright (C) Villanova University 2014.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -19,12 +19,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
+ * @author   Jochen Lienhard <lienhard@ub.uni-freiburg.de>
+ * @author   Bernd Oberknapp <bo@ub.uni-freiburg.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 namespace VuFind\Auth;
 use VuFind\Exception\Auth as AuthException;
@@ -32,15 +34,19 @@ use VuFind\Exception\Auth as AuthException;
 /**
  * Shibboleth authentication module.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
+ * @author   Jochen Lienhard <lienhard@ub.uni-freiburg.de>
+ * @author   Bernd Oberknapp <bo@ub.uni-freiburg.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://www.vufind.org  Main Page
+ * @link     https://vufind.org Main Page
  */
 class Shibboleth extends AbstractBase
 {
+    const DEFAULT_IDPSERVERPARAM = 'Shib-Identity-Provider';
+
     /**
      * Validate configuration parameters.  This is a support method for getConfig(),
      * so the configuration MUST be accessed using $this->config; do not call
@@ -59,6 +65,7 @@ class Shibboleth extends AbstractBase
             );
         }
 
+        // Throw an exception if no login endpoint is available.
         if (!isset($shib->login)) {
             throw new AuthException(
                 'Shibboleth login configuration parameter is not set.'
@@ -86,7 +93,7 @@ class Shibboleth extends AbstractBase
 
         // Check if required attributes match up:
         foreach ($this->getRequiredAttributes() as $key => $value) {
-            if (!preg_match('/'. $value .'/', $request->getServer()->get($key))) {
+            if (!preg_match('/' . $value . '/', $request->getServer()->get($key))) {
                 throw new AuthException('authentication_error_denied');
             }
         }
@@ -99,10 +106,10 @@ class Shibboleth extends AbstractBase
         $catPassword = null;
 
         // Has the user configured attributes to use for populating the user table?
-        $attribsToCheck = array(
+        $attribsToCheck = [
             'cat_username', 'cat_password', 'email', 'lastname', 'firstname',
             'college', 'major', 'home_library'
-        );
+        ];
         foreach ($attribsToCheck as $attribute) {
             if (isset($shib->$attribute)) {
                 $value = $request->getServer()->get($shib->$attribute);
@@ -114,9 +121,19 @@ class Shibboleth extends AbstractBase
             }
         }
 
-        // Save credentials if applicable:
-        if (!empty($catPassword) && !empty($user->cat_username)) {
-            $user->saveCredentials($user->cat_username, $catPassword);
+        // Save credentials if applicable. Note that we want to allow empty
+        // passwords (see https://github.com/vufind-org/vufind/pull/532), but
+        // we also want to be careful not to replace a non-blank password with a
+        // blank one in case the auth mechanism fails to provide a password on
+        // an occasion after the user has manually stored one. (For discussion,
+        // see https://github.com/vufind-org/vufind/pull/612). Note that in the
+        // (unlikely) scenario that a password can actually change from non-blank
+        // to blank, additional work may need to be done here.
+        if (!empty($user->cat_username)) {
+            $user->saveCredentials(
+                $user->cat_username,
+                empty($catPassword) ? $user->getCatPassword() : $catPassword
+            );
         }
 
         // Save and return the user object:
@@ -129,7 +146,7 @@ class Shibboleth extends AbstractBase
      * form is inadequate).  Returns false when no session initiator is needed.
      *
      * @param string $target Full URL where external authentication method should
-     * send user to after login (some drivers may override this).
+     * send user after login (some drivers may override this).
      *
      * @return bool|string
      */
@@ -141,11 +158,17 @@ class Shibboleth extends AbstractBase
         } else {
             $shibTarget = $target;
         }
+        $append = (strpos($shibTarget, '?') !== false) ? '&' : '?';
         $sessionInitiator = $config->Shibboleth->login
-            . '?target=' . urlencode($shibTarget);
+            . '?target=' . urlencode($shibTarget)
+            . urlencode($append . 'auth_method=Shibboleth');
+                                                    // makes it possible to
+                                                    // handle logins when using
+                                                    // an auth method that
+                                                    // proxies others
 
         if (isset($config->Shibboleth->provider_id)) {
-            $sessionInitiator = $sessionInitiator . '&providerId=' .
+            $sessionInitiator = $sessionInitiator . '&entityID=' .
                 urlencode($config->Shibboleth->provider_id);
         }
 
@@ -203,7 +226,7 @@ class Shibboleth extends AbstractBase
     protected function getRequiredAttributes()
     {
         // Special case -- store username as-is to establish return array:
-        $sortedUserAttributes = array();
+        $sortedUserAttributes = [];
 
         // Now extract user attribute values:
         $shib = $this->getConfig()->Shibboleth;
@@ -216,7 +239,7 @@ class Shibboleth extends AbstractBase
                 // Throw an exception if attributes are missing/empty.
                 if (empty($sortedUserAttributes[$value])) {
                     throw new AuthException(
-                        "User attribute value of " . $value. " is missing!"
+                        "User attribute value of " . $value . " is missing!"
                     );
                 }
             }

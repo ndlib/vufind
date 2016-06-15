@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindTest\Backend\Solr;
 
 use VuFindSearch\Query\Query;
@@ -36,11 +35,11 @@ use VuFindSearch\Backend\Solr\QueryBuilder;
 /**
  * Unit tests for SOLR query builder
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class QueryBuilderTest extends \VuFindTest\Unit\TestCase
 {
@@ -53,43 +52,43 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     {
         // Set up an array of expected inputs and outputs:
         // @codingStandardsIgnoreStart
-        $tests = array(
-            array("", "*:*"),                         // empty query
-            array("()", "*:*"),                       // empty parens
-            array("((()))", "*:*"),                   // nested empty parens
-            array("((())", "*:*"),                    // mismatched parens
-            array("this that ()", "this that"),       // text mixed w/ empty parens
-            array('"()"', '"()"'),                    // empty parens in quotes
-            array('title - sub', 'title sub'),        // freestanding hyphen
-            array('"title - sub"', '"title - sub"'),  // freestanding hyphen in quotes
-            array('test~1', 'test'),                  // meaningless proximity
-            array('test~1.', 'test'),                 // meaningless proximity w/dec.
-            array('test~1.000', 'test'),              // meaningless proximity w/dec.
-            array('test~1 fish', 'test fish'),        // meaningless proximity
-            array('test~1. fish', 'test fish'),       // meaningless proximity w/dec.
-            array('test~1.000 fish', 'test fish'),    // meaningless proximity w/dec.
-            array('"test~1"', '"test~1"'),            // meaningless prox. in quotes
-            array('test~0.9', 'test~0.9'),            // valid proximity
-            array('test~10', 'test~10'),              // illegal prox. (leave alone)
-            array('test~10 fish', 'test~10 fish'),    // illegal prox. (leave alone)
-            array('^10 test^10', '10 test10'),        // invalid boosts
-            array('^10', '10'),                       // invalid boosts
-            array('test^ test^6', 'test test6'),      // invalid boosts
-            array('test^1 test^2', 'test^1 test^2'),  // valid boosts
-            array('this / that', 'this that'),        // freestanding slash
-            array('/ this', 'this'),                  // leading slash
-            array('title /', 'title'),                // trailing slash
-            array('this - that', 'this that'),        // freestanding hyphen
-            array('- this', 'this'),                  // leading hyphen
-            array('title -', 'title'),                // trailing hyphen
-            array('AND', 'and'),                      // freestanding operator
-            array('OR', 'or'),                        // freestanding operator
-            array('NOT', 'not'),                      // freestanding operator
-            array('*bad', 'bad'),                     // leading wildcard
-            array('?bad', 'bad'),                     // leading wildcard
-            array("\xE2\x80\x9Ca\xE2\x80\x9D", '"a"'),// fancy quotes
-            array('a:{a TO b} [ }', 'a:{a TO b}'),    // floating braces/brackets
-        );
+        $tests = [
+            ["", "*:*"],                         // empty query
+            ["()", "*:*"],                       // empty parens
+            ["((()))", "*:*"],                   // nested empty parens
+            ["((())", "*:*"],                    // mismatched parens
+            ["this that ()", "this that"],       // text mixed w/ empty parens
+            ['"()"', '"()"'],                    // empty parens in quotes
+            ['title - sub', 'title sub'],        // freestanding hyphen
+            ['"title - sub"', '"title - sub"'],  // freestanding hyphen in quotes
+            ['test~1', 'test'],                  // meaningless proximity
+            ['test~1.', 'test'],                 // meaningless proximity w/dec.
+            ['test~1.000', 'test'],              // meaningless proximity w/dec.
+            ['test~1 fish', 'test fish'],        // meaningless proximity
+            ['test~1. fish', 'test fish'],       // meaningless proximity w/dec.
+            ['test~1.000 fish', 'test fish'],    // meaningless proximity w/dec.
+            ['"test~1"', '"test~1"'],            // meaningless prox. in quotes
+            ['test~0.9', 'test~0.9'],            // valid proximity
+            ['test~10', 'test~10'],              // illegal prox. (leave alone)
+            ['test~10 fish', 'test~10 fish'],    // illegal prox. (leave alone)
+            ['^10 test^10', '10 test10'],        // invalid boosts
+            ['^10', '10'],                       // invalid boosts
+            ['test^ test^6', 'test test6'],      // invalid boosts
+            ['test^1 test^2', 'test^1 test^2'],  // valid boosts
+            ['this / that', 'this that'],        // freestanding slash
+            ['/ this', 'this'],                  // leading slash
+            ['title /', 'title'],                // trailing slash
+            ['this - that', 'this that'],        // freestanding hyphen
+            ['- this', 'this'],                  // leading hyphen
+            ['title -', 'title'],                // trailing hyphen
+            ['AND', 'and'],                      // freestanding operator
+            ['OR', 'or'],                        // freestanding operator
+            ['NOT', 'not'],                      // freestanding operator
+            ['*bad', 'bad'],                     // leading wildcard
+            ['?bad', 'bad'],                     // leading wildcard
+            ["\xE2\x80\x9Ca\xE2\x80\x9D", '"a"'],// fancy quotes
+            ['a:{a TO b} [ }', 'a:{a TO b}'],    // floating braces/brackets
+        ];
         // @codingStandardsIgnoreEnd
 
         $qb = new QueryBuilder();
@@ -111,15 +110,15 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     {
         // Set up an array of expected inputs and outputs:
         // @codingStandardsIgnoreStart
-        $tests = array(
-            array('this?', '((this?) OR (this\?))'),// trailing question mark
-        );
+        $tests = [
+            ['this?', '((this?) OR (this\?))'],// trailing question mark
+        ];
         // @codingStandardsIgnoreEnd
 
         $qb = new QueryBuilder(
-            array(
-                'test' => array()
-            )
+            [
+                'test' => []
+            ]
         );
         foreach ($tests as $test) {
             list($input, $output) = $test;
@@ -131,6 +130,38 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     }
 
     /**
+     * Test that the appropriate handler gets called for a quoted search when exact
+     * settings are enabled.
+     *
+     * @return void
+     */
+    public function testExactQueryHandler()
+    {
+        $qb = new QueryBuilder(
+            [
+                'test' => [
+                    'DismaxFields' => ['a', 'b'],
+                    'ExactSettings' => [
+                        'DismaxFields' => ['c', 'd']
+                    ]
+                ]
+            ]
+        );
+
+        // non-quoted search uses main DismaxFields
+        $q = new Query('q', 'test');
+        $response = $qb->build($q);
+        $qf = $response->get('qf');
+        $this->assertEquals('a b', $qf[0]);
+
+        // quoted search uses ExactSettings>DismaxFields
+        $q = new Query('"q"', 'test');
+        $response = $qb->build($q);
+        $qf = $response->get('qf');
+        $this->assertEquals('c d', $qf[0]);
+    }
+
+    /**
      * Test generation with a query handler with a filter set and DisMax settings
      *
      * @return void
@@ -138,9 +169,9 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testQueryHandlerWithFilterQueryAndDisMax()
     {
         $qb = new QueryBuilder(
-            array(
-                'test' => array('DismaxFields' => array('a'), 'FilterQuery' => 'a:filter')
-            )
+            [
+                'test' => ['DismaxFields' => ['a'], 'FilterQuery' => 'a:filter']
+            ]
         );
         $q = new Query('q', 'test');
         $response = $qb->build($q);
@@ -156,9 +187,9 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testQueryHandlerWithFilterQueryAndNoDisMax()
     {
         $qb = new QueryBuilder(
-            array(
-                'test' => array('FilterQuery' => 'a:filter')
-            )
+            [
+                'test' => ['FilterQuery' => 'a:filter']
+            ]
         );
         $q = new Query('q', 'test');
         $response = $qb->build($q);
@@ -175,9 +206,9 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testMatchAllQueryWithFilterQueryAndNoDisMax()
     {
         $qb = new QueryBuilder(
-            array(
-                'test' => array('FilterQuery' => 'a:filter')
-            )
+            [
+                'test' => ['FilterQuery' => 'a:filter']
+            ]
         );
         $q = new Query('*:*', 'test');
         $response = $qb->build($q);
@@ -193,12 +224,12 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testHighlighting()
     {
         $qb = new QueryBuilder(
-            array(
-                'test' => array(
-                    'DismaxFields' => array('test1'),
-                    'DismaxParams' => array(array('bq', 'boost'))
-                )
-            )
+            [
+                'test' => [
+                    'DismaxFields' => ['test1'],
+                    'DismaxParams' => [['bq', 'boost']]
+                ]
+            ]
         );
 
         $q = new Query('*:*', 'test');
@@ -224,12 +255,12 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testSpelling()
     {
         $qb = new QueryBuilder(
-            array(
-                'test' => array(
-                    'DismaxFields' => array('test1'),
-                    'DismaxParams' => array(array('bq', 'boost'))
-                )
-            )
+            [
+                'test' => [
+                    'DismaxFields' => ['test1'],
+                    'DismaxParams' => [['bq', 'boost']]
+                ]
+            ]
         );
 
         $q = new Query('my friend', 'test');
@@ -255,22 +286,125 @@ class QueryBuilderTest extends \VuFindTest\Unit\TestCase
     public function testQueryGroup()
     {
         $qb = new QueryBuilder(
-            array(
-                'a' => array(
-                    'DismaxFields' => array('field_a'),
-                ),
-                'b' => array(
-                    'DismaxFields' => array('field_b'),
-                )
-            )
+            [
+                'a' => [
+                    'DismaxFields' => ['field_a'],
+                ],
+                'b' => [
+                    'DismaxFields' => ['field_b'],
+                ]
+            ]
         );
 
         $q1 = new Query('value1', 'a');
         $q2 = new Query('value2', 'b');
-        $q = new QueryGroup('OR', array($q1, $q2));
+        $q = new QueryGroup('OR', [$q1, $q2]);
 
         $response = $qb->build($q);
         $processedQ = $response->get('q');
-        $this->assertEquals('((_query_:"{!dismax qf=\"field_a\" }value1") OR (_query_:"{!dismax qf=\"field_b\" }value2"))', $processedQ[0]);
+        $this->assertEquals('((_query_:"{!dismax qf=\"field_a\" mm=\\\'100%\\\'}value1") OR (_query_:"{!dismax qf=\"field_b\" mm=\\\'100%\\\'}value2"))', $processedQ[0]);
+    }
+
+    /**
+     * Test generation from a QueryGroup with advanced syntax
+     *
+     * @return void
+     */
+    public function testQueryGroupWithAdvancedSyntax()
+    {
+        $qb = new QueryBuilder(
+            [
+                'a' => [
+                    'DismaxFields' => ['field_a'],
+                    'QueryFields' => [
+                        'field_a' => [['and', 100]],
+                        'field_c' => [['and', 200]]
+                    ]
+                ],
+                'b' => [
+                    'DismaxFields' => ['field_b'],
+                ]
+            ]
+        );
+
+        $q1 = new Query('value*', 'a');
+        $q2 = new Query('value2', 'b');
+        $q = new QueryGroup('OR', [$q1, $q2]);
+
+        $response = $qb->build($q);
+        $processedQ = $response->get('q');
+        $this->assertEquals('((field_a:(value*)^100 OR field_c:(value*)^200) OR (_query_:"{!dismax qf=\"field_b\" mm=\\\'100%\\\'}value2"))', $processedQ[0]);
+    }
+
+    /**
+     * Test generation with multiple quoted phrases.
+     *
+     * @return void
+     */
+    public function testMultipleQuotedPhrases()
+    {
+        $qb = new QueryBuilder(
+            [
+                'a' => [
+                    'QueryFields' => [
+                        'field_a' => [['or', '~']],
+                    ]
+                ]
+            ]
+        );
+
+        $q = new Query('"foo" "bar" "baz"', 'a');
+
+        $response = $qb->build($q);
+        $processedQ = $response->get('q');
+        $this->assertEquals('(field_a:("foo" OR "bar" OR "baz"))', $processedQ[0]);
+    }
+
+    /**
+     * Test generation with mix of quoted and unquoted phrases
+     *
+     * @return void
+     */
+    public function testMixedQuotedPhrases()
+    {
+        $qb = new QueryBuilder(
+            [
+                'a' => [
+                    'QueryFields' => [
+                        'field_a' => [['or', '~']],
+                    ]
+                ]
+            ]
+        );
+
+        $q = new Query('708396 "708398" 708399 "708400"', 'a');
+
+        $response = $qb->build($q);
+        $processedQ = $response->get('q');
+        $this->assertEquals('(field_a:(708396 OR "708398" OR 708399 OR "708400"))', $processedQ[0]);
+    }
+
+    /**
+     * Test generation with mix of quoted and unquoted phrases
+     *
+     * @return void
+     */
+    public function testMixedQuotedPhrasesWithEscapedQuote()
+    {
+        $qb = new QueryBuilder(
+            [
+                'a' => [
+                    'QueryFields' => [
+                        'field_a' => [['or', '~']],
+                    ]
+                ]
+            ]
+        );
+
+        $q = new Query('708396 "708398" 708399 "foo\"bar"', 'a');
+
+        $response = $qb->build($q);
+        $processedQ = $response->get('q');
+        $this->assertEquals('(field_a:(708396 OR "708398" OR 708399 OR "foo\"bar"))', $processedQ[0]);
     }
 }

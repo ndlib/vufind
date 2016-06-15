@@ -20,26 +20,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindSearch\Response;
-
-use VuFindSearch\Response\RecordCollectionInterface;
-use VuFindSearch\Response\RecordInterface;
 
 /**
  * Abstract record collection (implements some shared low-level functionality).
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 abstract class AbstractRecordCollection implements RecordCollectionInterface
 {
@@ -48,7 +44,7 @@ abstract class AbstractRecordCollection implements RecordCollectionInterface
      *
      * @var array
      */
-    protected $records = array();
+    protected $records = [];
 
     /**
      * Source identifier
@@ -79,6 +75,16 @@ abstract class AbstractRecordCollection implements RecordCollectionInterface
     public function getRecords()
     {
         return $this->records;
+    }
+
+    /**
+     * Shuffles records.
+     *
+     * @return bool
+     */
+    public function shuffle()
+    {
+        return shuffle($this->records);
     }
 
     /**
@@ -135,6 +141,22 @@ abstract class AbstractRecordCollection implements RecordCollectionInterface
         if (!in_array($record, $this->records, true)) {
             $this->records[$this->pointer] = $record;
             $this->next();
+        }
+    }
+
+    /**
+     * Replace a record in the collection.
+     *
+     * @param RecordInterface $record      Record to be replaced
+     * @param RecordInterface $replacement Replacement record
+     *
+     * @return void
+     */
+    public function replace(RecordInterface $record, RecordInterface $replacement)
+    {
+        $key = array_search($record, $this->records, true);
+        if ($key !== false) {
+            $this->records[$key] = $replacement;
         }
     }
 

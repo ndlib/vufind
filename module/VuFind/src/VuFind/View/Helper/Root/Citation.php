@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\View\Helper\Root;
 use VuFind\Exception\Date as DateException;
@@ -31,11 +31,11 @@ use VuFind\Exception\Date as DateException;
 /**
  * Citation view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class Citation extends \Zend\View\Helper\AbstractHelper
 {
@@ -44,7 +44,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      *
      * @var array
      */
-    protected $details = array();
+    protected $details = [];
 
     /**
      * Record driver
@@ -81,7 +81,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
     public function __invoke($driver)
     {
         // Build author list:
-        $authors = array();
+        $authors = [];
         $primary = $driver->tryMethod('getPrimaryAuthor');
         if (empty($primary)) {
             $primary = $driver->tryMethod('getCorporateAuthor');
@@ -116,15 +116,15 @@ class Citation extends \Zend\View\Helper\AbstractHelper
 
         // Store everything:
         $this->driver = $driver;
-        $this->details = array(
+        $this->details = [
             'authors' => $this->prepareAuthors($authors),
             'title' => trim($title), 'subtitle' => trim($subtitle),
             'pubPlace' => isset($pubPlaces[0]) ? $pubPlaces[0] : null,
             'pubName' => isset($publishers[0]) ? $publishers[0] : null,
             'pubDate' => isset($pubDates[0]) ? $pubDates[0] : null,
-            'edition' => empty($edition) ? array() : array($edition),
+            'edition' => empty($edition) ? [] : [$edition],
             'journal' => $driver->tryMethod('getContainerTitle')
-        );
+        ];
 
         return $this;
     }
@@ -149,7 +149,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
 
         // If we got this far, it's worth trying to reverse names (for example,
         // this may be dirty data from Summon):
-        $processed = array();
+        $processed = [];
         foreach ($authors as $name) {
             if (!strstr($name, ',')) {
                 $parts = explode(' ', $name);
@@ -166,9 +166,9 @@ class Citation extends \Zend\View\Helper\AbstractHelper
 
     /**
      * Retrieve a citation in a particular format
-     * 
+     *
      * Returns the citation in the format specified
-     * 
+     *
      * @param string $format Citation format ('APA' or 'MLA')
      *
      * @return string        Formatted citation
@@ -197,11 +197,11 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      */
     public function getCitationAPA()
     {
-        $apa = array(
+        $apa = [
             'title' => $this->getAPATitle(),
             'authors' => $this->getAPAAuthors(),
             'edition' => $this->getEdition()
-        );
+        ];
         // Show a period after the title if it does not already have punctuation
         // and is not followed by an edition statement:
         $apa['periodAfterTitle']
@@ -226,19 +226,38 @@ class Citation extends \Zend\View\Helper\AbstractHelper
     }
 
     /**
-     * Get MLA citation.
+     * Get Chicago Style citation.
      *
-     * This function assigns all the necessary variables and then returns an MLA
-     * citation.
+     * This function returns a Chicago Style citation using a modified version
+     * of the MLA logic.
      *
      * @return string
      */
-    public function getCitationMLA()
+    public function getCitationChicago()
     {
-        $mla = array(
+        return $this->getCitationMLA(9, ', no. ');
+    }
+
+    /**
+     * Get MLA citation.
+     *
+     * This function assigns all the necessary variables and then returns an MLA
+     * citation. By adjusting the parameters below, it can also render a Chicago
+     * Style citation.
+     *
+     * @param int    $etAlThreshold   The number of authors to abbreviate with 'et
+     * al.'
+     * @param string $volNumSeparator String to separate volume and issue number
+     * in citation.
+     *
+     * @return string
+     */
+    public function getCitationMLA($etAlThreshold = 4, $volNumSeparator = '.')
+    {
+        $mla = [
             'title' => $this->getMLATitle(),
-            'authors' => $this->getMLAAuthors()
-        );
+            'authors' => $this->getMLAAuthors($etAlThreshold)
+        ];
         $mla['periodAfterTitle'] = !$this->isPunctuated($mla['title']);
 
         // Behave differently for books vs. journals:
@@ -252,7 +271,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
             // Add other journal-specific details:
             $mla['pageRange'] = $this->getPageRange();
             $mla['journal'] =  $this->capitalizeTitle($this->details['journal']);
-            $mla['numberAndDate'] = $this->getMLANumberAndDate();
+            $mla['numberAndDate'] = $this->getMLANumberAndDate($volNumSeparator);
             return $partial('Citation/mla-article.phtml', $mla);
         }
     }
@@ -271,11 +290,14 @@ class Citation extends \Zend\View\Helper\AbstractHelper
     }
 
     /**
-     * Construct volume/issue/date portion of MLA citation.
+     * Construct volume/issue/date portion of MLA or Chicago Style citation.
+     *
+     * @param string $volNumSeparator String to separate volume and issue number
+     * in citation (only difference between MLA/Chicago Style).
      *
      * @return string
      */
-    protected function getMLANumberAndDate()
+    protected function getMLANumberAndDate($volNumSeparator = '.')
     {
         $vol = $this->driver->tryMethod('getContainerVolume');
         $num = $this->driver->tryMethod('getContainerIssue');
@@ -302,7 +324,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
             // If volume and number are both non-empty, separate them with a
             // period; otherwise just use the one that is set.
             $volNum = (!empty($vol) && !empty($num))
-                ? $vol . '.' . $num : $vol . $num;
+                ? $vol . $volNumSeparator . $num : $vol . $num;
             return $volNum . ' (' . $year . ')';
         } else {
             // Right now, we'll assume if day == 1, this is a monthly publication;
@@ -351,7 +373,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
                 $vol = $num;
                 $num = '';
             }
-            return array($vol, $num, $year);
+            return [$vol, $num, $year];
         } else {
             // Right now, we'll assume if day == 1, this is a monthly publication;
             // that's probably going to result in some bad citations, but it's the
@@ -359,7 +381,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
             $finalDate = $year
                 . (empty($month) ? '' : ', ' . $month)
                 . (($day > 1) ? ' ' . $day : '');
-            return array('', '', $finalDate);
+            return ['', '', $finalDate];
         }
     }
 
@@ -375,7 +397,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
         $str = $this->stripPunctuation($str);
 
         // Is it a standard suffix?
-        $suffixes = array('Jr', 'Sr');
+        $suffixes = ['Jr', 'Sr'];
         if (in_array($str, $suffixes)) {
             return true;
         }
@@ -438,6 +460,24 @@ class Citation extends \Zend\View\Helper\AbstractHelper
     }
 
     /**
+     * Fix bad punctuation on abbreviated name letters.
+     *
+     * @param string $str String to fix.
+     *
+     * @return string
+     */
+    protected function fixAbbreviatedNameLetters($str)
+    {
+        // Fix abbreviated letters.
+        if (strlen($str) == 1
+            || preg_match('/\s[a-zA-Z]/', substr($str, -2))
+        ) {
+            return $str . '.';
+        }
+        return $str;
+    }
+
+    /**
      * Strip the dates off the end of a name.
      *
      * @param string $str Name to clean.
@@ -449,7 +489,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
         $arr = explode(', ', $str);
         $name = $arr[0];
         if (isset($arr[1]) && !$this->isDateRange($arr[1])) {
-            $name .= ', ' . $arr[1];
+            $name .= ', ' . $this->fixAbbreviatedNameLetters($arr[1]);
             if (isset($arr[2]) && $this->isNameSuffix($arr[2])) {
                 $name .= ', ' . $arr[2];
             }
@@ -466,7 +506,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      */
     protected function isPunctuated($string)
     {
-        $punctuation = array('.', '?', '!');
+        $punctuation = ['.', '?', '!'];
         return (in_array(substr($string, -1), $punctuation));
     }
 
@@ -479,7 +519,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      */
     protected function stripPunctuation($text)
     {
-        $punctuation = array('.', ',', ':', ';', '/');
+        $punctuation = ['.', ',', ':', ';', '/'];
         $text = trim($text);
         if (in_array(substr($text, -1), $punctuation)) {
             $text = substr($text, 0, -1);
@@ -503,7 +543,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
             return $arr[0];
         }
 
-        $name = $arr[1] . ' ' . $arr[0];
+        $name = $this->fixAbbreviatedNameLetters($arr[1]) . ' ' . $arr[0];
         if (isset($arr[2]) && $this->isNameSuffix($arr[2])) {
             $name .= ', ' . $arr[2];
         }
@@ -519,11 +559,11 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      */
     protected function capitalizeTitle($str)
     {
-        $exceptions = array('a', 'an', 'the', 'against', 'between', 'in', 'of',
-            'to', 'and', 'but', 'for', 'nor', 'or', 'so', 'yet', 'to');
+        $exceptions = ['a', 'an', 'the', 'against', 'between', 'in', 'of',
+            'to', 'and', 'but', 'for', 'nor', 'or', 'so', 'yet', 'to'];
 
         $words = explode(' ', $str);
-        $newwords = array();
+        $newwords = [];
         $followsColon = false;
         foreach ($words as $word) {
             // Capitalize words unless they are in the exception list...  but even
@@ -645,23 +685,26 @@ class Citation extends \Zend\View\Helper\AbstractHelper
     }
 
     /**
-     * Get an array of authors for an APA citation.
+     * Get an array of authors for an MLA or Chicago Style citation.
+     *
+     * @param int $etAlThreshold The number of authors to abbreviate with 'et al.'
+     * This is the only difference between MLA/Chicago Style.
      *
      * @return array
      */
-    protected function getMLAAuthors()
+    protected function getMLAAuthors($etAlThreshold = 4)
     {
         $authorStr = '';
         if (isset($this->details['authors'])
             && is_array($this->details['authors'])
         ) {
             $i = 0;
-            if (count($this->details['authors']) > 4) {
+            if (count($this->details['authors']) > $etAlThreshold) {
                 $author = $this->details['authors'][0];
                 $authorStr = $this->cleanNameDates($author) . ', et al';
             } else {
                 foreach ($this->details['authors'] as $author) {
-                    if (($i+1 == count($this->details['authors'])) && ($i > 0)) {
+                    if (($i + 1 == count($this->details['authors'])) && ($i > 0)) {
                         // Last
                         $authorStr .= ', and ' .
                             $this->reverseName($this->stripPunctuation($author));
@@ -687,7 +730,7 @@ class Citation extends \Zend\View\Helper\AbstractHelper
      */
     protected function getPublisher()
     {
-        $parts = array();
+        $parts = [];
         if (isset($this->details['pubPlace'])
             && !empty($this->details['pubPlace'])
         ) {

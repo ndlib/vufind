@@ -19,24 +19,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Controller;
 
-use VuFind\Exception\Mail as MailException, VuFind\Solr\Utils as SolrUtils;
+use VuFind\Exception\Mail as MailException;
 
 /**
  * Redirects the user to the appropriate default VuFind action.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class SearchController extends AbstractSearch
 {
@@ -54,15 +54,21 @@ class SearchController extends AbstractSearch
         $view->facetList = $this->processAdvancedFacets(
             $this->getAdvancedFacets()->getFacetList(), $view->saved
         );
-        $specialFacets = $view->options->getSpecialAdvancedFacets();
-        if (stristr($specialFacets, 'illustrated')) {
+        $specialFacets = $this->parseSpecialFacetsSetting(
+            $view->options->getSpecialAdvancedFacets()
+        );
+        if (isset($specialFacets['illustrated'])) {
             $view->illustratedLimit
                 = $this->getIllustrationSettings($view->saved);
         }
-        if (stristr($specialFacets, 'daterange')) {
-            $view->dateRangeLimit
-                = $this->getDateRangeSettings($view->saved);
+        if (isset($specialFacets['checkboxes'])) {
+            $view->checkboxFacets = $this->processAdvancedCheckboxes(
+                $specialFacets['checkboxes'], $view->saved
+            );
         }
+        $view->ranges = $this->getAllRangeSettings($specialFacets, $view->saved);
+        $view->hierarchicalFacets = $this->getHierarchicalFacets();
+
         return $view;
     }
 
@@ -75,10 +81,15 @@ class SearchController extends AbstractSearch
     {
         // If a URL was explicitly passed in, use that; otherwise, try to
         // find the HTTP referrer.
-        $view = $this->createEmailViewModel();
+        $mailer = $this->getServiceLocator()->get('VuFind\Mailer');
+        $view = $this->createEmailViewModel(null, $mailer->getDefaultLinkSubject());
+        $mailer->setMaxRecipients($view->maxRecipients);
+        // Set up reCaptcha
+        $view->useRecaptcha = $this->recaptcha()->active('email');
         $view->url = $this->params()->fromPost(
             'url', $this->params()->fromQuery(
-                'url', $this->getRequest()->getServer()->get('HTTP_REFERER')
+                'url',
+                $this->getRequest()->getServer()->get('HTTP_REFERER')
             )
         );
 
@@ -87,14 +98,14 @@ class SearchController extends AbstractSearch
         if ((!isset($config->Mail->require_login) || $config->Mail->require_login)
             && !$this->getUser()
         ) {
-            return $this->forceLogin(null, array('emailurl' => $view->url));
+            return $this->forceLogin(null, ['emailurl' => $view->url]);
         }
 
-        // Check if we have a URL in login followup data:
-        $followup = $this->followup()->retrieve();
-        if (isset($followup->emailurl)) {
-            $view->url = $followup->emailurl;
-            unset($followup->emailurl);
+        // Check if we have a URL in login followup data -- this should override
+        // any existing referer to avoid emailing a login-related URL!
+        $followupUrl = $this->followup()->retrieveAndClear('emailurl');
+        if (!empty($followupUrl)) {
+            $view->url = $followupUrl;
         }
 
         // Fail if we can't figure out a URL to share:
@@ -103,20 +114,20 @@ class SearchController extends AbstractSearch
         }
 
         // Process form submission:
-        if ($this->params()->fromPost('submit')) {
+        if ($this->formWasSubmitted('submit', $view->useRecaptcha)) {
             // Attempt to send the email and show an appropriate flash message:
             try {
                 // If we got this far, we're ready to send the email:
-                $this->getServiceLocator()->get('VuFind\Mailer')->sendLink(
+                $cc = $this->params()->fromPost('ccself') && $view->from != $view->to
+                    ? $view->from : null;
+                $mailer->sendLink(
                     $view->to, $view->from, $view->message,
-                    $view->url, $this->getViewRenderer()
+                    $view->url, $this->getViewRenderer(), $view->subject, $cc
                 );
-                $this->flashMessenger()->setNamespace('info')
-                    ->addMessage('email_success');
+                $this->flashMessenger()->addMessage('email_success', 'success');
                 return $this->redirect()->toUrl($view->url);
             } catch (MailException $e) {
-                $this->flashMessenger()->setNamespace('error')
-                    ->addMessage($e->getMessage());
+                $this->flashMessenger()->addMessage($e->getMessage(), 'error');
             }
         }
         return $view;
@@ -131,15 +142,15 @@ class SearchController extends AbstractSearch
      */
     protected function getIllustrationSettings($savedSearch = false)
     {
-        $illYes= array(
+        $illYes = [
             'text' => 'Has Illustrations', 'value' => 1, 'selected' => false
-        );
-        $illNo = array(
+        ];
+        $illNo = [
             'text' => 'Not Illustrated', 'value' => 0, 'selected' => false
-        );
-        $illAny = array(
+        ];
+        $illAny = [
             'text' => 'No Preference', 'value' => -1, 'selected' => false
-        );
+        ];
 
         // Find the selected value by analyzing facets -- if we find match, remove
         // the offending facet to avoid inappropriate items appearing in the
@@ -157,39 +168,7 @@ class SearchController extends AbstractSearch
         } else {
             $illAny['selected'] = true;
         }
-        return array($illYes, $illNo, $illAny);
-    }
-
-    /**
-     * Get the current settings for the date range facet, if it is set:
-     *
-     * @param object $savedSearch Saved search object (false if none)
-     *
-     * @return array              Date range: Key 0 = from, Key 1 = to.
-     */
-    protected function getDateRangeSettings($savedSearch = false)
-    {
-        // Default to blank strings:
-        $from = $to = '';
-
-        // Check to see if there is an existing range in the search object:
-        if ($savedSearch) {
-            $filters = $savedSearch->getParams()->getFilters();
-            if (isset($filters['publishDate'])) {
-                foreach ($filters['publishDate'] as $current) {
-                    if ($range = SolrUtils::parseRange($current)) {
-                        $from = $range['from'] == '*' ? '' : $range['from'];
-                        $to = $range['to'] == '*' ? '' : $range['to'];
-                        $savedSearch->getParams()
-                            ->removeFilter('publishDate:' . $current);
-                        break;
-                    }
-                }
-            }
-        }
-
-        // Send back the settings:
-        return array($from, $to);
+        return [$illYes, $illNo, $illAny];
     }
 
     /**
@@ -202,12 +181,30 @@ class SearchController extends AbstractSearch
      */
     protected function processAdvancedFacets($facetList, $searchObject = false)
     {
-        // Process the facets, assuming they came back
-        foreach ($facetList as $facet => $list) {
+        // Process the facets
+        $hierarchicalFacets = $this->getHierarchicalFacets();
+        $facetHelper = null;
+        if (!empty($hierarchicalFacets)) {
+            $facetHelper = $this->getServiceLocator()
+                ->get('VuFind\HierarchicalFacetHelper');
+        }
+        foreach ($facetList as $facet => &$list) {
+            // Hierarchical facets: format display texts and sort facets
+            // to a flat array according to the hierarchy
+            if (in_array($facet, $hierarchicalFacets)) {
+                $tmpList = $list['list'];
+                $facetHelper->sortFacetList($tmpList, true);
+                $tmpList = $facetHelper->buildFacetArray(
+                    $facet,
+                    $tmpList
+                );
+                $list['list'] = $facetHelper->flattenFacetHierarchy($tmpList);
+            }
+
             foreach ($list['list'] as $key => $value) {
                 // Build the filter string for the URL:
                 $fullFilter = ($value['operator'] == 'OR' ? '~' : '')
-                    . $facet.':"'.$value['value'].'"';
+                    . $facet . ':"' . $value['value'] . '"';
 
                 // If we haven't already found a selected facet and the current
                 // facet has been applied to the search, we should store it as
@@ -215,7 +212,7 @@ class SearchController extends AbstractSearch
                 if ($searchObject
                     && $searchObject->getParams()->hasFilter($fullFilter)
                 ) {
-                    $facetList[$facet]['list'][$key]['selected'] = true;
+                    $list['list'][$key]['selected'] = true;
                     // Remove the filter from the search object -- we don't want
                     // it to show up in the "applied filters" sidebar since it
                     // will already be accounted for by being selected in the
@@ -248,7 +245,7 @@ class SearchController extends AbstractSearch
         );
 
         // Build arrays of history entries
-        $saved = $unsaved = array();
+        $saved = $unsaved = [];
 
         // Loop through the history
         foreach ($searchHistory as $current) {
@@ -274,7 +271,7 @@ class SearchController extends AbstractSearch
         }
 
         return $this->createViewModel(
-            array('saved' => $saved, 'unsaved' => $unsaved)
+            ['saved' => $saved, 'unsaved' => $unsaved]
         );
     }
 
@@ -286,7 +283,12 @@ class SearchController extends AbstractSearch
     public function homeAction()
     {
         return $this->createViewModel(
-            array('results' => $this->getHomePageFacets())
+            [
+                'results' => $this->getHomePageFacets(),
+                'hierarchicalFacets' => $this->getHierarchicalFacets(),
+                'hierarchicalFacetSortOptions'
+                    => $this->getHierarchicalFacetSortSettings()
+            ]
         );
     }
 
@@ -302,28 +304,11 @@ class SearchController extends AbstractSearch
             return $this->forwardTo('Search', 'NewItemResults');
         }
 
-        // Find out if there are user configured range options; if not,
-        // default to the standard 1/5/30 days:
-        $ranges = array();
-        $searchSettings = $this->getConfig('searches');
-        if (isset($searchSettings->NewItem->ranges)) {
-            $tmp = explode(',', $searchSettings->NewItem->ranges);
-            foreach ($tmp as $range) {
-                $range = intval($range);
-                if ($range > 0) {
-                    $ranges[] = $range;
-                }
-            }
-        }
-        if (empty($ranges)) {
-            $ranges = array(1, 5, 30);
-        }
-
-        $catalog = $this->getILS();
-        $fundList = $catalog->checkCapability('getFunds')
-            ? $catalog->getFunds() : array();
         return $this->createViewModel(
-            array('fundList' => $fundList, 'ranges' => $ranges)
+            [
+                'fundList' => $this->newItems()->getFundList(),
+                'ranges' => $this->newItems()->getRanges()
+            ]
         );
     }
 
@@ -340,72 +325,43 @@ class SearchController extends AbstractSearch
 
         // Validate the range parameter -- it should not exceed the greatest
         // configured value:
-        $searchSettings = $this->getConfig('searches');
-        $maxAge = 0;
-        if (isset($searchSettings->NewItem->ranges)) {
-            $tmp = explode(',', $searchSettings->NewItem->ranges);
-            foreach ($tmp as $current) {
-                if (intval($current) > $maxAge) {
-                    $maxAge = intval($current);
-                }
-            }
-        }
+        $maxAge = $this->newItems()->getMaxAge();
         if ($maxAge > 0 && $range > $maxAge) {
             $range = $maxAge;
         }
 
-        // The code always pulls in enough catalog results to get a fixed number
-        // of pages worth of Solr results.  Note that if the Solr index is out of
-        // sync with the ILS, we may see fewer results than expected.
-        if (isset($searchSettings->NewItem->result_pages)) {
-            $resultPages = intval($searchSettings->NewItem->result_pages);
-            if ($resultPages < 1) {
-                $resultPages = 10;
-            }
-        } else {
-            $resultPages = 10;
-        }
-        $catalog = $this->getILS();
-        $params = $this->getResultsManager()->get('Solr')->getParams();
-        $perPage = $params->getLimit();
-        $newItems = $catalog->getNewItems(1, $perPage * $resultPages, $range, $dept);
-
-        // Build a list of unique IDs
-        $bibIDs = array();
-        for ($i=0; $i<count($newItems['results']); $i++) {
-            $bibIDs[] = $newItems['results'][$i]['id'];
-        }
-
-        // Truncate the list if it is too long:
-        $limit = $params->getQueryIDLimit();
-        if (count($bibIDs) > $limit) {
-            $bibIDs = array_slice($bibIDs, 0, $limit);
-            $this->flashMessenger()->setNamespace('info')
-                ->addMessage('too_many_new_items');
-        }
-
-        // Use standard search action with override parameter to show results:
-        $this->getRequest()->getQuery()->set('overrideIds', $bibIDs);
-
         // Are there "new item" filter queries specified in the config file?
-        // If so, we should apply them as hidden filters so they do not show
-        // up in the user-selected facet list.
-        if (isset($searchSettings->NewItem->filter)) {
-            if (is_string($searchSettings->NewItem->filter)) {
-                $hiddenFilters = array($searchSettings->NewItem->filter);
-            } else {
-                $hiddenFilters = array();
-                foreach ($searchSettings->NewItem->filter as $current) {
-                    $hiddenFilters[] = $current;
-                }
-            }
+        // If so, load them now; we may add more values. These will be applied
+        // later after the whole list is collected.
+        $hiddenFilters = $this->newItems()->getHiddenFilters();
+
+        // Depending on whether we're in ILS or Solr mode, we need to do some
+        // different processing here to retrieve the correct items:
+        if ($this->newItems()->getMethod() == 'ils') {
+            // Use standard search action with override parameter to show results:
+            $bibIDs = $this->newItems()->getBibIDsFromCatalog(
+                $this->getILS(),
+                $this->getResultsManager()->get('Solr')->getParams(),
+                $range, $dept, $this->flashMessenger()
+            );
+            $this->getRequest()->getQuery()->set('overrideIds', $bibIDs);
+        } else {
+            // Use a Solr filter to show results:
+            $hiddenFilters[] = $this->newItems()->getSolrFilter($range);
+        }
+
+        // If we found hidden filters above, apply them now:
+        if (!empty($hiddenFilters)) {
             $this->getRequest()->getQuery()->set('hiddenFilters', $hiddenFilters);
         }
+
+        // Don't save to history -- history page doesn't handle correctly:
+        $this->saveToHistory = false;
 
         // Call rather than forward, so we can use custom template
         $view = $this->resultsAction();
 
-        // Customize the URL helper to make sure it builds proper reserves URLs
+        // Customize the URL helper to make sure it builds proper new item URLs
         // (check it's set first -- RSS feed will return a response model rather
         // than a view model):
         if (isset($view->results)) {
@@ -414,6 +370,10 @@ class SearchController extends AbstractSearch
             $url->setDefaultParameter('department', $dept);
             $url->setSuppressQuery(true);
         }
+
+        // We don't want new items hidden filters to propagate to other searches:
+        $view->ignoreHiddenFilterMemory = true;
+        $view->ignoreHiddenFiltersInRequest = true;
 
         return $view;
     }
@@ -432,7 +392,7 @@ class SearchController extends AbstractSearch
         ) {
             return $this->forwardTo('Search', 'ReservesResults');
         }
-        
+
         // No params?  Show appropriate form (varies depending on whether we're
         // using driver-based or Solr-based reserves searching).
         if ($this->reserves()->useIndex()) {
@@ -443,11 +403,11 @@ class SearchController extends AbstractSearch
         // send options to the view:
         $catalog = $this->getILS();
         return $this->createViewModel(
-            array(
+            [
                 'deptList' => $catalog->getDepartments(),
                 'instList' => $catalog->getInstructors(),
                 'courseList' =>  $catalog->getCourses()
-            )
+            ]
         );
     }
 
@@ -458,17 +418,17 @@ class SearchController extends AbstractSearch
      */
     public function reservessearchAction()
     {
-        $results = $this->getResultsManager()->get('SolrReserves');
-        $params = $results->getParams();
-        $params->initFromRequest(
-            new \Zend\Stdlib\Parameters(
-                $this->getRequest()->getQuery()->toArray()
-                + $this->getRequest()->getPost()->toArray()
-            )
+        $request = new \Zend\Stdlib\Parameters(
+            $this->getRequest()->getQuery()->toArray()
+            + $this->getRequest()->getPost()->toArray()
         );
-        return $this->createViewModel(
-            array('params' => $params, 'results' => $results)
+        $view = $this->createViewModel();
+        $runner = $this->getServiceLocator()->get('VuFind\SearchRunner');
+        $view->results = $runner->run(
+            $request, 'SolrReserves', $this->getSearchSetupCallback()
         );
+        $view->params = $view->results->getParams();
+        return $view;
     }
 
     /**
@@ -495,12 +455,18 @@ class SearchController extends AbstractSearch
             ->getQueryIDLimit();
         if (count($bibIDs) > $limit) {
             $bibIDs = array_slice($bibIDs, 0, $limit);
-            $this->flashMessenger()->setNamespace('info')
-                ->addMessage('too_many_reserves');
+            $this->flashMessenger()->addMessage('too_many_reserves', 'info');
         }
 
         // Use standard search action with override parameter to show results:
         $this->getRequest()->getQuery()->set('overrideIds', $bibIDs);
+
+        // Don't save to history -- history page doesn't handle correctly:
+        $this->saveToHistory = false;
+
+        // Set up RSS feed title just in case:
+        $this->getViewRenderer()->plugin('resultfeed')
+            ->setOverrideTitle('Reserves Search Results');
 
         // Call rather than forward, so we can use custom template
         $view = $this->resultsAction();
@@ -513,12 +479,16 @@ class SearchController extends AbstractSearch
             $view->course = $result[0]['course'];
         }
 
-        // Customize the URL helper to make sure it builds proper reserves URLs:
-        $url = $view->results->getUrlQuery();
-        $url->setDefaultParameter('course', $course);
-        $url->setDefaultParameter('inst', $inst);
-        $url->setDefaultParameter('dept', $dept);
-        $url->setSuppressQuery(true);
+        // Customize the URL helper to make sure it builds proper reserves URLs
+        // (but only do this if we have access to a results object, which we
+        // won't in RSS mode):
+        if (isset($view->results)) {
+            $url = $view->results->getUrlQuery();
+            $url->setDefaultParameter('course', $course);
+            $url->setDefaultParameter('inst', $inst);
+            $url->setDefaultParameter('dept', $dept);
+            $url->setSuppressQuery(true);
+        }
         return $view;
     }
 
@@ -558,6 +528,11 @@ class SearchController extends AbstractSearch
         // Check if we have facet results cached, and build them if we don't.
         $cache = $this->getServiceLocator()->get('VuFind\CacheManager')
             ->getCache('object');
+        $searchTabsHelper = $this->getServiceLocator()
+            ->get('VuFind\SearchTabsHelper');
+        $hiddenFilters = $searchTabsHelper->getHiddenFilters($this->searchClassId);
+        $hiddenFiltersHash = md5(json_encode($hiddenFilters));
+        $cacheName .= "-$hiddenFiltersHash";
         if (!($results = $cache->getItem($cacheName))) {
             // Use advanced facet settings to get summary facets on the front page;
             // we may want to make this more flexible later.  Also keep in mind that
@@ -566,6 +541,11 @@ class SearchController extends AbstractSearch
             $results = $this->getResultsManager()->get('Solr');
             $params = $results->getParams();
             $params->$initMethod();
+            foreach ($hiddenFilters as $key => $filters) {
+                foreach ($filters as $filter) {
+                    $params->addHiddenFilter("$key:$filter");
+                }
+            }
 
             // We only care about facet lists, so don't get any results (this helps
             // prevent problems with serialized File_MARC objects in the cache):
@@ -617,7 +597,7 @@ class SearchController extends AbstractSearch
         case 'describe':
             $config = $this->getConfig();
             $xml = $this->getViewRenderer()->render(
-                'search/opensearch-describe.phtml', array('site' => $config->Site)
+                'search/opensearch-describe.phtml', ['site' => $config->Site]
             );
             break;
         default:
@@ -633,8 +613,7 @@ class SearchController extends AbstractSearch
     }
 
     /**
-     * Provide OpenSearch suggestions as specified here:
-     *
+     * Provide OpenSearch suggestions as specified at
      * http://www.opensearch.org/Specifications/OpenSearch/Extensions/Suggestions/1.0
      *
      * @return \Zend\Http\Response
@@ -658,7 +637,7 @@ class SearchController extends AbstractSearch
         $headers = $response->getHeaders();
         $headers->addHeaderLine('Content-type', 'application/javascript');
         $response->setContent(
-            json_encode(array($query->get('lookfor', ''), $suggestions))
+            json_encode([$query->get('lookfor', ''), $suggestions])
         );
         return $response;
     }
@@ -674,4 +653,31 @@ class SearchController extends AbstractSearch
         return (isset($config->Record->next_prev_navigation)
             && $config->Record->next_prev_navigation);
     }
+
+    /**
+     * Get an array of hierarchical facets
+     *
+     * @return array Facets
+     */
+    protected function getHierarchicalFacets()
+    {
+        $facetConfig = $this->getConfig('facets');
+        return isset($facetConfig->SpecialFacets->hierarchical)
+            ? $facetConfig->SpecialFacets->hierarchical->toArray()
+            : [];
+    }
+
+    /**
+     * Get hierarchical facet sort settings
+     *
+     * @return array Array of sort settings keyed by facet
+     */
+    protected function getHierarchicalFacetSortSettings()
+    {
+        $facetConfig = $this->getConfig('facets');
+        return isset($facetConfig->SpecialFacets->hierarchicalFacetSortOptions)
+            ? $facetConfig->SpecialFacets->hierarchicalFacetSortOptions->toArray()
+            : [];
+    }
+
 }

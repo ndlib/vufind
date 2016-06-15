@@ -20,30 +20,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Search\Factory;
 
-use VuFind\RecordDriver\PluginManager;
-
-use VuFindSearch\Backend\Solr\Response\Json\RecordCollectionFactory;
-use VuFindSearch\Backend\Solr\Connector;
 use VuFindSearch\Backend\Solr\Backend;
-
-use VuFind\Search\Listener\NormalizeSolrSort;
 
 /**
  * Factory for the default SOLR backend.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class SolrStatsBackendFactory extends AbstractSolrBackendFactory
 {
@@ -56,6 +50,7 @@ class SolrStatsBackendFactory extends AbstractSolrBackendFactory
         $this->solrCore = 'stats';
         $this->searchConfig = 'searches';
         $this->searchYaml = 'searchspecs.yaml';
+        $this->facetConfig = 'facets';
     }
 
     /**

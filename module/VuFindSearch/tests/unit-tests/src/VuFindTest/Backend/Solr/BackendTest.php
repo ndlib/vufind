@@ -20,18 +20,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindTest\Backend\Solr;
 
+use VuFindSearch\Backend\Exception\RemoteErrorException;
 use VuFindSearch\Backend\Solr\Backend;
 use VuFindSearch\Backend\Solr\HandlerMap;
 use VuFindSearch\ParamBag;
+use VuFindSearch\Query\Query;
 
 use Zend\Http\Response;
 use PHPUnit_Framework_TestCase;
@@ -40,11 +41,11 @@ use InvalidArgumentException;
 /**
  * Unit tests for SOLR backend.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class BackendTest extends PHPUnit_Framework_TestCase
 {
@@ -56,7 +57,7 @@ class BackendTest extends PHPUnit_Framework_TestCase
     public function testRetrieve()
     {
         $resp = $this->loadResponse('single-record');
-        $conn = $this->getConnectorMock(array('retrieve'));
+        $conn = $this->getConnectorMock(['retrieve']);
         $conn->expects($this->once())
             ->method('retrieve')
             ->will($this->returnValue($resp->getBody()));
@@ -79,14 +80,14 @@ class BackendTest extends PHPUnit_Framework_TestCase
     public function testRetrieveBatch()
     {
         $resp = $this->loadResponse('multi-record');
-        $conn = $this->getConnectorMock(array('search'));
+        $conn = $this->getConnectorMock(['search']);
         $conn->expects($this->once())
             ->method('search')
             ->will($this->returnValue($resp->getBody()));
 
         $back = new Backend($conn);
         $back->setIdentifier('test');
-        $coll = $back->retrieveBatch(array('12345', '125456', '234547'));
+        $coll = $back->retrieveBatch(['12345', '125456', '234547']);
         $this->assertCount(3, $coll);
         $this->assertEquals('test', $coll->getSourceIdentifier());
         $rec  = $coll->first();
@@ -108,7 +109,7 @@ class BackendTest extends PHPUnit_Framework_TestCase
     public function testSimilar()
     {
         $resp = $this->loadResponse('morelikethis');
-        $conn = $this->getConnectorMock(array('similar'));
+        $conn = $this->getConnectorMock(['similar']);
         $conn->expects($this->once())
             ->method('similar')
             ->will($this->returnValue($resp->getBody()));
@@ -131,7 +132,7 @@ class BackendTest extends PHPUnit_Framework_TestCase
     public function testTerms()
     {
         $resp = $this->loadResponse('terms');
-        $conn = $this->getConnectorMock(array('query'));
+        $conn = $this->getConnectorMock(['query']);
         $conn->expects($this->once())
             ->method('query')
             ->will($this->returnValue($resp->getBody()));
@@ -147,12 +148,12 @@ class BackendTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @expectedException VuFindSearch\Backend\Exception\BackendException
+     * @expectedException        VuFindSearch\Backend\Exception\BackendException
      * @expectedExceptionMessage JSON decoding error: 4 -- bad {
      */
     public function testBadJson()
     {
-        $conn = $this->getConnectorMock(array('query'));
+        $conn = $this->getConnectorMock(['query']);
         $conn->expects($this->once())
             ->method('query')
             ->will($this->returnValue('bad {'));
@@ -165,14 +166,14 @@ class BackendTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @expectedException VuFindSearch\Exception\InvalidArgumentException
+     * @expectedException        VuFindSearch\Exception\InvalidArgumentException
      * @expectedExceptionMessage Invalid response writer type: xml
      */
     public function testInjectResponseWriterThrownOnIncompabileResponseWriter()
     {
         $conn = $this->getConnectorMock();
         $back = new Backend($conn);
-        $back->retrieve('foobar', new ParamBag(array('wt' => array('xml'))));
+        $back->retrieve('foobar', new ParamBag(['wt' => ['xml']]));
     }
 
     /**
@@ -180,14 +181,14 @@ class BackendTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @expectedException VuFindSearch\Exception\InvalidArgumentException
+     * @expectedException        VuFindSearch\Exception\InvalidArgumentException
      * @expectedExceptionMessage Invalid named list implementation type: bad
      */
     public function testInjectResponseWriterThrownOnIncompabileNamedListSetting()
     {
         $conn = $this->getConnectorMock();
         $back = new Backend($conn);
-        $back->retrieve('foobar', new ParamBag(array('json.nl' => array('bad'))));
+        $back->retrieve('foobar', new ParamBag(['json.nl' => ['bad']]));
     }
 
     /**
@@ -215,7 +216,88 @@ class BackendTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $back->getIdentifier());
     }
 
+    /**
+     * Test refining an alphabrowse exception (string 1).
+     *
+     * @return void
+     *
+     * @expectedException        VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage Alphabetic Browse index missing.
+     */
+    public function testRefineAlphaBrowseException()
+    {
+        $this->runRefineExceptionCall('does not exist');
+    }
+
+    /**
+     * Test refining an alphabrowse exception (string 2).
+     *
+     * @return void
+     *
+     * @expectedException        VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage Alphabetic Browse index missing.
+     */
+    public function testRefineAlphaBrowseExceptionWithAltString()
+    {
+        $this->runRefineExceptionCall('couldn\'t find a browse index');
+    }
+
+    /**
+     * Test that we don't refine a non-alphabrowse-related exception.
+     *
+     * @return void
+     *
+     * @expectedException        VuFindSearch\Backend\Exception\RemoteErrorException
+     * @expectedExceptionMessage not a browse error
+     */
+    public function testRefineAlphaBrowseExceptionWithNonBrowseString()
+    {
+        $this->runRefineExceptionCall('not a browse error');
+    }
+
+    /**
+     * Test random method
+     *
+     * @return void
+     */
+    public function testRandom()
+    {
+        // Test that random sort parameter is added:
+        $params = $this->getMock('VuFindSearch\ParamBag', ['set']);
+        $params->expects($this->once())->method('set')
+            ->with($this->equalTo('sort'), $this->matchesRegularExpression('/[0-9]+_random asc/'));
+
+        // Test that random proxies search; stub out injectResponseWriter() to prevent it
+        // from injecting unwanted extra parameters into $params:
+        $back = $this->getMock(
+            'VuFindSearch\Backend\Solr\Backend', ['search', 'injectResponseWriter'],
+            [$this->getConnectorMock()]
+        );
+        $back->expects($this->once())->method('injectResponseWriter');
+        $back->expects($this->once())->method('search')
+            ->will($this->returnValue('dummy'));
+        $this->assertEquals('dummy', $back->random(new Query('foo'), 1, $params));
+    }
+
     /// Internal API
+
+    /**
+     * Support method to run a "refine exception" test.
+     *
+     * @param string $msg Error message
+     *
+     * @return void
+     */
+    protected function runRefineExceptionCall($msg)
+    {
+        $conn = $this->getConnectorMock(['query']);
+        $e = new RemoteErrorException($msg, 400, new \Zend\Http\Response());
+        $conn->expects($this->once())->method('query')
+            ->with($this->equalTo('browse'))
+            ->will($this->throwException($e));
+        $back = new Backend($conn);
+        $back->alphabeticBrowse('foo', 'bar', 1);
+    }
 
     /**
      * Load a SOLR response as fixture.
@@ -242,9 +324,9 @@ class BackendTest extends PHPUnit_Framework_TestCase
      *
      * @return Connector
      */
-    protected function getConnectorMock(array $mock = array())
+    protected function getConnectorMock(array $mock = [])
     {
-        $map = new HandlerMap(array('select' => array('fallback' => true)));
-        return $this->getMock('VuFindSearch\Backend\Solr\Connector', $mock, array('http://example.org/', $map));
+        $map = new HandlerMap(['select' => ['fallback' => true]]);
+        return $this->getMock('VuFindSearch\Backend\Solr\Connector', $mock, ['http://example.org/', $map]);
     }
 }

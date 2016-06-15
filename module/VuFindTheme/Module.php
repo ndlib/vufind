@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     https://github.com/dmj/vf2-proxy
+ * @link     https://vufind.org/wiki/development
  */
 namespace VuFindTheme;
 
 /**
  * ZF2 module definition for the VuFind theme system.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Theme
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     https://github.com/dmj/vf2-proxy
+ * @link     https://vufind.org/wiki/development
  */
 class Module
 {
@@ -45,13 +45,13 @@ class Module
      */
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -61,21 +61,15 @@ class Module
      */
     public function getServiceConfig()
     {
-        // @codingStandardsIgnoreStart
-        return array(
-            'factories' => array(
-                'VuFindTheme\ThemeInfo' => function () {
-                    return new \VuFindTheme\ThemeInfo(
-                        realpath(__DIR__ . '/../../themes'), 'blueprint'
-                    );
-                }
-            ),
-            'invokables' => array(
+        return [
+            'factories' => [
+                'VuFindTheme\ThemeInfo' => 'VuFindTheme\Module::getThemeInfo',
+            ],
+            'invokables' => [
                 'VuFindTheme\Mobile' => 'VuFindTheme\Mobile',
                 'VuFindTheme\ResourceContainer' => 'VuFindTheme\ResourceContainer',
-            ),
-        );
-        // @codingStandardsIgnoreEnd
+            ],
+        ];
     }
 
     /**
@@ -85,50 +79,27 @@ class Module
      */
     public function getViewHelperConfig()
     {
-        // @codingStandardsIgnoreStart
-        return array(
-            'factories' => array(
-                'headlink' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\HeadLink(
-                        $sm->getServiceLocator()->get('VuFindTheme\ThemeInfo')
-                    );
-                },
-                'headscript' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\HeadScript(
-                        $sm->getServiceLocator()->get('VuFindTheme\ThemeInfo')
-                    );
-                },
-                'headthemeresources' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\HeadThemeResources(
-                        $sm->getServiceLocator()->get('VuFindTheme\ResourceContainer')
-                    );
-                },
-                'imagelink' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\ImageLink(
-                        $sm->getServiceLocator()->get('VuFindTheme\ThemeInfo')
-                    );
-                },
-                'inlinescript' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\InlineScript(
-                        $sm->getServiceLocator()->get('VuFindTheme\ThemeInfo')
-                    );
-                },
-                'mobileurl' => function ($sm) {
-                    return new \VuFindTheme\View\Helper\MobileUrl(
-                        $sm->getServiceLocator()->get('VuFindTheme\Mobile')
-                    );
-                },
-            ),
-        );
-        // @codingStandardsIgnoreEnd
+        return [
+            'factories' => [
+                'headlink' => 'VuFindTheme\View\Helper\Factory::getHeadLink',
+                'headscript' => 'VuFindTheme\View\Helper\Factory::getHeadScript',
+                'headthemeresources' =>
+                    'VuFindTheme\View\Helper\Factory::getHeadThemeResources',
+                'imagelink' => 'VuFindTheme\View\Helper\Factory::getImageLink',
+                'inlinescript' =>
+                    'VuFindTheme\View\Helper\Factory::getInlineScript',
+                'mobileurl' => 'VuFindTheme\View\Helper\Factory::getMobileUrl',
+            ],
+        ];
     }
 
     /**
-     * Perform initialization
+     * Factory function for ThemeInfo object.
      *
-     * @return void
+     * @return ThemeInfo
      */
-    public function init()
+    public static function getThemeInfo()
     {
+        return new ThemeInfo(realpath(APPLICATION_PATH . '/themes'), 'bootprint3');
     }
 }
