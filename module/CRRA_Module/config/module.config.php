@@ -1,10 +1,10 @@
 <?php
 namespace CRRA_Module\Module\Configuration;
 
-$config = array('vufind' => array(
-        'plugin_managers' => array(
-            'recorddriver' => array(
-                'factories' => array(
+$config = ['vufind' => [
+        'plugin_managers' => [
+            'recorddriver' => [
+                'factories' => [
                     'solrmarc' => function ($sm) {
                         $driver = new \CRRA_Module\RecordDriver\SolrMarc(
                             $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
@@ -24,20 +24,20 @@ $config = array('vufind' => array(
                             null,
                             $sm->getServiceLocator()->get('VuFind\Config')->get('searches')
                         );
-						return $driver;	
-                    },						
+						return $driver;
+                    },
                     'solrpp' => function ($sm) {
                         $driver = new \CRRA_Module\RecordDriver\SolrPp(
                             $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
                             null,
                             $sm->getServiceLocator()->get('VuFind\Config')->get('searches')
                         );
-						return $driver;								
+						return $driver;
                     },
-                )
-            ),
-        ),
-    ),
-);
+                ]
+            ],
+        ],
+    ],
+];
 
 return $config;

@@ -31,7 +31,7 @@ namespace CRRA_Module\RecordDriver;
  *
  * This class is designed to handle CRRA EAD records. Much of its functionality
  * is inherited from the default index-based driver.
- * 
+ *
  * @category VuFind2
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
@@ -40,42 +40,41 @@ namespace CRRA_Module\RecordDriver;
  */
 class SolrEad extends \VuFind\RecordDriver\SolrDefault
 {
-    /**    
-     * extract the urls from the full record.
+    /**
+     * Extract the urls from the full record.
      *
      * @return array
      */
     public function getURLs()
     {
         // initialize
-        $urls   = array();
+        $urls   = [];
         $parser = new \DOMXPath(\DOMDocument::loadXML($this->fields['fullrecord']));
-         
+
         // process all the urls
         $results = $parser->query('//url');
         foreach ($results as $result) {
-            $urls[] = array(
+            $urls[] = [
                 'url' => $result->nodeValue,
                 'desc' => $result->getAttribute('description')
-            );
+            ];
         }
-         
+
         // done
         return $urls;
 
-    }	
-    
+    }
+
     /**
      * Get all subject headings associated with this record.  Each heading is
      * returned as an array of chunks, increasing from least specific to most
      * specific.
      *
      * @return array
-     * @access public
      */
     public function getAllSubjectHeadings()
     {
-        $retVal = array();
+        $retVal = [];
         if (isset($this->fields['topic'])) {
             foreach ($this->fields['topic'] as $current) {
                 $retVal[] = explode('--', $current);
@@ -83,8 +82,8 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
         }
         return $retVal;
     }
-     
-    /**    
+
+    /**
      * Get scope content for the CRRA EAD record.
      *
      * @return string
@@ -94,8 +93,8 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
         return isset($this->fields['crra_scopecontent_str'])
             ? $this->fields['crra_scopecontent_str'] : '';
     }
-    
-    /**    
+
+    /**
      * Get Biographical History for the CRRA EAD record.
      *
      * @return string
@@ -105,8 +104,8 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
          return isset($this->fields['crra_bioghist_str'])
             ? $this->fields['crra_bioghist_str'] : '';
     }
-    
-    /**    
+
+    /**
      * Get library name for the CRRA EAD record.
      *
      * @return string
@@ -115,7 +114,7 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
     {
         return $this->fields['building'][0];
     }
-     
+
     /**
      * Get institution name for the CRRA EAD record.
      *
@@ -126,7 +125,7 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
         return $this->fields['institution'][0];
 
     }
-     
+
     /**
      * Get the unique id for the CRRA EAD record.
      *
@@ -137,10 +136,10 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
         return substr($this->fields['id'], 0, 3);
 
     }
-     
+
     /**
      * Turn off the Ajax status for CRRA portal.
-     * 
+     *
      * @return false
      */
     public function supportsAjaxStatus()
@@ -148,4 +147,3 @@ class SolrEad extends \VuFind\RecordDriver\SolrDefault
         return false;
     }
 }
-?>

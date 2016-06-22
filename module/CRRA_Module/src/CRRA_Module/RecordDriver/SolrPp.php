@@ -31,7 +31,7 @@ namespace CRRA_Module\RecordDriver;
  *
  * This class is designed to handle CRRA EAD records. Much of its functionality
  * is inherited from the default index-based driver.
- * 
+ *
  * @category VuFind2
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
@@ -40,51 +40,50 @@ namespace CRRA_Module\RecordDriver;
  */
 class SolrPp extends \VuFind\RecordDriver\SolrDefault
 {
-    /**    
-     * extract the urls from the full record.
+    /**
+     * Extract the urls from the full record.
      *
      * @return array
      */
     public function getURLs()
     {
         // initialize
-        $urls   = array();
-  	$dom = new \DOMDocument();
-	if($doc = $dom::loadXML($this->fields['fullrecord']))	{
-		$parser = new \DOMXPath($doc);
-         
-        	// process all the urls
-        	$results = $parser->query('//url');
-        	foreach ($results as $result) {
-            	$urls[] = array(
-                	'url' => $result->nodeValue,
-                	'desc' => $result->getAttribute('description')
-            		);
-        	}
-         
-        	// done
-        	return $urls;
-	}	
-    }	
-    
+        $urls = [];
+        $dom = new \DOMDocument();
+        if ($doc = $dom::loadXML($this->fields['fullrecord'])) {
+            $parser = new \DOMXPath($doc);
+
+            // process all the urls
+            $results = $parser->query('//url');
+            foreach ($results as $result) {
+                $urls[] = [
+                    'url' => $result->nodeValue,
+                    'desc' => $result->getAttribute('description')
+                ];
+            }
+        }
+
+        // done
+        return $urls;
+    }
+
     /**
      * Get all subject headings associated with this record.  Each heading is
      * returned as an array of chunks, increasing from least specific to most
      * specific.
      *
      * @return array
-     * @access public
      */
     public function getAllSubjectHeadings()
     {
         $headings = parent::getAllSubjectHeadings();
-	   for ($i = 0; $i < count($headings); $i++) {
-		   $headings[$i] = explode('--', $headings[$i][0]);
-	   }
-	   return $headings;
+        for ($i = 0; $i < count($headings); $i++) {
+            $headings[$i] = explode('--', $headings[$i][0]);
+        }
+        return $headings;
     }
-    
-    /**    
+
+    /**
      * Get library name for the CRRA Past Perfect record.
      *
      * @return string
@@ -93,7 +92,7 @@ class SolrPp extends \VuFind\RecordDriver\SolrDefault
     {
         return $this->fields['building'][0];
     }
-     
+
     /**
      * Get institution name for the CRRA Past Perfect record.
      *
@@ -102,9 +101,8 @@ class SolrPp extends \VuFind\RecordDriver\SolrDefault
     public function getCRRAInstitution()
     {
         return $this->fields['institution'][0];
-
     }
-     
+
     /**
      * Get the unique id for the CRRA Past Perfect record.
      *
@@ -113,7 +111,5 @@ class SolrPp extends \VuFind\RecordDriver\SolrDefault
     public function getCRRAKey()
     {
         return substr($this->fields['id'], 0, 3);
-
     }
 }
-?>
