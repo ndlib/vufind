@@ -147,6 +147,11 @@ JS;
             <? else: ?>
               <?=$this->layout()->breadcrumbs ?>
             <? endif; ?>
+            <span class="pull-right">
+              <a href="<?=$this->url('alphabrowse-home')?>"><?=$this->transEsc('Browse Alphabetically')?></a>
+              &#8195;<!-- em-space -->
+              <a href="<?=$this->url('search-history')?>"><?=$this->transEsc('Search History')?></a>
+            </span>
           </ul>
         <? endif; ?>
       </div>

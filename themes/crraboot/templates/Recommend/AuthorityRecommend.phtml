@@ -1,0 +1,34 @@
+<?
+    $data_see_also = $this->recommend->getRecommendationsSeeAlso();
+    $results_see_also = $this->recommend->getResultsSeeAlso();
+	$data_use_for = $this->recommend->getRecommendationsUseFor();
+    $results_use_for = $this->recommend->getResultsUseFor();
+?>
+<? if (is_array($data_see_also ) && !empty($data_see_also)): ?>
+  <div class="authoritybox">
+    <div><strong><?=$this->transEsc('See also')?>:</strong></div>
+    <div>
+      <? for ($i = 0; $i < count($data_see_also); $i++): ?>
+        <? // Generate a new search URL that replaces the user's current term with the authority term:
+          $url = $this->url($results_see_also->getOptions()->getSearchAction())
+              . $results_see_also->getUrlQuery()->replaceTerm($results_see_also->getParams()->getDisplayQuery(), $data_see_also[$i]['heading']);
+        ?>
+        <a href="<?=$url?>"><?=$this->escapeHtml($data_see_also[$i]['heading'])?></a>(BibCount <?=$data_see_also[$i]['BibCount']?>)<? if ($i != count($data_see_also) - 1): ?>, <? endif; ?>
+      <? endfor; ?>
+    </div>
+</div>
+<? endif; ?>
+<? if (is_array($data_use_for ) && !empty($data_use_for)): ?>
+  <div class="authoritybox">
+	<div><strong><?=$this->transEsc('Use For')?>:</strong></div>
+    <div>
+      <? for ($i = 0; $i < count($data_use_for); $i++): ?>
+        <? // Generate a new search URL that replaces the user's current term with the authority term:
+          $url = $this->url($results_use_for->getOptions()->getSearchAction())
+              . $results_use_for->getUrlQuery()->replaceTerm($results_use_for->getParams()->getDisplayQuery(), $data_use_for[$i]['heading']);
+        ?>
+        <a href="<?=$url?>"><?=$this->escapeHtml($data_use_for[$i]['heading'])?></a>(BibCount <?=$data_use_for[$i]['BibCount']?>)<? if ($i != count($data_use_for) - 1): ?>, <? endif; ?>
+      <? endfor; ?>
+    </div>
+  </div>
+<? endif; ?>
