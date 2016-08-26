@@ -5,7 +5,7 @@
 # October v8, 2010 - first cut
 # October 11, 2010 - added indexing
 
-cd /usr/local/vufind2/crra/crra-scripts
+cd /opt/vufind/crra/crra-scripts
 echo
 echo Harvesting EAD...
 bin/ead-harvest.pl all

@@ -9,16 +9,16 @@
 # December 20, 2012 - added command line input
 
 # configure
-use constant DB      => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant NEW     => '/usr/local/vufind2/crra/data/marc-incoming/';
-use constant UPDATED => '/usr/local/vufind2/crra/data/marc-updated/';
+use constant DB      => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
+use constant NEW     => '/opt/vufind/crra/data/marc-incoming/';
+use constant UPDATED => '/opt/vufind/crra/data/marc-updated/';
 use constant TYPE    => 'marc';
 
 # require
 use strict;
 use MARC::Batch;
 use Encode qw( encode decode );
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

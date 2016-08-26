@@ -12,19 +12,19 @@
 
 
 # define constants
-use constant ADDUNITID => '/usr/local/vufind2/crra/crra-scripts/etc/addunitid.xsl';
-use constant STRIPNS   => '/usr/local/vufind2/crra/crra-scripts/etc/strip-namespaces.xsl';
-use constant CACHE     => '/usr/local/vufind2/crra/data/ead-incoming/' ;
-use constant DB        => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant HTML      => '/usr/local/vufind2/crra/data/html/data/ead/html/';
-use constant EAD2HTML  => '/usr/local/vufind2/crra/crra-scripts/etc/ead2html.xsl';
-use constant EAD       => '/usr/local/vufind2/crra/data/html/data/ead/xml/';
+use constant ADDUNITID => '/opt/vufind/crra/crra-scripts/etc/addunitid.xsl';
+use constant STRIPNS   => '/opt/vufind/crra/crra-scripts/etc/strip-namespaces.xsl';
+use constant CACHE     => '/opt/vufind/crra/data/ead-incoming/' ;
+use constant DB        => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
+use constant HTML      => '/opt/vufind/crra/data/html/data/ead/html/';
+use constant EAD2HTML  => '/opt/vufind/crra/crra-scripts/etc/ead2html.xsl';
+use constant EAD       => '/opt/vufind/crra/data/html/data/ead/xml/';
 
 # require
 use strict;
 use XML::LibXML;
 use XML::LibXSLT;
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 $| = 1;
 
 # process each library

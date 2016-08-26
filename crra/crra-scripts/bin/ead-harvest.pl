@@ -10,15 +10,15 @@
 
 # configure
 use constant AGENT  => 'EADGetter';
-use constant DB     => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant CACHE  =>  '/usr/local/vufind2/crra/data/ead-incoming/' ;
+use constant DB     => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
+use constant CACHE  =>  '/opt/vufind/crra/data/ead-incoming/' ;
 
 # require
 use HTML::SimpleLinkExtor;
 use HTML::LinkExtor;
 use LWP::UserAgent;
 use strict;
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );
