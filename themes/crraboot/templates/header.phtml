@@ -19,7 +19,7 @@
   <? endif; ?>
   <? if (!isset($this->layout()->renderingError)): ?>
     <nav>
-      <ul role="navigation" class="nav navbar-nav navbar-right flip">
+      <ul role="navigation" class="nav navbar-nav navbar-right flip<? if($account->isLoggedIn()): ?> loggedin<?endif;?>">
         <? if ($this->feedback()->tabEnabled()): ?>
           <li>
             <a id="feedbackLink" data-lightbox href="<?=$this->url('feedback-home') ?>"><i class="fa fa-envelope"></i> <?=$this->transEsc("Feedback")?></a>

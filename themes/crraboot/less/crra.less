@@ -9,6 +9,9 @@ body { background-color:#fff; }
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+h1 { font-size: 2em; }
+h2 { margin-left: 0; }
+
 .container {
   border: 1px solid #ddd;
   border-bottom: 0;
@@ -70,6 +73,7 @@ header .navbar .navbar-nav > li > a {
     width: 33%;
     float: left;
   }
+  header .navbar .navbar-nav.loggedin > li { width: 25%; }
   header .navbar .navbar-nav > li > a {
     text-align: center;
     padding: 4px;
@@ -77,6 +81,7 @@ header .navbar .navbar-nav > li > a {
 }
 @media (max-width: 767px) {
   header .navbar .searchForm .searchForm_lookfor { width: 100%; }
+  header .navbar .searchForm button[type="submit"] { width: 50%; }
 }
 @media (max-width: 570px) {
   header .banner {
