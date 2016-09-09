@@ -275,7 +275,7 @@
 			<p style="text-align:center">
 				<a name="a0">
 					<a href="http://www.catholicresearch.net/">
-						<img src="http://www.catholicresearch.net/interface/themes/crranew/css/images/header.png" width="600"/>
+						<img src="http://www.catholicresearch.net/vufind/themes/crra/images/header.png" width="600"/>
 					</a>
 				</a>
 			</p>
@@ -300,10 +300,10 @@
 		<h5 align="center">
 			<xsl:value-of select="ead/eadheader/filedesc/publicationstmt/date"/>
 		</h5>
-		<!-- 
+		<!--
 	<ul>
 		<b>Contact Information</b>
-		
+
 		<dd>Reference Department</dd>
 		<dd>Archives of American Art</dd>
 		<dd>Smithsonian Institution</dd>
@@ -965,10 +965,10 @@
 					</i>
 				</p>
 			</xsl:if>
-			
+
 			<xsl:apply-templates select="c01"/>
-		
-			
+
+
 		</xsl:for-each>
 	</xsl:template>
 	<xsl:template name="unittitle-stuff">
@@ -1023,9 +1023,9 @@ included in the markup but empty of PCDATA content.-->
 			</xsl:when>
 			<!-- Otherwise, simply display the component as a container.  All non-series components (folder groupings, folders, items) get displayed the same way -->
 			<xsl:otherwise>
-				<!-- 
+				<!--
 				Determine the previous box, reel, folder, and frame numbers.
-				We're using a (nearly) identical template call for each container 
+				We're using a (nearly) identical template call for each container
 				type to return the previous container number for that type
 			-->
 				<!-- If the current component has a box number, get the previous box number -->
@@ -1121,14 +1121,14 @@ included in the markup but empty of PCDATA content.-->
 			<xsl:with-param name="indentLevel" select="$nextIndentLevel"/>
 		</xsl:apply-templates>
 	</xsl:template>
-	<!-- 
+	<!--
 	Any component with a level or otherlevel attribute becomes a series.
-	
+
 	This has a standard display
 -->
 	<xsl:template name="display-series">
 		<xsl:param name="currentComponent"/>
-		
+
 		<h3>
 			<!-- We need to determine the "anchor" string for the named anchor that users will follow to this series or subseries -->
 			<xsl:variable name="seriesAnchorPrefix">
@@ -1137,7 +1137,7 @@ included in the markup but empty of PCDATA content.-->
 			<!-- Get value of font size of series . Changes as per CRRA requirements-->
 			<xsl:variable name="fontSize">
 				<xsl:call-template name="checkForSeriesFontSize"/>
-			</xsl:variable>	
+			</xsl:variable>
 			<font size="{$fontSize}">
 			<!-- Here is where we put the named anchor link -->
 			<a >
@@ -1152,7 +1152,7 @@ included in the markup but empty of PCDATA content.-->
 			<!-- Adding text here, otherwise, there isn't any space between the title and the physical description -->
 			<xsl:text> </xsl:text>
 			<xsl:apply-templates select="$currentComponent/did/physdesc"/>
-			</font>	
+			</font>
 		</h3>
 		<xsl:for-each select="$currentComponent/scopecontent/note/p|scopecontent/p">
 			<p>
@@ -1161,13 +1161,13 @@ included in the markup but empty of PCDATA content.-->
 		</xsl:for-each>
 		<xsl:apply-templates select="$currentComponent/arrangement"/>
 	</xsl:template>
-	<!-- 
+	<!--
 	Each container heading is displayed as its own table. The current component representing the container heading is
 	passed in as the currentComponent variable.
-	
+
 	The code that "displays" the component is responsible for determining the previous container numbers (described further below
 	 in details)
-	 
+
 	 We also pass through information about the indent level to support indenting of titles and the scope content.
 -->
 	<xsl:template name="display-container">
@@ -1205,8 +1205,8 @@ included in the markup but empty of PCDATA content.-->
 		-->
 			<xsl:choose>
 				<xsl:when test="
-									(string-length($boxnumber) and $boxnumber != $previousBoxNumber) or 
-									(not(string-length($boxnumber)) and string-length($reelnumber) and not($reelnumber = $previousReelNumber)) 
+									(string-length($boxnumber) and $boxnumber != $previousBoxNumber) or
+									(not(string-length($boxnumber)) and string-length($reelnumber) and not($reelnumber = $previousReelNumber))
 							">
 					<tr>
 						<td style="width:75px">
@@ -1259,7 +1259,7 @@ included in the markup but empty of PCDATA content.-->
 						<!-- In this case, we first test for the NEGATIVE of the criteria we used to determine whether to display the column headings -->
 						<xsl:when test="	not(
 											(
-											(string-length($boxnumber) and not($boxnumber = $previousBoxNumber)) or 
+											(string-length($boxnumber) and not($boxnumber = $previousBoxNumber)) or
 											(not(string-length($boxnumber)) and string-length($reelnumber) and not($reelnumber = $previousReelNumber)))
 										)
 							">
@@ -1281,12 +1281,12 @@ included in the markup but empty of PCDATA content.-->
 						<!-- We have to check BOTH to see if the box/reel number changed AND if the secondary container value has changed. We display no value if they're BOTH the same   -->
 						<xsl:when test="	not(
 											(
-											(string-length($boxnumber) and not($boxnumber = $previousBoxNumber)) or 
+											(string-length($boxnumber) and not($boxnumber = $previousBoxNumber)) or
 											(not(string-length($boxnumber)) and string-length($reelnumber) and not($reelnumber = $previousReelNumber)))
 										)
-										and 
+										and
 										not(
-											(string-length($boxnumber) and string-length($reelnumber) and not($reelnumber = $previousReelNumber)) or 													
+											(string-length($boxnumber) and string-length($reelnumber) and not($reelnumber = $previousReelNumber)) or
 											(string-length($foldernumber) and not($foldernumber = $previousFolderNumber)) or
 											(string-length($framenumber) and not($framenumber = $previousFrameNumber))
 										)
@@ -1404,8 +1404,8 @@ included in the markup but empty of PCDATA content.-->
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
-	<!-- This template will check font size of series contents. Changes done as per CRRA requirements--> 
+
+	<!-- This template will check font size of series contents. Changes done as per CRRA requirements-->
 	<xsl:template name="checkForSeriesFontSize">
 		<xsl:variable name="fontSize">
 			<xsl:if test="self::c01">
@@ -1423,14 +1423,14 @@ included in the markup but empty of PCDATA content.-->
 		</xsl:variable>
 		<xsl:value-of select="$fontSize"/>
 	</xsl:template>
-		
-	<!-- 
+
+	<!--
 	This template attempts to determine the previous container number for the current container type.  This turns out to be very complicated:
-	the previous container number, could come from the parent of the current component, from the component's previous sibling, or from a child 
+	the previous container number, could come from the parent of the current component, from the component's previous sibling, or from a child
 	of that previous sibling, with permutations on this.
-	
-	The various choices are all outlined below. There are many of them. Each is documented as to why it comes in the order specified 
-	
+
+	The various choices are all outlined below. There are many of them. Each is documented as to why it comes in the order specified
+
 -->
 	<xsl:template name="determineContainerNumber">
 		<xsl:param name="currentComponent"/>
@@ -1457,9 +1457,9 @@ included in the markup but empty of PCDATA content.-->
 					</xsl:message>
 					<xsl:value-of select="./parent::node()/did/container[@type=$containerType]"/>
 				</xsl:when>
-				<!-- 
+				<!--
 				All of the possible previous component possibilities for c06. The order is designed to ensure that the most nested cases are handled first,
-				because otherwise they would be overridden by less nested options 
+				because otherwise they would be overridden by less nested options
 			-->
 				<!-- Get the container number from the previous sibling of this c06 -->
 				<xsl:when test="./parent::node()/c06[number($componentPosition -1)]/did/container[@type=$containerType]">
@@ -1477,9 +1477,9 @@ included in the markup but empty of PCDATA content.-->
 					</xsl:message>
 					<xsl:value-of select="./parent::node()/preceding-sibling::c05/did/container[@type=$containerType]"/>
 				</xsl:when>
-				<!-- 
+				<!--
 				All of the possible previous component possibilities for c05. The order is designed to ensure that the most nested cases are handled first,
-				because otherwise they would be overridden by less nested options 
+				because otherwise they would be overridden by less nested options
 			-->
 				<!-- Get the container number from the last c06 child of the previous c05 sibling of this c05 -->
 				<xsl:when test="./parent::node()/c05[number($componentPosition -1)]/c06[last()]/did/container[@type=$containerType]">
@@ -1505,9 +1505,9 @@ included in the markup but empty of PCDATA content.-->
 					</xsl:message>
 					<xsl:value-of select="./parent::node()/preceding-sibling::c04/did/container[@type=$containerType]"/>
 				</xsl:when>
-				<!-- 
+				<!--
 				All of the possible previous component possibilities for c04. The order is designed to ensure that the most nested cases are handled first,
-				because otherwise they would be overridden by less nested options 
+				because otherwise they would be overridden by less nested options
 			-->
 				<!-- Get the container number from the last c06 child of the last c05 child of the previous c04 sibling of this c04 -->
 				<xsl:when test="./parent::node()/c04[number($componentPosition -1)]/c05[last()]/c06[last()]/did/container[@type=$containerType]">
@@ -1541,9 +1541,9 @@ included in the markup but empty of PCDATA content.-->
 					</xsl:message>
 					<xsl:value-of select="./parent::node()/preceding-sibling::c03/did/container[@type=$containerType]"/>
 				</xsl:when>
-				<!-- 
+				<!--
 				All of the possible previous component possibilities for c03. The order is designed to ensure that the most nested cases are handled first,
-				because otherwise they would be overridden by less nested options 
+				because otherwise they would be overridden by less nested options
 			-->
 				<!-- Get the container number from the last c06 child of the last c05 child of the last c04 child of the previous c03 sibling of this c03 -->
 				<xsl:when test="./parent::node()/c03[number($componentPosition -1)]/c04[last()]/c05[last()]/c06[last()]/did/container[@type=$containerType]">
@@ -1585,9 +1585,9 @@ included in the markup but empty of PCDATA content.-->
 					</xsl:message>
 					<xsl:value-of select="parent::node()/preceding-sibling::c02/did/container[@type=$containerType]"/>
 				</xsl:when>
-				<!-- 
+				<!--
 				All of the possible previous component possibilities for c02. The order is designed to ensure that the most nested cases are handled first,
-				because otherwise they would be overridden by less nested options 
+				because otherwise they would be overridden by less nested options
 			-->
 				<!-- Get the container number from the last c06 child of the last c05 child of the last c04 child of the last c03 child of the previous sibling of this c02 -->
 				<xsl:when test="./parent::node()/c02[number($componentPosition -1)]/c03[last()]/c04[last()]/c05[last()]/c06[last()]/did/container[@type=$containerType]">
@@ -1635,19 +1635,19 @@ included in the markup but empty of PCDATA content.-->
 		</xsl:for-each>
 	</xsl:template>
 	<!-- Displays the biographical statement (not used by our finding aids) or arrangement note -->
-	<xsl:template match="   
-						c01/bioghist | 
+	<xsl:template match="
+						c01/bioghist |
 						c01/arrangement |
-						c02/bioghist | 
+						c02/bioghist |
 						c02/arrangement |
-						c03/bioghist | 
+						c03/bioghist |
 						c03/arrangement |
-						c04/bioghist | 
+						c04/bioghist |
 						c04/arrangement |
-						c05/bioghist | 
+						c05/bioghist |
 						c05/arrangement |
-						c06/bioghist | 
-						c06/arrangement 
+						c06/bioghist |
+						c06/arrangement
 	">
 		<xsl:for-each select="p">
 			<p>
