@@ -48,7 +48,8 @@ class Factory
      *
      * @return EDS
      */
-    public static function getSolrMarc ($sm) {
+    public static function getSolrMarc($sm)
+    {
         $driver = new \CRRA_Module\RecordDriver\SolrMarc(
             $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
             null,
@@ -69,7 +70,8 @@ class Factory
      *
      * @return EDS
      */
-    public static function getSolrEAD ($sm) {
+    public static function getSolrEAD($sm)
+    {
         $driver = new \CRRA_Module\RecordDriver\SolrEad(
             $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
             null,
@@ -85,7 +87,8 @@ class Factory
      *
      * @return EDS
      */
-    public static function getSolrPP ($sm) {
+    public static function getSolrPP($sm)
+    {
         $driver = new \CRRA_Module\RecordDriver\SolrPp(
             $sm->getServiceLocator()->get('VuFind\Config')->get('config'),
             null,
