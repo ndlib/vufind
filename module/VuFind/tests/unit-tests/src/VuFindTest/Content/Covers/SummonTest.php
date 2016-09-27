@@ -20,23 +20,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 namespace VuFindTest\Content\Covers;
-use VuFind\Code\ISBN, VuFind\Content\Covers\Summon;
+use VuFindCode\ISBN, VuFind\Content\Covers\Summon;
 
 /**
  * Unit tests for Summon cover loader.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class SummonTest extends \PHPUnit_Framework_TestCase
 {
@@ -52,7 +52,7 @@ class SummonTest extends \PHPUnit_Framework_TestCase
             'http://api.summon.serialssolutions.com/2.0.0/image/isbn/'
             . 'mykey/9780739313121/small',
             $summon->getUrl(
-                'mykey', 'small', array('isbn' => new ISBN('0739313126'))
+                'mykey', 'small', ['isbn' => new ISBN('0739313126')]
             )
         );
     }
@@ -65,6 +65,6 @@ class SummonTest extends \PHPUnit_Framework_TestCase
     public function testMissingIsbn()
     {
         $summon = new Summon();
-        $this->assertEquals(false, $summon->getUrl('mykey', 'small', array()));
+        $this->assertEquals(false, $summon->getUrl('mykey', 'small', []));
     }
 }

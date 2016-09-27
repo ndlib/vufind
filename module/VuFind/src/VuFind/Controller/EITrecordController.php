@@ -19,28 +19,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Julia Bauder <bauderj@grinnell.edu>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Controller;
-use Zend\Mvc\MvcEvent;
 
 /**
  * EIT Record Controller
  * Largely copied from Summon Record Controller
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Julia Bauder <bauderj@grinnell.edu>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
-
 class EITrecordController extends AbstractRecord
 {
     /**
@@ -49,6 +47,7 @@ class EITrecordController extends AbstractRecord
     public function __construct()
     {
         // Override some defaults:
+        $this->accessPermission = 'access.EITModule';
         $this->searchClassId = 'EIT';
         $this->defaultTab = 'Description';
 

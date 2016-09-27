@@ -19,46 +19,44 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Cover_Generator
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/use_of_external_content Wiki
+ * @link     https://vufind.org/wiki/configuration:external_content Wiki
  */
 namespace VuFind\Cover;
-use VuFind\Code\ISBN,
-    VuFind\Content\Covers\PluginManager as ApiManager,
-    Zend\Log\LoggerInterface;
+use VuFindCode\ISBN, VuFind\Content\Covers\PluginManager as ApiManager;
 
 /**
  * Book Cover Generator
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Cover_Generator
  * @author   Andrew S. Nagy <vufind-tech@lists.sourceforge.net>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/use_of_external_content Wiki
+ * @link     https://vufind.org/wiki/configuration:external_content Wiki
  */
-class Loader implements \Zend\Log\LoggerAwareInterface
+class Loader extends \VuFind\ImageLoader
 {
     /**
-     * filename constructed from ISBN
+     * Filename constructed from ISBN
      *
      * @var string
      */
     protected $localFile = '';
 
     /**
-     * valid image sizes to request
+     * Valid image sizes to request
      *
      * @var array
      */
-    protected $validSizes = array('small', 'medium', 'large');
+    protected $validSizes = ['small', 'medium', 'large'];
 
     /**
-     * property to hold VuFind configuration settings
+     * VuFind configuration settings
      *
      * @var \Zend\Config\Config
      */
@@ -79,7 +77,7 @@ class Loader implements \Zend\Log\LoggerAwareInterface
     protected $client;
 
     /**
-     * directory to store downloaded images
+     * Directory to store downloaded images
      *
      * @var string
      */
@@ -128,34 +126,6 @@ class Loader implements \Zend\Log\LoggerAwareInterface
     protected $type;
 
     /**
-     * Property for storing raw image data; may be null if image is unavailable
-     *
-     * @var string
-     */
-    protected $image = null;
-
-    /**
-     * Content type of data in $image property
-     *
-     * @var string
-     */
-    protected $contentType = null;
-
-    /**
-     * Logger (or false for none)
-     *
-     * @var LoggerInterface|bool
-     */
-    protected $logger = false;
-
-    /**
-     * Theme tools
-     *
-     * @var \VuFindTheme\ThemeInfo
-     */
-    protected $themeTools;
-
-    /**
      * Constructor
      *
      * @param \Zend\Config\Config    $config  VuFind configuration
@@ -168,67 +138,15 @@ class Loader implements \Zend\Log\LoggerAwareInterface
     public function __construct($config, ApiManager $manager,
         \VuFindTheme\ThemeInfo $theme, \Zend\Http\Client $client, $baseDir = null
     ) {
+        $this->setThemeInfo($theme);
         $this->config = $config;
+        $this->configuredFailImage = isset($config->Content->noCoverAvailableImage)
+            ? $config->Content->noCoverAvailableImage : null;
         $this->apiManager = $manager;
-        $this->themeTools = $theme;
         $this->client = $client;
         $this->baseDir = (null === $baseDir)
             ? rtrim(sys_get_temp_dir(), '\\/') . '/covers'
             : rtrim($baseDir, '\\/');
-    }
-
-    /**
-     * Set the logger
-     *
-     * @param LoggerInterface $logger Logger to use.
-     *
-     * @return void
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-    }
-
-    /**
-     * Log a debug message.
-     *
-     * @param string $msg Message to log.
-     *
-     * @return void
-     */
-    protected function debug($msg)
-    {
-        if ($this->logger) {
-            $this->logger->debug($msg);
-        }
-    }
-
-    /**
-     * Get the image data (usually called after loadImage)
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        // No image loaded?  Use "unavailable" as default:
-        if (null === $this->image) {
-            $this->loadUnavailable();
-        }
-        return $this->image;
-    }
-
-    /**
-     * Get the content type of the current image (usually called after loadImage)
-     *
-     * @return string
-     */
-    public function getContentType()
-    {
-        // No content type loaded?  Use "unavailable" as default:
-        if (null === $this->contentType) {
-            $this->loadUnavailable();
-        }
-        return $this->contentType;
     }
 
     /**
@@ -238,40 +156,102 @@ class Loader implements \Zend\Log\LoggerAwareInterface
      */
     public function getCoverGenerator()
     {
-        return new \VuFind\Cover\Generator(
-            $this->themeTools,
-            array('mode'=>$this->config->Content->makeDynamicCovers)
-        );
+        $settings = isset($this->config->DynamicCovers)
+            ? $this->config->DynamicCovers->toArray() : [];
+        if (!isset($settings['backgroundMode'])
+            && isset($this->config->Content->makeDynamicCovers)
+        ) {
+            $settings['backgroundMode'] = $this->config->Content->makeDynamicCovers;
+        }
+        return new \VuFind\Cover\Generator($this->themeTools, $settings);
+    }
+
+    /**
+     * Get default settings for loadImage().
+     *
+     * @return array
+     */
+    protected function getDefaultSettings()
+    {
+        return [
+            'isbn' => null,
+            'size' => 'small',
+            'type' => null,
+            'title' => null,
+            'author' => null,
+            'callnumber' => null,
+            'issn' => null,
+            'oclc' => null,
+            'upc' => null,
+        ];
+    }
+
+    /**
+     * Translate legacy function arguments into new-style array.
+     *
+     * @param array $args Function arguments
+     *
+     * @return array
+     */
+    protected function getImageSettingsFromLegacyArgs($args)
+    {
+        return [
+            'isbn' => $args[0],
+            'size' => $args[1],
+            'type' => $args[2],
+            'title' => $args[3],
+            'author' => $args[4],
+            'callnumber' => $args[5],
+            'issn' => $args[6],
+            'oclc' => $args[7],
+            'upc' => $args[8],
+        ];
+    }
+
+    /**
+     * Support method for loadImage() -- sanitize and store some key values.
+     *
+     * @param array $settings Settings from loadImage (with missing defaults
+     * already filled in).
+     *
+     * @return void
+     */
+    protected function storeSanitizedSettings($settings)
+    {
+        $this->isbn = new ISBN($settings['isbn']);
+        if (!empty($settings['issn'])) {
+            $rawissn = preg_replace('/[^0-9X]/', '', strtoupper($settings['issn']));
+            $this->issn = substr($rawissn, 0, 8);
+        } else {
+            $this->issn = null;
+        }
+        $this->oclc = $settings['oclc'];
+        $this->upc = $settings['upc'];
+        $this->type = preg_replace('/[^a-zA-Z]/', '', $settings['type']);
+        $this->size = $settings['size'];
     }
 
     /**
      * Load an image given an ISBN and/or content type.
      *
-     * @param string $isbn       ISBN
-     * @param string $size       Requested size
-     * @param string $type       Content type
-     * @param string $title      Title of book (for dynamic covers)
-     * @param string $author     Author of the book (for dynamic covers)
-     * @param string $callnumber Callnumber (unique id for dynamic covers)
-     * @param string $issn       ISSN
-     * @param string $oclc       OCLC number
-     * @param string $upc        UPC number
+     * @param array $settings Array of settings used to calculate a cover; may
+     * contain any or all of these keys: 'isbn' (ISBN), 'size' (requested size),
+     * 'type' (content type), 'title' (title of book, for dynamic covers), 'author'
+     * (author of book, for dynamic covers), 'callnumber' (unique ID, for dynamic
+     * covers), 'issn' (ISSN), 'oclc' (OCLC number), 'upc' (UPC number).
      *
      * @return void
      */
-    public function loadImage($isbn = null, $size = 'small', $type = null,
-        $title = null, $author = null, $callnumber = null, $issn = null,
-        $oclc = null, $upc = null
-    ) {
-        // Sanitize parameters:
-        $this->isbn = new ISBN($isbn);
-        $this->issn = empty($issn)
-            ? null
-            : substr(preg_replace('/[^0-9X]/', '', strtoupper($issn)), 0, 8);
-        $this->oclc = $oclc;
-        $this->upc = $upc;
-        $this->type = preg_replace("/[^a-zA-Z]/", "", $type);
-        $this->size = $size;
+    public function loadImage($settings = [])
+    {
+        // Load settings from legacy function parameters if they are not passed
+        // in as an array:
+        $settings = is_array($settings)
+            ? array_merge($this->getDefaultSettings(), $settings)
+            : $this->getImageSettingsFromLegacyArgs(func_get_args());
+
+        // Store sanitized versions of some parameters for future reference:
+        $this->storeSanitizedSettings($settings);
 
         // Display a fail image unless our parameters pass inspection and we
         // are able to display an ISBN or content-type-based image.
@@ -281,10 +261,11 @@ class Loader implements \Zend\Log\LoggerAwareInterface
             && !$this->fetchFromContentType()
         ) {
             if (isset($this->config->Content->makeDynamicCovers)
-                && false !== $this->config->Content->makeDynamicCovers
+                && $this->config->Content->makeDynamicCovers
             ) {
-                $this->image = $this->getCoverGenerator()
-                    ->generate($title, $author, $callnumber);
+                $this->image = $this->getCoverGenerator()->generate(
+                    $settings['title'], $settings['author'], $settings['callnumber']
+                );
                 $this->contentType = 'image/png';
             } else {
                 $this->loadUnavailable();
@@ -327,7 +308,7 @@ class Loader implements \Zend\Log\LoggerAwareInterface
      */
     protected function getIdentifiers()
     {
-        $ids = array();
+        $ids = [];
         if ($this->isbn && $this->isbn->isValid()) {
             $ids['isbn'] = $this->isbn;
         }
@@ -433,7 +414,7 @@ class Loader implements \Zend\Log\LoggerAwareInterface
         // Try to find an icon:
         $iconFile = $this->searchTheme(
             'images/' . $this->size . '/' . $this->type,
-            array('.png', '.gif', '.jpg')
+            ['.png', '.gif', '.jpg']
         );
         if ($iconFile !== false) {
             // Most content-type headers match file extensions... but
@@ -447,89 +428,6 @@ class Loader implements \Zend\Log\LoggerAwareInterface
 
         // If we got this far, no icon was found:
         return false;
-    }
-
-    /**
-     * Find a file in the themes (return false if no file exists).
-     *
-     * @param string $path    Relative path of file to find.
-     * @param array  $formats Optional array of suffixes to add to $path while
-     * searching theme (used to check multiple extensions in each theme).
-     *
-     * @return string|bool
-     */
-    protected function searchTheme($path, $formats = array(''))
-    {
-        // Check all supported image formats:
-        $filenames = array();
-        foreach ($formats as $format) {
-            $filenames[] =  $path . $format;
-        }
-        $fileMatch = $this->themeTools->findContainingTheme($filenames, true);
-        return empty($fileMatch) ? false : $fileMatch;
-    }
-
-    /**
-     * Load the user-specified "cover unavailable" graphic (or default if none
-     * specified).
-     *
-     * @return void
-     * @author Thomas Schwaerzler <vufind-tech@lists.sourceforge.net>
-     */
-    public function loadUnavailable()
-    {
-        // Get "no cover" image from config.ini:
-        $noCoverImage = isset($this->config->Content->noCoverAvailableImage)
-            ? $this->searchTheme($this->config->Content->noCoverAvailableImage)
-            : null;
-
-        // No setting -- use default, and don't log anything:
-        if (empty($noCoverImage)) {
-            // log?
-            return $this->loadDefaultFailImage();
-        }
-
-        // If file defined but does not exist, log error and display default:
-        if (!file_exists($noCoverImage) || !is_readable($noCoverImage)) {
-            $this->debug("Cannot access file: '$noCoverImage'");
-            return $this->loadDefaultFailImage();
-        }
-
-        // Array containing map of allowed file extensions to mimetypes
-        // (to be extended)
-        $allowedFileExtensions = array(
-            "gif" => "image/gif",
-            "jpeg" => "image/jpeg", "jpg" => "image/jpeg",
-            "png" => "image/png",
-            "tiff" => "image/tiff", "tif" => "image/tiff"
-        );
-
-        // Log error and bail out if file lacks a known image extension:
-        $parts = explode('.', $noCoverImage);
-        $fileExtension = strtolower(end($parts));
-        if (!array_key_exists($fileExtension, $allowedFileExtensions)) {
-            $this->debug(
-                "Illegal file-extension '$fileExtension' for image '$noCoverImage'"
-            );
-            return $this->loadDefaultFailImage();
-        }
-
-        // Get mime type from file extension:
-        $this->contentType = $allowedFileExtensions[$fileExtension];
-
-        // Load the image data:
-        $this->image = file_get_contents($noCoverImage);
-    }
-
-    /**
-     * Display the default "cover unavailable" graphic and terminate execution.
-     *
-     * @return void
-     */
-    protected function loadDefaultFailImage()
-    {
-        $this->contentType = 'image/gif';
-        $this->image = file_get_contents($this->searchTheme('images/noCover2.gif'));
     }
 
     /**
@@ -643,6 +541,10 @@ class Loader implements \Zend\Log\LoggerAwareInterface
         }
 
         $image = $result->getBody();
+
+        if ('' == $image) {
+            return false;
+        }
 
         // Figure out file paths -- $tempFile will be used to store the
         // image for analysis.  $finalFile will be used for long-term storage if

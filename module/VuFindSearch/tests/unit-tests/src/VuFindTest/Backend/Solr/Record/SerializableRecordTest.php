@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
-
 namespace VuFindTest\Backend\Solr\Record;
 
 use VuFindSearch\Backend\Solr\Record\SerializableRecord;
@@ -34,11 +33,11 @@ use VuFindSearch\Backend\Solr\Record\SerializableRecord;
 /**
  * Unit tests for SOLR serializable record.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class SerializableRecordTest extends \PHPUnit_Framework_TestCase
 {
@@ -49,7 +48,7 @@ class SerializableRecordTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFields()
     {
-        $fields = array('a' => 'b');
+        $fields = ['a' => 'b'];
         $sr = new SerializableRecord($fields);
         $this->assertEquals($fields, $sr->getFields());
     }

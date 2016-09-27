@@ -11,7 +11,7 @@
 use constant INSTITUTION    => 'Duquesne University';
 use constant LIBRARY        => 'Gumberg Library';
 use constant RECORDTYPE     => 'oaidc';
-use constant SOLR           => 'http://localhost:8080/solr/biblio';
+use constant SOLR           => 'http://localhost:8081/solr/biblio';
 use constant URLDESCRIPTION => 'View online';
 use constant DIRECTORY      => '/shared/catholic_portal/data/vufind/harvest/DUQ/';
 

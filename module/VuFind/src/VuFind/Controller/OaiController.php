@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA    02111-1307    USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_a_controller Wiki
+ * @link     https://vufind.org/wiki/development:plugins:controllers Wiki
  */
 namespace VuFind\Controller;
 
@@ -32,11 +32,11 @@ namespace VuFind\Controller;
  *
  * Controls the OAI server
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_a_controller Wiki
+ * @link     https://vufind.org/wiki/development:plugins:controllers Wiki
  */
 class OaiController extends AbstractBase
 {
@@ -95,11 +95,15 @@ class OaiController extends AbstractBase
 
         // Build OAI response or die trying:
         try {
+            $params = array_merge(
+                $this->getRequest()->getQuery()->toArray(),
+                $this->getRequest()->getPost()->toArray()
+            );
             $server = new $serverClass(
                 $this->getServiceLocator()->get('VuFind\SearchResultsPluginManager'),
                 $this->getServiceLocator()->get('VuFind\RecordLoader'),
                 $this->getServiceLocator()->get('VuFind\DbTablePluginManager'),
-                $config, $baseURL, $this->getRequest()->getQuery()->toArray()
+                $config, $baseURL, $params
             );
             $server->setRecordLinkHelper(
                 $this->getViewRenderer()->plugin('recordlink')
@@ -113,7 +117,7 @@ class OaiController extends AbstractBase
 
         // Return response:
         $headers = $response->getHeaders();
-        $headers->addHeaderLine('Content-type', 'text/xml');
+        $headers->addHeaderLine('Content-type', 'text/xml; charset=UTF-8');
         $response->setContent($xml);
         return $response;
     }

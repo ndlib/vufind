@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Error_Logging
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Log;
 use Zend\Log\Logger as BaseLogger,
@@ -33,27 +33,22 @@ use Zend\Log\Logger as BaseLogger,
 /**
  * This class wraps the BaseLogger class to allow for log verbosity
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Error_Logging
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class Logger extends BaseLogger implements ServiceLocatorAwareInterface
 {
+    use \Zend\ServiceManager\ServiceLocatorAwareTrait;
+
     /**
      * Is debug logging enabled?
      *
      * @var bool
      */
     protected $debugNeeded = false;
-
-    /**
-     * Service locator
-     *
-     * @var ServiceLocatorInterface
-     */
-    protected $serviceLocator;
 
     /**
      * Set configuration
@@ -66,30 +61,21 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
     {
         // DEBUGGER
         if (!$config->System->debug == false) {
-            $writer = new Writer\Stream('php://output');
-            $formatter = new \Zend\Log\Formatter\Simple(
-                '<pre>%timestamp% %priorityName%: %message%</pre>' . PHP_EOL
-            );
-            $writer->setFormatter($formatter);
-            $this->addWriters(
-                $writer,
-                'debug-'
-                . (is_int($config->System->debug) ? $config->System->debug : '5')
-            );
+            $this->addDebugWriter($config->System->debug);
         }
-        
+
         // Activate database logging, if applicable:
         if (isset($config->Logging->database)) {
             $parts = explode(':', $config->Logging->database);
             $table_name = $parts[0];
             $error_types = isset($parts[1]) ? $parts[1] : '';
 
-            $columnMapping = array(
+            $columnMapping = [
                 'priority' => 'priority',
                 'message' => 'message',
                 'logtime' => 'timestamp',
                 'ident' => 'ident'
-            );
+            ];
 
             // Make Writers
             $filters = explode(',', $error_types);
@@ -133,11 +119,35 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
             $this->addWriters($writer, $filters);
         }
 
-        // Null writer to avoid errors
+        // Null (no-op) writer to avoid errors
         if (count($this->writers) == 0) {
-            $nullWriter = 'Zend\Log\Writer\Null';
+            $nullWriter = 'Zend\Log\Writer\Noop';
             $this->addWriter(new $nullWriter());
         }
+    }
+
+    /**
+     * Add the standard debug stream writer.
+     *
+     * @param bool|int $debug Debug mode/level
+     *
+     * @return void
+     */
+    public function addDebugWriter($debug)
+    {
+        // Only add debug writer ONCE!
+        static $hasDebugWriter = false;
+        if ($hasDebugWriter) {
+            return;
+        }
+
+        $hasDebugWriter = true;
+        $writer = new Writer\Stream('php://output');
+        $formatter = new \Zend\Log\Formatter\Simple(
+            '<pre>%timestamp% %priorityName%: %message%</pre>' . PHP_EOL
+        );
+        $writer->setFormatter($formatter);
+        $this->addWriters($writer, 'debug-' . (is_int($debug) ? $debug : '5'));
     }
 
     /**
@@ -229,29 +239,6 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
     }
 
     /**
-     * Set the service locator.
-     *
-     * @param ServiceLocatorInterface $serviceLocator Locator to register
-     *
-     * @return Logger
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-    {
-        $this->serviceLocator = $serviceLocator;
-        return $this;
-    }
-
-    /**
-     * Get the service locator.
-     *
-     * @return \Zend\ServiceManager\ServiceLocatorInterface
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
-    }
-
-    /**
      * Add a message as a log entry
      *
      * @param int               $priority Priority
@@ -260,7 +247,7 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
      *
      * @return Logger
      */
-    public function log($priority, $message, $extra = array())
+    public function log($priority, $message, $extra = [])
     {
         // Special case to handle arrays of messages (for multi-verbosity-level
         // logging, not supported by base class):
@@ -268,13 +255,13 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
             $timestamp = new \DateTime();
             foreach ($this->writers->toArray() as $writer) {
                 $writer->write(
-                    array(
+                    [
                         'timestamp'    => $timestamp,
                         'priority'     => (int) $priority,
                         'priorityName' => $this->priorities[$priority],
                         'message'      => $message,
                         'extra'        => $extra
-                    )
+                    ]
                 );
             }
             return $this;
@@ -301,6 +288,8 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
             . 'Referer = ' . $referer . ', '
             . 'User Agent = '
             . $server->get('HTTP_USER_AGENT') . ', '
+            . 'Host = '
+            . $server->get('HTTP_HOST') . ', '
             . 'Request URI = '
             . $server->get('REQUEST_URI') . ')';
         $detailedServer = "\nServer Context:\n"
@@ -316,11 +305,11 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
                 }
                 $basicBacktraceLine = $detailedBacktraceLine = $line['file'] .
                     ' line ' . $line['line'] . ' - ' .
-                    (isset($line['class'])? 'class = '.$line['class'].', ' : '')
+                    (isset($line['class']) ? 'class = ' . $line['class'] . ', ' : '')
                     . 'function = ' . $line['function'];
                 $basicBacktrace .= "{$basicBacktraceLine}\n";
                 if (!empty($line['args'])) {
-                    $args = array();
+                    $args = [];
                     foreach ($line['args'] as $i => $arg) {
                         $args[] = $i . ' = ' . $this->argumentToString($arg);
                     }
@@ -332,32 +321,31 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
             }
         }
 
-        $errorDetails = array(
+        $errorDetails = [
             1 => $baseError,
             2 => $baseError . $basicServer,
             3 => $baseError . $basicServer . $basicBacktrace,
             4 => $baseError . $detailedServer . $basicBacktrace,
             5 => $baseError . $detailedServer . $detailedBacktrace
-        );
+        ];
 
         $this->log(BaseLogger::CRIT, $errorDetails);
     }
-    
+
     /**
      * Convert function argument to a loggable string
-     * 
+     *
      * @param mixed $arg Argument
-     * 
+     *
      * @return string
      */
     protected function argumentToString($arg)
     {
-        
         if (is_object($arg)) {
             return get_class($arg) . ' Object';
         }
         if (is_array($arg)) {
-            $args = array();
+            $args = [];
             foreach ($arg as $key => $item) {
                 $args[] = "$key => " . $this->argumentToString($item);
             }
@@ -372,6 +360,6 @@ class Logger extends BaseLogger implements ServiceLocatorAwareInterface
         if (is_null($arg)) {
             return 'null';
         }
-        return "'$arg'";        
+        return "'$arg'";
     }
 }

@@ -19,12 +19,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   David Lacy <david.lacy@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuDL\Controller;
 use VuFind\Exception\RecordMissing as RecordMissingException,
@@ -33,11 +33,11 @@ use VuFind\Exception\RecordMissing as RecordMissingException,
 /**
  * This controller is for the viewing of the digital library files.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class VudlController extends AbstractVuDL
 {
@@ -85,13 +85,13 @@ class VudlController extends AbstractVuDL
     protected function getPage($parent, $child)
     {
         // GET LISTS
-        $lists = array_reverse($this->getConnector()->getOrderedMembers($parent));
+        $lists = $this->getConnector()->getOrderedMembers($parent);
         // GET LIST ITEMS
-        foreach ($lists as $list=>$list_data) {
+        foreach ($lists as $list => $list_data) {
             $items = $this->getConnector()->getOrderedMembers($list_data);
-            foreach ($items as $i=>$id) {
+            foreach ($items as $i => $id) {
                 if ($id == $child) {
-                    return array($list, $i);
+                    return [$list, $i];
                 }
             }
         }
@@ -138,7 +138,7 @@ class VudlController extends AbstractVuDL
      */
     public function ajaxAction()
     {
-        $method =(String) $this->params()->fromQuery('method');
+        $method = (String) $this->params()->fromQuery('method');
         return $this->jsonReturn($this->$method());
     }
 
@@ -151,7 +151,7 @@ class VudlController extends AbstractVuDL
      */
     protected function jsonReturn($data)
     {
-        $output = array('data'=>$data, 'status'=>'OK');
+        $output = ['data' => $data, 'status' => 'OK'];
         $response = $this->getResponse();
         $headers = $response->getHeaders();
         $headers->addHeaderLine(
@@ -177,11 +177,11 @@ class VudlController extends AbstractVuDL
         $id = $this->params()->fromQuery('record');
         $start = $this->params()->fromQuery('start');
         $end = $this->params()->fromQuery('end');
-        $data = array(
-            'outline' => $this->getOutline($id, $start, $end-$start),
+        $data = [
+            'outline' => $this->getOutline($id, $start, $end - $start),
             'start'  => (int)$start
-        );
-        $data['outline'] = $data['outline']['lists'][0];
+        ];
+        $data['outline'] = current($data['outline']['lists']);
         if (isset($data['outline'])) {
             $data['length'] = count($data['outline']);
         } else {
@@ -201,7 +201,7 @@ class VudlController extends AbstractVuDL
         $data = $this->params()->fromPost();
         if ($data == null) {
             $id = $this->params()->fromQuery('id');
-            $list = array();
+            $list = [];
             preg_match_all(
                 '/dsid="([^"]+)"/',
                 strtolower($this->getConnector()->getDatastreams($id)),
@@ -213,7 +213,7 @@ class VudlController extends AbstractVuDL
         $data['keys'] = array_keys($data);
         try {
             $view = $renderer->render(
-                'vudl/views/'.$data['filetype'].'.phtml',
+                'vudl/views/' . $data['filetype'] . '.phtml',
                 $data
             );
         } catch(\Exception $e) {
@@ -240,7 +240,7 @@ class VudlController extends AbstractVuDL
 
         $classes = $this->getConnector()->getClasses($id);
         if (in_array('FolderCollection', $classes)) {
-            return $this->forwardTo('Collection', 'Home', array('id'=>$id));
+            return $this->forwardTo('Collection', 'Home', ['id' => $id]);
         }
         $view = $this->createViewModel();
 
@@ -252,11 +252,11 @@ class VudlController extends AbstractVuDL
         $view->id = $root;
 
         try {
-            $driver = $this->getRecordLoader()->load($root, 'VuFind');
+            $driver = $this->getRecordLoader()->load($root);
         } catch(\Exception $e) {
         }
         if (isset($driver) && $driver->isProtected()) {
-            return $this->forwardTo('VuDL', 'Denied', array('id'=>$id));
+            return $this->forwardTo('VuDL', 'Denied', ['id' => $id]);
         }
 
         // File information / description
@@ -271,7 +271,7 @@ class VudlController extends AbstractVuDL
         // Get ids for all files
         $outline = $this->getOutline(
             $root,
-            max(0, $view->initPage-($this->getConnector()->getPageLength()/2))
+            max(0, $view->initPage - ($this->getConnector()->getPageLength() / 2))
         );
 
         // Send the data for the first pages
@@ -283,7 +283,6 @@ class VudlController extends AbstractVuDL
         $view->parents = $parents;
         if ($id != $root) {
             $view->parentID = $root;
-            $view->breadcrumbEnd = $outline['lists'][0][$view->page]['label'];
         }
         $view->pagelength = $this->getConnector()->getPageLength();
         return $view;
@@ -300,17 +299,17 @@ class VudlController extends AbstractVuDL
         $config = $this->getConfig('vudl');
         $children = $this->getConnector()->getMemberList($config->General->root_id);
         foreach ($children as $item) {
-            $outline[] = array(
+            $outline[] = [
                 'id' => $item['id'],
                 'img' => $this->url()->fromRoute(
                     'files',
-                    array(
+                    [
                         'id'   => $item['id'],
                         'type' => 'THUMBNAIL'
-                    )
+                    ]
                 ),
                 'label' => $item['title'][0]
-            );
+            ];
         }
         $view->thumbnails = $outline;
         return $view;
@@ -359,27 +358,27 @@ class VudlController extends AbstractVuDL
         $view = $this->createViewModel();
         $connector = $this->getServiceLocator()->get('VuFind\Search\BackendManager')
             ->get('Solr')->getConnector();
-        $queries = array(
+        $queries = [
             'modeltype_str_mv:"vudl-system:FolderCollection"',
             'modeltype_str_mv:"vudl-system:ResourceCollection"',
             // TODO: make these work:
             //'modeltype_str_mv:"vudl-system:ImageData"',
             //'modeltype_str_mv:"vudl-system:PDFData"',
-        );
+        ];
         $response = '';
         foreach ($queries as $q) {
-            $params = new \VuFindSearch\ParamBag(array('q'=>$q));
+            $params = new \VuFindSearch\ParamBag(['q' => $q]);
             $response .= $connector->search($params);
         }
-        $result = array();
+        $result = [];
         preg_match_all('/"ngroups">([^<]*)/', $response, $result);
-        $view->totals = array(
-            'folders'=>intval($result[1][0]),
-            'resources'=>intval($result[1][1]),
+        $view->totals = [
+            'folders' => intval($result[1][0]),
+            'resources' => intval($result[1][1]),
             // TODO: make these work:
             //'images'=>intval($result[1][2]),
             //'pdfs'=>intval($result[1][3])
-        );
+        ];
         return $view;
     }
 
@@ -420,7 +419,7 @@ class VudlController extends AbstractVuDL
                 //->toRoute('Collection', 'Home', array('id'=>$params['trail']));
         }
         $index = -1;
-        foreach ($members as $i=>$member) {
+        foreach ($members as $i => $member) {
             if ($member == $params['id']) {
                 $index = $i + count($members);
                 break;
@@ -428,14 +427,14 @@ class VudlController extends AbstractVuDL
         }
         if ($index == -1) {
             return $this->redirect()
-                ->toRoute('collection', array('id'=>$params['trail']));
-        } elseif (isset($params['prev_x'])) {
+                ->toRoute('collection', ['id' => $params['trail']]);
+        } elseif (isset($params['prev'])) {
             return $this->redirect()->toRoute(
-                'vudl-record', array('id'=>$members[($index-1)%count($members)])
+                'vudl-record', ['id' => $members[($index - 1) % count($members)]]
             );
         } else {
             return $this->redirect()->toRoute(
-                'vudl-record', array('id'=>$members[($index+1)%count($members)])
+                'vudl-record', ['id' => $members[($index + 1) % count($members)]]
             );
         }
     }
@@ -448,6 +447,6 @@ class VudlController extends AbstractVuDL
     protected function collectionsAction()
     {
         return $this
-            ->forwardTo('Collection', 'Home', array('id' => $this->getRootId()));
+            ->forwardTo('Collection', 'Home', ['id' => $this->getRootId()]);
     }
 }

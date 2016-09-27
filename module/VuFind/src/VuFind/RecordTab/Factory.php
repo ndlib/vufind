@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:hierarchy_components Wiki
+ * @link     https://vufind.org/wiki/development:plugins:hierarchy_components Wiki
  */
 namespace VuFind\RecordTab;
 use Zend\ServiceManager\ServiceManager;
@@ -31,11 +31,13 @@ use Zend\ServiceManager\ServiceManager;
 /**
  * Record Tab Factory Class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:hierarchy_components Wiki
+ * @link     https://vufind.org/wiki/development:plugins:hierarchy_components Wiki
+ *
+ * @codeCoverageIgnore
  */
 class Factory
 {
@@ -64,8 +66,8 @@ class Factory
     public static function getCollectionList(ServiceManager $sm)
     {
         return new CollectionList(
-            $sm->getServiceLocator()->get('VuFind\SearchResultsPluginManager')
-                ->get('SolrCollection')
+            $sm->getServiceLocator()->get('VuFind\SearchRunner'),
+            $sm->getServiceLocator()->get('VuFind\RecommendPluginManager')
         );
     }
 
@@ -100,6 +102,7 @@ class Factory
      */
     protected static function getHideSetting(\Zend\Config\Config $config, $tab)
     {
+        // TODO: can we move this code out of the factory so it's more easily reused?
         $setting = isset($config->Content->hide_if_empty)
             ? $config->Content->hide_if_empty : false;
         if ($setting === true || $setting === false
@@ -152,6 +155,19 @@ class Factory
     }
 
     /**
+     * Factory for HoldingsWorldCat tab plugin.
+     *
+     * @param ServiceManager $sm Service manager.
+     *
+     * @return HoldingsWorldCat
+     */
+    public static function getHoldingsWorldCat(ServiceManager $sm)
+    {
+        $bm = $sm->getServiceLocator()->get('VuFind\Search\BackendManager');
+        return new HoldingsWorldCat($bm->get('WorldCat')->getConnector());
+    }
+
+    /**
      * Factory for Map tab plugin.
      *
      * @param ServiceManager $sm Service manager.
@@ -163,6 +179,47 @@ class Factory
         $config = $sm->getServiceLocator()->get('VuFind\Config')->get('config');
         $enabled = isset($config->Content->recordMap);
         return new Map($enabled);
+    }
+
+    /**
+     * Factory for Preview tab plugin.
+     *
+     * @param ServiceManager $sm Service manager.
+     *
+     * @return Preview
+     */
+    public static function getPreview(ServiceManager $sm)
+    {
+        $cfg = $sm->getServiceLocator()->get('VuFind\Config')->get('config');
+        // currently only active if config [content] [previews] contains google
+        // and googleoptions[tab] is not empty.
+        $active = false;
+        if (isset($cfg->Content->previews)) {
+            $previews = array_map(
+                'trim', explode(',', strtolower($cfg->Content->previews))
+            );
+            if (in_array('google', $previews)
+                && isset($cfg->Content->GoogleOptions['tab'])
+                && strlen(trim($cfg->Content->GoogleOptions['tab'])) > 0
+            ) {
+                $active = true;
+            }
+        }
+        return new Preview($active);
+    }
+
+    /**
+     * Factory for SimilarItems tab plugin.
+     *
+     * @param ServiceManager $sm Service manager.
+     *
+     * @return SimilarItemsCarousel
+     */
+    public static function getSimilarItemsCarousel(ServiceManager $sm)
+    {
+        return new SimilarItemsCarousel(
+            $sm->getServiceLocator()->get('VuFind\Search')
+        );
     }
 
     /**
@@ -194,41 +251,7 @@ class Factory
      */
     public static function getUserComments(ServiceManager $sm)
     {
-        $cfg = $sm->getServiceLocator()->get('VuFind\Config')->get('config');
-        $enabled = !isset($cfg->Social->comments)
-            || ($cfg->Social->comments && $cfg->Social->comments !== 'disabled');
-        return new UserComments($enabled);
-    }
-
-    /**
-     * Factory for Preview tab plugin.
-     *
-     * @param ServiceManager $sm Service manager.
-     *
-     * @return Preview
-     */
-    public static function getPreview(ServiceManager $sm)
-    {
-        $cfg = $sm->getServiceLocator()->get('VuFind\Config')->get('config');
-        // currently only active if config [content] [previews] contains google
-        // and googleoptions[tab] is not empty.
-        $active = false;
-        if (isset($cfg->Content->previews)) {
-            $content_previews = explode(
-                ',', strtolower(str_replace(' ', '', $cfg->Content->previews))
-            );
-            if (in_array('google', $content_previews)
-                && isset($cfg->Content->GoogleOptions)
-            ) {
-                $g_options = $cfg->Content->GoogleOptions;
-                if (isset($g_options->tab)) {
-                    $tabs = explode(',', $g_options->tab);
-                    if (count($tabs) > 0) {
-                        $active = true;
-                    }
-                }
-            }
-        }
-        return new Preview($active);
+        $capabilities = $sm->getServiceLocator()->get('VuFind\AccountCapabilities');
+        return new UserComments('enabled' === $capabilities->getCommentSetting());
     }
 }

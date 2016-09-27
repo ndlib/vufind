@@ -20,23 +20,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 namespace VuFindTest\Content\Covers;
-use VuFind\Code\ISBN, VuFind\Content\Covers\LibraryThing;
+use VuFindCode\ISBN, VuFind\Content\Covers\LibraryThing;
 
 /**
  * Unit tests for LibraryThing cover loader.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class LibraryThingTest extends \PHPUnit_Framework_TestCase
 {
@@ -51,7 +51,7 @@ class LibraryThingTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             'http://covers.librarything.com/devkey/mykey/small/isbn/9780739313121',
             $loader->getUrl(
-                'mykey', 'small', array('isbn' => new ISBN('0739313126'))
+                'mykey', 'small', ['isbn' => new ISBN('0739313126')]
             )
         );
     }
@@ -64,6 +64,6 @@ class LibraryThingTest extends \PHPUnit_Framework_TestCase
     public function testMissingIsbn()
     {
         $loader = new LibraryThing();
-        $this->assertEquals(false, $loader->getUrl('mykey', 'small', array()));
+        $this->assertEquals(false, $loader->getUrl('mykey', 'small', []));
     }
 }

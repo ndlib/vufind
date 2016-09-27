@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Db\Table;
 
@@ -32,11 +32,11 @@ use Zend\Db\Sql\Expression;
 /**
  * Table Definition for user statistics
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class UserStats extends Gateway
 {
@@ -62,33 +62,33 @@ class UserStats extends Gateway
         $callback = function ($select) use ($withVersions, $limit) {
             if ($withVersions) {
                 $select->columns(
-                    array(
+                    [
                         'browserName' => new Expression(
                             'CONCAT_WS(" ",?,?)',
-                            array('browser', 'browserVersion'),
-                            array(
+                            ['browser', 'browserVersion'],
+                            [
                                 Expression::TYPE_IDENTIFIER,
                                 Expression::TYPE_IDENTIFIER
-                            )
+                            ]
                         ),
                         'count' => new Expression(
                             'COUNT(DISTINCT (?))',
-                            array('session'),
-                            array(Expression::TYPE_IDENTIFIER)
+                            ['session'],
+                            [Expression::TYPE_IDENTIFIER]
                         )
-                    )
+                    ]
                 );
                 $select->group('browserName');
             } else {
                 $select->columns(
-                    array(
+                    [
                         'browserName' => 'browser',
                         'count' => new Expression(
                             'COUNT(DISTINCT (?))',
-                            array('session'),
-                            array(Expression::TYPE_IDENTIFIER)
+                            ['session'],
+                            [Expression::TYPE_IDENTIFIER]
                         )
-                    )
+                    ]
                 );
                 $select->group('browser');
             }

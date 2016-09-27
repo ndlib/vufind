@@ -78,6 +78,5 @@ class SolrMarc extends \VuFind\RecordDriver\SolrMarc
     public function supportsAjaxStatus()
     {
         return false;
-    }	
+    }
 }
-?>

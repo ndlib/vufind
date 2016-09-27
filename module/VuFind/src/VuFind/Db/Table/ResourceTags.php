@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Db\Table;
 use Zend\Db\Sql\Expression;
@@ -31,11 +31,11 @@ use Zend\Db\Sql\Expression;
 /**
  * Table Definition for resource_tags
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Db_Table
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class ResourceTags extends Gateway
 {
@@ -105,7 +105,7 @@ class ResourceTags extends Gateway
     public function checkForTags($ids)
     {
         // Set up return arrays:
-        $retVal = array('present' => array(), 'missing' => array());
+        $retVal = ['present' => [], 'missing' => []];
 
         // Look up IDs in the table:
         $callback = function ($select) use ($ids) {
@@ -143,15 +143,15 @@ class ResourceTags extends Gateway
     {
         $callback = function ($select) use ($tag, $userId, $listId) {
             $select->columns(
-                array(
+                [
                     'resource_id' => new Expression(
-                        'DISTINCT(?)', array('resource_tags.resource_id'),
-                        array(Expression::TYPE_IDENTIFIER)
+                        'DISTINCT(?)', ['resource_tags.resource_id'],
+                        [Expression::TYPE_IDENTIFIER]
                     ), '*'
-                )
+                ]
             );
             $select->join(
-                array('t' => 'tags'), 'resource_tags.tag_id = t.id', array()
+                ['t' => 'tags'], 'resource_tags.tag_id = t.id', []
             );
             $select->where->equalTo('t.tag', $tag)
                 ->where->equalTo('resource_tags.user_id', $userId);
@@ -174,17 +174,17 @@ class ResourceTags extends Gateway
     {
         $select = $this->sql->select();
         $select->columns(
-            array(
+            [
                 'users' => new Expression(
-                    'COUNT(DISTINCT(?))', array('user_id'),
-                    array(Expression::TYPE_IDENTIFIER)
+                    'COUNT(DISTINCT(?))', ['user_id'],
+                    [Expression::TYPE_IDENTIFIER]
                 ),
                 'resources' => new Expression(
-                    'COUNT(DISTINCT(?))', array('resource_id'),
-                    array(Expression::TYPE_IDENTIFIER)
+                    'COUNT(DISTINCT(?))', ['resource_id'],
+                    [Expression::TYPE_IDENTIFIER]
                 ),
                 'total' => new Expression('COUNT(*)')
-            )
+            ]
         );
         $statement = $this->sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
@@ -200,12 +200,12 @@ class ResourceTags extends Gateway
      * Unlink rows for the specified resource.
      *
      * @param string|array $resource ID (or array of IDs) of resource(s) to
-     *                                  unlink (null for ALL matching resources)
+     * unlink (null for ALL matching resources)
      * @param string       $user     ID of user removing links
      * @param string       $list     ID of list to unlink (null for ALL matching
-     *                                  lists, 'none' for tags not in a list)
+     * tags, 'none' for tags not in a list, true for tags only found in a list)
      * @param string       $tag      ID of tag to unlink (null for ALL matching
-     *                                  tags)
+     * tags)
      *
      * @return void
      */
@@ -215,24 +215,27 @@ class ResourceTags extends Gateway
             $select->where->equalTo('user_id', $user);
             if (!is_null($resource)) {
                 if (!is_array($resource)) {
-                    $resource = array($resource);
+                    $resource = [$resource];
                 }
                 $select->where->in('resource_id', $resource);
             }
             if (!is_null($list)) {
-                if ($list != 'none') {
-                    $select->where->equalTo('list_id', $list);
-                } else {
+                if (true === $list) {
+                    // special case -- if $list is set to boolean true, we
+                    // want to only delete tags that are associated with lists.
+                    $select->where->isNotNull('list_id');
+                } elseif ('none' === $list) {
                     // special case -- if $list is set to the string "none", we
                     // want to delete tags that are not associated with lists.
                     $select->where->isNull('list_id');
+                } else {
+                    $select->where->equalTo('list_id', $list);
                 }
             }
             if (!is_null($tag)) {
                 $select->where->equalTo('tag_id', $tag);
             }
         };
-
 
         // Get a list of all tag IDs being deleted; we'll use these for
         // orphan-checking:
@@ -243,7 +246,7 @@ class ResourceTags extends Gateway
 
         // Check for orphans:
         if (count($potentialOrphans) > 0) {
-            $ids = array();
+            $ids = [];
             foreach ($potentialOrphans as $current) {
                 $ids[] = $current->tag_id;
             }
@@ -280,7 +283,7 @@ class ResourceTags extends Gateway
         $callback = function ($select) {
             $select->where->isNull('user_id');
         };
-        $this->update(array('user_id' => $id), $callback);
+        $this->update(['user_id' => $id], $callback);
     }
 
     /**
@@ -296,10 +299,34 @@ class ResourceTags extends Gateway
         $userId = null, $resourceId = null, $tagId = null
     ) {
         $callback = function ($select) use ($userId, $resourceId, $tagId) {
+            $select->columns(
+                [
+                    'resource_id' => new Expression(
+                        'MAX(?)', ['resource_tags.resource_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'tag_id' => new Expression(
+                        'MAX(?)', ['resource_tags.tag_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'list_id' => new Expression(
+                        'MAX(?)', ['resource_tags.list_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'user_id' => new Expression(
+                        'MAX(?)', ['resource_tags.user_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'id' => new Expression(
+                        'MAX(?)', ['resource_tags.id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    )
+                ]
+            );
             $select->join(
-                array('r' => 'resource'),
+                ['r' => 'resource'],
                 'resource_tags.resource_id = r.id',
-                array("title" => "title")
+                ["title" => "title"]
             );
             if (!is_null($userId)) {
                 $select->where->equalTo('resource_tags.user_id', $userId);
@@ -310,8 +337,8 @@ class ResourceTags extends Gateway
             if (!is_null($tagId)) {
                 $select->where->equalTo('resource_tags.tag_id', $tagId);
             }
-            $select->group(array("resource_id"));
-            $select->order(array("title"));
+            $select->group(['resource_id', 'title']);
+            $select->order(['title']);
         };
         return $this->select($callback);
     }
@@ -329,10 +356,34 @@ class ResourceTags extends Gateway
     {
 
         $callback = function ($select) use ($userId, $resourceId, $tagId) {
+            $select->columns(
+                [
+                    'resource_id' => new Expression(
+                        'MAX(?)', ['resource_tags.resource_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'tag_id' => new Expression(
+                        'MAX(?)', ['resource_tags.tag_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'list_id' => new Expression(
+                        'MAX(?)', ['resource_tags.list_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'user_id' => new Expression(
+                        'MAX(?)', ['resource_tags.user_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'id' => new Expression(
+                        'MAX(?)', ['resource_tags.id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    )
+                ]
+            );
             $select->join(
-                array('t' => 'tags'),
+                ['t' => 'tags'],
                 'resource_tags.tag_id = t.id',
-                array("tag" => "tag")
+                ["tag" => "tag"]
             );
             if (!is_null($userId)) {
                 $select->where->equalTo('resource_tags.user_id', $userId);
@@ -343,8 +394,8 @@ class ResourceTags extends Gateway
             if (!is_null($tagId)) {
                 $select->where->equalTo('resource_tags.tag_id', $tagId);
             }
-            $select->group(array("tag_id"));
-            $select->order(array("tag"));
+            $select->group(['tag_id', 'tag']);
+            $select->order(['tag']);
         };
         return $this->select($callback);
     }
@@ -361,10 +412,34 @@ class ResourceTags extends Gateway
     public function getUniqueUsers($userId = null, $resourceId = null, $tagId = null)
     {
         $callback = function ($select) use ($userId, $resourceId, $tagId) {
+            $select->columns(
+                [
+                    'resource_id' => new Expression(
+                        'MAX(?)', ['resource_tags.resource_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'tag_id' => new Expression(
+                        'MAX(?)', ['resource_tags.tag_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'list_id' => new Expression(
+                        'MAX(?)', ['resource_tags.list_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'user_id' => new Expression(
+                        'MAX(?)', ['resource_tags.user_id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    ),
+                    'id' => new Expression(
+                        'MAX(?)', ['resource_tags.id'],
+                        [Expression::TYPE_IDENTIFIER]
+                    )
+                ]
+            );
             $select->join(
-                array('u' => 'user'),
+                ['u' => 'user'],
                 'resource_tags.user_id = u.id',
-                array("username" => "username")
+                ["username" => "username"]
             );
             if (!is_null($userId)) {
                 $select->where->equalTo('resource_tags.user_id', $userId);
@@ -375,8 +450,8 @@ class ResourceTags extends Gateway
             if (!is_null($tagId)) {
                 $select->where->equalTo('resource_tags.tag_id', $tagId);
             }
-            $select->group(array("user_id"));
-            $select->order(array("username"));
+            $select->group(['user_id', 'username']);
+            $select->order(['username']);
         };
         return $this->select($callback);
     }
@@ -398,25 +473,25 @@ class ResourceTags extends Gateway
         $order = null, $page = null, $limit = 20
     ) {
         $order = (null !== $order)
-            ? array($order)
-            : array("username", "tag", "title");
+            ? [$order]
+            : ["username", "tag", "title"];
 
         $sql = $this->getSql();
         $select = $sql->select();
         $select->join(
-            array('t' => 'tags'),
+            ['t' => 'tags'],
             'resource_tags.tag_id = t.id',
-            array("tag" => "tag")
+            ["tag" => "tag"]
         );
         $select->join(
-            array('u' => 'user'),
+            ['u' => 'user'],
             'resource_tags.user_id = u.id',
-            array("username" => "username")
+            ["username" => "username"]
         );
         $select->join(
-            array('r' => 'resource'),
+            ['r' => 'resource'],
             'resource_tags.resource_id = r.id',
-            array("title" => "title")
+            ["title" => "title"]
         );
         if (null !== $userId) {
             $select->where->equalTo('resource_tags.user_id', $userId);

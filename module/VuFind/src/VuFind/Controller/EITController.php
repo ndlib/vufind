@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 namespace VuFind\Controller;
 
 /**
  * EIT Controller
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class EITController extends AbstractSearch
 {
@@ -43,6 +43,7 @@ class EITController extends AbstractSearch
      */
     public function __construct()
     {
+        $this->accessPermission = 'access.EITModule';
         $this->searchClassId = 'EIT';
         parent::__construct();
     }
@@ -77,14 +78,6 @@ class EITController extends AbstractSearch
      */
     public function searchAction()
     {
-        // We currently restrict EIT to logged in users.
-        // TODO: make this configurable, similar to what is found in
-        // \VuFind\Search\Factory\SummonBackendFactory::isAuthed().
-        $account = $this->getAuthManager();
-        if ($account->isLoggedIn() == false) {
-            return $this->forceLogin();
-        }
         return $this->resultsAction();
     }
 }
-

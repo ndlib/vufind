@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 namespace VuFindTest;
 use VuFindTheme\ThemeInfo;
@@ -31,11 +31,11 @@ use VuFindTheme\ThemeInfo;
 /**
  * ThemeInfo Test Class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 class ThemeInfoTest extends Unit\TestCase
 {
@@ -81,7 +81,8 @@ class ThemeInfoTest extends Unit\TestCase
      * Test setting invalid theme
      *
      * @return void
-     * @expectedException Exception
+     *
+     * @expectedException        Exception
      * @expectedExceptionMessage Cannot load theme: invalid
      */
     public function testInvalidTheme()
@@ -98,7 +99,7 @@ class ThemeInfoTest extends Unit\TestCase
     {
         $ti = $this->getThemeInfo();
         $ti->setTheme('child');
-        $this->assertEquals(array('child' => array('extends' => 'parent'), 'parent' => array('extends' => false)), $ti->getThemeInfo());
+        $this->assertEquals(['child' => ['extends' => 'parent'], 'parent' => ['extends' => false]], $ti->getThemeInfo());
     }
 
     /**
@@ -122,6 +123,9 @@ class ThemeInfoTest extends Unit\TestCase
         $ti->setTheme('child');
         $this->assertEquals('child', $ti->findContainingTheme('child.txt'));
         $this->assertEquals('parent', $ti->findContainingTheme('parent.txt'));
+        $this->assertEquals($this->fixturePath . '/parent/parent.txt', $ti->findContainingTheme('parent.txt', true));
+        $expected = ['theme' => 'parent', 'path' => $this->fixturePath . '/parent/parent.txt'];
+        $this->assertEquals($expected, $ti->findContainingTheme('parent.txt', ThemeInfo::RETURN_ALL_DETAILS));
     }
 
     /**

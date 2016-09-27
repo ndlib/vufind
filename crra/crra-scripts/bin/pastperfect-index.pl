@@ -20,7 +20,7 @@ use constant INSTITUTION    => 'Philadelphia Archdiocesan Historical Research Ce
 use constant LIBRARY        => 'PAHRC Library';
 use constant RECORDTYPE     => 'pp';
 use constant REMOTEURL      => 'http://crradrop.library.nd.edu/pah/library.xml';
-use constant SOLR           => 'http://localhost:8080/solr/biblio';
+use constant SOLR           => 'http://localhost:8081/solr/biblio';
 use constant URLDESCRIPTION => 'Click here for more information about this item';
 use constant DEFAULTURL     => 'http://www.pahrc.net';
 
@@ -29,7 +29,7 @@ use LWP::UserAgent;
 use strict;
 use WebService::Solr;
 use XML::XPath;
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 
 # initialize
 binmode STDOUT, ':utf8';

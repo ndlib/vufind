@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:record_drivers Wiki
+ * @link     https://vufind.org/wiki/
  */
 namespace VuDL\RecordDriver;
 
 /**
  * Model for VuDL records in Solr.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  RecordDrivers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:record_drivers Wiki
+ * @link     https://vufind.org/wiki/
  */
 class SolrVudl extends \VuFind\RecordDriver\SolrDefault
 {
@@ -91,13 +91,13 @@ class SolrVudl extends \VuFind\RecordDriver\SolrDefault
      */
     public function getThumbnail($size = 'small')
     {
-        return array(
+        return [
             'route' => 'files',
-            'routeParams' => array(
+            'routeParams' => [
                 'id' => $this->getUniqueID(),
-                'type'=>'THUMBNAIL'
-            )
-        );
+                'type' => 'THUMBNAIL'
+            ]
+        ];
         // We are currently storing only one size of thumbnail; we'll use this for
         // small and medium sizes in the interface, flagging "large" as unavailable
         // for now.
@@ -126,16 +126,16 @@ class SolrVudl extends \VuFind\RecordDriver\SolrDefault
     public function getURLs()
     {
         if ($this->isCollection()) {
-            return array();
+            return [];
         } else {
-            $retval = array(
-                array(
+            $retval = [
+                [
                     'route' => 'vudl-record',
-                    'routeParams' => array(
+                    'routeParams' => [
                         'id' => $this->getUniqueID()
-                    )
-                )
-            );
+                    ]
+                ]
+            ];
             if ($this->isProtected()) {
                 $retval[0]['prefix'] = $this->getProxyUrl();
             }
@@ -157,7 +157,7 @@ class SolrVudl extends \VuFind\RecordDriver\SolrDefault
         // Check IP range
         $userIP = $_SERVER['REMOTE_ADDR'];
         $range = isset($this->vuDLConfig->Access->ip_range)
-            ? $this->vuDLConfig->Access->ip_range->toArray() : array();
+            ? $this->vuDLConfig->Access->ip_range->toArray() : [];
         foreach ($range as $ip) {
             if (strpos($userIP, $ip) === 0) {
                 return false;
@@ -186,7 +186,7 @@ class SolrVudl extends \VuFind\RecordDriver\SolrDefault
      */
     public function getAllSubjectHeadings()
     {
-        $retVal = array();
+        $retVal = [];
         if (isset($this->fields['topic'])) {
             foreach ($this->fields['topic'] as $current) {
                 $retVal[] = explode(' -- ', $current);

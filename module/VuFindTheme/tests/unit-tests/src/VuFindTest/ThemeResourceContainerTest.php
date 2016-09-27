@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 namespace VuFindTest;
 use VuFindTheme\ResourceContainer;
@@ -31,11 +31,11 @@ use VuFindTheme\ResourceContainer;
 /**
  * ResourceContainer Test Class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 class ThemeResourceContainerTest extends Unit\TestCase
 {
@@ -47,10 +47,28 @@ class ThemeResourceContainerTest extends Unit\TestCase
     public function testCss()
     {
         $container = new ResourceContainer();
-        $container->addCss(array('a', 'b', 'c'));
+        $container->addCss(['a', 'b', 'c']);
         $container->addCss('c');
         $container->addCss('d');
-        $this->assertEquals(array(), array_diff(array('a', 'b', 'c', 'd'), $container->getCss()));
+        $container->addLessCss('e.less');
+        $container->addCss('e');
+        $this->assertEquals([], array_diff(['a', 'b', 'c', 'd'], $container->getCss()));
+    }
+
+    /**
+     * Test LESS add/remove.
+     *
+     * @return void
+     */
+    public function testLess()
+    {
+        $container = new ResourceContainer();
+        $container->addCss(['c', 'd.css']);
+        $container->addLessCss(['active' => true, 'a', 'b', 'c']);
+        $container->addLessCss('c');
+        $container->addLessCss('d');
+        $this->assertEquals([], array_diff(['a', 'b', 'c', 'd'], $container->getLessCss()));
+        $this->assertEquals(['c'], $container->getCss());
     }
 
     /**
@@ -61,10 +79,10 @@ class ThemeResourceContainerTest extends Unit\TestCase
     public function testJs()
     {
         $container = new ResourceContainer();
-        $container->addJs(array('a', 'b', 'c'));
+        $container->addJs(['a', 'b', 'c']);
         $container->addJs('c');
         $container->addJs('d');
-        $this->assertEquals(array(), array_diff(array('a', 'b', 'c', 'd'), $container->getJs()));
+        $this->assertEquals([], array_diff(['a', 'b', 'c', 'd'], $container->getJs()));
     }
 
     /**

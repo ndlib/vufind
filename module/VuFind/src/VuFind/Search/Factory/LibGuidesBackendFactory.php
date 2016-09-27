@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
-
 namespace VuFind\Search\Factory;
 
 use VuFindSearch\Backend\LibGuides\Connector;
@@ -41,11 +40,11 @@ use Zend\ServiceManager\FactoryInterface;
 /**
  * Factory for LibGuides backends.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
 class LibGuidesBackendFactory implements FactoryInterface
 {
@@ -120,12 +119,16 @@ class LibGuidesBackendFactory implements FactoryInterface
         $iid = isset($this->libGuidesConfig->General->iid)
             ? $this->libGuidesConfig->General->iid : null;
 
+        // Pick version:
+        $ver = isset($this->libGuidesConfig->General->version)
+            ? $this->libGuidesConfig->General->version : 1;
+
         // Build HTTP client:
         $client = $this->serviceLocator->get('VuFind\Http')->createClient();
         $timeout = isset($this->libGuidesConfig->General->timeout)
             ? $this->libGuidesConfig->General->timeout : 30;
-        $client->setOptions(array('timeout' => $timeout));
-        $connector = new Connector($iid, $client);
+        $client->setOptions(['timeout' => $timeout]);
+        $connector = new Connector($iid, $client, $ver);
         $connector->setLogger($this->logger);
         return $connector;
     }

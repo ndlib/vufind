@@ -20,13 +20,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @author   Ere Maijala <ere.maijala@helsinki.fi>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 namespace VuFind\Auth;
 use VuFind\Exception\Auth as AuthException;
@@ -35,13 +35,13 @@ use VuFind\ILS\Driver\MultiBackend;
 /**
  * Multiple ILS authentication module that works with MultiBackend driver
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @author   Ere Maijala <ere.maijala@helsinki.fi>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 class MultiILS extends ILS
 {
@@ -59,15 +59,21 @@ class MultiILS extends ILS
         $target = trim($request->getPost()->get('target'));
         $username = trim($request->getPost()->get('username'));
         $password = trim($request->getPost()->get('password'));
-        if ($target == '' || $username == '' || $password == '') {
+        if ($username == '' || $password == '') {
             throw new AuthException('authentication_error_blank');
+        }
+
+        // We should have target either separately or already embedded into username
+        if ($target) {
+            $username = "$target.$username";
         }
 
         // Connect to catalog:
         try {
-            $patron = $this->getCatalog()->patronLogin(
-                "$target.$username", $password
-            );
+            $patron = $this->getCatalog()->patronLogin($username, $password);
+        } catch (AuthException $e) {
+            // Pass Auth exceptions through
+            throw $e;
         } catch (\Exception $e) {
             throw new AuthException('authentication_error_technical');
         }
@@ -90,7 +96,7 @@ class MultiILS extends ILS
     {
         return $this->getCatalog()->getLoginDrivers();
     }
-    
+
     /**
      * Get default login target (ILS driver/source ID)
      *

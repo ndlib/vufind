@@ -5,26 +5,22 @@ ChangeLog
 .\#*
 TAGS
 *~
-vendor/.git
+/vendor
+composer.lock
+composer.phar
+import/solrmarc.log
+/cronjob
+/crra/crra-scripts/logs
+/crra/crra-scripts/logs/bar-indexing.log
+/crra/marc-incoming/*
+/env.sh
+/local
+/log
 /solr/biblio/index/*
 /solr/biblio/spellchecker/*
 /solr/biblio/spellShingle/*
 /solr/biblio/tlog/*
-/crra/marc-incoming/*
-/crra/crra-scripts/logs/bar-indexing.log
-/.gitignore
-bar-indexing.log
-/crra/crra-scripts/logs
-/local
-cache
-/local
-<<<<<<< HEAD
 
+bar-indexing.log
+cache
 marc-incoming
-/import/*.log
-/import/solrmarc.log.1
-=======
-/cronjob
-/env.sh
-/log
->>>>>>> da297701498efdfad6ff975088deb81277db7e00

@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 namespace VuFindTest\Mvc\Router;
 use VuFindConsole\Mvc\Router\ConsoleRouter;
@@ -31,11 +31,11 @@ use VuFindConsole\Mvc\Router\ConsoleRouter;
 /**
  * InjectTemplateListener Test Class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Tests
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:unit_tests Wiki
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
  */
 class ConsoleRouterTest extends \PHPUnit_Framework_TestCase
 {
@@ -48,7 +48,7 @@ class ConsoleRouterTest extends \PHPUnit_Framework_TestCase
     {
         $router = ConsoleRouter::factory();
         $router->setCliDir(__DIR__);
-        $request = $this->getMock('Zend\Console\Request', array('getScriptName'));
+        $request = $this->getMock('Zend\Console\Request', ['getScriptName']);
         $request->expects($this->any())->method('getScriptName')
             ->will($this->returnValue('ConsoleRouterTest.php'));
         $result = $router->match($request);

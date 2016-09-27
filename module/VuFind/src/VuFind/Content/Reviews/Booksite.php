@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Content
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Content\Reviews;
 
 /**
  * Booksite review content loader.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Content
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class BookSite extends \VuFind\Content\AbstractBase
 {
@@ -69,37 +69,34 @@ class BookSite extends \VuFind\Content\AbstractBase
      *
      * Connects to Booksite's API and retrieves reviews for the specific ISBN
      *
-     * @param string            $key     API key (unused here)
-     * @param \VuFind\Code\ISBN $isbnObj ISBN object
+     * @param string           $key     API key (unused here)
+     * @param \VuFindCode\ISBN $isbnObj ISBN object
      *
      * @throws \Exception
      * @return array     Returns array with review data.
      * @author Joe Atzberger
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function loadByIsbn($key, \VuFind\Code\ISBN $isbnObj)
+    public function loadByIsbn($key, \VuFindCode\ISBN $isbnObj)
     {
-        $reviews = array(); // Initialize return value
+        $reviews = []; // Initialize return value
 
         $isn = $this->getIsbn10($isbnObj);
         $url = $this->url . '/poca/book/tradereviews?apikey=' . $this->apiKey
             . '&ean=' . $isn;
         $response = $this->getHttpClient($url)->send();
         if (!$response->isSuccess()) {
-            if ($this->logger) {
-                $this->logger->warn(
-                    "Reviews: " . $response->getStatusCode() . " "
-                    . $response->getReasonPhrase() . " $url"
-                );
-            }
-            return $reviews;    // still empty
-        }
-        if ($this->logger) {
-            $this->logger->debug(
+            $this->logWarning(
                 "Reviews: " . $response->getStatusCode() . " "
                 . $response->getReasonPhrase() . " $url"
             );
+            return $reviews;    // still empty
         }
+        $this->debug(
+            "Reviews: " . $response->getStatusCode() . " "
+            . $response->getReasonPhrase() . " $url"
+        );
 
         $i = 0;
         $json = json_decode($response->getBody());

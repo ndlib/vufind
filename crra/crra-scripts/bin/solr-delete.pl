@@ -1,4 +1,4 @@
-#!/shared/perl/current/bin/perl
+#!/usr/bin/perl
 
 # solr-delete.pl - remove data from the index; dangerous!
 
@@ -7,7 +7,7 @@
 
 
 # configure; no other editing should be necessary
-use constant SOLR => 'http://localhost:8081/solr/biblio';
+use constant SOLR => 'http://localhost:8080/solr/biblio';
 
 # require
 use strict;
@@ -18,9 +18,9 @@ my $solr = WebService::Solr->new( SOLR );
 
 # do the work
 print "Deleting records...\n";
-$solr->delete_by_query( 'id:lucmarc_*' );
-print "Optimizing...";
-$solr->optimize;
+$solr->delete_by_query( 'id:slu*' );
+#print "Optimizing...";
+#$solr->optimize;
 
 # done
 print "Done.\n";

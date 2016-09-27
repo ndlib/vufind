@@ -23,7 +23,7 @@
  * @package  EBSCO
  * @author   Michelle Milton <mmilton@epnet.com>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 
 /**
@@ -33,7 +33,7 @@
  * @package  EBSCO
  * @author   Michelle Milton <mmilton@epnet.com>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org
+ * @link     https://vufind.org
  */
 class EbscoEdsApiException extends Exception
 {
@@ -42,7 +42,7 @@ class EbscoEdsApiException extends Exception
      *
      * @var array
      */
-    protected $apiErrorDetails = array();
+    protected $apiErrorDetails = [];
 
     /**
      * Constructor
@@ -72,7 +72,7 @@ class EbscoEdsApiException extends Exception
         //AuthErrorMessages
         if (isset($message['ErrorCode'])) {
             $this->apiErrorDetails['ErrorCode'] = $message['ErrorCode'];
-            $this->apiErrorDetails['Description'] = $message['Reason'] ;
+            $this->apiErrorDetails['Description'] = $message['Reason'];
             $this->apiErrorDetails['DetailedDescription']
                 = $message['AdditionalDetail'];
         }
@@ -128,7 +128,6 @@ class EbscoEdsApiException extends Exception
         return isset($this->apiErrorDetails)
             ? $this->apiErrorDetails['Description'] : '';
     }
-
 
     /**
      * Known api detailed error description

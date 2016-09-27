@@ -19,24 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-3.0.php GNU General Public License
- * @link     http://vufind.org/wiki/
+ * @link     https://vufind.org/wiki/
  */
 namespace VuDL\Connection;
-use VuFindHttp\HttpServiceInterface,
-    VuFindSearch\ParamBag;
 
 /**
  * VuDL connection manager
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-3.0.php GNU General Public License
- * @link     http://vufind.org/wiki/
+ * @link     https://vufind.org/wiki/
  */
 class Manager
 {
@@ -44,35 +42,35 @@ class Manager
      * Array of classes to try in order
      */
     protected $priority;
-    
+
     /**
      * Cache of class objects
      */
     protected $connections;
-    
+
     /**
      * Used to load class objects
      */
     protected $serviceLocator;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param array          $priority Order we want to try connectors in
      * @param ServiceLocator $sm       Object to load everything from
      */
     public function __construct($priority, $sm)
     {
         $this->priority = $priority;
-        $this->connections = array();
+        $this->connections = [];
         $this->serviceLocator = $sm;
     }
-    
+
     /**
      * Get a class object from a classname, save in cache
-     * 
+     *
      * @param string $className Class we want to load
-     * 
+     *
      * @return object
      */
     protected function get($className)
@@ -83,7 +81,7 @@ class Manager
         }
         return $this->connections[$className];
     }
-    
+
     /**
      * Try to call a function in each successive class
      * according to priority
@@ -99,7 +97,7 @@ class Manager
         while ($index < count($this->priority)) {
             $object = $this->get($this->priority[$index]);
             if (method_exists($object, $methodName)) {
-                $ret = call_user_func_array(array($object, $methodName), $params);
+                $ret = call_user_func_array([$object, $methodName], $params);
                 if (!is_null($ret)) {
                     //var_dump($methodName.' - '.$this->priority[$index]);
                     return $ret;
@@ -108,7 +106,7 @@ class Manager
             $index ++;
         }
         throw new \Exception(
-            'VuDL Connection Failed to resolved method "'.$methodName.'"'
+            'VuDL Connection Failed to resolved method "' . $methodName . '"'
         );
     }
 }

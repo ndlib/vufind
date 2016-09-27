@@ -19,13 +19,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 namespace VuFind\Auth;
 use VuFind\Exception\Auth as AuthException, Zend\Crypt\Password\Bcrypt;
@@ -33,13 +33,13 @@ use VuFind\Exception\Auth as AuthException, Zend\Crypt\Password\Bcrypt;
 /**
  * Database authentication class
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Chris Hallberg <challber@villanova.edu>
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 class Database extends AbstractBase
 {
@@ -110,10 +110,10 @@ class Database extends AbstractBase
     {
         // Ensure that all expected parameters are populated to avoid notices
         // in the code below.
-        $params = array(
+        $params = [
             'firstname' => '', 'lastname' => '', 'username' => '',
             'password' => '', 'password2' => '', 'email' => ''
-        );
+        ];
         foreach ($params as $param => $default) {
             $params[$param] = $request->getPost()->get($param, $default);
         }
@@ -141,23 +141,18 @@ class Database extends AbstractBase
         }
 
         // If we got this far, we're ready to create the account:
-        $data = array(
-            'username'  => $params['username'],
-            'firstname' => $params['firstname'],
-            'lastname'  => $params['lastname'],
-            'email'     => $params['email'],
-            'created'   => date('Y-m-d H:i:s')
-        );
-
+        $user = $table->createRowForUsername($params['username']);
+        $user->firstname = $params['firstname'];
+        $user->lastname = $params['lastname'];
+        $user->email = $params['email'];
         if ($this->passwordHashingEnabled()) {
             $bcrypt = new Bcrypt();
-            $data['pass_hash'] = $bcrypt->create($params['password']);
+            $user->pass_hash = $bcrypt->create($params['password']);
         } else {
-            $data['password'] = $params['password'];
+            $user->password = $params['password'];
         }
-        // Create the row and send it back to the caller:
-        $table->insert($data);
-        return $table->getByUsername($params['username'], false);
+        $user->save();
+        return $user;
     }
 
     /**
@@ -173,9 +168,9 @@ class Database extends AbstractBase
     {
         // Ensure that all expected parameters are populated to avoid notices
         // in the code below.
-        $params = array(
+        $params = [
             'username' => '', 'password' => '', 'password2' => ''
-        );
+        ];
         foreach ($params as $param => $default) {
             $params[$param] = $request->getPost()->get($param, $default);
         }
@@ -218,6 +213,8 @@ class Database extends AbstractBase
         if ($params['password'] != $params['password2']) {
             throw new AuthException('Passwords do not match');
         }
+        // Password policy
+        $this->validatePasswordAgainstPolicy($params['password']);
     }
 
     /**
@@ -299,5 +296,30 @@ class Database extends AbstractBase
     public function supportsPasswordChange()
     {
         return true;
+    }
+
+    /**
+     * Does this authentication method support password recovery
+     *
+     * @return bool
+     */
+    public function supportsPasswordRecovery()
+    {
+        return true;
+    }
+
+    /**
+     * Password policy for a new password (e.g. minLength, maxLength)
+     *
+     * @return array
+     */
+    public function getPasswordPolicy()
+    {
+        $policy = parent::getPasswordPolicy();
+        // Limit maxLength to the database limit
+        if (!isset($policy['maxLength']) || $policy['maxLength'] > 32) {
+            $policy['maxLength'] = 32;
+        }
+        return $policy;
     }
 }

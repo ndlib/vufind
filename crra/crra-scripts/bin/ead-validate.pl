@@ -10,11 +10,11 @@
 
 
 # define constants
-use constant CACHE   => '/usr/local/vufind2/crra/data/ead-incoming/' ;
-use constant DB      => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant DTD     => '/usr/local/vufind2/crra/crra-scripts/etc/ead.dtd';
-use constant SCHEMA  => '/usr/local/vufind2/crra/crra-scripts/etc/ead.xsd';
-use constant GETURL  => '/usr/local/vufind2/crra/crra-scripts/etc/geturl.xsl';
+use constant CACHE   => '/opt/vufind/crra/data/ead-incoming/' ;
+use constant DB      => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
+use constant DTD     => '/opt/vufind/crra/crra-scripts/etc/ead.dtd';
+use constant SCHEMA  => '/opt/vufind/crra/crra-scripts/etc/ead.xsd';
+use constant GETURL  => '/opt/vufind/crra/crra-scripts/etc/geturl.xsl';
 use constant INVALID => 'invalid/';
 use constant NOURL   => 'nourl/';
 
@@ -23,7 +23,7 @@ use File::Copy;
 use strict;
 use XML::LibXML;
 use XML::LibXSLT;
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );
@@ -33,7 +33,7 @@ my $parser    = XML::LibXML->new;
 # initialize and check validity of DTD and schema
 my $dtd = '';
 eval { $dtd = XML::LibXML::Dtd->parse_string( &slurp( DTD )); };
-if ( $@ ) { 
+if ( $@ ) {
 
 	&valid( 'false', "Invalid DTD: $@" );
 	exit;
@@ -42,7 +42,7 @@ if ( $@ ) {
 
 my $schema = '';
 eval { $schema = XML::LibXML::Schema->new( location => SCHEMA ); };
-if ( $@ ) { 
+if ( $@ ) {
 
 	&valid( 'false', "Invalid schema: $@" );
 	exit;
@@ -60,15 +60,15 @@ foreach my $key ( sort keys %$libraries ) {
 	# process everything in this library's cache
 	opendir DIRECTORY, CACHE . $key or die "Can't open directory " .  CACHE . $key . ": $!\n";
 	while ( my $filename = readdir( DIRECTORY )) {
-	
+
 		# only want xml files
 		next if ( $filename !~ /xml$/ );
-		
+
 		# check for well-formedness of EAD
 		print "Validating " . CACHE . "$key/$filename for well-formedness\n";
 		my $ead = '';
 		eval { $ead = XML::LibXML->new->parse_file( CACHE . "$key/$filename" ); };
-		if ( $@ ) { 
+		if ( $@ ) {
 
 			# warn and move the file to an invalid directory
 			print "Warning: ". CACHE . "$key/$filename is not well formed. Moving...\n";
@@ -78,36 +78,38 @@ foreach my $key ( sort keys %$libraries ) {
 			next;
 
 		}
-				
+
+
 		# validate EAD
 		eval { $ead->validate( $dtd ); };
 		if ( $@ ) {
-		
+
 			eval { $schema->validate( $ead ); };
 			if ( $@ ) {
-			
+
+				print "Error: $@\n";
 				# warn and move the file to an invalid directory
 				print "Warning: ". CACHE . "$key/$filename is does not validate. Moving...\n";
 				my $invalid = CACHE . "$key/" . INVALID;
 				if ( ! -e $invalid ) { mkdir $invalid or die "Can't make directory $invalid: $!" }
 				move( CACHE . "$key/$filename", "$invalid$filename" ) or die "Can't move file: $!\n";
 				next;
-			
+
 			}
 			else { print "Validates against the Schema\n"; }
-		
+
 		}
 		else { print "Validates against the DTD\n"; }
-				
+
 		# extract the url
 		my $source     = $parser->parse_file( CACHE . "$key/$filename" ) or die "Can't load EAD: $!\n";
 		my $style      = $parser->parse_file( GETURL )                   or die "Can't load XSL: $!\n";
 		my $stylesheet = $xslt->parse_stylesheet( $style )               or die "Can't parse style: $!\n";
-		my $results    = $stylesheet->transform( $source )               or die "Can't transform EAD: $!\n";	
-		
+		my $results    = $stylesheet->transform( $source )               or die "Can't transform EAD: $!\n";
+
 		# check for url
 		if ( !  $stylesheet->output_string( $results )) {
-		
+
 			# warn and move the file to an no url directory
 			print "Warning: ". CACHE . "$key/$filename has no URL. Moving...\n";
 			my $nourl = CACHE . "$key/" . NOURL;
@@ -115,10 +117,10 @@ foreach my $key ( sort keys %$libraries ) {
 			move( CACHE . "$key/$filename", "$nourl$filename" ) or die "Can't move file: $!\n";
 
 		}
-		
+
 	}
 	closedir( DIRECTORY );
-	
+
 }
 
 # done
@@ -131,7 +133,7 @@ sub valid {
 	my $error = shift;
 	print "Valid? $valid\n";
 	print $error if $error;
-	
+
 }
 
 

@@ -20,13 +20,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
-
 namespace VuFind\Search\Solr;
 
 use VuFindSearch\Backend\BackendInterface;
@@ -39,16 +38,14 @@ use SplObjectStorage;
 /**
  * Abstract base class of SOLR error listeners.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Search
  * @author   David Maus <maus@hab.de>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org   Main Site
+ * @link     https://vufind.org Main Site
  */
-
 abstract class AbstractErrorListener
 {
-
     /**
      * Tag indicating a parser error.
      *
@@ -109,7 +106,7 @@ abstract class AbstractErrorListener
      */
     public function attach(SharedEventManagerInterface $manager)
     {
-        $manager->attach('VuFind\Search', 'error', array($this, 'onSearchError'));
+        $manager->attach('VuFind\Search', 'error', [$this, 'onSearchError']);
     }
 
     /**

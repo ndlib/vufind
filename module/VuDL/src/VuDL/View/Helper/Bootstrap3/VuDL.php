@@ -19,22 +19,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/
  */
 namespace VuDL\View\Helper\Bootstrap3;
 
 /**
  * VuDL view helper
  *
- * @category VuFind2
+ * @category VuFind
  * @package  View_Helpers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/
  */
 class VuDL extends \Zend\View\Helper\AbstractHelper
 {
@@ -47,7 +47,7 @@ class VuDL extends \Zend\View\Helper\AbstractHelper
      */
     public function formatTechInfo($techInfo)
     {
-        $old = array(
+        $old = [
             '/<(\/[^>]+)>/',
             '/<([^>]+)>/',
             '/\/&gt;/',
@@ -55,8 +55,8 @@ class VuDL extends \Zend\View\Helper\AbstractHelper
             '/<div>\s*<\/div>/',
             '/(?<=<div>)([^<]+)<div>/',
             '/<div>/'
-        );
-        $new = array(
+        ];
+        $new = [
             '&lt;\1&gt;</div>',
             '<div>&lt;\1&gt;',
             '/&gt;</div>',
@@ -69,7 +69,7 @@ class VuDL extends \Zend\View\Helper\AbstractHelper
                 . " : 'xml'"
                 . '">\1</a><div>',
             '<div class="xml">'
-        );
+        ];
         return preg_replace($old, $new, $techInfo);
     }
 }

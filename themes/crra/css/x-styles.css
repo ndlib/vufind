@@ -1,102 +1,98 @@
 body { background-color:#fff; }
 
 #nav {
-	clear:both; 
-	position:relative; 
-	float:left; 
-	margin:0 0 -53px 30px; 
-	width:100%; 
-	padding:0; 
-	display:inline; 
-	color:#FFF; 
+	clear:both;
+	position:relative;
+	float:left;
+	margin:0 0 -53px 30px;
+	width:100%;
+	padding:0;
+	display:inline;
+	color:#FFF;
 	text-transform:uppercase;
 }
 
 #nav-list {
-	list-style-type:none; 
-	margin:0; 
-	padding:0; 
+	list-style-type:none;
+	margin:0;
+	padding:0;
 	text-align:center;
 }
 
 #nav-list li {
-	margin:0; 
-	padding:0; 
-	float:left; 
+	margin:0;
+	padding:0;
+	float:left;
 	display:inline;}
 
 #nav-list a {
-	color:#FFF; 
-	text-decoration:none; 
-	background:#637BA4 url("../images/nav.gif") repeat-x bottom left; 
-	float:left; 
-	position:relative; 
-	display:block; 
-	line-height:1; 
-	margin:0 0 0 1px; 
+	color:#FFF;
+	text-decoration:none;
+	background:#637BA4 url("../images/nav.gif") repeat-x bottom left;
+	float:left;
+	position:relative;
+	display:block;
+	line-height:1;
+	margin:0 0 0 1px;
 	padding:.2em 0;
 	font-size: 13px;
 	font-family: Arial;
 }
 
-#port a	{
-	width:100px; 
-	width/**/:/**/111px; 
-	padding:.7em 0;
+#port a {
+    padding: 1.3em 0;
+    width: 111px;
 }
-
 #aboup a {
-	width:100px; 
-	width/**/:/**/111px; 
-	padding:.7em 0;
+    padding: 1.3em 0;
+    width: 111px;
 }
-
 #abouc a {
-	width:101px;
+    width: 101px;
+    padding: 1.3em 0;
 }
-
-#lead a	{
-	width:105px;
+#lead a {
+    width: 105px;
+    padding: 0.8em 0;
 }
-
-#part a	{
-	width:106px; 
-	padding:.7em 0;
+#part a {
+    padding: 0.8em 0;
+    width: 106px;
 }
-
-#cont a	{
-	width:100px; 
-	width/**/:/**/111px; 
-	padding:.7em 0;
+#papers a {
+	width: 105px;
+    padding: 0.3em 0;
 }
-
-#logi a	{
-	width:112px; 
-	background-color:#849C6B; 
-	background-image:url("../images/login.gif");
+#cont a {
+    padding: 0.7em 0;
+    width: 111px;
 }
-
-#rssf a	{
-	width:121px; 
-	width/**/:/**/111px; 
-	background-color:#CB893C; 
-	background-image:url("../images/rss.gif"); 
-	text-align:left; 
-	padding:.7em 0 .7em 10px;
+#logi a {
+    /*background-color: #849C6B;
+    background-image: url("/interface/themes/crranew/css/images/login.gif");*/
+    width: 112px;
+    padding: 0.8em 0;
+}
+#rssf a {
+    background-color: #CB893C;
+    background-image: url("images/rss.gif");
+    padding: 0.7em 0 0.7em 10px;
+    text-align: left;
+    width: 111px;
 }
 
 #nav-list a:hover {
-	background-color:#933; 
+	background-color:#933;
 	background-image:url("../images/nav-on.gif");
 }
 
 #rssf a:hover, #brssf #rssf a {
-	background-color:#933; 
+	background-color:#933;
 	background-image:url("..images/rss-on.gif");
-}	
+}
 
 #bport #port a, #baboup #aboup a, #babouc #abouc a, #blead #lead a, #bpart #part a, #bcont #cont a, #blogi #logi a {
-	background-color:#933; 
+	background-color:#933;
 	background-image:url("../images/nav-on.gif");
 }
 

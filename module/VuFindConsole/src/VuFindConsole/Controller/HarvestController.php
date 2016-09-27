@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_a_controller Wiki
+ * @link     https://vufind.org/wiki/development:plugins:controllers Wiki
  */
 namespace VuFindConsole\Controller;
 use VuFind\Harvester\OAI, Zend\Console\Console;
@@ -31,11 +31,11 @@ use VuFind\Harvester\OAI, Zend\Console\Console;
 /**
  * This controller handles various command-line tools
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Controller
  * @author   Chris Hallberg <challber@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:building_a_controller Wiki
+ * @link     https://vufind.org/wiki/development:plugins:controllers Wiki
  */
 class HarvestController extends AbstractBase
 {
@@ -50,7 +50,7 @@ class HarvestController extends AbstractBase
 
         // Parse switches:
         $this->consoleOpts->addRules(
-            array('from-s' => 'Harvest start date', 'until-s' => 'Harvest end date')
+            ['from-s' => 'Harvest start date', 'until-s' => 'Harvest end date']
         );
         $from = $this->consoleOpts->getOption('from');
         $until = $this->consoleOpts->getOption('until');
@@ -68,7 +68,7 @@ class HarvestController extends AbstractBase
         $argv = $this->consoleOpts->getRemainingArgs();
         if (isset($argv[0])) {
             if (isset($oaiSettings[$argv[0]])) {
-                $oaiSettings = array($argv[0] => $oaiSettings[$argv[0]]);
+                $oaiSettings = [$argv[0] => $oaiSettings[$argv[0]]];
             } else {
                 Console::writeLine("Could not load settings for {$argv[0]}.");
                 return $this->getFailureResponse();
@@ -132,7 +132,7 @@ class HarvestController extends AbstractBase
         Console::writeLine('<collection>');
         while (false !== ($file = readdir($handle))) {
             // Only operate on XML files:
-            if (pathinfo($file, PATHINFO_EXTENSION) === "xml" ) {
+            if (pathinfo($file, PATHINFO_EXTENSION) === "xml") {
                 // get file content
                 $filePath = $dir . '/' . $file;
                 $fileContent = file_get_contents($filePath);

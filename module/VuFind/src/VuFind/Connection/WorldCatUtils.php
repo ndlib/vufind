@@ -19,200 +19,103 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  WorldCat
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Connection;
-use File_MARCXML, VuFind\XSLT\Processor as XSLTProcessor, Zend\Log\LoggerInterface;
+use File_MARCXML, VuFind\XSLT\Processor as XSLTProcessor, Zend\Config\Config;
 
 /**
  * World Cat Utilities
  *
  * Class for accessing helpful WorldCat APIs.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  WorldCat
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
 {
-    /**
-     * Logger (or false for none)
-     *
-     * @var LoggerInterface|bool
-     */
-    protected $logger = false;
+    use \VuFind\Log\LoggerAwareTrait;
 
     /**
-     * WorldCat ID
+     * WorldCat configuration
+     *
+     * @var \Zend\Config\Config
+     */
+    protected $config;
+
+    /**
+     * HTTP client
+     *
+     * @var \Zend\Http\Client
+     */
+    protected $client;
+
+    /**
+     * Should we silently ignore HTTP failures?
+     *
+     * @var bool
+     */
+    protected $silent;
+
+    /**
+     * Current server IP address
      *
      * @var string
      */
-    protected $worldCatId;
+    protected $ip;
 
     /**
      * Constructor
      *
-     * @param string $worldCatId WorldCat ID
+     * @param Config|string     $config WorldCat configuration (either a full Config
+     * object, or a string containing the id setting).
+     * @param \Zend\Http\Client $client HTTP client
+     * @param bool              $silent Should we silently ignore HTTP failures?
+     * @param string            $ip     Current server IP address (optional, but
+     * needed for xID token hashing
      */
-    public function __construct($worldCatId)
-    {
-        $this->worldCatId = $worldCatId;
-    }
-
-    /**
-     * Set the logger
-     *
-     * @param LoggerInterface $logger Logger to use.
-     *
-     * @return void
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-    }
-
-    /**
-     * Log a debug message.
-     *
-     * @param string $msg Message to log.
-     *
-     * @return void
-     */
-    protected function debug($msg)
-    {
-        if ($this->logger) {
-            $this->logger->debug($msg);
+    public function __construct($config, \Zend\Http\Client $client, $silent = true,
+        $ip = null
+    ) {
+        // Legacy compatibility -- prior to VuFind 2.4, this parameter was a string.
+        if (!($config instanceof Config)) {
+            $config = new Config(['id' => $config]);
         }
+        $this->config = $config;
+        $this->client = $client;
+        $this->silent = $silent;
+        $this->ip = $ip;
     }
 
     /**
-     * Get the WorldCat ID from the config file.
+     * Retrieve data over HTTP.
+     *
+     * @param string $url URL to access.
      *
      * @return string
+     * @throws \Exception
      */
-    protected function getWorldCatId()
+    protected function retrieve($url)
     {
-        return $this->worldCatId;
-    }
-
-    /**
-     * Retrieve results from the index using the XISBN service.
-     *
-     * @param string $isbn ISBN of main record
-     *
-     * @return array       ISBNs for related items (may be empty).
-     */
-    public function getXISBN($isbn)
-    {
-        // Build URL
-        $url = 'http://xisbn.worldcat.org/webservices/xid/isbn/' .
-                urlencode(is_array($isbn) ? $isbn[0] : $isbn) .
-               '?method=getEditions&format=csv';
-        if ($wcId = $this->getWorldCatId()) {
-            $url .= '&ai=' . urlencode($wcId);
-        }
-
-        // Print Debug code
-        $this->debug("XISBN: $url");
-
-        // Fetch results
-        $isbns = array();
-        if ($fp = @fopen($url, "r")) {
-            while (($data = fgetcsv($fp, 1000, ",")) !== false) {
-                // Filter out non-ISBN characters and validate the length of
-                // whatever is left behind; this will prevent us from treating
-                // error messages like "invalidId" or "overlimit" as ISBNs.
-                $isbn = preg_replace('/[^0-9xX]/', '', $data[0]);
-                if (strlen($isbn) < 10) {
-                    continue;
-                }
-                $isbns[] = $isbn;
+        try {
+            $response = $this->client->setUri($url)->setMethod('GET')->send();
+            if ($response->isSuccess()) {
+                return $response->getBody();
+            }
+            throw new \Exception('HTTP error');
+        } catch (\Exception $e) {
+            if (!$this->silent) {
+                throw $e;
             }
         }
-
-        return $isbns;
-    }
-
-    /**
-     * Retrieve results from the index using the XOCLCNUM service.
-     *
-     * @param string $oclc OCLC number of main record
-     *
-     * @return array       ISBNs for related items (may be empty).
-     */
-    public function getXOCLCNUM($oclc)
-    {
-        // Build URL
-        $url = 'http://xisbn.worldcat.org/webservices/xid/oclcnum/' .
-                urlencode(is_array($oclc) ? $oclc[0] : $oclc) .
-               '?method=getEditions&format=csv';
-        if ($wcId = $this->getWorldCatId()) {
-            $url .= '&ai=' . urlencode($wcId);
-        }
-
-        // Print Debug code
-        $this->debug("XOCLCNUM: $url");
-
-        // Fetch results
-        $results = array();
-        if ($fp = @fopen($url, "r")) {
-            while (($data = fgetcsv($fp, 1000, ",")) !== false) {
-                // Filter out non-numeric characters and validate the length of
-                // whatever is left behind; this will prevent us from treating
-                // error messages like "invalidId" or "overlimit" as ISBNs.
-                $current = preg_replace('/[^0-9]/', '', $data[0]);
-                if (empty($current)) {
-                    continue;
-                }
-                $results[] = $current;
-            }
-        }
-
-        return $results;
-    }
-
-    /**
-     * Retrieve results from the index using the XISSN service.
-     *
-     * @param string $issn ISSN of main record
-     *
-     * @return array       ISSNs for related items (may be empty).
-     */
-    public function getXISSN($issn)
-    {
-        // Build URL
-        $url = 'http://xissn.worldcat.org/webservices/xid/issn/' .
-                urlencode(is_array($issn) ? $issn[0] : $issn) .
-               //'?method=getEditions&format=csv';
-               '?method=getEditions&format=xml';
-        if ($wcId = $this->getWorldCatId()) {
-            $url .= '&ai=' . urlencode($wcId);
-        }
-
-        // Print Debug code
-        $this->debug("XISSN: $url");
-
-        // Fetch results
-        $issns = array();
-        $xml = @file_get_contents($url);
-        if (!empty($xml)) {
-            $data = simplexml_load_string($xml);
-            if (!empty($data) && isset($data->group->issn)
-                && count($data->group->issn) > 0
-            ) {
-                foreach ($data->group->issn as $issn) {
-                    $issns[] = (string)$issn;
-                }
-            }
-        }
-
-        return $issns;
+        return null;
     }
 
     /**
@@ -227,8 +130,8 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
     {
         // Some common prefixes and suffixes that we do not want to treat as first
         // or last names:
-        static $badChunks = array('jr', 'sr', 'ii', 'iii', 'iv', 'v', 'vi', 'vii',
-            'viii', 'ix', 'x', 'junior', 'senior', 'esq', 'mr', 'mrs', 'miss', 'dr');
+        static $badChunks = ['jr', 'sr', 'ii', 'iii', 'iv', 'v', 'vi', 'vii',
+            'viii', 'ix', 'x', 'junior', 'senior', 'esq', 'mr', 'mrs', 'miss', 'dr'];
 
         // Clean up the input string:
         $current = str_replace('.', '', strtolower($current));
@@ -253,7 +156,7 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
     protected function getIdentitiesQuery($name)
     {
         // Clean up user query and try to find name components within it:
-        $name = trim(str_replace(array('"', ',', '-'), ' ', $name));
+        $name = trim(str_replace(['"', ',', '-'], ' ', $name));
         $parts = explode(' ', $name);
         $first = $last = '';
         foreach ($parts as $current) {
@@ -277,9 +180,10 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
         if (empty($first) && empty($last)) {
             return false;
         } else if (empty($last)) {
-            return "local.Name=\"{$first}\"";
+            return "local.PersonalName=\"{$first}\"";
         } else {
-            return "local.Name=\"{$last}\" and local.Name=\"{$first}\"";
+            return "local.PersonalName=\"{$last}\" "
+                . "and local.PersonalName=\"{$first}\"";
         }
     }
 
@@ -297,11 +201,11 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
         $subjects = isset($current->fastHeadings->fast) ?
             $current->fastHeadings->fast : null;
         if (isset($subjects->tag)) {
-            $subjects = array($subjects);
+            $subjects = [$subjects];
         }
 
         // Collect subjects for current name:
-        $retVal = array();
+        $retVal = [];
         if (!is_null($subjects) && count($subjects) > 0) {
             foreach ($subjects as $currentSubject) {
                 if ($currentSubject['tag'] == '650') {
@@ -319,6 +223,29 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
     }
 
     /**
+     * Get the URL to perform a related identities query.
+     *
+     * @param string $query      Query
+     * @param int    $maxRecords Max # of records to read from API (more = slower).
+     *
+     * @return string
+     */
+    protected function getRelatedIdentitiesUrl($query, $maxRecords)
+    {
+        return "http://worldcat.org/identities/search/PersonalIdentities" .
+            "?query=" . urlencode($query) .
+            "&version=1.1" .
+            "&operation=searchRetrieve" .
+            "&recordSchema=info%3Asrw%2Fschema%2F1%2FIdentities" .
+            "&maximumRecords=" . intval($maxRecords) .
+            "&startRecord=1" .
+            "&resultSetTTL=300" .
+            "&recordPacking=xml" .
+            "&recordXPath=" .
+            "&sortKeys=holdingscount";
+    }
+
+    /**
      * Given a name string, get related identities.  Inspired by Eric Lease
      * Morgan's Name Finder demo (http://zoia.library.nd.edu/sandbox/name-finder/).
      * Return value is an associative array where key = author name and value =
@@ -332,27 +259,14 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
     public function getRelatedIdentities($name, $maxRecords = 10)
     {
         // Build the WorldCat Identities API query:
-        $query = $this->getIdentitiesQuery($name);
-        if (!$query) {
+        if (!($query = $this->getIdentitiesQuery($name))) {
             return false;
         }
 
-        // Get the API response:
-        $url = "http://worldcat.org/identities/search/PersonalIdentities" .
-            "?query=" . urlencode($query) .
-            "&version=1.1" .
-            "&operation=searchRetrieve" .
-            "&recordSchema=info%3Asrw%2Fschema%2F1%2FIdentities" .
-            "&maximumRecords=" . intval($maxRecords) .
-            "&startRecord=1" .
-            "&resultSetTTL=300" .
-            "&recordPacking=xml" .
-            "&recordXPath=" .
-            "&sortKeys=holdingscount";
-        $xml = @file_get_contents($url);
-
-        // Translate XML to object:
-        $data = simplexml_load_string($xml);
+        // Get the API response and translate it into an object:
+        $data = simplexml_load_string(
+            $this->retrieve($this->getRelatedIdentitiesUrl($query, $maxRecords))
+        );
 
         // Give up if expected data is missing:
         if (!isset($data->records->record)) {
@@ -360,7 +274,7 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
         }
 
         // Loop through data and collect names and related subjects:
-        $output = array();
+        $output = [];
         foreach ($data->records->record as $current) {
             // Build current name string:
             $current = isset($current->recordData->Identity->nameInfo) ?
@@ -382,139 +296,5 @@ class WorldCatUtils implements \Zend\Log\LoggerAwareInterface
         }
 
         return $output;
-    }
-
-    /**
-     * Given a subject term, get related (broader/narrower/alternate) terms.
-     * Loosely adapted from Eric Lease Morgan's Term Finder demo (see
-     * http://zoia.library.nd.edu/sandbox/term-finder/).  Note that this is
-     * intended as a fairly fuzzy search -- $term need not be an exact subject
-     * heading; this function will return best guess matches in the 'exact'
-     * key, possible broader terms in the 'broader' key and possible narrower
-     * terms in the 'narrower' key of the return array.
-     *
-     * @param string $term       Term to get related terms for.
-     * @param string $vocabulary Vocabulary to search (default = LCSH; see OCLC docs
-     * for other options).
-     * @param int    $maxRecords Max # of records to read from API (more = slower).
-     *
-     * @return mixed             False on error, otherwise array of related terms,
-     * keyed by category.
-     */
-    public function getRelatedTerms($term, $vocabulary = 'lcsh', $maxRecords = 10)
-    {
-        // Strip quotes from incoming term:
-        $term = str_replace('"', '', $term);
-
-        // Build the request URL:
-        $url = "http://tspilot.oclc.org/" . urlencode($vocabulary) . "/?" .
-            // Search for the user-supplied term in both preferred and alternative
-            // fields!
-            "query=oclcts.preferredTerm+%3D+%22" . urlencode($term) .
-                "%22+OR+oclcts.alternativeTerms+%3D+%22" . urlencode($term) . "%22" .
-            "&version=1.1" .
-            "&operation=searchRetrieve" .
-            "&recordSchema=info%3Asrw%2Fschema%2F1%2Fmarcxml-v1.1" .
-            "&maximumRecords=" . intval($maxRecords) .
-            "&startRecord=1" .
-            "&resultSetTTL=300" .
-            "&recordPacking=xml" .
-            "&recordXPath=" .
-            "&sortKeys=recordcount";
-
-        // Get the API response:
-        $data = @file_get_contents($url);
-
-        // Extract plain MARCXML from the WorldCat response:
-        $marcxml = XSLTProcessor::process('wcterms-marcxml.xsl', $data);
-
-        // Try to parse the MARCXML into a File_MARC object; if this fails,
-        // we probably have bad MARCXML, which may indicate an API failure
-        // or an empty record set.  Just give up if this happens!
-        try {
-            $marc = new \File_MARCXML($marcxml, File_MARCXML::SOURCE_STRING);
-        } catch (\File_MARC_Exception $e) {
-            return false;
-        }
-
-        // Initialize arrays:
-        $exact = array();
-        $broader = array();
-        $narrower = array();
-
-        while ($record = $marc->next()) {
-            // Get exact terms; only save it if it is not a subset of the requested
-            // term.
-            $main = $this->getExactTerm($record);
-            if ($main && !stristr($term, $main)) {
-                $exact[] = $main;
-            }
-
-            // Get broader/narrower terms:
-            $related = $record->getFields('550');
-            foreach ($related as $current) {
-                $type = $current->getSubfield('w');
-                $value = $current->getSubfield('a');
-                if ($type && $value) {
-                    $type = (string)$type->getData();
-                    $value = (string)$value->getData();
-                    if ($type == 'g') {
-                        // Don't save exact matches to the user-entered term:
-                        if (strcasecmp($term, $value) != 0) {
-                            $broader[] = $value;
-                        }
-                    } else if ($type == 'h') {
-                        // Don't save exact matches to the user-entered term:
-                        if (strcasecmp($term, $value) != 0) {
-                            $narrower[] = $value;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Send back everything we found, sorted and filtered for uniqueness; note
-        // that we do NOT sort FAST results since they support relevance ranking.
-        // As of this writing, other vocabularies do not support relevance.
-        if ($vocabulary !== 'fast') {
-            natcasesort($exact);
-            natcasesort($broader);
-            natcasesort($narrower);
-        }
-        return array(
-            'exact' => array_unique($exact),
-            'broader' => array_unique($broader),
-            'narrower' => array_unique($narrower)
-        );
-    }
-
-    /**
-     * Extract an exact term from a MARC record.
-     *
-     * @param \File_MARC_Record $record MARC record
-     *
-     * @return string
-     */
-    protected function getExactTerm($record)
-    {
-        // Get exact terms:
-        $actual = $record->getField('150');
-        if (!$actual || !($main = $actual->getSubfield('a'))) {
-            return false;
-        }
-
-        // Some versions of File_MARCXML seem to have trouble returning
-        // strings properly (giving back XML objects instead); let's
-        // cast to string to be sure we get what we expect!
-        $main = (string)$main->getData();
-
-        // Add subdivisions:
-        $subdivisions = $actual->getSubfields('x');
-        if ($subdivisions) {
-            foreach ($subdivisions as $current) {
-                $main .= ', ' . (string)$current->getData();
-            }
-        }
-        return $main;
     }
 }

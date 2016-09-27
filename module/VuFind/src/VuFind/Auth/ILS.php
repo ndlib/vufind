@@ -19,28 +19,37 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 namespace VuFind\Auth;
-use VuFind\Exception\Auth as AuthException;
+
+use VuFind\Exception\Auth as AuthException,
+    VuFind\Exception\ILS as ILSException;
 
 /**
  * ILS authentication module.
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Authentication
  * @author   Franck Borel <franck.borel@gbv.de>
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:authentication_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:authentication_handlers Wiki
  */
 class ILS extends AbstractBase
 {
+    /**
+     * ILS Authenticator
+     *
+     * @var object
+     */
+    protected $authenticator;
+
     /**
      * Catalog connection
      *
@@ -51,11 +60,15 @@ class ILS extends AbstractBase
     /**
      * Set the ILS connection for this object.
      *
-     * @param \VuFind\ILS\Connection $connection ILS connection to set
+     * @param \VuFind\ILS\Connection    $connection    ILS connection to set
+     * @param \VuFind\ILS\Authenticator $authenticator ILS authenticator
      */
-    public function __construct(\VuFind\ILS\Connection $connection)
-    {
+    public function __construct(
+        \VuFind\ILS\Connection $connection,
+        \VuFind\Auth\ILSAuthenticator $authenticator
+    ) {
         $this->setCatalog($connection);
+        $this->authenticator = $authenticator;
     }
 
     /**
@@ -101,6 +114,9 @@ class ILS extends AbstractBase
         // Connect to catalog:
         try {
             $patron = $this->getCatalog()->patronLogin($username, $password);
+        } catch (AuthException $e) {
+            // Pass Auth exceptions through
+            throw $e;
         } catch (\Exception $e) {
             throw new AuthException('authentication_error_technical');
         }
@@ -112,6 +128,77 @@ class ILS extends AbstractBase
 
         // If we got this far, we have a problem:
         throw new AuthException('authentication_error_invalid');
+    }
+
+    /**
+     * Does this authentication method support password changing
+     *
+     * @return bool
+     */
+    public function supportsPasswordChange()
+    {
+        try {
+            return false !== $this->getCatalog()->checkFunction(
+                'changePassword',
+                ['patron' => $this->getLoggedInPatron()]
+            );
+        } catch (ILSException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Password policy for a new password (e.g. minLength, maxLength)
+     *
+     * @return array
+     */
+    public function getPasswordPolicy()
+    {
+        $policy = $this->getCatalog()->getPasswordPolicy($this->getLoggedInPatron());
+        return $policy !== false ? $policy : parent::getPasswordPolicy();
+    }
+
+    /**
+     * Update a user's password from the request.
+     *
+     * @param \Zend\Http\PhpEnvironment\Request $request Request object containing
+     * new account details.
+     *
+     * @throws AuthException
+     * @return \VuFind\Db\Row\User New user row.
+     */
+    public function updatePassword($request)
+    {
+        // Ensure that all expected parameters are populated to avoid notices
+        // in the code below.
+        $params = [];
+        foreach (['oldpwd', 'password', 'password2'] as $param) {
+            $params[$param] = $request->getPost()->get($param, '');
+        }
+
+        // Connect to catalog:
+        if (!($patron = $this->authenticator->storedCatalogLogin())) {
+            throw new AuthException('authentication_error_technical');
+        }
+
+        // Validate Input
+        $this->validatePasswordUpdate($params);
+
+        $result = $this->getCatalog()->changePassword(
+            [
+                'patron' => $patron,
+                'oldPassword' => $params['oldpwd'],
+                'newPassword' => $params['password']
+            ]
+        );
+        if (!$result['success']) {
+            throw new AuthException($result['status']);
+        }
+
+        // Update the user and send it back to the caller:
+        $user = $this->getUserTable()->getByUsername($patron['cat_username']);
+        $user->saveCredentials($patron['cat_username'], $params['password']);
+        return $user;
     }
 
     /**
@@ -137,21 +224,54 @@ class ILS extends AbstractBase
         $user = $this->getUserTable()->getByUsername($info[$usernameField]);
 
         // No need to store the ILS password in VuFind's main password field:
-        $user->password = "";
+        $user->password = '';
 
         // Update user information based on ILS data:
-        $user->firstname = !isset($info['firstname']) ? " " : $info['firstname'];
-        $user->lastname = !isset($info['lastname']) ? " " : $info['lastname'];
-        $user->email = !isset($info['email']) ? " " : $info['email'];
-        $user->major = !isset($info['major']) ? " " : $info['major'];
-        $user->college = !isset($info['college']) ? " " : $info['college'];
+        $fields = ['firstname', 'lastname', 'email', 'major', 'college'];
+        foreach ($fields as $field) {
+            $user->$field = isset($info[$field]) ? $info[$field] : ' ';
+        }
 
         // Update the user in the database, then return it to the caller:
         $user->saveCredentials(
-            !isset($info['cat_username']) ? " " : $info['cat_username'],
-            !isset($info['cat_password']) ? " " : $info['cat_password']
+            isset($info['cat_username']) ? $info['cat_username'] : ' ',
+            isset($info['cat_password']) ? $info['cat_password'] : ' '
         );
 
         return $user;
+    }
+
+    /**
+     * Make sure passwords match and fulfill ILS policy
+     *
+     * @param array $params request parameters
+     *
+     * @return void
+     */
+    protected function validatePasswordUpdate($params)
+    {
+        // Needs a password
+        if (trim($params['password']) == '') {
+            throw new AuthException('Password cannot be blank');
+        }
+        // Passwords don't match
+        if ($params['password'] != $params['password2']) {
+            throw new AuthException('Passwords do not match');
+        }
+
+        $this->validatePasswordAgainstPolicy($params['password']);
+    }
+
+    /**
+     * Get the Currently Logged-In Patron
+     *
+     * @throws AuthException
+     *
+     * @return array Patron
+     */
+    protected function getLoggedInPatron()
+    {
+        $patron = $this->authenticator->storedCatalogLogin();
+        return $patron ? $patron : null;
     }
 }

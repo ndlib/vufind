@@ -8,7 +8,7 @@
 
 
 # configure; no other editing should be necessary
-use constant SOLR => 'http://localhost:8080/solr/biblio';
+use constant SOLR => 'http://localhost:8081/solr/biblio';
 
 # require
 use strict;

@@ -14,14 +14,14 @@
 # configure
 use constant AGENT  => 'MARCGetter';
 use constant ACCEPT => 'text/plain, text/html, text/xml';
-use constant DB     => '/usr/local/vufind2/crra/crra-scripts/etc/libraries.db';
-use constant NEW    => '/usr/local/vufind2/crra/data/marc-incoming/' ;
+use constant DB     => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
+use constant NEW    => '/opt/vufind/crra/data/marc-incoming/' ;
 
 # require
 use strict;
 use LWP::UserAgent;
 #use Encode qw(encode decode);
-require '/usr/local/vufind2/crra/crra-scripts/lib/subroutines.pl';
+require '/opt/vufind/crra/crra-scripts/lib/subroutines.pl';
 
 # initilize
 my $libraries = &read_institutions( DB, [ @ARGV ] );

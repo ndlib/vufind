@@ -19,11 +19,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Content
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 namespace VuFind\Content;
 use VuFind\ServiceManager\AbstractPluginManager;
@@ -31,11 +31,11 @@ use VuFind\ServiceManager\AbstractPluginManager;
 /**
  * Third-party content loader
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Content
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:developer_manual Wiki
+ * @link     https://vufind.org/wiki/development Wiki
  */
 class Loader
 {
@@ -70,13 +70,13 @@ class Loader
      *
      * @param string $isbn ISBN
      *
-     * @return \VuFind\Code\ISBN|bool
+     * @return \VuFindCode\ISBN|bool
      */
     protected function getIsbnObject($isbn)
     {
         // We can't proceed without an ISBN:
         return (empty($isbn))
-            ? false : new \VuFind\Code\ISBN($isbn);
+            ? false : new \VuFindCode\ISBN($isbn);
     }
 
     /**
@@ -88,7 +88,7 @@ class Loader
      */
     public function loadByIsbn($isbn)
     {
-        $results = array();
+        $results = [];
         if (!($isbnObj = $this->getIsbnObject($isbn))) {
             return $results;
         }
@@ -98,19 +98,21 @@ class Loader
         foreach ($providers as $provider) {
             $parts = explode(':', trim($provider));
             $provider = $parts[0];
-            $key = isset($parts[1]) ? $parts[1] : '';
-            try {
-                $plugin = $this->loader->get($provider);
-                $results[$provider] = $plugin->loadByIsbn($key, $isbnObj);
+            if (!empty($provider)) {
+                $key = isset($parts[1]) ? $parts[1] : '';
+                try {
+                    $plugin = $this->loader->get($provider);
+                    $results[$provider] = $plugin->loadByIsbn($key, $isbnObj);
 
-                // If the current provider had no valid data, store nothing:
-                if (empty($results[$provider])) {
+                    // If the current provider had no valid data, store nothing:
+                    if (empty($results[$provider])) {
+                        unset($results[$provider]);
+                    }
+                } catch (\Exception $e) {
+                    // Ignore exceptions:
+                    error_log($e->getMessage());
                     unset($results[$provider]);
                 }
-            } catch (\Exception $e) {
-                // Ignore exceptions:
-                error_log($e->getMessage());
-                unset($results[$provider]);
             }
         }
 

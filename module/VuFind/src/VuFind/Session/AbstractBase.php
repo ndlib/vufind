@@ -19,29 +19,31 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Session_Handlers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:session_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:session_handlers Wiki
  */
 namespace VuFind\Session;
-use Zend\ServiceManager\ServiceLocatorAwareInterface,
-    Zend\ServiceManager\ServiceLocatorInterface,
-    Zend\Session\SaveHandler\SaveHandlerInterface;
+use Zend\Session\SaveHandler\SaveHandlerInterface;
 
 /**
  * Base class for session handling
  *
- * @category VuFind2
+ * @category VuFind
  * @package  Session_Handlers
  * @author   Demian Katz <demian.katz@villanova.edu>
  * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
- * @link     http://vufind.org/wiki/vufind2:session_handlers Wiki
+ * @link     https://vufind.org/wiki/development:plugins:session_handlers Wiki
  */
 abstract class AbstractBase implements SaveHandlerInterface,
     \VuFind\Db\Table\DbTableAwareInterface
 {
+    use \VuFind\Db\Table\DbTableAwareTrait {
+        getDbTable as getTable;
+    }
+
     /**
      * Session lifetime in seconds
      *
@@ -55,13 +57,6 @@ abstract class AbstractBase implements SaveHandlerInterface,
      * @var \Zend\Config\Config
      */
     protected $config = null;
-
-    /**
-     * Database table plugin manager
-     *
-     * @var \VuFind\Db\Table\PluginManager
-     */
-    protected $tableManager;
 
     /**
      * Set configuration.
@@ -86,7 +81,8 @@ abstract class AbstractBase implements SaveHandlerInterface,
      * @param string $sess_path Session save path
      * @param string $sess_name Session name
      *
-     * @return void
+     * @return bool
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function open($sess_path, $sess_name)
@@ -98,7 +94,7 @@ abstract class AbstractBase implements SaveHandlerInterface,
      * Close function, this works like a destructor in classes and is executed
      * when the session operation is done.
      *
-     * @return void
+     * @return bool
      */
     public function close()
     {
@@ -115,12 +111,13 @@ abstract class AbstractBase implements SaveHandlerInterface,
      *
      * @param string $sess_id The session ID to destroy
      *
-     * @return void
+     * @return bool
      */
     public function destroy($sess_id)
     {
         $table = $this->getTable('Search');
         $table->destroySession($sess_id);
+        return true;
     }
 
     /**
@@ -129,7 +126,8 @@ abstract class AbstractBase implements SaveHandlerInterface,
      *
      * @param int $sess_maxlifetime Maximum session lifetime.
      *
-     * @return void
+     * @return bool
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function gc($sess_maxlifetime)
@@ -145,43 +143,6 @@ abstract class AbstractBase implements SaveHandlerInterface,
         // Anecdotal testing Today and Yesterday seems to indicate destroy()
         //   is called by the garbage collector and everything is good.
         // Something to keep in mind though.
-    }
-
-    /**
-     * Get the table plugin manager.  Throw an exception if it is missing.
-     *
-     * @throws \Exception
-     * @return \VuFind\Db\Table\PluginManager
-     */
-    public function getDbTableManager()
-    {
-        if (null === $this->tableManager) {
-            throw new \Exception('DB table manager missing.');
-        }
-        return $this->tableManager;
-    }
-
-    /**
-     * Set the table plugin manager.
-     *
-     * @param \VuFind\Db\Table\PluginManager $manager Plugin manager
-     *
-     * @return void
-     */
-    public function setDbTableManager(\VuFind\Db\Table\PluginManager $manager)
-    {
-        $this->tableManager = $manager;
-    }
-
-    /**
-     * Get a database table object.
-     *
-     * @param string $table Name of table to retrieve
-     *
-     * @return \VuFind\Db\Table\Gateway
-     */
-    protected function getTable($table)
-    {
-        return $this->getDbTableManager()->get($table);
+        return true;
     }
 }

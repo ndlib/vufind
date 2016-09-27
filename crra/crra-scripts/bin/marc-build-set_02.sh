@@ -6,13 +6,13 @@
 # December 20, 2012 - added command line input and logging
 
 
-cd /usr/local/vufind2/crra/crra-scripts
+cd /opt/vufind/crra/crra-scripts
 echo
 echo Harvesting...
-bin/marc-harvest.pl lmu luc luw mar pah sed shu stc una > /usr/local/vufind2/crra/crra-scripts/logs/set_02-marc-harvest.txt
+bin/marc-harvest.pl lmu luc luw mar pah sed shu stc una > /opt/vufind/crra/crra-scripts/logs/set_02-marc-harvest.txt
 echo
 echo Prepending codes...
-bin/marc-add-code.pl lmu luc luw mar pah sed shu stc una > /usr/local/vufind2/crra/crra-scripts/logs/set_02-marc-addcodes.txt
+bin/marc-add-code.pl lmu luc luw mar pah sed shu stc una > /opt/vufind/crra/crra-scripts/logs/set_02-marc-addcodes.txt
 echo
 echo Re-indexing...
-bin/marc-index.pl lmu luc luw mar pah sed shu stc una > /usr/local/vufind2/crra/crra-scripts/logs/set_02-marc-index.txt
+bin/marc-index.pl lmu luc luw mar pah sed shu stc una > /opt/vufind/crra/crra-scripts/logs/set_02-marc-index.txt
