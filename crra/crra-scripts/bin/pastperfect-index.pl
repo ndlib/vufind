@@ -55,7 +55,7 @@ foreach my $node ( $results->get_nodelist ) {
 
 	# increment
 	$count++;
-	
+
 	# catch-all field
 	my $all_fields =  $xpath->find( '.', $node );
 	   $all_fields =~ s/\s+/ /g;
@@ -67,14 +67,14 @@ foreach my $node ( $results->get_nodelist ) {
 	my $id = $identifiers->get_node( 1 );
 	my $call_number = $id->string_value;
 	   $id = $prefix . $id->string_value;
-	my $url = DEFAULTURL;	   
+	my $url = DEFAULTURL;
 	if ( $identifiers->get_node( 2 ) ) {
-	
+
 		$url = $identifiers->get_node( 2 );
 		$url = $url->string_value;
-		
+
 	}
-	   	
+
 	# other good metadata
 	my $title                =  $xpath->find( './title', $node );
 	my $title_auth           =  $title;
@@ -106,7 +106,7 @@ foreach my $node ( $results->get_nodelist ) {
 	if ( $publisher ) { $publisher = $publisher->string_value }
 	else { $publisher = '' }
 	if ( $publisher and $publisher_place ) { $publisher = "$publisher_place: $publisher " }
-	
+
 	# topics (subjects); a bit bogus too
 	my @topics = ();
 	my $topics = $xpath->find( './/subject', $node );
@@ -119,7 +119,7 @@ foreach my $node ( $results->get_nodelist ) {
 	print "         count = $count\n";
 	print "            id = $id\n";
 	print "   call number = $call_number\n";
-	print "           url = $url\n";	
+	print "           url = $url\n";
 	print "    all fields = $all_fields\n";
 	print "         title = $title\n";
 	print "    sort title = $title_sort\n";
@@ -134,7 +134,7 @@ foreach my $node ( $results->get_nodelist ) {
 	foreach my $topic ( @topics ) { print "         topic = $topic\n" }
 	print "   full record = $fullrecord\n";
 	print "\n";
-		
+
 	# populate solr fields
 	my $solr_id                   = WebService::Solr::Field->new( 'id'                   => "$id" );
 	my $solr_call_number          = WebService::Solr::Field->new( 'callnumber'           => "$call_number" );
@@ -161,11 +161,11 @@ foreach my $node ( $results->get_nodelist ) {
 	my $solr_publisher            = WebService::Solr::Field->new( 'publisher'            => "$publisher" );
 	my $solr_publisherStr         = WebService::Solr::Field->new( 'publisherStr'         => "$publisher" );
 	my $solr_all_fields           = WebService::Solr::Field->new( 'allfields'            => "$all_fields" );
-	
+
 	# fill a solr document with simple fields
 	my $doc = WebService::Solr::Document->new;
 	$doc->add_fields( $solr_id, $solr_call_number, $solr_call_number_a, $solr_title, $solr_title_auth, $solr_title_full, $solr_title_fullStr, $solr_title_full_unstemmed, $solr_title_short, $solr_title_sort, $solr_date, $solr_format, $solr_institution, $solr_building, $solr_fullrecord, $solr_type, $solr_language, $solr_author, $solr_author_letter, $solr_publisher, $solr_publisherStr, $solr_edition, $solr_series, $solr_seriess, $solr_all_fields );
-	
+
 	# add topics
 	foreach ( @topics ) { $doc->add_fields(( WebService::Solr::Field->new( topic => $_ )))}
 

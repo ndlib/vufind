@@ -206,8 +206,8 @@ foreach my $key ( sort keys %$libraries ) {
 			print "    description: ", $description,   "\n";
 			print "       physical: ", $physical,      "\n";
 			print "  crra bioghist: ", $crra_bioghist, "\n";
-+			print "    full record: ", $fullrecord, "\n";
-			foreach my $subject   ( @subjects )   { print "        subject: ", $subject,   "\n" }
+			print "    full record: ", $fullrecord, "\n";
+			foreach my $subject   ( @subjects )   { print "       subject: ", $subject,   "\n" }
 			foreach my $persname  ( @persnames )  { print "       persname: ", $persname,  "\n" }
 			foreach my $corpname  ( @corpnames )  { print "       corpname: ", $corpname,  "\n" }
 			foreach my $title_alt ( @title_alts ) { print "      title_alt: ", $title_alt, "\n" }

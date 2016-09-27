@@ -5,7 +5,7 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # July     16, 2010 - first investigations
 # October   8, 2010 - added type
-# March     4, 2011 - reconfiguring for james 
+# March     4, 2011 - reconfiguring for james
 # December 20, 2012 - added command line input; redirected STDERR to a STDIN
 
 # configure
@@ -36,7 +36,7 @@ foreach my $key ( sort keys %$libraries ) {
 	print "Deleting records whose id starts with $key...\n";
 	$solr->delete_by_query( "id:$key$type" . "_*" );
 	$solr->commit;
-		
+
 	# re-create and save a marc.properties file
 	print "Creating $key properties...\n";
 	my $template = &slurp( TEMPLATE );
@@ -45,7 +45,7 @@ foreach my $key ( sort keys %$libraries ) {
 	open OUT, " > ", PROPERTIES or die "Can't open " . PROPERTIES . ": $!\n";
 	print OUT $template;
 	close OUT;
-	
+
 	# build the indexing command
 	# changed file name to .mrc as vufind-2.1 only accepts mrc format.(vufind-2.1)
 	print "Indexing $key...\n";
@@ -57,7 +57,7 @@ foreach my $key ( sort keys %$libraries ) {
 	# do the work
 	print "$cmd\n";
 	system ("$cmd");
-		
+
 }
 
 # done
