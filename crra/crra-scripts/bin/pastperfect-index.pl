@@ -91,7 +91,7 @@ foreach my $node ( $results->get_nodelist ) {
 	my $edition              =  $xpath->find( './coverage', $node );
 	my $series               =  $xpath->find( './relation', $node );
 	my $author               =  $xpath->find( './creator', $node );
-	my $author_letter        =  $author;
+	my $author_sort          =  $author;
 	my $language             =  $xpath->find( './language', $node );
 	my $institution          =  INSTITUTION;
 	my $library              =  LIBRARY;
@@ -113,14 +113,14 @@ foreach my $node ( $results->get_nodelist ) {
 	if ( $topics ) { foreach ( my $i = 1; $i <= $topics->size; $i++ ) { push @topics, $topics->get_node( $i )->string_value } }
 
 	# everything for display; note topic is not included!
-	my $fullrecord =  "<record><id>" . &escape_entities( $id )."</id><recordtype>" . RECORDTYPE . "</recordtype><title>" . &escape_entities( $title ) . "</title><publisher>" . &escape_entities( $publisher ) . "</publisher><publisherStr>" . &escape_entities( $publisher ) . "</publisherStr><series2>" . &escape_entities( $series ) . "</series2><series>" . &escape_entities( $series )."</series><date>" . &escape_entities( $date )."</date><format>" . &escape_entities( $format )."</format><language>" . &escape_entities( $language)."</language><url description='" . URLDESCRIPTION . "'>" . &escape_entities( $url )."</url><institution>" . &escape_entities( $institution )."</institution><library>" . &escape_entities( $library )."</library><author>" . &escape_entities( $author )."</author><author_letter>" . &escape_entities( $author_letter )."</author_letter></record>";
+	my $fullrecord =  "<record><id>" . &escape_entities( $id )."</id><recordtype>" . RECORDTYPE . "</recordtype><title>" . &escape_entities( $title ) . "</title><publisher>" . &escape_entities( $publisher ) . "</publisher><publisherStr>" . &escape_entities( $publisher ) . "</publisherStr><series2>" . &escape_entities( $series ) . "</series2><series>" . &escape_entities( $series )."</series><date>" . &escape_entities( $date )."</date><format>" . &escape_entities( $format )."</format><language>" . &escape_entities( $language)."</language><url description='" . URLDESCRIPTION . "'>" . &escape_entities( $url )."</url><institution>" . &escape_entities( $institution )."</institution><library>" . &escape_entities( $library )."</library><author>" . &escape_entities( $author )."</author><author_sort>" . &escape_entities( $author_sort )."</author_sort></record>";
 
 	# echo
 	print "         count = $count\n";
 	print "            id = $id\n";
 	print "   call number = $call_number\n";
 	print "           url = $url\n";
-	print "    all fields = $all_fields\n";
+	# print "    all fields = $all_fields\n";
 	print "         title = $title\n";
 	print "    sort title = $title_sort\n";
 	print "        author = $author\n";
@@ -132,13 +132,13 @@ foreach my $node ( $results->get_nodelist ) {
 	print "       edition = $edition\n";
 	print "      language = $language\n";
 	foreach my $topic ( @topics ) { print "         topic = $topic\n" }
-	print "   full record = $fullrecord\n";
+	# print "   full record = $fullrecord\n";
 	print "\n";
 
 	# populate solr fields
 	my $solr_id                   = WebService::Solr::Field->new( 'id'                   => "$id" );
-	my $solr_call_number          = WebService::Solr::Field->new( 'callnumber'           => "$call_number" );
-	my $solr_call_number_a        = WebService::Solr::Field->new( 'callnumber-a'         => "$call_number" );
+	# my $solr_call_number          = WebService::Solr::Field->new( 'callnumber'           => "$call_number" );
+	my $solr_call_number_raw      = WebService::Solr::Field->new( 'callnumber-raw'       => "$call_number" );
 	my $solr_title                = WebService::Solr::Field->new( 'title'                => "$title" );
 	my $solr_title_auth           = WebService::Solr::Field->new( 'title_auth'           => "$title_auth" );
 	my $solr_title_full           = WebService::Solr::Field->new( 'title_full'           => "$title_full" );
@@ -157,14 +157,16 @@ foreach my $node ( $results->get_nodelist ) {
 	my $solr_type                 = WebService::Solr::Field->new( 'recordtype'           => RECORDTYPE );
 	my $solr_language             = WebService::Solr::Field->new( 'language'             => "$language" );
 	my $solr_author               = WebService::Solr::Field->new( 'author'               => "$author" );
-	my $solr_author_letter        = WebService::Solr::Field->new( 'author-letter'        => "$author_letter" );
+	# my $solr_author-letter        = WebService::Solr::Field->new( 'author-letter'        => "$author_sort" );
+	my $solr_author_sort          = WebService::Solr::Field->new( 'author_sort'          => "$author_sort" );
 	my $solr_publisher            = WebService::Solr::Field->new( 'publisher'            => "$publisher" );
 	my $solr_publisherStr         = WebService::Solr::Field->new( 'publisherStr'         => "$publisher" );
 	my $solr_all_fields           = WebService::Solr::Field->new( 'allfields'            => "$all_fields" );
 
 	# fill a solr document with simple fields
 	my $doc = WebService::Solr::Document->new;
-	$doc->add_fields( $solr_id, $solr_call_number, $solr_call_number_a, $solr_title, $solr_title_auth, $solr_title_full, $solr_title_fullStr, $solr_title_full_unstemmed, $solr_title_short, $solr_title_sort, $solr_date, $solr_format, $solr_institution, $solr_building, $solr_fullrecord, $solr_type, $solr_language, $solr_author, $solr_author_letter, $solr_publisher, $solr_publisherStr, $solr_edition, $solr_series, $solr_seriess, $solr_all_fields );
+	# $doc->add_fields( $solr_id, $solr_call_number, $solr_call_number_a, $solr_title, $solr_title_auth, $solr_title_full, $solr_title_fullStr, $solr_title_full_unstemmed, $solr_title_short, $solr_title_sort, $solr_date, $solr_format, $solr_institution, $solr_building, $solr_fullrecord, $solr_type, $solr_language, $solr_author, $solr_author_sort, $solr_publisher, $solr_publisherStr, $solr_edition, $solr_series, $solr_seriess, $solr_all_fields );
+	$doc->add_fields( $solr_id, $solr_call_number_raw, $solr_title, $solr_title_auth, $solr_title_full, $solr_title_fullStr, $solr_title_full_unstemmed, $solr_title_short, $solr_title_sort, $solr_date, $solr_format, $solr_institution, $solr_building, $solr_fullrecord, $solr_type, $solr_language, $solr_author, $solr_publisher, $solr_publisherStr, $solr_edition, $solr_series, $solr_seriess, $solr_all_fields );
 
 	# add topics
 	foreach ( @topics ) { $doc->add_fields(( WebService::Solr::Field->new( topic => $_ )))}

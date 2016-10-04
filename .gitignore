@@ -9,17 +9,14 @@ TAGS
 composer.lock
 composer.phar
 import/solrmarc.log
-/cronjob
+/cronjob
 /crra/crra-scripts/logs
 /crra/crra-scripts/logs/bar-indexing.log
+/crra/data
 /crra/marc-incoming/*
 /env.sh
 /local
 /log
-/solr/biblio/index/*
-/solr/biblio/spellchecker/*
-/solr/biblio/spellShingle/*
-/solr/biblio/tlog/*
 
 bar-indexing.log
 cache

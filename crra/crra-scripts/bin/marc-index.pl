@@ -12,9 +12,9 @@
 # changed command parameter as per vufind-2.1 and rather than changing import properties, changes are dine in marc_local_properties.Changed the template.txt file as per marc_local.properties. (vufind-2.1)
 use constant CMD        => "/opt/vufind/import-marc.sh ##MARC## 2> ##LOG##";
 use constant DB         => '/opt/vufind/crra/crra-scripts/etc/libraries.db';
-use constant PROPERTIES => '/opt/vufind/local/import/marc_local.properties';
+use constant PROPERTIES => '/etc/vufind/import/marc_local.properties';
 use constant SOLR       => 'http://localhost:8081/solr/biblio';
-use constant TEMPLATE   => '/opt/vufind/local/import/template.txt';
+use constant TEMPLATE   => '/etc/vufind/import/template.txt';
 use constant UPDATED    => '/opt/vufind/crra/data/marc-updated/';
 use constant LOGS       => '/opt/vufind/crra/crra-scripts/logs/';
 use constant TYPE       => 'marc';
