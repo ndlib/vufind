@@ -246,6 +246,7 @@ $config = [
                     'facebook' => 'VuFind\Auth\Factory::getFacebook',
                     'ils' => 'VuFind\Auth\Factory::getILS',
                     'multiils' => 'VuFind\Auth\Factory::getMultiILS',
+                    'memberclicks' => 'VuFind\Auth\Factory::getMemberClicks'
                 ],
                 'invokables' => [
                     'cas' => 'VuFind\Auth\CAS',

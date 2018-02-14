@@ -72,6 +72,18 @@ class Factory
     }
 
     /**
+     * Construct the MemberClicks plugin.
+     *
+     * @param ServiceManager $sm Service manager.
+     *
+     * @return MemberClicks
+     */
+    public static function getMemberClicks(ServiceManager $sm)
+    {
+        return new MemberClicks();
+    }
+
+    /**
      * Construct the ILS plugin.
      *
      * @param ServiceManager $sm Service manager.
