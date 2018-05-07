@@ -46,7 +46,7 @@
 <!-- added library, institution and unique key for CRRA records -->
 <? $crraLibrary = $this->driver->tryMethod('getCRRALibrary'); if ($crraLibrary): ?>
   <h3>Location</h3>
-  Library: <a href='http://www.catholicresearch.net/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
+  Library: <a href='http://vufind.catholicresearch.org/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
 <? endif; ?>
 <!-- added call number for CRRA records -->
 <? $callNumber = $this->driver->trymethod( 'getCallNumber'); if($callNumber):?>
