@@ -54,7 +54,7 @@
         <!-- modified to include $CRRALibrary and $CRRAInstitution -->
       <div class="resultItemLine3">
         <? $crraLibrary = $this->driver->tryMethod	('getCRRALibrary'); if ($crraLibrary): ?>
-          <b>Location:</b> <a href='http://www.catholicresearch.net/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
+          <b>Location:</b> <a href='https://vufind.catholicresearch.org/data/directory.html#<?=$this->driver->tryMethod('getCRRAKey')?>'><?=$crraLibrary?></a>, <?=$this->driver->tryMethod('getCRRAInstitution')?><br />
         <? endif; ?>
 
         <? if ($this->driver->supportsAjaxStatus()): ?>
