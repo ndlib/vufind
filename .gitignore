@@ -9,6 +9,7 @@ TAGS
 composer.lock
 composer.phar
 import/solrmarc.log
+node_modules
 import/solrmarc.log.1
 /cronjob
 /crra/crra-scripts/logs

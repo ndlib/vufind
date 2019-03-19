@@ -26,6 +26,7 @@
  * @link     https://vufind.org/wiki/development:plugins:controllers Wiki
  */
 namespace VuFind\Controller;
+use VuFind\Exception\Forbidden as ForbiddenException;
 
 /**
  * BrowseController Class
@@ -283,7 +284,7 @@ class BrowseController extends AbstractBase
     public function tagAction()
     {
         if (!$this->tagsEnabled()) {
-            throw new \Exception('Tags disabled.');
+            throw new ForbiddenException('Tags disabled.');
         }
 
         $this->setCurrentAction('Tag');
@@ -452,7 +453,7 @@ class BrowseController extends AbstractBase
             'era'          => 'By Era'
         ];
 
-        return $this->performBrowse('Author', $categoryList, false);
+        return $this->performBrowse('Author', $categoryList, true);
     }
 
     /**
